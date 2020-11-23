@@ -9,8 +9,55 @@ import SwiftUI
 
 struct AuthView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        VStack {
+            Text("Регистрация")
+                .font(Font.custom("Roboto", size: 32))
+                .padding(.top, 76)
+            
+            VStack(spacing: 24) {
+                Button(action: {}) {
+                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               text: "Продолжить с Apple")
+                }
+                Button(action: {}) {
+                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               text: "Зарегистрироваться с Google")
+                }
+                Button(action: {}) {
+                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               text: "Зарегистрироваться с VK")
+                }
+                Button(action: {}) {
+                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               text: "Зарегистрироваться с Facebook")
+                }
+                HStack {
+                    Text("Регистрация")
+                        .font(Font.custom("Roboto", size: 16))
+                    Button(action: {}) {
+                        Text("по e-mail")
+                            .font(Font.custom("Roboto", size: 16))
+                            .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
+                            
+                    }
+                }
+            } .padding(.top, 170)
+            
+            Spacer()
+            
+            Divider()
+                .padding(.bottom, 32)
+            
+            HStack {
+                Text("Уже есть аккаунт?")
+                    .font(Font.custom("Roboto", size: 16))
+                Button(action: {}) {
+                    Text("Войдите")
+                        .font(Font.custom("Roboto", size: 16))
+                        .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
+                }
+            } .padding(.bottom, 32)
+        }
     }
 }
 
