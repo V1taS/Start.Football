@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  PageView.swift
 //  Start.Football
 //
 //  Created by Виталий Сосин on 23.11.2020.
@@ -7,15 +7,14 @@
 
 import SwiftUI
 
-struct ContentView: View {
+struct PageView: View {
     var body: some View {
-        Text("Hello, world!")
-            .padding()
+        Text(/*@START_MENU_TOKEN@*/"Hello, World!"/*@END_MENU_TOKEN@*/)
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        ContentView()
+        PageView()
     }
 }

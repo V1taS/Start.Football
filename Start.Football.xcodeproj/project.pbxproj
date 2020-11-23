@@ -9,21 +9,27 @@
 /* Begin PBXBuildFile section */
 		1B155F07256C06D000019C2F /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F06256C06D000019C2F /* AppDelegate.swift */; };
 		1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F08256C06D000019C2F /* SceneDelegate.swift */; };
-		1B155F0B256C06D000019C2F /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F0A256C06D000019C2F /* ContentView.swift */; };
+		1B155F0B256C06D000019C2F /* AuthView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F0A256C06D000019C2F /* AuthView.swift */; };
 		1B155F0D256C06D200019C2F /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B155F0C256C06D200019C2F /* Assets.xcassets */; };
 		1B155F10256C06D200019C2F /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B155F0F256C06D200019C2F /* Preview Assets.xcassets */; };
 		1B155F13256C06D200019C2F /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 1B155F11256C06D200019C2F /* LaunchScreen.storyboard */; };
+		1B155F3C256C07BE00019C2F /* SignUp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F3B256C07BE00019C2F /* SignUp.swift */; };
+		1B155F3F256C07CE00019C2F /* LoginView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F3E256C07CE00019C2F /* LoginView.swift */; };
+		1B155F42256C07F800019C2F /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F41256C07F800019C2F /* PageView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
 		1B155F03256C06D000019C2F /* Start.Football.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = Start.Football.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		1B155F06256C06D000019C2F /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		1B155F08256C06D000019C2F /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
-		1B155F0A256C06D000019C2F /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
+		1B155F0A256C06D000019C2F /* AuthView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthView.swift; sourceTree = "<group>"; };
 		1B155F0C256C06D200019C2F /* Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = Assets.xcassets; sourceTree = "<group>"; };
 		1B155F0F256C06D200019C2F /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1B155F12256C06D200019C2F /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		1B155F14256C06D200019C2F /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
+		1B155F3B256C07BE00019C2F /* SignUp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUp.swift; sourceTree = "<group>"; };
+		1B155F3E256C07CE00019C2F /* LoginView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginView.swift; sourceTree = "<group>"; };
+		1B155F41256C07F800019C2F /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -56,12 +62,8 @@
 		1B155F05256C06D000019C2F /* Start.Football */ = {
 			isa = PBXGroup;
 			children = (
-				1B155F06256C06D000019C2F /* AppDelegate.swift */,
-				1B155F08256C06D000019C2F /* SceneDelegate.swift */,
-				1B155F0A256C06D000019C2F /* ContentView.swift */,
-				1B155F0C256C06D200019C2F /* Assets.xcassets */,
-				1B155F11256C06D200019C2F /* LaunchScreen.storyboard */,
-				1B155F14256C06D200019C2F /* Info.plist */,
+				1B155F39256C078500019C2F /* SignIn&Auth */,
+				1B155F1B256C06FA00019C2F /* App */,
 				1B155F0E256C06D200019C2F /* Preview Content */,
 			);
 			path = Start.Football;
@@ -73,6 +75,53 @@
 				1B155F0F256C06D200019C2F /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1B155F1B256C06FA00019C2F /* App */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F37256C075300019C2F /* Supporting files */,
+				1B155F38256C076A00019C2F /* Sources */,
+				1B155F36256C073E00019C2F /* Storyboards */,
+			);
+			path = App;
+			sourceTree = "<group>";
+		};
+		1B155F36256C073E00019C2F /* Storyboards */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F11256C06D200019C2F /* LaunchScreen.storyboard */,
+			);
+			path = Storyboards;
+			sourceTree = "<group>";
+		};
+		1B155F37256C075300019C2F /* Supporting files */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F14256C06D200019C2F /* Info.plist */,
+				1B155F08256C06D000019C2F /* SceneDelegate.swift */,
+				1B155F06256C06D000019C2F /* AppDelegate.swift */,
+			);
+			path = "Supporting files";
+			sourceTree = "<group>";
+		};
+		1B155F38256C076A00019C2F /* Sources */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F0C256C06D200019C2F /* Assets.xcassets */,
+			);
+			path = Sources;
+			sourceTree = "<group>";
+		};
+		1B155F39256C078500019C2F /* SignIn&Auth */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F0A256C06D000019C2F /* AuthView.swift */,
+				1B155F3B256C07BE00019C2F /* SignUp.swift */,
+				1B155F3E256C07CE00019C2F /* LoginView.swift */,
+				1B155F41256C07F800019C2F /* PageView.swift */,
+			);
+			path = "SignIn&Auth";
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -146,8 +195,11 @@
 			buildActionMask = 2147483647;
 			files = (
 				1B155F07256C06D000019C2F /* AppDelegate.swift in Sources */,
+				1B155F42256C07F800019C2F /* PageView.swift in Sources */,
+				1B155F3C256C07BE00019C2F /* SignUp.swift in Sources */,
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,
-				1B155F0B256C06D000019C2F /* ContentView.swift in Sources */,
+				1B155F3F256C07CE00019C2F /* LoginView.swift in Sources */,
+				1B155F0B256C06D000019C2F /* AuthView.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};
@@ -216,7 +268,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = INCLUDE_SOURCE;
 				MTL_FAST_MATH = YES;
 				ONLY_ACTIVE_ARCH = YES;
@@ -271,7 +323,7 @@
 				GCC_WARN_UNINITIALIZED_AUTOS = YES_AGGRESSIVE;
 				GCC_WARN_UNUSED_FUNCTION = YES;
 				GCC_WARN_UNUSED_VARIABLE = YES;
-				IPHONEOS_DEPLOYMENT_TARGET = 14.2;
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				MTL_ENABLE_DEBUG_INFO = NO;
 				MTL_FAST_MATH = YES;
 				SDKROOT = iphoneos;
@@ -290,7 +342,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Start.Football/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Start.Football/App/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
@@ -311,7 +364,8 @@
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = Start.Football/Info.plist;
+				INFOPLIST_FILE = "$(SRCROOT)/Start.Football/App/Supporting files/Info.plist";
+				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
 					"@executable_path/Frameworks",
