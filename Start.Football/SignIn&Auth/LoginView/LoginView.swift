@@ -26,7 +26,7 @@ struct LoginView: View {
                 
                 TextFieldView(title: "Пароль",
                               secureField: true,
-                              placeholder: "878ujss2",
+                              placeholder: "• • • • • • • •",
                               text: $viewModel.password,
                               success: $viewModel.passwordSuccess)
                 
