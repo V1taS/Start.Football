@@ -13,20 +13,31 @@ struct GameView: View {
     
     var body: some View {
         VStack {
-            HeaderGameView()
-            MenuGameView(selectionGame: $viewModel.selectionGame)
-            Spacer()
-            
-            if viewModel.selectionGame == .allGame {
+            GeometryReader { geometry in
                 VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        Text("Все Игры")
-                    }
-                }
-            } else if viewModel.selectionGame == .myGames {
-                VStack {
-                    ScrollView(.vertical, showsIndicators: false) {
-                        Text("Мои игры")
+                    HeaderGameView(height: geometry.size.height,
+                                   width: geometry.size.width)
+                    MenuGameView(selectionGame: $viewModel.selectionGame,
+                                 height: geometry.size.height,
+                                 width: geometry.size.width)
+                    Spacer()
+                    
+                    if viewModel.selectionGame == .allGame {
+                        VStack(spacing: 16) {
+                            ScrollView(.vertical, showsIndicators: false) {
+                                CellGameView()
+                                CellGameView()
+                                CellGameView()
+                                CellGameView()
+                                CellGameView()
+                            }
+                        }
+                    } else if viewModel.selectionGame == .myGames {
+                        VStack {
+                            ScrollView(.vertical, showsIndicators: false) {
+                                Text("Мои игры")
+                            }
+                        }
                     }
                 }
             }

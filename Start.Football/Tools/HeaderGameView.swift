@@ -8,30 +8,34 @@
 import SwiftUI
 
 struct HeaderGameView: View {
+    let height: CGFloat
+    let width: CGFloat
     var body: some View {
         HStack {
             Image("test")
                 .resizable()
                 .renderingMode(.original)
                 .scaledToFill()
-                .frame(width: 48, height: 48)
-            VStack(alignment: .leading, spacing: 2){
+                .frame(width: width * 0.1159, height: height * 0.059)
+            VStack(alignment: .leading, spacing: height * 0.0025){
                 Text("Апполинарий")
-                    .font(Font.custom("Roboto-Medium", size: 20))
+                    .font(Font.event.robotoBold20)
                 Text("Санкт-Петербург")
-                    .font(Font.custom("Roboto-Regular", size: 13))
-            } .frame(width: 150, height: 50, alignment: .leading)
+                    .font(Font.event.robotoRegular13)
+            } .frame(width: width * 0.3623, height: height * 0.0614, alignment: .leading)
             Spacer()
-            HStack(spacing: 24) {
+            HStack(spacing: width * 0.058) {
                 Image("map")
                 Image("filter")
             }
-        } .padding(.horizontal)
+        }
+        .padding(.top, height * 0.059)
+        .padding(.horizontal)
     }
 }
 
 struct HeaderGameView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderGameView()
+        HeaderGameView(height: 2, width: 2)
     }
 }

@@ -35,6 +35,7 @@
 		1B7970E8256DCA78006DAFC0 /* HeaderGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7970E7256DCA78006DAFC0 /* HeaderGameView.swift */; };
 		1B7970F3256DD495006DAFC0 /* MenuGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7970F2256DD495006DAFC0 /* MenuGameView.swift */; };
 		1B7970F6256DDB1D006DAFC0 /* GameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7970F5256DDB1D006DAFC0 /* GameViewModel.swift */; };
+		1BB99551256F2FD600DC480B /* CellGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB99550256F2FD600DC480B /* CellGameView.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -68,6 +69,7 @@
 		1B7970E7256DCA78006DAFC0 /* HeaderGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderGameView.swift; sourceTree = "<group>"; };
 		1B7970F2256DD495006DAFC0 /* MenuGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuGameView.swift; sourceTree = "<group>"; };
 		1B7970F5256DDB1D006DAFC0 /* GameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GameViewModel.swift; sourceTree = "<group>"; };
+		1BB99550256F2FD600DC480B /* CellGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellGameView.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -174,6 +176,7 @@
 				1B155F52256C471D00019C2F /* CheckboxFieldView.swift */,
 				1B7970E7256DCA78006DAFC0 /* HeaderGameView.swift */,
 				1B7970F2256DD495006DAFC0 /* MenuGameView.swift */,
+				1BB99550256F2FD600DC480B /* CellGameView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -335,6 +338,7 @@
 				1B155F58256C4EBC00019C2F /* LoginViewModel.swift in Sources */,
 				1B155F4B256C15F600019C2F /* TextFieldView.swift in Sources */,
 				1B155F3C256C07BE00019C2F /* SignUpView.swift in Sources */,
+				1BB99551256F2FD600DC480B /* CellGameView.swift in Sources */,
 				1B155F53256C471D00019C2F /* CheckboxFieldView.swift in Sources */,
 				1B155F4F256C351500019C2F /* SignUpViewModel.swift in Sources */,
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,

@@ -9,15 +9,15 @@ import SwiftUI
 
 extension Font {
     struct Event {
-        let title = Font.custom("Roboto-Regular", size: 32)
-        let regularBold = Font.custom("Roboto-Medium", size: 18)
-        let regular = Font.custom("Roboto-Regular", size: 16)
-        
-        
-        let name = Font.custom("Roboto-Black", size: 14)
-        let location = Font.custom("Roboto-Black", size: 10)
-        let date = Font.custom("Roboto-Black", size: 16)
-        let price = Font.custom("Roboto-Black", size: 12)
+        let robotoBold20 = Font.custom("Roboto-Bold", size: 20)
+        let robotoRegular32 = Font.custom("Roboto-Regular", size: 32)
+        let robotoRegular24 = Font.custom("Roboto-Regular", size: 24)
+        let robotoRegular16 = Font.custom("Roboto-Regular", size: 16)
+        let robotoRegular13 = Font.custom("Roboto-Regular", size: 13)
+        let robotoMedium20 = Font.custom("Roboto-Medium", size: 20)
+        let robotoMedium18 = Font.custom("Roboto-Medium", size: 18)
+        let robotoMedium16 = Font.custom("Roboto-Medium", size: 16)
+        let robotoMedium14 = Font.custom("Roboto-Medium", size: 14)
     }
     static let event = Event()
 }

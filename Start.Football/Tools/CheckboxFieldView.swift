@@ -11,6 +11,7 @@ struct CheckboxFieldView : View {
     
     @Binding var checked: Bool
     let text: String
+    let width: CGFloat
     
     var body: some View {
         HStack {
@@ -20,15 +21,16 @@ struct CheckboxFieldView : View {
                     self.checked.toggle()
                 }
             Text(text)
-                .font(Font.custom("Roboto", size: 16))
+                .font(Font.event.robotoRegular16)
                 .lineLimit(1)
-        }.frame(minWidth: 30, maxWidth: 280, alignment: .leading)
+        }.frame(minWidth: width * 0.0725, maxWidth: width * 0.6763, alignment: .leading)
     }
 }
 
 struct CheckboxFieldView_Previews: PreviewProvider {
     static var previews: some View {
         CheckboxFieldView(checked: .constant(true),
-                          text: "Хочу получать новости на почту")
+                          text: "",
+                          width: 2)
     }
 }
