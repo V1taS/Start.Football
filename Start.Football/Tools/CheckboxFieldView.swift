@@ -21,9 +21,13 @@ struct CheckboxFieldView : View {
                     self.checked.toggle()
                 }
             Text(text)
+                .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                 .font(Font.event.robotoRegular16)
                 .lineLimit(1)
-        }.frame(minWidth: width * 0.0725, maxWidth: width * 0.6763, alignment: .leading)
+        }
+        .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
+               maxWidth: width * Size.shared.getAdaptSizeWidth(px: 280),
+               alignment: .leading)
     }
 }
 
@@ -31,6 +35,6 @@ struct CheckboxFieldView_Previews: PreviewProvider {
     static var previews: some View {
         CheckboxFieldView(checked: .constant(true),
                           text: "",
-                          width: 2)
+                          width: 375)
     }
 }

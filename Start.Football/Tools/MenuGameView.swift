@@ -15,34 +15,44 @@ struct MenuGameView: View {
     
     var body: some View {
         VStack {
-            Divider().offset(y: height * 0.05)
+            Divider()
+                .offset(y: 39)
             HStack {
-                VStack {
+                VStack(spacing: 9) {
                     Button(action: {selectionGame = .allGame}) {
                         Text("Все игры")
                             .font(selectionGame == .allGame ?
                                     Font.event.robotoMedium16 :
                                     Font.event.robotoRegular16)
-                            .foregroundColor(selectionGame == .allGame ? Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)) : .black)
-                            .fontWeight(selectionGame == .allGame ? .bold : .regular)
+                            .foregroundColor(selectionGame == .allGame ?
+                                                Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)) :
+                                                Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                            .fontWeight(selectionGame == .allGame ?
+                                            .bold :
+                                            .regular)
                     }
                     Color(selectionGame == .allGame ? (#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
-                        .frame(width: width * 0.1932, height: height * 0.0025, alignment: .center)
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 2),
+                               alignment: .center)
                 }
                 Spacer()
-                VStack {
+                VStack(spacing: 9) {
                     Button(action: {selectionGame = .myGames}) {
                         Text("Мои игры")
                             .font(selectionGame == .myGames ?
                                     Font.event.robotoMedium16 :
                                     Font.event.robotoRegular16)
-                            .foregroundColor(selectionGame == .myGames ? Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)) : .black)
+                            .foregroundColor(selectionGame == .myGames ? Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)) : Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                             .fontWeight(selectionGame == .myGames ? .bold : .regular)
                     }
                     Color(selectionGame == .myGames ? (#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)) : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
-                        .frame(width: width * 0.1932, height: height * 0.0025, alignment: .center)
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 2),
+                               alignment: .center)
                 }
-            } .padding(.horizontal, width * 0.1546)
+            }
+            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 64))
         }
     }
 }
@@ -50,7 +60,7 @@ struct MenuGameView: View {
 struct MenuGameView_Previews: PreviewProvider {
     static var previews: some View {
         MenuGameView(selectionGame: .constant(.allGame),
-                     height: 2,
-                     width: 2)
+                     height: 647,
+                     width: 375)
     }
 }

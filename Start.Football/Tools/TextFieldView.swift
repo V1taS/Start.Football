@@ -22,16 +22,19 @@ struct TextFieldView: View {
         ZStack {
             RoundedRectangle(cornerRadius: 3)
                 .stroke(success ? Color.black : .red, lineWidth: 1)
-                .padding(.horizontal, 16)
-                .frame(height: height * 0.0639)
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
+                .frame(height: height * Size.shared.getAdaptSizeHeight(px: 52))
             ZStack {
                 Text(title)
                     .font(Font.event.robotoMedium14)
-                    .padding(.horizontal, 5)
+                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 5))
                     .foregroundColor(success ? Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)) : Color.red)
                     .background(Color.white)
-                    .offset(x: -(width * 0.1208), y: -(height * 0.0319))
-            } .frame(minWidth: width * 0.0725, maxWidth: width * 0.6039, alignment: .leading)
+                    .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 45)),
+                            y: -(height * Size.shared.getAdaptSizeHeight(px: 26)))
+            } .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
+                     maxWidth: width * Size.shared.getAdaptSizeWidth(px: 228),
+                     alignment: .leading)
             if secureField {
                 ZStack {
                     Image("eye")
@@ -47,7 +50,7 @@ struct TextFieldView: View {
                             }
                         )
                 }
-                .offset(x: width * 0.3865)
+                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 148))
                 .onTapGesture {
                     showPassword.toggle()
                 }
@@ -59,23 +62,29 @@ struct TextFieldView: View {
                         .foregroundColor(.black)
                         .font(Font.event.robotoRegular16)
                         .keyboardType(.default)
-                        .offset(x: -(width * 0.0845))
-                        .frame(minWidth: width * 0.0725, maxWidth: width * 0.6522, alignment: .leading)
+                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
+                        .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
+                               maxWidth: Size.shared.getAdaptSizeWidth(px: 245),
+                               alignment: .leading)
                 } else {
                     SecureField(placeholder, text: $text)
                         .foregroundColor(.black)
                         .font(Font.event.robotoRegular16)
                         .keyboardType(.default)
-                        .offset(x: -(width * 0.0845))
-                        .frame(minWidth: width * 0.0725, maxWidth: width * 0.6522, alignment: .leading)
+                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
+                        .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
+                               maxWidth: width * Size.shared.getAdaptSizeWidth(px: 245),
+                               alignment: .leading)
                 }
             } else {
                 TextField(placeholder, text: $text)
                     .foregroundColor(.black)
                     .font(Font.event.robotoRegular16)
                     .keyboardType(.default)
-                    .offset(x: -(width * 0.0845))
-                    .frame(minWidth: width * 0.0725, maxWidth: width * 0.6522, alignment: .leading)
+                    .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
+                    .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
+                           maxWidth: width * Size.shared.getAdaptSizeWidth(px: 245),
+                           alignment: .leading)
             }
         }
     }
@@ -83,12 +92,12 @@ struct TextFieldView: View {
 
 struct TextFieldView_Previews: PreviewProvider {
     static var previews: some View {
-        TextFieldView(title: "",
-                      secureField: false,
-                      placeholder: "",
-                      height: 12,
-                      width: 12,
+        TextFieldView(title: "Name",
+                      secureField: true,
+                      placeholder: "Sosin Vitalii",
+                      height: 734,
+                      width: 375,
                       text: .constant(""),
-                      success: .constant(false))
+                      success: .constant(true))
     }
 }

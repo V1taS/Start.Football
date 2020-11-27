@@ -20,10 +20,11 @@ struct AuthView: View {
             GeometryReader { geometry in
                 VStack {
                     Text("Регистрация")
+                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular32)
-                        .padding(.top, geometry.size.height * 0.134)
+                        .padding(.top, geometry.size.height * Size.shared.getAdaptSizeHeight(px: 32))
                     
-                    VStack(spacing: geometry.size.height * 0.0295) {
+                    VStack(spacing: geometry.size.height * Size.shared.getAdaptSizeHeight(px: 24)) {
                         Button(action: {
                             self.viewController?.present(style: .fullScreen) {
                                 SignUpView()
@@ -32,29 +33,36 @@ struct AuthView: View {
                         }) {
                             ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
                                        text: "Продолжить с Apple",
-                                       height: geometry.size.height)
+                                       height: geometry.size.height,
+                                       width: geometry.size.width)
                         }
                         
-                        Button(action: {}) {
+                        Button(action: {
+
+                        }) {
                             ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
                                        text: "Зарегистрироваться с Google",
-                                       height: geometry.size.height)
+                                       height: geometry.size.height,
+                                       width: geometry.size.width)
                         }
                         
                         Button(action: {}) {
                             ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
                                        text: "Зарегистрироваться с VK",
-                                       height: geometry.size.height)
+                                       height: geometry.size.height,
+                                       width: geometry.size.width)
                         }
                         
                         Button(action: {}) {
                             ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
                                        text: "Зарегистрироваться с Facebook",
-                                       height: geometry.size.height)
+                                       height: geometry.size.height,
+                                       width: geometry.size.width)
                         }
                         
                         HStack {
                             Text("Регистрация")
+                                .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                                 .font(Font.event.robotoRegular16)
                             Button(action: {}) {
                                 Text("по e-mail")
@@ -62,15 +70,16 @@ struct AuthView: View {
                                     .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                             }
                         }
-                    } .padding(.top, geometry.size.height * 0.1941)
+                    } .padding(.top, geometry.size.height * Size.shared.getAdaptSizeHeight(px: 147))
                     
                     Spacer()
                     
                     Divider()
-                        .padding(.bottom, geometry.size.height * 0.0393)
+                        .padding(.bottom, geometry.size.height * Size.shared.getAdaptSizeHeight(px: 32))
                     
                     HStack {
                         Text("Уже есть аккаунт?")
+                            .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                             .font(Font.event.robotoRegular16)
                         Button(action: {
                             self.viewController?.present(style: .fullScreen) {
@@ -81,7 +90,10 @@ struct AuthView: View {
                                 .font(Font.event.robotoRegular16)
                                 .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                         }
-                    } .padding(.bottom, geometry.size.height * 0.0393)
+                    } .padding(.bottom, geometry.size.height * Size.shared.getAdaptSizeHeight(px: 32))
+                }.onAppear {
+                    print(geometry.size.height)
+                    print(geometry.size.width)
                 }
             }
         }
