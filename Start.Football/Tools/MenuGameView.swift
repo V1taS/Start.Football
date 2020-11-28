@@ -10,8 +10,8 @@ import SwiftUI
 struct MenuGameView: View {
     
     @Binding var selectionGame: SelectionGame
-    let height: CGFloat
-    let width: CGFloat
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
     
     var body: some View {
         VStack {
@@ -59,8 +59,6 @@ struct MenuGameView: View {
 
 struct MenuGameView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuGameView(selectionGame: .constant(.allGame),
-                     height: 647,
-                     width: 375)
+        MenuGameView(selectionGame: .constant(.allGame))
     }
 }

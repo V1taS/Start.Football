@@ -8,8 +8,8 @@
 import SwiftUI
 
 struct HeaderGameView: View {
-    let height: CGFloat
-    let width: CGFloat
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
     var body: some View {
         HStack {
             Button(action: {}) {
@@ -58,6 +58,6 @@ struct HeaderGameView: View {
 
 struct HeaderGameView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderGameView(height: 734, width: 375)
+        HeaderGameView()
     }
 }

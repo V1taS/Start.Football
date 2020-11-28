@@ -11,8 +11,8 @@ struct ButtonView: View {
     
     let background: UIColor
     let text: String
-    let height: CGFloat
-    let width: CGFloat
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
 
     var body: some View {
         ZStack {
@@ -29,6 +29,6 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), text: "Продолжить с Apple", height: 734, width: 375)
+        ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), text: "Продолжить с Apple")
     }
 }

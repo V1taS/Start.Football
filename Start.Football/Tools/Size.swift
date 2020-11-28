@@ -11,7 +11,7 @@ class Size {
     static let shared = Size()
     
     func getAdaptSizeHeight(px num: CGFloat) -> CGFloat {
-        let heightScreen: CGFloat = 734
+        let heightScreen: CGFloat = 812
         return num / heightScreen
     }
 

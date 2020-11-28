@@ -15,50 +15,27 @@ struct GameView: View {
         ZStack {
             Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9725490196, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
+            
+            VStack {
+                HeaderGameView()
+                MenuGameView(selectionGame: $viewModel.selectionGame)
                 
-            GeometryReader { geometry in
-                VStack {
-                    HeaderGameView(height: geometry.size.height + 49,
-                                   width: geometry.size.width)
-                    MenuGameView(selectionGame: $viewModel.selectionGame,
-                                 height: geometry.size.height + 49,
-                                 width: geometry.size.width)
-                        .onAppear {
-                            print(geometry.size.height)
-                            print(geometry.size.width)
-                        }
-                    
-                    if viewModel.selectionGame == .allGame {
+                if viewModel.selectionGame == .allGame {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16)) {
+                            
+                            Button(action: {}) { CellGameView() }
+                            Button(action: {}) { CellGameView() }
+                            Button(action: {}) { CellGameView() }
+                            Button(action: {}) { CellGameView() }
+                            Button(action: {}) { CellGameView() }
+                        } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+                    }
+                } else if viewModel.selectionGame == .myGames {
+                    VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            VStack(spacing: 24) { // Не правильный размер (по факту 16)
-                                Button(action: {}) {
-                                    CellGameView(height: geometry.size.height + 49,
-                                                 width: geometry.size.width)
-                                }
-                                
-                                Button(action: {}) {
-                                    CellGameView(height: geometry.size.height + 49,
-                                                 width: geometry.size.width)
-                                }
-                                
-                                Button(action: {}) {
-                                    CellGameView(height: geometry.size.height + 49,
-                                                 width: geometry.size.width)
-                                }
-                                
-                                Button(action: {}) {
-                                    CellGameView(height: geometry.size.height + 49,
-                                                 width: geometry.size.width)
-                                }
-
-                            } .padding(.top, 24)
-                        }
-                    } else if viewModel.selectionGame == .myGames {
-                        VStack {
-                            ScrollView(.vertical, showsIndicators: false) {
-                                Text("Мои игры")
-                                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                            }
+                            Text("Мои игры")
+                                .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         }
                     }
                 }

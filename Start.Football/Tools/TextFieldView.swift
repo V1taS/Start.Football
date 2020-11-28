@@ -12,8 +12,8 @@ struct TextFieldView: View {
     let title: String
     let secureField: Bool
     let placeholder: String
-    let height: CGFloat
-    let width: CGFloat
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
     @Binding var text: String
     @Binding var success: Bool
     @State var showPassword = false
@@ -62,29 +62,26 @@ struct TextFieldView: View {
                         .foregroundColor(.black)
                         .font(Font.event.robotoRegular16)
                         .keyboardType(.default)
-                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
-                        .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
-                               maxWidth: Size.shared.getAdaptSizeWidth(px: 245),
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 245),
                                alignment: .leading)
+                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
                 } else {
                     SecureField(placeholder, text: $text)
                         .foregroundColor(.black)
                         .font(Font.event.robotoRegular16)
                         .keyboardType(.default)
-                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
-                        .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
-                               maxWidth: width * Size.shared.getAdaptSizeWidth(px: 245),
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 245),
                                alignment: .leading)
+                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
                 }
             } else {
                 TextField(placeholder, text: $text)
                     .foregroundColor(.black)
                     .font(Font.event.robotoRegular16)
                     .keyboardType(.default)
-                    .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
-                    .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
-                           maxWidth: width * Size.shared.getAdaptSizeWidth(px: 245),
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 245),
                            alignment: .leading)
+                    .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
             }
         }
     }
@@ -95,8 +92,6 @@ struct TextFieldView_Previews: PreviewProvider {
         TextFieldView(title: "Name",
                       secureField: true,
                       placeholder: "Sosin Vitalii",
-                      height: 734,
-                      width: 375,
                       text: .constant(""),
                       success: .constant(true))
     }

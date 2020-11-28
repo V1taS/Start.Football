@@ -11,7 +11,7 @@ struct CheckboxFieldView : View {
     
     @Binding var checked: Bool
     let text: String
-    let width: CGFloat
+    let width = UIScreen.screenWidth
     
     var body: some View {
         HStack {
@@ -34,7 +34,6 @@ struct CheckboxFieldView : View {
 struct CheckboxFieldView_Previews: PreviewProvider {
     static var previews: some View {
         CheckboxFieldView(checked: .constant(true),
-                          text: "",
-                          width: 375)
+                          text: "")
     }
 }
