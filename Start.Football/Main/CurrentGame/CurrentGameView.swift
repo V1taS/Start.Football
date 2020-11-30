@@ -477,6 +477,5 @@ struct ButtonsCurrentGame: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
             }
         }
-        .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 24))
     }
 }

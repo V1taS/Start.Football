@@ -1,5 +1,5 @@
 //
-//  GameViewModel.swift
+//  MainViewModel.swift
 //  Start.Football
 //
 //  Created by Виталий Сосин on 25.11.2020.
@@ -14,10 +14,10 @@ enum SelectionGame {
     case map
 }
 
-protocol GameViewModelProtocol {
+protocol MainViewProtocol {
     var selectionGame: SelectionGame { get }
 }
 
-class GameViewModel: GameViewModelProtocol, ObservableObject {
+class MainViewModel: MainViewProtocol, ObservableObject {
     @Published var selectionGame: SelectionGame = .allGame
 }

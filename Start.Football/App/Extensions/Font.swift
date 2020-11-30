@@ -21,6 +21,7 @@ extension Font {
         let robotoMedium16 = Font.custom("Roboto-Medium", size: 16)
         let robotoMedium14 = Font.custom("Roboto-Medium", size: 14)
         let robotoMedium10 = Font.custom("Roboto-Medium", size: 10)
+        let robotoLight48 = Font.custom("Roboto-Light", size: 48)
     }
     static let event = Event()
 }

@@ -11,7 +11,7 @@ struct TabViewApp: View {
     
     var body: some View {
         TabView {
-            GameView()
+            MainView()
                 .tabItem {
                     Image("tab_search")
                     Text("Поиск")
