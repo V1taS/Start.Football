@@ -28,6 +28,7 @@
 		1B68131C2574602D00B54977 /* Plug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131B2574602D00B54977 /* Plug.swift */; };
 		1B68132525746E4B00B54977 /* MapGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68132425746E4B00B54977 /* MapGameView.swift */; };
 		1B6A0903257041330001861F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A0902257041330001861F /* Size.swift */; };
+		1B762C86257566C700414808 /* CurrentGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B762C85257566C700414808 /* CurrentGameView.swift */; };
 		1B78CCC0256DAB0800297221 /* FullscreenSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78CCBF256DAB0800297221 /* FullscreenSheet.swift */; };
 		1B78CCD3256DBA0600297221 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B78CCC7256DBA0600297221 /* Roboto-Regular.ttf */; };
 		1B78CCD4256DBA0600297221 /* Roboto-Black.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B78CCC8256DBA0600297221 /* Roboto-Black.ttf */; };
@@ -68,6 +69,7 @@
 		1B68131B2574602D00B54977 /* Plug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plug.swift; sourceTree = "<group>"; };
 		1B68132425746E4B00B54977 /* MapGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameView.swift; sourceTree = "<group>"; };
 		1B6A0902257041330001861F /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		1B762C85257566C700414808 /* CurrentGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGameView.swift; sourceTree = "<group>"; };
 		1B78CCBF256DAB0800297221 /* FullscreenSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenSheet.swift; sourceTree = "<group>"; };
 		1B78CCC7256DBA0600297221 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
 		1B78CCC8256DBA0600297221 /* Roboto-Black.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Black.ttf"; sourceTree = "<group>"; };
@@ -193,6 +195,7 @@
 				1B68131825745DEE00B54977 /* ADV.swift */,
 				1B68131B2574602D00B54977 /* Plug.swift */,
 				1B68132425746E4B00B54977 /* MapGameView.swift */,
+				1B762C85257566C700414808 /* CurrentGameView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -365,6 +368,7 @@
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,
 				1B78CCF0256DC4E300297221 /* GameView.swift in Sources */,
 				1B7970E8256DCA78006DAFC0 /* HeaderGameView.swift in Sources */,
+				1B762C86257566C700414808 /* CurrentGameView.swift in Sources */,
 				1B68132525746E4B00B54977 /* MapGameView.swift in Sources */,
 				1B78CCC0256DAB0800297221 /* FullscreenSheet.swift in Sources */,
 				1B155F5D256C527500019C2F /* AuthViewModel.swift in Sources */,
@@ -515,7 +519,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -525,7 +529,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -539,7 +543,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 3;
+				CURRENT_PROJECT_VERSION = 5;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -549,7 +553,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.3;
+				MARKETING_VERSION = 1.0.5;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

@@ -11,6 +11,7 @@ extension Font {
     struct Event {
         let robotoBold20 = Font.custom("Roboto-Bold", size: 20)
         let robotoBold14 = Font.custom("Roboto-Bold", size: 14)
+        let robotoBold13 = Font.custom("Roboto-Bold", size: 13)
         let robotoRegular32 = Font.custom("Roboto-Regular", size: 32)
         let robotoRegular24 = Font.custom("Roboto-Regular", size: 24)
         let robotoRegular16 = Font.custom("Roboto-Regular", size: 16)

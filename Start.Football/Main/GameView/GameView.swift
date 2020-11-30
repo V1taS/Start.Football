@@ -9,6 +9,11 @@ import SwiftUI
 
 struct GameView: View {
     
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    private var viewController: UIViewController? {
+        self.viewControllerHolder!
+    }
+    
     @ObservedObject var viewModel = GameViewModel()
     
     var body: some View {
@@ -24,13 +29,39 @@ struct GameView: View {
                 if viewModel.selectionGame == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16)) {
+
+                            Button(action: {
+                                self.viewController?.present(style: .fullScreen) {
+                                    CurrentGameView()
+                                } }) { CellGameView() }
                             
-                            Button(action: {}) { CellGameView() }
-                            Button(action: {}) { CellGameView() }
-                            Button(action: {}) { CellGameView() }
+                            Button(action: {
+                                self.viewController?.present(style: .fullScreen) {
+                                    CurrentGameView()
+                                } }) { CellGameView() }
+                            
+                            Button(action: {
+                                self.viewController?.present(style: .fullScreen) {
+                                    CurrentGameView()
+                                } }) { CellGameView() }
+                            
+                            Button(action: {
+                                self.viewController?.present(style: .fullScreen) {
+                                    CurrentGameView()
+                                } }) { CellGameView() }
+                            
                             Button(action: {}) { ADV()}
-                            Button(action: {}) { CellGameView() }
-                            Button(action: {}) { CellGameView() }
+                            
+                            Button(action: {
+                                self.viewController?.present(style: .fullScreen) {
+                                    CurrentGameView()
+                                } }) { CellGameView() }
+                            
+                            Button(action: {
+                                self.viewController?.present(style: .fullScreen) {
+                                    CurrentGameView()
+                                } }) { CellGameView() }
+                            
                         } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
                     }
                 } else if viewModel.selectionGame == .myGames {
