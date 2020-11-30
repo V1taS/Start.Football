@@ -67,14 +67,6 @@ struct CellGameView: View {
                 } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
                 
                 HStack {
-                    Text("По заявке")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                        .font(Font.event.robotoRegular16)
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                        .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
-                    Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
                     Text("Мини-футбол")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
@@ -82,8 +74,20 @@ struct CellGameView: View {
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
                                     .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                    
                     Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
+                    
                     Text("10 на 10")
+                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .font(Font.event.robotoRegular16)
+                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
+                        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
+                        .overlay(RoundedRectangle(cornerRadius: 3)
+                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                    
+                    Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
+                    
+                    Text("По заявке")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))

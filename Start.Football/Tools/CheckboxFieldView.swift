@@ -28,6 +28,7 @@ struct CheckboxFieldView : View {
         .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
                maxWidth: width * Size.shared.getAdaptSizeWidth(px: 280),
                alignment: .leading)
+        .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeHeight(px: 16))
     }
 }
 

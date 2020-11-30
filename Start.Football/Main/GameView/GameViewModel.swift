@@ -11,6 +11,7 @@ import Combine
 enum SelectionGame {
     case allGame
     case myGames
+    case map
 }
 
 protocol GameViewModelProtocol {

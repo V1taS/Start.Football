@@ -17,53 +17,52 @@ struct LoginView: View {
     
     var body: some View {
         VStack {
-            VStack {
-                Text("Вход в аккаунт")
-                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                    .font(Font.event.robotoRegular32)
-                    .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
+            Text("Вход в аккаунт")
+                .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                .font(Font.event.robotoRegular32)
+                .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 20))
+            
+            VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32)) {
+                TextFieldView(title: "E-mail",
+                              secureField: false,
+                              placeholder: "ronaldo@mail.ru",
+                              text: $viewModel.mail,
+                              success: $viewModel.mailSuccess)
                 
-                VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24)) {
-                    TextFieldView(title: "E-mail",
-                                  secureField: false,
-                                  placeholder: "ronaldo@mail.ru",
-                                  text: $viewModel.mail,
-                                  success: $viewModel.mailSuccess)
-                    
-                    TextFieldView(title: "Пароль",
-                                  secureField: true,
-                                  placeholder: "• • • • • • • •",
-                                  text: $viewModel.password,
-                                  success: $viewModel.passwordSuccess)
-                    
-                    Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
-                            TabViewApp()
-                        }
-                    }) {
-                        ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
-                                   text: "Войти")
+                TextFieldView(title: "Пароль",
+                              secureField: true,
+                              placeholder: "• • • • • • • •",
+                              text: $viewModel.password,
+                              success: $viewModel.passwordSuccess)
+                
+                Button(action: {
+                    self.viewController?.present(style: .fullScreen) {
+                        TabViewApp()
                     }
-                } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 156))
-                
-                Spacer()
+                }) {
+                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               text: "Войти")
+                }
                 
                 Button(action: {}) {
                     Text("Не могу войти")
                         .font(Font.event.robotoRegular16)
                         .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
-                } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
-                
-                Divider()
-                    .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
-                
-                Button(action: {}) {
-                    Text("Забыли пароль?")
-                        .font(Font.event.robotoRegular16)
-                        .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
-                } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
-            }
+                }
+            } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 128))
+            
+            Spacer()
+            
+            Divider()
+                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
+            
+            Button(action: {}) {
+                Text("Забыли пароль?")
+                    .font(Font.event.robotoRegular16)
+                    .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
+            } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
         }
+        .dismissingKeyboard()
     }
 }
 

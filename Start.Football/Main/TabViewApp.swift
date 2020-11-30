@@ -13,32 +13,26 @@ struct TabViewApp: View {
         TabView {
             GameView()
                 .tabItem {
-                    Image(systemName: "rectangle.3.offgrid.bubble.left")
-                    Text("Игры")
+                    Image("tab_search")
+                    Text("Поиск")
+                        .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                        .font(Font.event.robotoMedium10)
                 }
             
-            GameView()
+            Plug()
                 .tabItem {
-                    Image(systemName: "rectangle.3.offgrid.bubble.left")
-                    Text("Уведомления")
-                }
-            
-            GameView()
-                .tabItem {
-                    Image(systemName: "rectangle.3.offgrid.bubble.left")
+                    Image("tab_create")
                     Text("Создать")
+                        .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                        .font(Font.event.robotoMedium10)
                 }
             
-            GameView()
+            Plug()
                 .tabItem {
-                    Image(systemName: "rectangle.3.offgrid.bubble.left")
-                    Text("Чат")
-                }
-            
-            GameView()
-                .tabItem {
-                    Image(systemName: "rectangle.3.offgrid.bubble.left")
-                    Text("Профиль")
+                    Image("tab_menu")
+                    Text("Меню")
+                        .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                        .font(Font.event.robotoMedium10)
                 }
         }
     }

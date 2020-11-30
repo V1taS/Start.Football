@@ -36,23 +36,26 @@ struct TextFieldView: View {
                      maxWidth: width * Size.shared.getAdaptSizeWidth(px: 228),
                      alignment: .leading)
             if secureField {
-                ZStack {
-                    Image("eye")
-                        .imageScale(.medium)
-                        .foregroundColor(.white)
-                        .overlay(
-                            Group {
-                                if showPassword {
-                                    Image("eye.slash")
-                                        .imageScale(.medium)
-                                        .foregroundColor(.white)
-                                }
-                            }
-                        )
-                }
-                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 148))
-                .onTapGesture {
-                    showPassword.toggle()
+                if showPassword {
+                    ZStack {
+                        Image("eye")
+                            .imageScale(.medium)
+                            .foregroundColor(.white)
+                    }
+                    .offset(x: width * Size.shared.getAdaptSizeWidth(px: 148))
+                    .onTapGesture {
+                        showPassword.toggle()
+                    }
+                } else {
+                    ZStack {
+                        Image("eye.slash")
+                            .imageScale(.medium)
+                            .foregroundColor(.white)
+                    }
+                    .offset(x: width * Size.shared.getAdaptSizeWidth(px: 148))
+                    .onTapGesture {
+                        showPassword.toggle()
+                    }
                 }
             }
             
@@ -62,26 +65,26 @@ struct TextFieldView: View {
                         .foregroundColor(.black)
                         .font(Font.event.robotoRegular16)
                         .keyboardType(.default)
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 245),
-                               alignment: .leading)
-                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 260),
+                               height: 52, alignment: .leading)
+                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 25)))
                 } else {
                     SecureField(placeholder, text: $text)
                         .foregroundColor(.black)
                         .font(Font.event.robotoRegular16)
                         .keyboardType(.default)
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 245),
-                               alignment: .leading)
-                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 260),
+                               height: 52, alignment: .leading)
+                        .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 25)))
                 }
             } else {
                 TextField(placeholder, text: $text)
                     .foregroundColor(.black)
                     .font(Font.event.robotoRegular16)
                     .keyboardType(.default)
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 245),
-                           alignment: .leading)
-                    .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 32)))
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 260),
+                           height: 52, alignment: .leading)
+                    .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 25)))
             }
         }
     }

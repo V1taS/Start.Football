@@ -16,9 +16,10 @@ struct GameView: View {
             Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9725490196, alpha: 1))
                 .edgesIgnoringSafeArea(.all)
             
-            VStack {
-                HeaderGameView()
+            VStack(spacing: 0) {
+                HeaderGameView(selectionGame: $viewModel.selectionGame)
                 MenuGameView(selectionGame: $viewModel.selectionGame)
+                    .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 8))
                 
                 if viewModel.selectionGame == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
@@ -27,17 +28,21 @@ struct GameView: View {
                             Button(action: {}) { CellGameView() }
                             Button(action: {}) { CellGameView() }
                             Button(action: {}) { CellGameView() }
+                            Button(action: {}) { ADV()}
                             Button(action: {}) { CellGameView() }
                             Button(action: {}) { CellGameView() }
-                        } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+                        } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
                     }
                 } else if viewModel.selectionGame == .myGames {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            Text("Мои игры")
-                                .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                            Plug()
                         }
                     }
+                } else if viewModel.selectionGame == .map {
+                    VStack {
+                        MapGameView()
+                    } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 4))
                 }
             }
         }

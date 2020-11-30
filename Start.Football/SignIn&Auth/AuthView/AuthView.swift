@@ -21,15 +21,10 @@ struct AuthView: View {
                 Text("Регистрация")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular32)
-                    .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
+                    .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 20))
                 
                 VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24)) {
-                    Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
-                            SignUpView()
-                        }
-                        
-                    }) {
+                    Button(action: {}) {
                         ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
                                    text: "Продолжить с Apple")
                     }
@@ -39,32 +34,26 @@ struct AuthView: View {
                                    text: "Зарегистрироваться с Google")
                     }
                     
-                    Button(action: {}) {
-                        ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
-                                   text: "Зарегистрироваться с VK")
-                    }
-                    
-                    Button(action: {}) {
-                        ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
-                                   text: "Зарегистрироваться с Facebook")
-                    }
-                    
                     HStack {
                         Text("Регистрация")
                             .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                             .font(Font.event.robotoRegular16)
-                        Button(action: {}) {
+                        Button(action: {
+                            self.viewController?.present(style: .fullScreen) {
+                                SignUpView()
+                            }
+                        }) {
                             Text("по e-mail")
                                 .font(Font.event.robotoRegular16)
                                 .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                         }
                     }
-                } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 147))
+                } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 120))
                 
                 Spacer()
                 
                 Divider()
-                    .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
+                    .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
                 
                 HStack {
                     Text("Уже есть аккаунт?")
@@ -79,7 +68,7 @@ struct AuthView: View {
                             .font(Font.event.robotoRegular16)
                             .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                     }
-                } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
+                } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
             }
         }
     }
