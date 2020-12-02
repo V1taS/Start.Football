@@ -31,7 +31,7 @@ struct MainView: View {
                         VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16)) {
 
                             Button(action: {
-                                self.viewController?.present(style: .fullScreen) {
+                                    self.viewController?.present(style: .fullScreen) {
                                     CurrentGameView()
                                 } }) { CellMenuView() }
                             

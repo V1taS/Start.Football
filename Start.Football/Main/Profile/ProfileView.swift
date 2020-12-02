@@ -21,7 +21,6 @@ struct ProfileView: View {
         NavigationView {
             ScrollView(.vertical, showsIndicators: false) {
                 ZStack {
-                    Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9725490196, alpha: 1))
                     VStack(spacing: 0) {
                         HeaderProfileView()
                         AboutMyselfProfileView()
@@ -73,10 +72,16 @@ struct HeaderProfileView: View {
                 Text("Роман Соколов")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     .font(Font.event.robotoRegular24)
+                    .lineLimit(1)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
+                           alignment: .leading)
                 
                 Text("Петропавловск-Камчатский")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                    .lineLimit(1)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
+                           alignment: .leading)
                     .padding(.top, width * Size.shared.getAdaptSizeWidth(px: 4))
                 
                 HStack {
@@ -167,13 +172,15 @@ struct AboutMyselfProfileView: View {
     
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+            VStack(alignment: .leading,
+                   spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("О СЕБЕ")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoBold13)
                 Text("Валлийский футболист, игрок испанского клуба «Реал Мадрид» и национальной сборной Уэльса.")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
             }
             Spacer()
         }

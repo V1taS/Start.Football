@@ -82,9 +82,12 @@ struct HeaderCurrentGame: View {
                        height: height * Size.shared.getAdaptSizeHeight(px: 230))
             
             HStack {
-                Text("Тренировка в ФОК Отрадное")
+                Text("Тренировка в ФОК")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
                     .font(Font.event.robotoMedium20)
+                    .lineLimit(3)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 200),
+                           alignment: .leading)
                 Spacer()
                 ZStack {
                     Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
@@ -388,6 +391,7 @@ struct AboutTheAreaCurrentGame: View {
                 Text("Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
             }
             Spacer()
         }
@@ -408,6 +412,7 @@ struct RulesCurrentGame: View {
                 Text("Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
             }
             Spacer()
         }
@@ -429,6 +434,7 @@ struct CommentCurrentGame: View {
                 Text("Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
             }
             Spacer()
         }

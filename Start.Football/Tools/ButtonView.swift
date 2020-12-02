@@ -18,7 +18,7 @@ struct ButtonView: View {
         ZStack {
             Color(background)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
             Text(text)
                 .foregroundColor(.white)

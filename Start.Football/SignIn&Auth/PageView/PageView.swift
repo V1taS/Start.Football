@@ -61,7 +61,7 @@ struct PageView: View {
             } .onAppear {
                 UserDefaults.standard.set(true, forKey: "tabViewApp")
             }
-            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 30))
+            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
         }
     }
 }

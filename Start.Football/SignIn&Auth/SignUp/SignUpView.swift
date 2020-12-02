@@ -9,6 +9,9 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    
     @ObservedObject var viewModel = SignUpViewModel()
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -16,80 +19,72 @@ struct SignUpView: View {
     }
     
     var body: some View {
-        VStack {
-            Text("Регистрация")
-                .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                .font(Font.event.robotoMedium18)
-                .padding(.top, Size.shared.getAdaptSizeHeight(px: 20))
-            
-            VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32)) {
-                TextFieldView(title: "Имя",
-                              secureField: false,
-                              placeholder: "Криштиано",
-                              text: $viewModel.firstName,
-                              success: $viewModel.firstNameSuccess)
-                
-                TextFieldView(title: "Фамилия",
-                              secureField: false,
-                              placeholder: "Роналдо",
-                              text: $viewModel.lastName,
-                              success: $viewModel.lastNameSuccess)
-                
-                TextFieldView(title: "E-mail",
-                              secureField: false,
-                              placeholder: "ronaldo@mail.ru",
-                              text: $viewModel.mail,
-                              success: $viewModel.mailSuccess)
-                
-                TextFieldView(title: "Пароль",
-                              secureField: true,
-                              placeholder: "878ujss2",
-                              text: $viewModel.password,
-                              success: $viewModel.passwordSuccess)
-                
-                TextFieldView(title: "Подтверждение пароля",
-                              secureField: true,
-                              placeholder: "• • • • • • • •",
-                              text: $viewModel.passwordConfirm,
-                              success: $viewModel.passwordConfirmSuccess)
-            } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 32))
-            
+        VStack(spacing: 0) {
             HStack {
-                VStack(alignment: .leading, spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 20)) {
-                    CheckboxFieldView(checked: $viewModel.newsChecked,
-                                      text: "Хочу получать новости на почту")
-                    CheckboxFieldView(checked: $viewModel.userAgreementChecked,
-                                      text: "Согласен с правилами сервиса")
-                } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 23))
-                Spacer()
-            } .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeHeight(px: 16))
-            
-            HStack {
-                VStack(alignment: .leading, spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 8)) {
-                    Text("Что-то пошло не так:")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 0.2784313725, blue: 0.2274509804, alpha: 1)))
-                        .font(Font.event.robotoBold14)
-                    Text("Поле должно быть заполнено")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 0.2784313725, blue: 0.2274509804, alpha: 1)))
-                        .font(Font.event.robotoRegular16)
-                        .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 8))
-                    Text("Введенные пароли не совпадают")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 0.2784313725, blue: 0.2274509804, alpha: 1)))
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
+                    Text("Регистрация")
+                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .font(Font.event.robotoMedium32)
+                    
+                    Text("Создайте аккаунт чтобы продолжить")
+                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
                     
-                }.padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeHeight(px: 32))
-                .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 31))
+                }
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
                 Spacer()
             }
             
+            VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
+                
+                LoginTextFieldView(text: $viewModel.mail,
+                                   success: $viewModel.mailSuccess,
+                                   title: "Email",
+                                   icon: "mail",
+                                   placeholder: "roman@start.football")
+                
+                LoginTextFieldView(text: $viewModel.login,
+                                   success: $viewModel.loginSuccess,
+                                   title: "Логин",
+                                   icon: "login",
+                                   placeholder: "Roman")
+                
+                PasswordTextFieldView(text: $viewModel.password,
+                                      success: $viewModel.passwordSuccess,
+                                      placeholder: "**********")
+                
+                
+                
+            } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
+            
+            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                CheckboxFieldView(checked: $viewModel.confidentiality, text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
+                CheckboxFieldView(checked: $viewModel.receiveNews, text: "Хочу получать новости на почту")
+            } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+            
+            Spacer()
+            
             Button(action: {
                 self.viewController?.present(style: .fullScreen) {
-                    LoginView()
+                    PasswordResetView()
                 }
             }) {
-                ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
-                           text: "Зарегистрироваться")
-            } .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 22))
+                ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), text: "Зарегистрироваться")
+            } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 33))
+            
+            HStack {
+                Text("Уже есть аккаунт?")
+                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                    .font(Font.event.robotoRegular16)
+                Button(action: {} ) {
+                    Text("Войдите")
+                        .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
+                        .font(Font.event.robotoMedium18)
+                }
+                
+            }
+            .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
         } .dismissingKeyboard()
     }
 }
