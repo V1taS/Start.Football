@@ -16,8 +16,10 @@ enum SelectionGame {
 
 protocol MainViewProtocol {
     var selectionGame: SelectionGame { get }
+    var showFiltrsView: Bool { get }
 }
 
 class MainViewModel: MainViewProtocol, ObservableObject {
     @Published var selectionGame: SelectionGame = .allGame
+    @Published var showFiltrsView: Bool = false
 }

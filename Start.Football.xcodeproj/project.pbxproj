@@ -23,6 +23,8 @@
 		1B155F53256C471D00019C2F /* CheckboxFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F52256C471D00019C2F /* CheckboxFieldView.swift */; };
 		1B155F58256C4EBC00019C2F /* PasswordResetViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F57256C4EBC00019C2F /* PasswordResetViewModel.swift */; };
 		1B155F5D256C527500019C2F /* AuthViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F5C256C527500019C2F /* AuthViewModel.swift */; };
+		1B327201257ADE4E0085EC67 /* FiltrsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B327200257ADE4E0085EC67 /* FiltrsView.swift */; };
+		1B327204257AE6D10085EC67 /* PreviewGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B327203257AE6D10085EC67 /* PreviewGameView.swift */; };
 		1B68131525744A7F00B54977 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131425744A7F00B54977 /* KeyboardListener.swift */; };
 		1B68131925745DEE00B54977 /* ADV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131825745DEE00B54977 /* ADV.swift */; };
 		1B68131C2574602D00B54977 /* Plug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131B2574602D00B54977 /* Plug.swift */; };
@@ -67,6 +69,8 @@
 		1B155F52256C471D00019C2F /* CheckboxFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxFieldView.swift; sourceTree = "<group>"; };
 		1B155F57256C4EBC00019C2F /* PasswordResetViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordResetViewModel.swift; sourceTree = "<group>"; };
 		1B155F5C256C527500019C2F /* AuthViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AuthViewModel.swift; sourceTree = "<group>"; };
+		1B327200257ADE4E0085EC67 /* FiltrsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FiltrsView.swift; sourceTree = "<group>"; };
+		1B327203257AE6D10085EC67 /* PreviewGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGameView.swift; sourceTree = "<group>"; };
 		1B68131425744A7F00B54977 /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
 		1B68131825745DEE00B54977 /* ADV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADV.swift; sourceTree = "<group>"; };
 		1B68131B2574602D00B54977 /* Plug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plug.swift; sourceTree = "<group>"; };
@@ -204,6 +208,8 @@
 				1B966C27257706940084FFB4 /* ButtonGoogle.swift */,
 				1B155F46256C09A200019C2F /* ButtonView.swift */,
 				1B966C2D257717760084FFB4 /* ButtonCancel.swift */,
+				1B327200257ADE4E0085EC67 /* FiltrsView.swift */,
+				1B327203257AE6D10085EC67 /* PreviewGameView.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -387,6 +393,7 @@
 				1B78CCE8256DBC7100297221 /* Font.swift in Sources */,
 				1B966C2E257717760084FFB4 /* ButtonCancel.swift in Sources */,
 				1B155F58256C4EBC00019C2F /* PasswordResetViewModel.swift in Sources */,
+				1B327204257AE6D10085EC67 /* PreviewGameView.swift in Sources */,
 				1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */,
 				1B155F4B256C15F600019C2F /* TextFieldView.swift in Sources */,
 				1BD9109A25759C47005B3CFC /* ProfileView.swift in Sources */,
@@ -408,6 +415,7 @@
 				1B04FC372571A56A00AC40D5 /* UIScreen.swift in Sources */,
 				1B7970F6256DDB1D006DAFC0 /* MainViewModel.swift in Sources */,
 				1B78CCEC256DC2C200297221 /* TabViewApp.swift in Sources */,
+				1B327201257ADE4E0085EC67 /* FiltrsView.swift in Sources */,
 				1B155F47256C09A200019C2F /* ButtonView.swift in Sources */,
 				1B966C28257706940084FFB4 /* ButtonGoogle.swift in Sources */,
 			);
@@ -549,7 +557,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -559,7 +567,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -573,7 +581,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 8;
+				CURRENT_PROJECT_VERSION = 9;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -583,7 +591,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.8;
+				MARKETING_VERSION = 1.0.9;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

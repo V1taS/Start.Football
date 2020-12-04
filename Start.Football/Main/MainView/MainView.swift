@@ -22,7 +22,8 @@ struct MainView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
-                HeaderMainView(selectionGame: $viewModel.selectionGame)
+                HeaderMainView(selectionGame: $viewModel.selectionGame,
+                               showFiltrsView: $viewModel.showFiltrsView)
                 MenuMainView(selectionGame: $viewModel.selectionGame)
                     .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 8))
                 
@@ -76,6 +77,10 @@ struct MainView: View {
                     } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 4))
                 }
             }
+            
+            FiltrsView()
+                .animation(.spring())
+                .offset(y: viewModel.showFiltrsView ? 80 : 1000)
         }
     }
 }
@@ -96,6 +101,7 @@ struct HeaderMainView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     @Binding var selectionGame: SelectionGame
+    @Binding var showFiltrsView: Bool
     
     var body: some View {
         HStack {
@@ -133,7 +139,9 @@ struct HeaderMainView: View {
                         .scaledToFill()
                         .frame(width: 24, height: 24)
                 }
-                Button(action: {}) {
+                Button(action: {
+                    self.showFiltrsView.toggle()
+                }) {
                     Image("filter")
                         .resizable()
                         .renderingMode(.original)

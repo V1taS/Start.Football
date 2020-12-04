@@ -122,7 +122,7 @@ struct CellGameCurrentGame: View {
                     .font(Font.event.robotoRegular16)
                     .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                     .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 3)
+                    .overlay(RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
                 
                 Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
@@ -132,7 +132,7 @@ struct CellGameCurrentGame: View {
                     .font(Font.event.robotoRegular16)
                     .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                     .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 3)
+                    .overlay(RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
                 
                 Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
@@ -142,7 +142,7 @@ struct CellGameCurrentGame: View {
                     .font(Font.event.robotoRegular16)
                     .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                     .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 3)
+                    .overlay(RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
             }
             
@@ -178,7 +178,7 @@ struct WhoWillBePlayCurrentGame: View {
         VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
             Text("КТО БУДЕТ")
                 .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                .font(Font.event.robotoBold13)
+                .font(Font.event.robotoMedium18)
             
             HStack {
                 HStack(alignment: .center, spacing: -20) {
@@ -251,25 +251,25 @@ struct CalendarCurrentGame: View {
         VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
             Text("РЕГУЛЯРНЫЕ ТРЕНИРОВКИ")
                 .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                .font(Font.event.robotoBold13)
+                .font(Font.event.robotoMedium18)
             HStack {
                 Group {
-                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Пн")
-                    Spacer()
-                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Вт")
-                    Spacer()
+                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Пн")
+
+                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Вт")
+
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), textColor: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), day: "Ср")
                 }
-                Spacer()
                 Group {
-                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Чт")
-                    Spacer()
+                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Чт")
+
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), textColor: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), day: "Пт")
-                    Spacer()
-                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Сб")
-                    Spacer()
-                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Вс")
+
+                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Сб")
+
+                    DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Вс")
                 }
+                Spacer()
             }
             
             Text("Понедельники: 16:00-18:00")
@@ -297,48 +297,43 @@ struct AboutCurrentGame: View {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("ОБ ИГРЕ")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                    .font(Font.event.robotoBold13)
+                    .font(Font.event.robotoMedium18)
                 HStack {
-                    Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 16))
+                    Image("sun")
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 18),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 18))
                     Text("Открытое поле")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
                 }
                 HStack {
-                    Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 16))
+                    Image("grass")
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 18),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 18))
                     Text("Искуственный газон")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
                 }
                 HStack {
-                    Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 16))
+                    Image("shirt")
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 18),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 18))
                     Text("Раздевалки")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
                 }
                 HStack {
-                    Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 16))
+                    Image("shower")
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 18),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 18))
                     Text("Душевые")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
                 }
                 HStack {
-                    Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 16))
+                    Image("parking")
+                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 18),
+                               height: height * Size.shared.getAdaptSizeHeight(px: 18))
                     Text("На территории, 150 ₽ в час")
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoRegular16)
@@ -359,15 +354,19 @@ struct OrganizerCurrentGame: View {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("ОРГАНИЗАТОР")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                    .font(Font.event.robotoBold13)
+                    .font(Font.event.robotoMedium18)
                 HStack {
                     Image("testOrganizator")
                         .resizable()
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32),
                                height: height * Size.shared.getAdaptSizeHeight(px: 32))
                     Text("Юрий Долговязов")
+                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .font(Font.event.robotoBold20)
+                    Spacer()
+                    Text(">")
                         .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
-                        .font(Font.event.robotoRegular16)
+                        .font(Font.event.robotoBold20)
                 }
             }
             Spacer()
@@ -387,7 +386,7 @@ struct AboutTheAreaCurrentGame: View {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("О ПЛОЩАДКЕ")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                    .font(Font.event.robotoBold13)
+                    .font(Font.event.robotoMedium18)
                 Text("Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
@@ -408,7 +407,7 @@ struct RulesCurrentGame: View {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("ПРАВИЛА")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                    .font(Font.event.robotoBold13)
+                    .font(Font.event.robotoMedium18)
                 Text("Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
@@ -430,7 +429,7 @@ struct CommentCurrentGame: View {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("КОММЕНТАРИЙ")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
-                    .font(Font.event.robotoBold13)
+                    .font(Font.event.robotoMedium18)
                 Text("Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
