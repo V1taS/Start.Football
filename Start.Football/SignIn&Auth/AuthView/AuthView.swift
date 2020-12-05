@@ -53,7 +53,10 @@ struct AuthView: View {
                         SignUpView()
                     }
                 }) {
-                    ButtonView(background: #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1), text: "Войти")
+                    ButtonView(background: #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1),
+                               textColor: .white,
+                               borderColor: #colorLiteral(red: 0.6666666667, green: 0.6666666667, blue: 0.6666666667, alpha: 1),
+                               text: "Войти")
                 }
                 
             } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))

@@ -46,19 +46,26 @@ struct CurrentGameView: View {
                 }
             }
             
-            .navigationBarItems(
-                leading: Button(action: {}) {
-                    Image(systemName: "pencil")
-                        .font(.title)
-                        .foregroundColor(Color(#colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3411764706, alpha: 1)))
-                },
-                trailing: Button(action: {
-                    self.viewController?.dismiss(animated: true)
-                }) {
-                    Image(systemName: "multiply")
-                        .font(.title)
-                        .foregroundColor(Color(#colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3411764706, alpha: 1)))
-                })
+            .navigationBarItems(trailing:
+                                    HStack(spacing: 16) {
+                                        Button(action: {
+                                            self.viewController?.dismiss(animated: true)
+                                        }) {
+                                            Image("currenrGameEdit")
+                                                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
+                                                       height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                                        }
+                                        
+                                        Button(action: {
+                                            self.viewController?.dismiss(animated: true)
+                                        }) {
+                                            Image("currenrGameVector")
+                                                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
+                                                       height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                                            
+                                        }
+                                    }
+            )
             
         }
     }
@@ -76,7 +83,7 @@ struct HeaderCurrentGame: View {
     
     var body: some View {
         ZStack {
-            Image("playerPhoto")
+            Image("currentGamebg")
                 .resizable()
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 375),
                        height: height * Size.shared.getAdaptSizeHeight(px: 230))
@@ -84,19 +91,19 @@ struct HeaderCurrentGame: View {
             HStack {
                 Text("Тренировка в ФОК")
                     .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
-                    .font(Font.event.robotoMedium20)
+                    .font(Font.event.robotoBold20)
                     .lineLimit(3)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 200),
                            alignment: .leading)
                 Spacer()
                 ZStack {
-                    Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+                    Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1))
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
                                height: height * Size.shared.getAdaptSizeHeight(px: 52))
                     Text("500 ₽")
-                        .foregroundColor(Color(#colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3411764706, alpha: 1)))
-                        .font(Font.event.robotoRegular16)
+                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .font(Font.event.robotoRegular24)
                 }
             }
             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
@@ -125,8 +132,6 @@ struct CellGameCurrentGame: View {
                     .overlay(RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
                 
-                Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
-                
                 Text("10 на 10")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
@@ -135,15 +140,14 @@ struct CellGameCurrentGame: View {
                     .overlay(RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
                 
-                Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
-                
-                Text("По заявке")
+                Text("Для всех")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoRegular16)
                     .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                     .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                     .overlay(RoundedRectangle(cornerRadius: 16)
                                 .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                Spacer()
             }
             
             HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
@@ -161,6 +165,7 @@ struct CellGameCurrentGame: View {
                 Text("5,2 км")
                     .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                Image("right")
             }
         }
         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
@@ -209,9 +214,10 @@ struct WhoWillBePlayCurrentGame: View {
                         .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0))
                 }
                 Spacer()
-                Text("Посмотреть всех  >")
+                Text("Посмотреть всех")
                     .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                     .font(Font.event.robotoRegular16)
+                Image("right")
             }
         }
         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
@@ -255,18 +261,18 @@ struct CalendarCurrentGame: View {
             HStack {
                 Group {
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Пн")
-
+                    
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Вт")
-
+                    
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), textColor: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), day: "Ср")
                 }
                 Group {
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Чт")
-
+                    
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1), textColor: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1), day: "Пт")
-
+                    
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Сб")
-
+                    
                     DayOfWeeakCurrentGame(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0), day: "Вс")
                 }
                 Spacer()
@@ -295,7 +301,7 @@ struct AboutCurrentGame: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                Text("ОБ ИГРЕ")
+                Text("Что есть")
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoMedium18)
                 HStack {
@@ -448,11 +454,13 @@ struct ADVCurrentGame: View {
     
     var body: some View {
         ZStack {
+            Button(action: {}) {
             Image("adv2")
                 .resizable()
                 .cornerRadius(5)
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 343),
                        height: height * Size.shared.getAdaptSizeHeight(px: 120))
+            }
         }
         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 32))
@@ -473,13 +481,16 @@ struct ButtonsCurrentGame: View {
         VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
             Button(action: {}) {
                 ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                           textColor: .white,
+                           borderColor: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
                            text: "Записаться на игру")
             }
             
             Button(action: {}) {
-                Text("Записаться в резерв")
-                    .font(Font.event.robotoRegular16)
-                    .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
+                ButtonView(background: #colorLiteral(red: 1, green: 1, blue: 1, alpha: 1),
+                           textColor: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                           borderColor: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                           text: "Записаться в резерв")
             }
         }
     }

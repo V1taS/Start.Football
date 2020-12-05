@@ -100,7 +100,10 @@ struct PreviewGameView: View {
                 .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 
                 Button(action: {}) {
-                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1), text: "Подробнее об игре")
+                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               textColor: .white,
+                               borderColor: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               text: "Подробнее об игре")
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
                 
