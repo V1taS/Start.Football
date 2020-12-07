@@ -12,7 +12,8 @@ struct Plug: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
-    @State var viewState = CGSize(width: 0, height: 400)
+    @State var viewState = CGSize.zero
+    @State var showFiltrsView = true
     
     var body: some View {
         ZStack {
@@ -27,7 +28,7 @@ struct Plug: View {
                         .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .font(Font.event.robotoBold20)
                     
-                    Button(action: {}) {
+                    Button(action: {showFiltrsView.toggle()}) {
                         Text("Создай игру!")
                             .foregroundColor(Color(#colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1)))
                             .font(Font.event.robotoMedium16)
@@ -41,13 +42,22 @@ struct Plug: View {
             
             
             PreviewGameView()
-                .offset(x: 0, y: viewState.height)
+                .offset(y: height * Size.shared.getAdaptSizeHeight(px: 160))
+                .animation(.spring())
+                .offset(y: showFiltrsView ? viewState.height : 1000)
                 .gesture(
                     DragGesture().onChanged { value in
                         self.viewState = value.translation
+                        
+                        if value.translation.height < -50 {
+                            self.viewState.height = .zero
+                        }
+                        if value.translation.height > 100 {
+                            self.showFiltrsView.toggle()
+                        }
                     }
                     .onEnded { value in
-                        self.viewState.height = 400
+                        self.viewState.height = .zero
                     }
                 )
         }

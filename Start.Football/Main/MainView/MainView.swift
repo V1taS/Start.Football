@@ -14,6 +14,11 @@ struct MainView: View {
         self.viewControllerHolder!
     }
     
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    
+    @State var viewState = CGSize.zero
+    
     @ObservedObject var viewModel = MainViewModel()
     
     var body: some View {
@@ -30,38 +35,38 @@ struct MainView: View {
                 if viewModel.selectionGame == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16)) {
-
+                            
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
-                                    CurrentGameView()
-                                } }) { CellMenuView() }
+                                        CurrentGameView()
+                                    } }) { CellMenuView() }
                             
                             Button(action: {
-                                self.viewController?.present(style: .fullScreen) {
-                                    CurrentGameView()
-                                } }) { CellMenuView() }
+                                    self.viewController?.present(style: .fullScreen) {
+                                        CurrentGameView()
+                                    } }) { CellMenuView() }
                             
                             Button(action: {
-                                self.viewController?.present(style: .fullScreen) {
-                                    CurrentGameView()
-                                } }) { CellMenuView() }
+                                    self.viewController?.present(style: .fullScreen) {
+                                        CurrentGameView()
+                                    } }) { CellMenuView() }
                             
                             Button(action: {
-                                self.viewController?.present(style: .fullScreen) {
-                                    CurrentGameView()
-                                } }) { CellMenuView() }
+                                    self.viewController?.present(style: .fullScreen) {
+                                        CurrentGameView()
+                                    } }) { CellMenuView() }
                             
                             Button(action: {}) { ADV()}
                             
                             Button(action: {
-                                self.viewController?.present(style: .fullScreen) {
-                                    CurrentGameView()
-                                } }) { CellMenuView() }
+                                    self.viewController?.present(style: .fullScreen) {
+                                        CurrentGameView()
+                                    } }) { CellMenuView() }
                             
                             Button(action: {
-                                self.viewController?.present(style: .fullScreen) {
-                                    CurrentGameView()
-                                } }) { CellMenuView() }
+                                    self.viewController?.present(style: .fullScreen) {
+                                        CurrentGameView()
+                                    } }) { CellMenuView() }
                             
                         } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
                     }
@@ -79,9 +84,25 @@ struct MainView: View {
             }
             
             FiltrsView()
+                .offset(y: height * Size.shared.getAdaptSizeHeight(px: 50))
                 .animation(.spring())
-                .offset(y: viewModel.showFiltrsView ? 80 : 1000)
-        }
+                .offset(y: viewModel.showFiltrsView ? viewState.height : 1000)
+                .gesture(
+                    DragGesture().onChanged { value in
+                        self.viewState = value.translation
+                        if value.translation.height < -40 {
+                            self.viewState.height = .zero
+                        }
+                        
+                        if value.translation.height > 100 {
+                            self.viewModel.showFiltrsView.toggle()
+                        }
+                    }
+                    .onEnded { value in
+                        self.viewState.height = .zero
+                    }
+                )
+        } .dismissingKeyboard()
     }
 }
 
@@ -219,7 +240,7 @@ struct CellMenuView: View {
             VStack(alignment: .leading,
                    spacing: 0) {
                 
-
+                
                 VStack(alignment: .leading,
                        spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                     

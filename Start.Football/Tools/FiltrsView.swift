@@ -26,23 +26,12 @@ struct FiltrsView: View {
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 18))
                 
                 VStack(alignment: .leading, spacing: 24) {
-                    LoginTextFieldView(text: .constant("20.11.20"),
-                                       success: .constant(false),
-                                       title: "Дата",
-                                       icon: "cellDate",
-                                       placeholder: "20.11.20")
+
+                    DatePickerView()
                     
-                    LoginTextFieldView(text: .constant("20.11.20"),
-                                       success: .constant(false),
-                                       title: "Время",
-                                       icon: "cellLocator",
-                                       placeholder: "20:30 — 22:00")
+                    TimePickerView()
                     
-                    LoginTextFieldView(text: .constant("20.11.20"),
-                                       success: .constant(false),
-                                       title: "Стоимость",
-                                       icon: "cellDate",
-                                       placeholder: "500 ₽ — 1000 ₽")
+                    CostView()
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
                 

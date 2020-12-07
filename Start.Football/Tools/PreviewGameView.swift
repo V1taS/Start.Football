@@ -16,7 +16,7 @@ struct PreviewGameView: View {
         ZStack {
             Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
                 .cornerRadius(25)
-                .frame(width: width, height: height - 93)
+                .frame(width: width - width * Size.shared.getAdaptSizeWidth(px: 20), height: height * Size.shared.getAdaptSizeHeight(px: 340))
                 .shadow(color: Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)), radius: 25)
             
             VStack(spacing: 0) {
@@ -106,9 +106,8 @@ struct PreviewGameView: View {
                                text: "Подробнее об игре")
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
-                
-                Spacer()
             }
+            .offset(y: height * Size.shared.getAdaptSizeHeight(px: -10))
         }
     }
 }
