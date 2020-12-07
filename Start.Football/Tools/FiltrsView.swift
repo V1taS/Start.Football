@@ -14,15 +14,17 @@ struct FiltrsView: View {
     
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+            Color(.white)
                 .cornerRadius(25)
                 .frame(width: width, height: height - 93)
-                .shadow(color: Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)), radius: 25)
+                .shadow(color: Color.secondary, radius: 25)
             
             VStack(spacing: 0) {
                 Color(#colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1))
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 48),
                            height: height * Size.shared.getAdaptSizeHeight(px: 5))
+                    .overlay(RoundedRectangle(cornerRadius: 20)
+                                .stroke(Color(#colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1))))
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 18))
                 
                 VStack(alignment: .leading, spacing: 24) {
@@ -37,7 +39,7 @@ struct FiltrsView: View {
                 
                 HStack {
                     Text("Доступность")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoMedium18)
                     Spacer()
                 }
@@ -56,7 +58,7 @@ struct FiltrsView: View {
                 
                 HStack {
                     Text("Тип игры")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoMedium18)
                     Spacer()
                 }
@@ -65,28 +67,28 @@ struct FiltrsView: View {
                 
                 HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 6)) {
                     Text("Футбол")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                                    .stroke(Color.secondary))
                     
                     Text("Мини-футбол")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                                    .stroke(Color.secondary))
                     
                     Text("Футзал")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                                    .stroke(Color.secondary))
                     Spacer()
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
@@ -94,7 +96,7 @@ struct FiltrsView: View {
                 
                 HStack {
                     Text("Где играть")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoMedium18)
                     Spacer()
                 }
@@ -103,28 +105,28 @@ struct FiltrsView: View {
                 
                 HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 6)) {
                     Text("Зал")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                                    .stroke(Color.secondary))
                     
                     Text("Манеж")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                                    .stroke(Color.secondary))
                     
                     Text("Улица")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1))))
+                                    .stroke(Color.secondary))
                     Spacer()
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))

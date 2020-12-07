@@ -17,7 +17,7 @@ struct DatePickerView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Дата")
-                .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                .foregroundColor(.defaultColor)
                 .font(Font.event.robotoMedium14)
                 .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
             
@@ -33,7 +33,7 @@ struct DatePickerView: View {
                 Image("datePicerClose")
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
-            Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
+            Color(#colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                        height: height * Size.shared.getAdaptSizeHeight(px: 2))
         } .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))

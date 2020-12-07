@@ -16,7 +16,7 @@ struct TimePickerView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text("Время")
-                .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                .foregroundColor(.defaultColor)
                 .font(Font.event.robotoMedium14)
                 .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
             
@@ -28,7 +28,7 @@ struct TimePickerView: View {
                             .labelsHidden()
                 
                 Text("-")
-                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                    .foregroundColor(.secondary)
                     .font(Font.event.robotoRegular24)
                 
                 DatePicker("", selection: $currentDate,

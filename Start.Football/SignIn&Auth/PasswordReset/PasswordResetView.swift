@@ -23,11 +23,11 @@ struct PasswordResetView: View {
             HStack {
                 VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
                     Text("Сброс пароля")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoMedium32)
                     
                     Text("Введите email, указанный при регистрации")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.desc)
                         .font(Font.event.robotoRegular16)
                     
                 }
@@ -53,9 +53,9 @@ struct PasswordResetView: View {
                         TabViewApp()
                     }
                 }) {
-                    ButtonView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                    ButtonView(background: .primary,
                                textColor: .white,
-                               borderColor: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
+                               borderColor: .primary,
                                text: "Зарегистрироваться")
                 }
                 

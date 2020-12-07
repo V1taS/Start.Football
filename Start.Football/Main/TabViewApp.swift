@@ -15,7 +15,7 @@ struct TabViewApp: View {
                 .tabItem {
                     Image("tab_search")
                     Text("Поиск")
-                        .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                        .foregroundColor(.defaultColor)
                         .font(Font.event.robotoMedium10)
                 }
             
@@ -23,7 +23,7 @@ struct TabViewApp: View {
                 .tabItem {
                     Image("tab_create")
                     Text("Создать")
-                        .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                        .foregroundColor(.defaultColor)
                         .font(Font.event.robotoMedium10)
                 }
             
@@ -31,7 +31,7 @@ struct TabViewApp: View {
                 .tabItem {
                     Image("tab_menu")
                     Text("Меню")
-                        .foregroundColor(Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)))
+                        .foregroundColor(.defaultColor)
                         .font(Font.event.robotoMedium10)
                 }
         }

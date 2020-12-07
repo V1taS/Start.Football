@@ -30,7 +30,7 @@ struct ProfileView: View {
                     
                 }
             }
-            .background(Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9725490196, alpha: 1)))
+            .background(Color(.white))
             .edgesIgnoringSafeArea(.bottom)
             
             .navigationBarTitle("Профиль", displayMode: .inline)
@@ -38,14 +38,14 @@ struct ProfileView: View {
                 leading: Button(action: {}) {
                     Image(systemName: "pencil")
                         .font(.title)
-                        .foregroundColor(Color(#colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3411764706, alpha: 1)))
+                        .foregroundColor(.secondary)
                 },
                 trailing: Button(action: {
                     self.viewController?.dismiss(animated: true)
                 }) {
                     Image(systemName: "multiply")
                         .font(.title)
-                        .foregroundColor(Color(#colorLiteral(red: 0.2549019608, green: 0.2745098039, blue: 0.3411764706, alpha: 1)))
+                        .foregroundColor(.secondary)
                 })
         }
     }
@@ -70,14 +70,14 @@ struct HeaderProfileView: View {
                        height: height * Size.shared.getAdaptSizeHeight(px: 416))
             VStack(alignment: .leading, spacing: 0) {
                 Text("Роман Соколов")
-                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    .foregroundColor(.white)
                     .font(Font.event.robotoRegular24)
                     .lineLimit(1)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
                            alignment: .leading)
                 
                 Text("Петропавловск-Камчатский")
-                    .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                    .foregroundColor(.white)
                     .font(Font.event.robotoRegular16)
                     .lineLimit(1)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
@@ -86,62 +86,62 @@ struct HeaderProfileView: View {
                 
                 HStack {
                     Text("180см")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .foregroundColor(.white)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
+                                    .stroke(Color.white))
                     
                     Text("89кг")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .foregroundColor(.white)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
+                                    .stroke(Color.white))
                     
                     Text("29 лет")
-                        .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                        .foregroundColor(.white)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
+                                    .stroke(Color.white))
                 } .padding(.top, width * Size.shared.getAdaptSizeWidth(px: 16))
                 
                 HStack {
                     HStack {
                         Text("НАП")
-                            .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                            .foregroundColor(.secondary)
                             .font(Font.event.robotoRegular24)
                             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                             .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                            .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                            .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 3))
                             .overlay(RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
+                                        .stroke(Color.white))
                         
                         
                         Text("ПЗ")
-                            .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                            .foregroundColor(.secondary)
                             .font(Font.event.robotoRegular24)
                             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                             .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                            .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                            .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 3))
                             .overlay(RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
+                                        .stroke(Color.white))
                         
                         Text("ВРТ")
-                            .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                            .foregroundColor(.secondary)
                             .font(Font.event.robotoRegular24)
                             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                             .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                            .background(Color(#colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0)))
+                            .background(Color.white)
                             .clipShape(RoundedRectangle(cornerRadius: 3))
                             .overlay(RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))))
+                                        .stroke(Color.white))
                     }
                     Spacer()
                     
@@ -151,7 +151,7 @@ struct HeaderProfileView: View {
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
                                    height: height * Size.shared.getAdaptSizeHeight(px: 66))
                         Text("88")
-                            .foregroundColor(Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1)))
+                            .foregroundColor(.white)
                             .font(Font.event.robotoRegular24)
                     }
                 }
@@ -175,10 +175,10 @@ struct AboutMyselfProfileView: View {
             VStack(alignment: .leading,
                    spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("О СЕБЕ")
-                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                    .foregroundColor(.secondary)
                     .font(Font.event.robotoBold13)
                 Text("Валлийский футболист, игрок испанского клуба «Реал Мадрид» и национальной сборной Уэльса.")
-                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                    .foregroundColor(.secondary)
                     .font(Font.event.robotoRegular16)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
             }
@@ -229,13 +229,13 @@ struct StatisticsProfileView: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoBold13)
                 HStack {
-                    CellStatisticsProfileView(background: #colorLiteral(red: 0.1294117647, green: 0.6117647059, blue: 0.4196078431, alpha: 1),
-                                              textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
+                    CellStatisticsProfileView(background: .primary,
+                                              textColor: .white,
                                               text: "Участвовал",
                                               count: "53")
                     Spacer()
-                    CellStatisticsProfileView(background: #colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1),
-                                              textColor: #colorLiteral(red: 1.0, green: 1.0, blue: 1.0, alpha: 1.0),
+                    CellStatisticsProfileView(background: .secondary,
+                                              textColor: .white,
                                               text: "Организовал",
                                               count: "1245")
                 }
@@ -255,24 +255,24 @@ struct ContactsProfileView: View {
         HStack {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("КОНТАКТЫ")
-                    .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                    .foregroundColor(.secondary)
                     .font(Font.event.robotoBold13)
                 HStack {
                     Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
                                height: height * Size.shared.getAdaptSizeHeight(px: 16))
                     Text("+7 925 084-78-88")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                 }
                 HStack {
                     Circle()
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
                                height: height * Size.shared.getAdaptSizeHeight(px: 16))
                     Text("roman@start.football")
-                        .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
+                        .foregroundColor(.secondary)
                         .font(Font.event.robotoRegular16)
                 }
             }

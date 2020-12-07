@@ -14,14 +14,14 @@ struct ButtonCancel: View {
     
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 1, green: 1, blue: 1, alpha: 1))
+            Color(.white)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color(#colorLiteral(red: 1, green: 0.2784313725, blue: 0.2274509804, alpha: 1))))
+                            .stroke(Color(.error)))
                 .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
             Text("Отмена")
-                .foregroundColor(Color(#colorLiteral(red: 1, green: 0.2784313725, blue: 0.2274509804, alpha: 1)))
+                .foregroundColor(Color(.error))
                 .font(Font.event.robotoMedium16)
         }
     }
