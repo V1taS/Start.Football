@@ -26,15 +26,17 @@ struct PasswordTextFieldView: View {
             
             HStack {
                 Image("passwordTF")
+                    .renderingMode(.template)
+                    .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
                 
                 if showPassword {
                     TextField(placeholder, text: $text)
-                        .foregroundColor(Color(success ? .secondary : .error))
+                        .foregroundColor(Color(success ? .secondaryColor : .error))
                         .font(Font.event.robotoMedium16)
                         .keyboardType(.default)
                 } else {
                     SecureField(placeholder, text: $text)
-                        .foregroundColor(Color(success ? .secondary : .error))
+                        .foregroundColor(Color(success ? .secondaryColor : .error))
                         .font(Font.event.robotoMedium16)
                         .keyboardType(.default)
                 }

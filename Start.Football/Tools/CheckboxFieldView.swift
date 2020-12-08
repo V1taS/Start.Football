@@ -17,14 +17,14 @@ struct CheckboxFieldView : View {
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 7) {
             Image(systemName: checked ? "checkmark.square.fill" : "square")
-                .foregroundColor(checked ? .secondary : .defaultColor)
+                .foregroundColor(checked ? .secondaryColor : .defaultColor)
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 14),
                        height: height * Size.shared.getAdaptSizeHeight(px: 14))
                 .onTapGesture {
                     self.checked.toggle()
                 }
             Text(text)
-                .foregroundColor(.secondary)
+                .foregroundColor(.secondaryColor)
                 .font(Font.event.robotoRegular16)
         }
         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327), alignment: .leading)

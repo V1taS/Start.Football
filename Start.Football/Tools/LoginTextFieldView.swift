@@ -28,9 +28,11 @@ struct LoginTextFieldView: View {
             
             HStack {
                 Image(icon)
+                    .renderingMode(.template)
+                    .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
                 
                 TextField(placeholder, text: $text)
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium16)
                     .keyboardType(.default)
                 
@@ -38,7 +40,7 @@ struct LoginTextFieldView: View {
                     .opacity(success ? 1 : 0)
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
-            Color(success ? .primary : #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
+            Color(success ? .primaryColor : #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                        height: height * Size.shared.getAdaptSizeHeight(px: 2))
         } .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))

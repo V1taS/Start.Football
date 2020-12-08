@@ -23,7 +23,7 @@ struct AuthView: View {
             HStack {
                 VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
                     Text("Авторизация")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium32)
                     
                     Text("С возвращением, вас не хватало!")
@@ -54,7 +54,7 @@ struct AuthView: View {
                     }
                 }) {
                     ButtonView(background: .inactive,
-                               textColor: .white,
+                               textColor: .whiteColor,
                                borderColor: .inactive,
                                text: "Войти")
                 }
@@ -67,7 +67,7 @@ struct AuthView: View {
                     .font(Font.event.robotoRegular16)
                 Button(action: {} ) {
                     Text("пароль?")
-                        .foregroundColor(.primary)
+                        .foregroundColor(.primaryColor)
                         .font(Font.event.robotoMedium18)
                 }
                 
@@ -81,7 +81,7 @@ struct AuthView: View {
                     .font(Font.event.robotoRegular16)
                 Button(action: {} ) {
                     Text("Зарегистрируйтесь")
-                        .foregroundColor(.primary)
+                        .foregroundColor(.primaryColor)
                         .font(Font.event.robotoMedium18)
                 }
                 

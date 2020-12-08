@@ -13,10 +13,10 @@ extension Color {
     static let error = Color("error")
     static let inactive = Color("inactive")
     static let pressed = Color("pressed")
-    static let primary = Color("primary")
-    static let secondary = Color("secondary")
+    static let primaryColor = Color("primaryColor")
+    static let secondaryColor = Color("secondaryColor")
     static let tertiary = Color("tertiary")
-    static let white = Color("white")
+    static let whiteColor = Color("whiteColor")
 }
 
 extension UIColor {
@@ -44,19 +44,19 @@ extension UIColor {
         self.getColorForName("pressed")
     }
     
-    static var primary: UIColor {
-        self.getColorForName("primary")
+    static var primaryColor: UIColor {
+        self.getColorForName("primaryColor")
     }
     
-    static var secondary: UIColor {
-        self.getColorForName("secondary")
+    static var secondaryColor: UIColor {
+        self.getColorForName("secondaryColor")
     }
     
     static var tertiary: UIColor {
         self.getColorForName("tertiary")
     }
     
-    static var white: UIColor {
-        self.getColorForName("white")
+    static var whiteColor: UIColor {
+        self.getColorForName("whiteColor")
     }
 }

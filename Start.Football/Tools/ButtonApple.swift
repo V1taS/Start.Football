@@ -19,7 +19,7 @@ struct ButtonApple: View {
                 .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
             Text(" Продолжить с Apple")
-                .foregroundColor(.white)
+                .foregroundColor(.whiteColor)
                 .font(Font.event.SFProDisplayMedium18)
         }
     }

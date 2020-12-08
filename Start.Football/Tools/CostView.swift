@@ -26,30 +26,30 @@ struct CostView: View {
                 
                 HStack(spacing: 0) {
                     TextField("500", text: $text)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular24)
                         .keyboardType(.numberPad)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 55))
                     
                     Text("₽")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular24)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 20))
                 }
                 
                 Text("—")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular24)
                 
                 HStack {
                     TextField("1000", text: $text)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular24)
                         .keyboardType(.numberPad)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 55))
                     
                     Text("₽")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular24)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 20))
                 }

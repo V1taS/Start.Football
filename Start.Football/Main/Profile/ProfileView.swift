@@ -30,7 +30,7 @@ struct ProfileView: View {
                     
                 }
             }
-            .background(Color(.white))
+            .background(Color(.whiteColor))
             .edgesIgnoringSafeArea(.bottom)
             
             .navigationBarTitle("Профиль", displayMode: .inline)
@@ -38,14 +38,14 @@ struct ProfileView: View {
                 leading: Button(action: {}) {
                     Image(systemName: "pencil")
                         .font(.title)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                 },
                 trailing: Button(action: {
                     self.viewController?.dismiss(animated: true)
                 }) {
                     Image(systemName: "multiply")
                         .font(.title)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                 })
         }
     }
@@ -70,14 +70,14 @@ struct HeaderProfileView: View {
                        height: height * Size.shared.getAdaptSizeHeight(px: 416))
             VStack(alignment: .leading, spacing: 0) {
                 Text("Роман Соколов")
-                    .foregroundColor(.white)
+                    .foregroundColor(.whiteColor)
                     .font(Font.event.robotoRegular24)
                     .lineLimit(1)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
                            alignment: .leading)
                 
                 Text("Петропавловск-Камчатский")
-                    .foregroundColor(.white)
+                    .foregroundColor(.whiteColor)
                     .font(Font.event.robotoRegular16)
                     .lineLimit(1)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
@@ -86,62 +86,62 @@ struct HeaderProfileView: View {
                 
                 HStack {
                     Text("180см")
-                        .foregroundColor(.white)
+                        .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.white))
+                                    .stroke(Color.whiteColor))
                     
                     Text("89кг")
-                        .foregroundColor(.white)
+                        .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.white))
+                                    .stroke(Color.whiteColor))
                     
                     Text("29 лет")
-                        .foregroundColor(.white)
+                        .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.white))
+                                    .stroke(Color.whiteColor))
                 } .padding(.top, width * Size.shared.getAdaptSizeWidth(px: 16))
                 
                 HStack {
                     HStack {
                         Text("НАП")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                             .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                            .background(Color.white)
+                            .background(Color.whiteColor)
                             .clipShape(RoundedRectangle(cornerRadius: 3))
                             .overlay(RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color.white))
+                                        .stroke(Color.whiteColor))
                         
                         
                         Text("ПЗ")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                             .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                            .background(Color.white)
+                            .background(Color.whiteColor)
                             .clipShape(RoundedRectangle(cornerRadius: 3))
                             .overlay(RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color.white))
+                                        .stroke(Color.whiteColor))
                         
                         Text("ВРТ")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                             .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                            .background(Color.white)
+                            .background(Color.whiteColor)
                             .clipShape(RoundedRectangle(cornerRadius: 3))
                             .overlay(RoundedRectangle(cornerRadius: 3)
-                                        .stroke(Color.white))
+                                        .stroke(Color.whiteColor))
                     }
                     Spacer()
                     
@@ -151,7 +151,7 @@ struct HeaderProfileView: View {
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
                                    height: height * Size.shared.getAdaptSizeHeight(px: 66))
                         Text("88")
-                            .foregroundColor(.white)
+                            .foregroundColor(.whiteColor)
                             .font(Font.event.robotoRegular24)
                     }
                 }
@@ -175,10 +175,10 @@ struct AboutMyselfProfileView: View {
             VStack(alignment: .leading,
                    spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("О СЕБЕ")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoBold13)
                 Text("Валлийский футболист, игрок испанского клуба «Реал Мадрид» и национальной сборной Уэльса.")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
             }
@@ -229,13 +229,13 @@ struct StatisticsProfileView: View {
                     .foregroundColor(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                     .font(Font.event.robotoBold13)
                 HStack {
-                    CellStatisticsProfileView(background: .primary,
-                                              textColor: .white,
+                    CellStatisticsProfileView(background: .primaryColor,
+                                              textColor: .whiteColor,
                                               text: "Участвовал",
                                               count: "53")
                     Spacer()
-                    CellStatisticsProfileView(background: .secondary,
-                                              textColor: .white,
+                    CellStatisticsProfileView(background: .secondaryColor,
+                                              textColor: .whiteColor,
                                               text: "Организовал",
                                               count: "1245")
                 }
@@ -255,24 +255,24 @@ struct ContactsProfileView: View {
         HStack {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 Text("КОНТАКТЫ")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoBold13)
                 HStack {
                     Circle()
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
                                height: height * Size.shared.getAdaptSizeHeight(px: 16))
                     Text("+7 925 084-78-88")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                 }
                 HStack {
                     Circle()
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 16),
                                height: height * Size.shared.getAdaptSizeHeight(px: 16))
                     Text("roman@start.football")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                 }
             }

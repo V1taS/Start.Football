@@ -23,7 +23,7 @@ struct SignUpView: View {
             HStack {
                 VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
                     Text("Регистрация")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium32)
                     
                     Text("Создайте аккаунт чтобы продолжить")
@@ -70,9 +70,9 @@ struct SignUpView: View {
                     PasswordResetView()
                 }
             }) {
-                ButtonView(background: .primary,
-                           textColor: .white,
-                           borderColor: .primary,
+                ButtonView(background: .primaryColor,
+                           textColor: .whiteColor,
+                           borderColor: .primaryColor,
                            text: "Зарегистрироваться")
             }
             .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 33))
@@ -83,7 +83,7 @@ struct SignUpView: View {
                     .font(Font.event.robotoRegular16)
                 Button(action: {} ) {
                     Text("Войдите")
-                        .foregroundColor(.primary)
+                        .foregroundColor(.primaryColor)
                         .font(Font.event.robotoMedium18)
                 }
                 

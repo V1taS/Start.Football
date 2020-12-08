@@ -14,7 +14,7 @@ struct ButtonCancel: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
+            Color(.whiteColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(.error)))

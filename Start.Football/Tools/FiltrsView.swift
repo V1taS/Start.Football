@@ -14,10 +14,10 @@ struct FiltrsView: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
+            Color(.whiteColor)
                 .cornerRadius(25)
                 .frame(width: width, height: height - 93)
-                .shadow(color: Color.secondary, radius: 25)
+                .shadow(color: Color.secondaryColor, radius: 25)
             
             VStack(spacing: 0) {
                 Color(#colorLiteral(red: 0.9411764706, green: 0.9411764706, blue: 0.9411764706, alpha: 1))
@@ -39,7 +39,7 @@ struct FiltrsView: View {
                 
                 HStack {
                     Text("Доступность")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium18)
                     Spacer()
                 }
@@ -58,7 +58,7 @@ struct FiltrsView: View {
                 
                 HStack {
                     Text("Тип игры")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium18)
                     Spacer()
                 }
@@ -67,28 +67,28 @@ struct FiltrsView: View {
                 
                 HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 6)) {
                     Text("Футбол")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     
                     Text("Мини-футбол")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     
                     Text("Футзал")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     Spacer()
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
@@ -96,7 +96,7 @@ struct FiltrsView: View {
                 
                 HStack {
                     Text("Где играть")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium18)
                     Spacer()
                 }
@@ -105,28 +105,28 @@ struct FiltrsView: View {
                 
                 HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 6)) {
                     Text("Зал")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     
                     Text("Манеж")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     
                     Text("Улица")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 16)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     Spacer()
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))

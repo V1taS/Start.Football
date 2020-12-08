@@ -28,7 +28,7 @@ struct TimePickerView: View {
                             .labelsHidden()
                 
                 Text("-")
-                    .foregroundColor(.secondary)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular24)
                 
                 DatePicker("", selection: $currentDate,

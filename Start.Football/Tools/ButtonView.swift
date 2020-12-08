@@ -35,9 +35,9 @@ struct ButtonView: View {
 
 struct ButtonView_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonView(background: .primary,
-                   textColor: .white,
-                   borderColor: .primary,
+        ButtonView(background: .primaryColor,
+                   textColor: .whiteColor,
+                   borderColor: .primaryColor,
                    text: "Продолжить с Apple")
     }
 }

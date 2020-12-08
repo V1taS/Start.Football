@@ -74,7 +74,7 @@ struct MainView: View {
                 } else if viewModel.selectionGame == .myGames {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            Plug()
+                            Plug(text: "Пока у тебя нет игр", createGame: true)
                         }
                     }
                 } else if viewModel.selectionGame == .map {
@@ -142,7 +142,7 @@ struct HeaderMainView: View {
                     VStack(alignment: .leading,
                            spacing: height * Size.shared.getAdaptSizeHeight(px: 2)){
                         Text("Владислав")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoBold20)
                             .lineLimit(1)
                     } .frame(width: width * Size.shared.getAdaptSizeWidth(px: 180),
@@ -194,13 +194,13 @@ struct MenuMainView: View {
                                     Font.event.robotoMedium16 :
                                     Font.event.robotoRegular16)
                             .foregroundColor(selectionGame == .allGame ?
-                                                .primary :
-                                                .secondary)
+                                                .primaryColor :
+                                                .secondaryColor)
                             .fontWeight(selectionGame == .allGame ?
                                             .bold :
                                             .regular)
                     }
-                    Color(selectionGame == .allGame ? .primary : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+                    Color(selectionGame == .allGame ? .primaryColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
                                height: height * Size.shared.getAdaptSizeHeight(px: 2),
                                alignment: .center)
@@ -212,10 +212,10 @@ struct MenuMainView: View {
                             .font(selectionGame == .myGames ?
                                     Font.event.robotoMedium16 :
                                     Font.event.robotoRegular16)
-                            .foregroundColor(selectionGame == .myGames ? .primary : .secondary)
+                            .foregroundColor(selectionGame == .myGames ? .primaryColor : .secondaryColor)
                             .fontWeight(selectionGame == .myGames ? .bold : .regular)
                     }
-                    Color(selectionGame == .myGames ? .primary : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+                    Color(selectionGame == .myGames ? .primaryColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
                                height: height * Size.shared.getAdaptSizeHeight(px: 2),
                                alignment: .center)
@@ -233,10 +233,10 @@ struct CellMenuView: View {
     
     var body: some View {
         ZStack {
-            Color(.white)
+            Color(.whiteColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.white))
+                            .stroke(Color.whiteColor))
             
             VStack(alignment: .leading,
                    spacing: 0) {
@@ -247,27 +247,27 @@ struct CellMenuView: View {
                     
                     Text("Тренировка в ФОК Отрадное")
                         .font(Font.event.robotoBold20)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                     HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
                         Image("cellDate")
                         Text("30 августа, 16:00-18:00")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular16)
                     }
                     HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
                         Image("cellLocator")
                         Text("ул. Хачтуряна, 12, стр. 2")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular16)
                         Spacer()
                         Text("5,2 км")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular16)
                     }
                     HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
                         Image("cellMoney")
                         Text("500 ₽")
-                            .foregroundColor(.secondary)
+                            .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                         Spacer()
                         HStack(alignment: .center, spacing: -20) {
@@ -287,32 +287,32 @@ struct CellMenuView: View {
                 
                 HStack {
                     Text("Мини-футбол")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     
                     Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
                     
                     Text("10 на 10")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                     
                     Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
                     
                     Text("По заявке")
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
                         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                         .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.secondary))
+                                    .stroke(Color.secondaryColor))
                 }
             }
             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))

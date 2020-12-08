@@ -29,7 +29,7 @@ struct TextFieldView: View {
                     .font(Font.event.robotoMedium14)
                     .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 5))
                     .foregroundColor(success ? Color(#colorLiteral(red: 0.5529411765, green: 0.568627451, blue: 0.6666666667, alpha: 1)) : Color.red)
-                    .background(Color.white)
+                    .background(Color.whiteColor)
                     .offset(x: -(width * Size.shared.getAdaptSizeWidth(px: 45)),
                             y: -(height * Size.shared.getAdaptSizeHeight(px: 26)))
             } .frame(minWidth: width * Size.shared.getAdaptSizeWidth(px: 30),
@@ -40,7 +40,7 @@ struct TextFieldView: View {
                     ZStack {
                         Image("eye")
                             .imageScale(.medium)
-                            .foregroundColor(.white)
+                            .foregroundColor(.whiteColor)
                     }
                     .offset(x: width * Size.shared.getAdaptSizeWidth(px: 148))
                     .onTapGesture {
@@ -50,7 +50,7 @@ struct TextFieldView: View {
                     ZStack {
                         Image("eye.slash")
                             .imageScale(.medium)
-                            .foregroundColor(.white)
+                            .foregroundColor(.whiteColor)
                     }
                     .offset(x: width * Size.shared.getAdaptSizeWidth(px: 148))
                     .onTapGesture {

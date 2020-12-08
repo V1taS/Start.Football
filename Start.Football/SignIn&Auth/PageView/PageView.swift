@@ -27,26 +27,26 @@ struct PageView: View {
                     Text("Мы хотим популяризировать футбол в ")
                         .font(Font.event.robotoRegular16)
                         .lineLimit(1)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                     Text("России и сделать его доступнее.")
                         .font(Font.event.robotoRegular16)
                         .lineLimit(1)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                 }
                 
                 VStack {
                     Text("С помощью этого приложения вы найдете")
                         .font(Font.event.robotoRegular16)
                         .lineLimit(1)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                     Text("площадки и людей, которые хотят поиграть")
                         .font(Font.event.robotoRegular16)
                         .lineLimit(1)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                     Text("в футбол в вашем городе.")
                         .font(Font.event.robotoRegular16)
                         .lineLimit(1)
-                        .foregroundColor(.secondary)
+                        .foregroundColor(.secondaryColor)
                 }
             }
             Spacer()
@@ -56,9 +56,9 @@ struct PageView: View {
                     AuthView()
                 }
             }) {
-                ButtonView(background: .primary,
-                           textColor: .white,
-                           borderColor: .primary,
+                ButtonView(background: .primaryColor,
+                           textColor: .whiteColor,
+                           borderColor: .primaryColor,
                            text: "Давай начнем!")
             } .onAppear {
                 UserDefaults.standard.set(true, forKey: "tabViewApp")
