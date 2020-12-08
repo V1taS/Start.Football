@@ -19,99 +19,104 @@ struct AuthView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
-                    Text("Авторизация")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoMedium32)
+        ZStack {
+            Color(.backgroundColor)
+                .edgesIgnoringSafeArea(.all)
+            
+            VStack(spacing: 0) {
+                HStack {
+                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
+                        Text("Авторизация")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium32)
+                        
+                        Text("С возвращением, вас не хватало!")
+                            .foregroundColor(.desc)
+                            .font(Font.event.robotoRegular16)
+                        
+                    }
+                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
+                    Spacer()
+                }
+                
+                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
                     
-                    Text("С возвращением, вас не хватало!")
+                    LoginTextFieldView(text: $viewModel.login,
+                                       success: $viewModel.loginSuccess,
+                                       title: "Логин или Email",
+                                       icon: "login",
+                                       placeholder: "Placeholder")
+                    
+                    PasswordTextFieldView(text: $viewModel.password,
+                                          success: $viewModel.passwordSuccess,
+                                          placeholder: "Placeholder")
+                    
+                    Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            SignUpView()
+                        }
+                    }) {
+                        ButtonView(background: .inactive,
+                                   textColor: .whiteColor,
+                                   borderColor: .inactive,
+                                   text: "Войти")
+                    }
+                    
+                } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
+                
+                HStack {
+                    Text("Забыли")
                         .foregroundColor(.desc)
                         .font(Font.event.robotoRegular16)
+                    Button(action: {} ) {
+                        Text("пароль?")
+                            .foregroundColor(.primaryColor)
+                            .font(Font.event.robotoMedium18)
+                    }
+                    
+                } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 33))
+                
+                Spacer()
+                
+                HStack {
+                    Text("Нет аккаунта?")
+                        .foregroundColor(.desc)
+                        .font(Font.event.robotoRegular16)
+                    Button(action: {} ) {
+                        Text("Зарегистрируйтесь")
+                            .foregroundColor(.primaryColor)
+                            .font(Font.event.robotoMedium18)
+                    }
                     
                 }
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
-                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
-                Spacer()
-            }
-            
-            VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
+                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 33))
                 
-                LoginTextFieldView(text: $viewModel.login,
-                                   success: $viewModel.loginSuccess,
-                                   title: "Логин или Email",
-                                   icon: "login",
-                                   placeholder: "Placeholder")
-                
-                PasswordTextFieldView(text: $viewModel.password,
-                                      success: $viewModel.passwordSuccess,
-                                      placeholder: "Placeholder")
-                
-                Button(action: {
-                    self.viewController?.present(style: .fullScreen) {
-                        SignUpView()
+                HStack {
+                    VStack {
+                        Divider()
                     }
-                }) {
-                    ButtonView(background: .inactive,
-                               textColor: .whiteColor,
-                               borderColor: .inactive,
-                               text: "Войти")
+                    Text("или")
+                        .foregroundColor(.desc)
+                        .font(Font.event.robotoRegular14)
+                    VStack {
+                        Divider()
+                    }
                 }
+                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 24))
                 
-            } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
-            
-            HStack {
-                Text("Забыли")
-                    .foregroundColor(.desc)
-                    .font(Font.event.robotoRegular16)
-                Button(action: {} ) {
-                    Text("пароль?")
-                        .foregroundColor(.primaryColor)
-                        .font(Font.event.robotoMedium18)
+                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    Button(action: {} ) {
+                        ButtonApple()
+                    }
+                    
+                    Button(action: {} ) {
+                        ButtonGoogle()
+                    }
                 }
-                
-            } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 33))
-            
-            Spacer()
-            
-            HStack {
-                Text("Нет аккаунта?")
-                    .foregroundColor(.desc)
-                    .font(Font.event.robotoRegular16)
-                Button(action: {} ) {
-                    Text("Зарегистрируйтесь")
-                        .foregroundColor(.primaryColor)
-                        .font(Font.event.robotoMedium18)
-                }
-                
-            }
-            .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 33))
-            
-            HStack {
-                VStack {
-                    Divider()
-                }
-                Text("или")
-                    .foregroundColor(.desc)
-                    .font(Font.event.robotoRegular14)
-                VStack {
-                    Divider()
-                }
-            }
-            .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 24))
-            
-            VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                Button(action: {} ) {
-                    ButtonApple()
-                }
-                
-                Button(action: {} ) {
-                    ButtonGoogle()
-                }
-            }
-            .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
-        } .dismissingKeyboard()
+                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
+            } .dismissingKeyboard()
+        }
     }
 }
 

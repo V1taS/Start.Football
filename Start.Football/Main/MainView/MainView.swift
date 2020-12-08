@@ -23,19 +23,19 @@ struct MainView: View {
     
     var body: some View {
         ZStack {
-            Color(#colorLiteral(red: 0.9647058824, green: 0.9647058824, blue: 0.9725490196, alpha: 1))
+            Color(.paleWhite)
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
                 HeaderMainView(selectionGame: $viewModel.selectionGame,
                                showFiltrsView: $viewModel.showFiltrsView)
-                    .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 8))
+                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 8))
                 MenuMainView(selectionGame: $viewModel.selectionGame)
-                    .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 8))
+                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 8))
                 
                 if viewModel.selectionGame == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16)) {
+                        VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                             
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
@@ -69,7 +69,7 @@ struct MainView: View {
                                         CurrentGameView()
                                     } }) { CellMenuView() }
                             
-                        } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
+                        } .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 16))
                     }
                 } else if viewModel.selectionGame == .myGames {
                     VStack {
@@ -80,7 +80,7 @@ struct MainView: View {
                 } else if viewModel.selectionGame == .map {
                     VStack {
                         MapGameView()
-                    } .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 4))
+                    } .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 4))
                 }
             }
             

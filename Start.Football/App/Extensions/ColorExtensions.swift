@@ -8,12 +8,16 @@
 import SwiftUI
 
 extension Color {
+    static let backgroundColor = Color("backgroundColor")
     static let defaultColor = Color("default")
+    static let dividerColor = Color("dividerColor")
+    static let shotDividerColor = Color("shotDividerColor")
     static let desc = Color("desc")
     static let error = Color("error")
     static let inactive = Color("inactive")
     static let pressed = Color("pressed")
     static let primaryColor = Color("primaryColor")
+    static let paleWhite = Color("paleWhite")
     static let secondaryColor = Color("secondaryColor")
     static let tertiary = Color("tertiary")
     static let whiteColor = Color("whiteColor")
@@ -23,9 +27,21 @@ extension UIColor {
     private static func getColorForName(_ colorName: String) -> UIColor {
         UIColor(named: colorName) ?? UIColor.red
     }
-
+    
+    static var backgroundColor: UIColor {
+        self.getColorForName("backgroundColor")
+    }
+    
     static var defaultColor: UIColor {
         self.getColorForName("default")
+    }
+    
+    static var dividerColor: UIColor {
+        self.getColorForName("dividerColor")
+    }
+    
+    static var shotDividerColor: UIColor {
+        self.getColorForName("shotDividerColor")
     }
     
     static var desc: UIColor {
@@ -46,6 +62,10 @@ extension UIColor {
     
     static var primaryColor: UIColor {
         self.getColorForName("primaryColor")
+    }
+    
+    static var paleWhite: UIColor {
+        self.getColorForName("paleWhite")
     }
     
     static var secondaryColor: UIColor {

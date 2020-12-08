@@ -30,7 +30,7 @@ struct ProfileView: View {
                     
                 }
             }
-            .background(Color(.whiteColor))
+            .background(Color(.backgroundColor))
             .edgesIgnoringSafeArea(.bottom)
             
             .navigationBarTitle("Профиль", displayMode: .inline)

@@ -18,55 +18,60 @@ struct CurrentGameView: View {
     let width = UIScreen.screenWidth
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(spacing: 0) {
-                    Group {
-                        HeaderCurrentGame()
-                        CellGameCurrentGame()
-                        Divider()
-                        WhoWillBePlayCurrentGame()
-                        CalendarCurrentGame()
-                        Divider()
-                        AboutCurrentGame()
-                        Divider()
-                        OrganizerCurrentGame()
-                        Divider()
+        ZStack {
+            Color(.backgroundColor)
+                .edgesIgnoringSafeArea(.all)
+            
+            NavigationView {
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 0) {
+                        Group {
+                            HeaderCurrentGame()
+                            CellGameCurrentGame()
+                            Divider()
+                            WhoWillBePlayCurrentGame()
+                            CalendarCurrentGame()
+                            Divider()
+                            AboutCurrentGame()
+                            Divider()
+                            OrganizerCurrentGame()
+                            Divider()
+                        }
+                        Group {
+                            AboutTheAreaCurrentGame()
+                            Divider()
+                            RulesCurrentGame()
+                            Divider()
+                            CommentCurrentGame()
+                            ADVCurrentGame()
+                            ButtonsCurrentGame()
+                        }
+                        Spacer()
                     }
-                    Group {
-                        AboutTheAreaCurrentGame()
-                        Divider()
-                        RulesCurrentGame()
-                        Divider()
-                        CommentCurrentGame()
-                        ADVCurrentGame()
-                        ButtonsCurrentGame()
-                    }
-                    Spacer()
                 }
-            }
-            
-            .navigationBarItems(trailing:
-                                    HStack(spacing: 16) {
-                                        Button(action: {
-                                            self.viewController?.dismiss(animated: true)
-                                        }) {
-                                            Image("currenrGameEdit")
-                                                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
-                                                       height: height * Size.shared.getAdaptSizeHeight(px: 24))
-                                        }
-                                        
-                                        Button(action: {
-                                            self.viewController?.dismiss(animated: true)
-                                        }) {
-                                            Image("currenrGameVector")
-                                                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
-                                                       height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                
+                .navigationBarItems(trailing:
+                                        HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {
+                                            Button(action: {
+                                                self.viewController?.dismiss(animated: true)
+                                            }) {
+                                                Image("currenrGameEdit")
+                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
+                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                                            }
                                             
+                                            Button(action: {
+                                                self.viewController?.dismiss(animated: true)
+                                            }) {
+                                                Image("currenrGameVector")
+                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
+                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                                                
+                                            }
                                         }
-                                    }
-            )
-            
+                )
+                
+            }
         }
     }
 }
@@ -455,11 +460,11 @@ struct ADVCurrentGame: View {
     var body: some View {
         ZStack {
             Button(action: {}) {
-            Image("adv2")
-                .resizable()
-                .cornerRadius(5)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 343),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 120))
+                Image("adv2")
+                    .resizable()
+                    .cornerRadius(5)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 343),
+                           height: height * Size.shared.getAdaptSizeHeight(px: 120))
             }
         }
         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))

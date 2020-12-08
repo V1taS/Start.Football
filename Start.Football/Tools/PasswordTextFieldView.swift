@@ -46,7 +46,7 @@ struct PasswordTextFieldView: View {
                 
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
-            Color(success ? #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1) : .error)
+            Color(success ? .dividerColor : .error)
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                        height: height * Size.shared.getAdaptSizeHeight(px: 2))
         } .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))

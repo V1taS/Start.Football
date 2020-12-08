@@ -19,52 +19,57 @@ struct PasswordResetView: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            HStack {
-                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
-                    Text("Сброс пароля")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoMedium32)
-                    
-                    Text("Введите email, указанный при регистрации")
-                        .foregroundColor(.desc)
-                        .font(Font.event.robotoRegular16)
-                    
-                }
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
-                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
-                Spacer()
-            }
+        ZStack {
+            Color(.backgroundColor)
+                .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
-                
-                LoginTextFieldView(text: $viewModel.mail,
-                                   success: $viewModel.mailSuccess,
-                                   title: "Email",
-                                   icon: "mail",
-                                   placeholder: "Placeholder")
-            } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
-            
-            Spacer()
-            
-            VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                Button(action: {
-                    self.viewController?.present(style: .fullScreen) {
-                        TabViewApp()
+            VStack(spacing: 0) {
+                HStack {
+                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
+                        Text("Сброс пароля")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium32)
+                        
+                        Text("Введите email, указанный при регистрации")
+                            .foregroundColor(.desc)
+                            .font(Font.event.robotoRegular16)
+                        
                     }
-                }) {
-                    ButtonView(background: .primaryColor,
-                               textColor: .whiteColor,
-                               borderColor: .primaryColor,
-                               text: "Зарегистрироваться")
+                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
+                    Spacer()
                 }
                 
-                Button(action: {}) {
-                    ButtonCancel()
-                }
-            } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
-            
-        } .dismissingKeyboard()
+                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
+                    
+                    LoginTextFieldView(text: $viewModel.mail,
+                                       success: $viewModel.mailSuccess,
+                                       title: "Email",
+                                       icon: "mail",
+                                       placeholder: "Placeholder")
+                } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
+                
+                Spacer()
+                
+                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            TabViewApp()
+                        }
+                    }) {
+                        ButtonView(background: .primaryColor,
+                                   textColor: .whiteColor,
+                                   borderColor: .primaryColor,
+                                   text: "Зарегистрироваться")
+                    }
+                    
+                    Button(action: {}) {
+                        ButtonCancel()
+                    }
+                } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
+                
+            } .dismissingKeyboard()
+        }
     }
 }
 

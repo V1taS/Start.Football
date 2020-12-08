@@ -14,56 +14,64 @@ struct PageView: View {
         self.viewControllerHolder!
     }
     
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    
     var body: some View {
-        VStack(spacing: 0) {
-            Image("pageViewImage")
-                .resizable()
-                .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight / 2)
-                .edgesIgnoringSafeArea(.top)
-                .padding(.bottom, 20)
-                
-            VStack(spacing: 16) {
-                VStack {
-                    Text("Мы хотим популяризировать футбол в ")
-                        .font(Font.event.robotoRegular16)
-                        .lineLimit(1)
-                        .foregroundColor(.secondaryColor)
-                    Text("России и сделать его доступнее.")
-                        .font(Font.event.robotoRegular16)
-                        .lineLimit(1)
-                        .foregroundColor(.secondaryColor)
-                }
-                
-                VStack {
-                    Text("С помощью этого приложения вы найдете")
-                        .font(Font.event.robotoRegular16)
-                        .lineLimit(1)
-                        .foregroundColor(.secondaryColor)
-                    Text("площадки и людей, которые хотят поиграть")
-                        .font(Font.event.robotoRegular16)
-                        .lineLimit(1)
-                        .foregroundColor(.secondaryColor)
-                    Text("в футбол в вашем городе.")
-                        .font(Font.event.robotoRegular16)
-                        .lineLimit(1)
-                        .foregroundColor(.secondaryColor)
-                }
-            }
-            Spacer()
+        ZStack {
+            Color(.backgroundColor)
+                .edgesIgnoringSafeArea(.all)
             
-            Button(action: {
-                self.viewController?.present(style: .fullScreen) {
-                    AuthView()
+            VStack(spacing: 0) {
+                Image("pageViewImage")
+                    .resizable()
+                    .frame(width: UIScreen.screenWidth, height: height / 2)
+                    .edgesIgnoringSafeArea(.top)
+                    .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 20))
+                
+                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    VStack {
+                        Text("Мы хотим популяризировать футбол в ")
+                            .font(Font.event.robotoRegular16)
+                            .lineLimit(1)
+                            .foregroundColor(.secondaryColor)
+                        Text("России и сделать его доступнее.")
+                            .font(Font.event.robotoRegular16)
+                            .lineLimit(1)
+                            .foregroundColor(.secondaryColor)
+                    }
+                    
+                    VStack {
+                        Text("С помощью этого приложения вы найдете")
+                            .font(Font.event.robotoRegular16)
+                            .lineLimit(1)
+                            .foregroundColor(.secondaryColor)
+                        Text("площадки и людей, которые хотят поиграть")
+                            .font(Font.event.robotoRegular16)
+                            .lineLimit(1)
+                            .foregroundColor(.secondaryColor)
+                        Text("в футбол в вашем городе.")
+                            .font(Font.event.robotoRegular16)
+                            .lineLimit(1)
+                            .foregroundColor(.secondaryColor)
+                    }
                 }
-            }) {
-                ButtonView(background: .primaryColor,
-                           textColor: .whiteColor,
-                           borderColor: .primaryColor,
-                           text: "Давай начнем!")
-            } .onAppear {
-                UserDefaults.standard.set(true, forKey: "tabViewApp")
+                Spacer()
+                
+                Button(action: {
+                    self.viewController?.present(style: .fullScreen) {
+                        AuthView()
+                    }
+                }) {
+                    ButtonView(background: .primaryColor,
+                               textColor: .whiteColor,
+                               borderColor: .primaryColor,
+                               text: "Давай начнем!")
+                } .onAppear {
+                    UserDefaults.standard.set(true, forKey: "tabViewApp")
+                }
+                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
             }
-            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
         }
     }
 }
