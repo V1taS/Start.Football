@@ -18,6 +18,7 @@ extension Color {
     static let pressed = Color("pressed")
     static let primaryColor = Color("primaryColor")
     static let paleWhite = Color("paleWhite")
+    static let processCreateGameColor = Color("processCreateGameColor")
     static let secondaryColor = Color("secondaryColor")
     static let tertiary = Color("tertiary")
     static let whiteColor = Color("whiteColor")
@@ -66,6 +67,10 @@ extension UIColor {
     
     static var paleWhite: UIColor {
         self.getColorForName("paleWhite")
+    }
+    
+    static var processCreateGameColor: UIColor {
+        self.getColorForName("processCreateGameColor")
     }
     
     static var secondaryColor: UIColor {

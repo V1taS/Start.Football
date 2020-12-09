@@ -30,7 +30,7 @@ struct TabViewApp: View {
                         .font(Font.event.robotoMedium10)
                 }
             
-            Plug(text: "Создать игру (В разработке...)", createGame: false)
+            CreateGameView()
                 .tabItem {
                     if selection == 1 {
                         Image("tab_create")
