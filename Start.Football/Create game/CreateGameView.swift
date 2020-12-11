@@ -18,42 +18,36 @@ struct CreateGameView: View {
         VStack(spacing: 0) {
             HeaderCreateGameView(selectionCreateGame: $viewModel.selectionCreateGame)
             
-            if viewModel.selectionCreateGame == .stepOne {
-                BoxTextfieldCreateGameView()
-            }
-            
-            else if viewModel.selectionCreateGame == .stepTwo {
-                VStack(spacing: 0) {
-                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                        
-                        BoxButtonCreateGameView(selectionRegularGame: $viewModel.selectionRegularGame)
-                        BoxDateCreateGameView()
-                    }
-                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
-                    
-                    ButtonOtherDateCreateGameView()
+            Group {
+                if viewModel.selectionCreateGame == .stepOne {
+                    BoxTextfieldCreateGameView()
                 }
-                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
-            }
-            
-            else if viewModel.selectionCreateGame == .stepThree {
-                Plug(text: "Step - 3", createGame: false)
-            }
-            
-            else if viewModel.selectionCreateGame == .stepFour {
-                Plug(text: "Step - 4", createGame: false)
-            }
-            
-            else if viewModel.selectionCreateGame == .stepFive {
-                Plug(text: "Step - 5", createGame: false)
-            }
-            
-            else if viewModel.selectionCreateGame == .stepSix {
-                Plug(text: "Step - 6", createGame: false)
+                
+                else if viewModel.selectionCreateGame == .stepTwo {
+                    BoxSelectionRegularGame(selectionRegularGame: $viewModel.selectionRegularGame)
+                }
+                
+                else if viewModel.selectionCreateGame == .stepThree {
+                    BoxSettingsCreateGame()
+                }
+                else if viewModel.selectionCreateGame == .stepFour {
+                    BoxPrivacyCreateGame(privacyGame: $viewModel.privacyGame,
+                                         maxCountPlayers: $viewModel.maxCountPlayers,
+                                         maxReservePlayers: $viewModel.maxReservePlayers)
+                }
+                
+                else if viewModel.selectionCreateGame == .stepFive {
+                    Plug(text: "Step - 5", createGame: false)
+                }
+                
+                else if viewModel.selectionCreateGame == .stepSix {
+                    Plug(text: "Step - 6", createGame: false)
+                }
             }
             
             Spacer()
             ButtonNextStepGameView(selectionCreateGame: $viewModel.selectionCreateGame)
+            
         }
     }
 }
@@ -360,5 +354,289 @@ struct BackButtonCreateGameView: View {
             Image("backCreateGame").opacity(selectionCreateGame == .stepOne ? 0 : 1)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 6))
         }
+    }
+}
+
+struct BoxSelectionRegularGame: View {
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    @Binding var selectionRegularGame: SelectionRegularGame
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                
+                BoxButtonCreateGameView(selectionRegularGame: $selectionRegularGame)
+                BoxDateCreateGameView()
+            }
+            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+            
+            ButtonOtherDateCreateGameView()
+        }
+        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+    }
+}
+
+struct BoxSettingsCreateGame: View {
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    
+                    Text("Тип игры")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    HStack {
+                        Text("Мини-футбол")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .whiteColor,
+                                         boarderColor: .secondaryColor)
+                        
+                        
+                        
+                        Spacer()
+                        
+                        Text("Футбол")
+                            .foregroundColor(.whiteColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .primaryColor,
+                                         boarderColor: .primaryColor)
+                        
+                        Spacer()
+                        
+                        Text("Футзал")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .whiteColor,
+                                         boarderColor: .secondaryColor)
+                    }
+                }
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    
+                    Text("Где играть")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    HStack {
+                        Text("Улица")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .whiteColor,
+                                         boarderColor: .secondaryColor)
+                        
+                        
+                        Text("Манеж")
+                            .foregroundColor(.whiteColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .primaryColor,
+                                         boarderColor: .primaryColor)
+                        
+                        
+                        Text("Зал")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .whiteColor,
+                                         boarderColor: .secondaryColor)
+                        
+                        Spacer()
+                    }
+                    
+                }
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    
+                    Text("Тип покрытия")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 12)) {
+                        HStack {
+                            Text("Паркет")
+                                .foregroundColor(.secondaryColor)
+                                .font(Font.event.robotoRegular16)
+                                .roundedEdge(backgroundColor: .whiteColor,
+                                             boarderColor: .secondaryColor)
+                            
+                            Text("Газон")
+                                .foregroundColor(.whiteColor)
+                                .font(Font.event.robotoRegular16)
+                                .roundedEdge(backgroundColor: .primaryColor,
+                                             boarderColor: .primaryColor)
+                            
+                            
+                            Text("Резина")
+                                .foregroundColor(.secondaryColor)
+                                .font(Font.event.robotoRegular16)
+                                .roundedEdge(backgroundColor: .whiteColor,
+                                             boarderColor: .secondaryColor)
+                            Spacer()
+                        }
+                        
+                        HStack {
+                            Text("Синтетика")
+                                .foregroundColor(.secondaryColor)
+                                .font(Font.event.robotoRegular16)
+                                .roundedEdge(backgroundColor: .whiteColor,
+                                             boarderColor: .secondaryColor)
+                            
+                            Text("Ворс")
+                                .foregroundColor(.secondaryColor)
+                                .font(Font.event.robotoRegular16)
+                                .roundedEdge(backgroundColor: .whiteColor,
+                                             boarderColor: .secondaryColor)
+                            
+                            
+                            Text("Крошка")
+                                .foregroundColor(.secondaryColor)
+                                .font(Font.event.robotoRegular16)
+                                .roundedEdge(backgroundColor: .whiteColor,
+                                             boarderColor: .secondaryColor)
+                            Spacer()
+                        }
+                    }
+                    
+                }
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    
+                    Text("Инфраструктура")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    HStack {
+                        Text("Раздевалки")
+                            .foregroundColor(.whiteColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .primaryColor,
+                                         boarderColor: .primaryColor)
+                        
+                        
+                        Text("Душевые")
+                            .foregroundColor(.whiteColor)
+                            .font(Font.event.robotoRegular16)
+                            .roundedEdge(backgroundColor: .primaryColor,
+                                         boarderColor: .primaryColor)
+                        
+                        Spacer()
+                        
+                    }
+                    
+                }
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    
+                    TextfieldCreateGameView(text: .constant(""),
+                                            title: "Парковка",
+                                            icon: "right",
+                                            iconShow: true,
+                                            placeholder: "Выберите тип")
+                }
+            }
+            
+            
+        }
+        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+    }
+}
+
+struct BoxPrivacyCreateGame: View {
+    
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    @Binding var privacyGame: PrivacyGame
+    @Binding var maxCountPlayers: Double
+    @Binding var maxReservePlayers: Double
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                Text("Приватность")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
+                
+                VStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        if privacyGame == .open {
+                            Button(action: { privacyGame = .open }) {
+                                ButtonYesCreateGameView()
+                            }
+                        } else {
+                            Button(action: { privacyGame = .open }) {
+                                ButtonNoCreateGameView()
+                            }
+                        }
+                        
+                        Text("Открытая игра. Записаться на эту игру сможет любой желающий.")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium16)
+                        Spacer()
+                    }
+                    
+                    HStack(spacing: 8) {
+                        
+                        if privacyGame == .close {
+                            Button(action: { privacyGame = .close }) {
+                                ButtonYesCreateGameView()
+                            }
+                        } else {
+                            Button(action: { privacyGame = .close }) {
+                                ButtonNoCreateGameView()
+                            }
+                        }
+                        
+                        Text("Закрытая игра. На эту игру можно попасть только по приглашению администратора.")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium16)
+                        Spacer()
+                    }
+                }
+                
+                Divider()
+                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 26)) {
+                    Text("Максимальное количество игроков в основе")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    HStack {
+                        Slider(value: $maxCountPlayers, in: 0...30, step: 1)
+                        Spacer()
+                        Text("\(String(format: "%.0f", maxCountPlayers))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular24)
+                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
+                    }
+                    
+                    Divider()
+                    
+                    Text("Максимальное количество игроков в резерве")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    HStack {
+                        Slider(value: $maxReservePlayers, in: 0...30, step: 1)
+                        Spacer()
+                        Text("\(String(format: "%.0f", maxReservePlayers))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular24)
+                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
+                    }
+                }
+                
+            }
+            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+        }
+        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
     }
 }
