@@ -36,7 +36,7 @@ protocol CreateGameViewModelProtocol {
 }
 
 class CreateGameViewModel: CreateGameViewModelProtocol, ObservableObject {
-    @Published var selectionCreateGame: SelectionCreateGame = .stepOne
+    @Published var selectionCreateGame: SelectionCreateGame = .stepTwo
     @Published var selectionRegularGame: SelectionRegularGame = .yes
     @Published var privacyGame: PrivacyGame = .open
     @Published var maxCountPlayers: Double = 18

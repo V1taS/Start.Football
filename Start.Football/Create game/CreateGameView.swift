@@ -28,12 +28,13 @@ struct CreateGameView: View {
                 }
                 
                 else if viewModel.selectionCreateGame == .stepThree {
-                    BoxSettingsCreateGame()
+                    BoxSettingsCreateGame(
+                        maxCountPlayers: $viewModel.maxCountPlayers,
+                        maxReservePlayers: $viewModel.maxReservePlayers,
+                        privacyGame: $viewModel.privacyGame)
                 }
                 else if viewModel.selectionCreateGame == .stepFour {
-                    BoxPrivacyCreateGame(privacyGame: $viewModel.privacyGame,
-                                         maxCountPlayers: $viewModel.maxCountPlayers,
-                                         maxReservePlayers: $viewModel.maxReservePlayers)
+                    
                 }
                 
                 else if viewModel.selectionCreateGame == .stepFive {
@@ -249,9 +250,10 @@ struct BoxButtonCreateGameView: View {
             Text("Это регулярная игра?")
                 .foregroundColor(.defaultColor)
                 .font(Font.event.robotoRegular18)
+                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
             
-            HStack(spacing: 39) {
+            VStack(spacing: 24) {
                 HStack(spacing: 8) {
                     if selectionRegularGame == .yes {
                         Button(action: { selectionRegularGame = .yes }) {
@@ -263,9 +265,10 @@ struct BoxButtonCreateGameView: View {
                         }
                     }
                     
-                    Text("Да")
-                        .foregroundColor(selectionRegularGame == .yes ? .primaryColor : .defaultColor)
+                    Text("Разово. Для проведения одной игры.")
+                        .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular16)
+                    Spacer()
                 }
                 
                 HStack(spacing: 8) {
@@ -280,9 +283,27 @@ struct BoxButtonCreateGameView: View {
                         }
                     }
                     
-                    Text("Нет")
-                        .foregroundColor(selectionRegularGame == .yes ? .defaultColor : .primaryColor)
+                    Text("Регулярно. Проводится постоянной основе")
+                        .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular16)
+                    Spacer()
+                }
+            }
+            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+            
+            if selectionRegularGame == .no {
+                VStack {
+                    BoxDateCreateGameView()
+                        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
+                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                    
+                    Button(action: {}) {
+                        ButtonView(background: .whiteColor,
+                                   textColor: .primaryColor,
+                                   borderColor: .primaryColor,
+                                   text: "Добавить другой день или время")
+                            .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+                    }
                 }
             }
         }
@@ -309,21 +330,6 @@ struct BoxDateCreateGameView: View {
                 Spacer()
                 DayOfWeeakCurrentGame(background: .primaryColor, textColor: .whiteColor, day: "Вс")
             }
-        }
-    }
-}
-
-struct ButtonOtherDateCreateGameView: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    var body: some View {
-        Button(action: {}) {
-            ButtonView(background: .whiteColor,
-                       textColor: .primaryColor,
-                       borderColor: .primaryColor,
-                       text: "Добавить другой день или время")
-                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
         }
     }
 }
@@ -367,11 +373,7 @@ struct BoxSelectionRegularGame: View {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                 
                 BoxButtonCreateGameView(selectionRegularGame: $selectionRegularGame)
-                BoxDateCreateGameView()
             }
-            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
-            
-            ButtonOtherDateCreateGameView()
         }
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
     }
@@ -380,6 +382,10 @@ struct BoxSelectionRegularGame: View {
 struct BoxSettingsCreateGame: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
+    @Binding var maxCountPlayers: Double
+    @Binding var maxReservePlayers: Double
+    @Binding var privacyGame: PrivacyGame
+    
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
@@ -389,6 +395,10 @@ struct BoxSettingsCreateGame: View {
                     Text("Тип игры")
                         .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular14)
+                    
+                    BoxPrivacyCreateGame(privacyGame: $privacyGame,
+                                         maxCountPlayers: $maxCountPlayers,
+                                         maxReservePlayers: $maxReservePlayers)
                     
                     HStack {
                         Text("Мини-футбол")
