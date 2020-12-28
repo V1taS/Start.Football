@@ -24,10 +24,7 @@ struct PageView: View {
             
             VStack(spacing: 0) {
                 Image("pageViewImage")
-                    .resizable()
                     .frame(width: UIScreen.screenWidth, height: height / 2)
-                    .edgesIgnoringSafeArea(.top)
-                    .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 20))
                 
                 VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                     VStack {

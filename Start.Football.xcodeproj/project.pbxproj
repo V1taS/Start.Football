@@ -33,6 +33,7 @@
 		1B68131C2574602D00B54977 /* Plug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131B2574602D00B54977 /* Plug.swift */; };
 		1B68132525746E4B00B54977 /* MapGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68132425746E4B00B54977 /* MapGameView.swift */; };
 		1B6A0903257041330001861F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A0902257041330001861F /* Size.swift */; };
+		1B6A4678259A445E00F6DA00 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */; };
 		1B762C86257566C700414808 /* CurrentGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B762C85257566C700414808 /* CurrentGameView.swift */; };
 		1B78CCC0256DAB0800297221 /* FullscreenSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78CCBF256DAB0800297221 /* FullscreenSheet.swift */; };
 		1B78CCD3256DBA0600297221 /* Roboto-Regular.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B78CCC7256DBA0600297221 /* Roboto-Regular.ttf */; };
@@ -86,6 +87,7 @@
 		1B68131B2574602D00B54977 /* Plug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plug.swift; sourceTree = "<group>"; };
 		1B68132425746E4B00B54977 /* MapGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameView.swift; sourceTree = "<group>"; };
 		1B6A0902257041330001861F /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
+		1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
 		1B762C85257566C700414808 /* CurrentGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGameView.swift; sourceTree = "<group>"; };
 		1B78CCBF256DAB0800297221 /* FullscreenSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FullscreenSheet.swift; sourceTree = "<group>"; };
 		1B78CCC7256DBA0600297221 /* Roboto-Regular.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Regular.ttf"; sourceTree = "<group>"; };
@@ -211,6 +213,7 @@
 		1B155F45256C092700019C2F /* Tools */ = {
 			isa = PBXGroup;
 			children = (
+				1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */,
 				1B155F4A256C15F600019C2F /* TextFieldView.swift */,
 				1B155F52256C471D00019C2F /* CheckboxFieldView.swift */,
 				1B6A0902257041330001861F /* Size.swift */,
@@ -438,6 +441,7 @@
 				1B966C1F2576F2130084FFB4 /* PasswordTextFieldView.swift in Sources */,
 				1B78CCF0256DC4E300297221 /* MainView.swift in Sources */,
 				1B762C86257566C700414808 /* CurrentGameView.swift in Sources */,
+				1B6A4678259A445E00F6DA00 /* ProgressBarView.swift in Sources */,
 				1BB63B27257D96A900FCE9E0 /* CostView.swift in Sources */,
 				1B5CCDB7257ED7AB0000BC79 /* ColorExtensions.swift in Sources */,
 				1B68132525746E4B00B54977 /* MapGameView.swift in Sources */,
