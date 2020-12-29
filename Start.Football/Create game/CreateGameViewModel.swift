@@ -33,6 +33,7 @@ protocol CreateGameViewModelProtocol {
     var maxCountPlayers: Double { get }
     var maxReservePlayers: Double { get }
     var progressValue: Float { get }
+    var showParkingView: Bool { get }
 }
 
 class CreateGameViewModel: CreateGameViewModelProtocol, ObservableObject {
@@ -57,4 +58,5 @@ class CreateGameViewModel: CreateGameViewModelProtocol, ObservableObject {
     @Published var maxCountPlayers: Double = 18
     @Published var maxReservePlayers: Double = 5
     @Published var progressValue: Float = 0.0
+    @Published var showParkingView: Bool = false
 }

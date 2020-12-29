@@ -11,92 +11,65 @@ struct CreateGameView: View {
     
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
+    @State var viewState = CGSize.zero
     
     @ObservedObject var viewModel = CreateGameViewModel()
     
     var body: some View {
-        VStack(spacing: 0) {
-            HeaderCreateGameView(selectionCreateGame: $viewModel.selectionCreateGame,
-                                 progressValue: $viewModel.progressValue)
-            
-            Group {
-                if viewModel.selectionCreateGame == .stepOne {
-                    BoxTextfieldCreateGameView()
-                }
+        ZStack {
+            VStack(spacing: 0) {
+                HeaderCreateGameView(selectionCreateGame: $viewModel.selectionCreateGame,
+                                     progressValue: $viewModel.progressValue)
                 
-                else if viewModel.selectionCreateGame == .stepTwo {
-                    BoxSelectionRegularGame(selectionRegularGame: $viewModel.selectionRegularGame)
-                }
-                
-                else if viewModel.selectionCreateGame == .stepThree {
-                    BoxSettingsCreateGame(
-                        maxCountPlayers: $viewModel.maxCountPlayers,
-                        maxReservePlayers: $viewModel.maxReservePlayers,
-                        privacyGame: $viewModel.privacyGame)
-                }
-                else if viewModel.selectionCreateGame == .stepFour {
-                    VStack(spacing: 0) {
-                        VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
-                            
-                            TextfieldCreateGameView(text: .constant(""),
-                                                    title: "Описание площадки",
-                                                    icon: "",
-                                                    iconShow: false,
-                                                    placeholder: "Расскажите о площадке")
-                            
-                            TextfieldCreateGameView(text: .constant(""),
-                                                    title: "Свои правила",
-                                                    icon: "",
-                                                    iconShow: false,
-                                                    placeholder: "К примеру: играем без подкатов")
-                            
-                            TextfieldCreateGameView(text: .constant(""),
-                                                    title: "Комментарий от организатора",
-                                                    icon: "",
-                                                    iconShow: false,
-                                                    placeholder: "Напишите комментарий")
-                            
-                            ButtonView(background: .tertiary,
-                                       textColor: .whiteColor,
-                                       borderColor: .tertiary,
-                                       text: "Добавить фото площадки")
-                        }
+                Group {
+                    if viewModel.selectionCreateGame == .stepOne {
+                        BoxTextfieldCreateGameView()
                     }
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+                    
+                    else if viewModel.selectionCreateGame == .stepTwo {
+                        BoxSelectionRegularGame(selectionRegularGame: $viewModel.selectionRegularGame)
+                    }
+                    
+                    else if viewModel.selectionCreateGame == .stepThree {
+                        BoxSettingsCreateGame(
+                            maxCountPlayers: $viewModel.maxCountPlayers,
+                            maxReservePlayers: $viewModel.maxReservePlayers,
+                            privacyGame: $viewModel.privacyGame,
+                            showParkingView: $viewModel.showParkingView)
+                    }
+                    else if viewModel.selectionCreateGame == .stepFour {
+                        BoxAboutGameCreateGame()
+                    }
+                    
+                    else if viewModel.selectionCreateGame == .stepFive {
+                        FinishCreateGame()
+                    }
                 }
                 
-                else if viewModel.selectionCreateGame == .stepFive {
-                    VStack(spacing: 0) {
-                        HStack {
-                            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 2)) {
-                                
-                                Text("Все готово!")
-                                    .foregroundColor(.secondaryColor)
-                                    .font(Font.event.robotoMedium32)
-                                
-                                Text("Осталось пригласить друзей!")
-                                    .foregroundColor(.defaultColor)
-                                    .font(Font.event.robotoRegular18)
-                            }
-                            Spacer()
-                        }
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
-                        
-                        ButtonView(background: .tertiary,
-                                   textColor: .whiteColor,
-                                   borderColor: .tertiary,
-                                   text: "Пригласить друзей")
-                            .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
-                    }
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
-                }
+                Spacer()
+                ButtonNextStepGameView(selectionCreateGame: $viewModel.selectionCreateGame)
                 
             }
-            
-            Spacer()
-            ButtonNextStepGameView(selectionCreateGame: $viewModel.selectionCreateGame)
-            
-        }
+            TypeOfParking()
+                .offset(y: height * Size.shared.getAdaptSizeHeight(px: 150))
+                .animation(.spring())
+                .offset(y: viewModel.showParkingView ? viewState.height : 1000)
+                .gesture(
+                    DragGesture().onChanged { value in
+                        self.viewState = value.translation
+                        if value.translation.height < -40 {
+                            self.viewState.height = .zero
+                        }
+                        
+                        if value.translation.height > 100 {
+                            self.viewModel.showParkingView.toggle()
+                        }
+                    }
+                    .onEnded { value in
+                        self.viewState.height = .zero
+                    }
+                )
+        } .dismissingKeyboard()
     }
 }
 
@@ -261,7 +234,7 @@ struct ButtonYesCreateGameView: View {
                    height: height * Size.shared.getAdaptSizeHeight(px: 10))
             .cornerRadius(5)
             .padding(5)
-            .overlay(RoundedRectangle(cornerRadius: 9)
+            .overlay(RoundedRectangle(cornerRadius: 10)
                         .stroke(Color(.primaryColor), lineWidth: 3))
     }
 }
@@ -298,10 +271,12 @@ struct BoxButtonCreateGameView: View {
                     if selectionRegularGame == .yes {
                         Button(action: { selectionRegularGame = .yes }) {
                             ButtonYesCreateGameView()
+                                .frame(width: 20)
                         }
                     } else {
                         Button(action: { selectionRegularGame = .yes }) {
                             ButtonNoCreateGameView()
+                                .frame(width: 20)
                         }
                     }
                     
@@ -316,10 +291,12 @@ struct BoxButtonCreateGameView: View {
                     if selectionRegularGame == .no {
                         Button(action: { selectionRegularGame = .no }) {
                             ButtonYesCreateGameView()
+                                .frame(width: 20)
                         }
                     } else {
                         Button(action: { selectionRegularGame = .no }) {
                             ButtonNoCreateGameView()
+                                .frame(width: 20)
                         }
                     }
                     
@@ -423,45 +400,104 @@ struct BoxSettingsCreateGame: View {
     @Binding var maxCountPlayers: Double
     @Binding var maxReservePlayers: Double
     @Binding var privacyGame: PrivacyGame
+    @Binding var showParkingView: Bool
+    @State var text = ""
     
     var body: some View {
         ScrollView(.vertical, showsIndicators: true) {
             VStack(spacing: 0) {
                 VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
                     
-                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 0)) {
+                        
+                        VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                            
+                            Text("Тип игры")
+                                .foregroundColor(.defaultColor)
+                                .font(Font.event.robotoRegular14)
+                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                            
+                            HStack {
+                                Text("Мини-футбол")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoRegular16)
+                                    .roundedEdge(backgroundColor: .whiteColor,
+                                                 boarderColor: .secondaryColor)
+                                
+                                
+                                Text("Футбол")
+                                    .foregroundColor(.whiteColor)
+                                    .font(Font.event.robotoRegular16)
+                                    .roundedEdge(backgroundColor: .primaryColor,
+                                                 boarderColor: .primaryColor)
+                                
+                                
+                                Text("Футзал")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoRegular16)
+                                    .roundedEdge(backgroundColor: .whiteColor,
+                                                 boarderColor: .secondaryColor)
+                                
+                            }
+                            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                            
+                        }
+                        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
 
+                        
+                        VStack(alignment: .leading, spacing: 0) {
+                            Text("Формат игры")
+                                .foregroundColor(.defaultColor)
+                                .font(Font.event.robotoMedium14)
+                                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
+                            
+                            HStack {
+                                Spacer()
+                                HStack(spacing: 0) {
+                                    
+                                    TextField("10", text: $text)
+                                        .foregroundColor(.secondaryColor)
+                                        .font(Font.event.robotoRegular24)
+                                        .keyboardType(.numberPad)
+                                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 30))
+                                }
+                                Spacer()
+                                Text("—")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoRegular24)
+                                Spacer()
+                                HStack {
+                                    TextField("10", text: $text)
+                                        .foregroundColor(.secondaryColor)
+                                        .font(Font.event.robotoRegular24)
+                                        .keyboardType(.numberPad)
+                                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 30))
+                                    
+                                }
+                                Spacer()
+                                
+                            } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
+                            
+                            Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
+                                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
+                                       height: height * Size.shared.getAdaptSizeHeight(px: 2))
+                        }
+                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+                        
+                        
                         BoxPrivacyCreateGame(privacyGame: $privacyGame,
                                              maxCountPlayers: $maxCountPlayers,
                                              maxReservePlayers: $maxReservePlayers)
-                        
-                        HStack {
-                            Text("Мини-футбол")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .roundedEdge(backgroundColor: .whiteColor,
-                                             boarderColor: .secondaryColor)
-                            
-                            
-                            
-                            Spacer()
-                            
-                            Text("Футбол")
-                                .foregroundColor(.whiteColor)
-                                .font(Font.event.robotoRegular16)
-                                .roundedEdge(backgroundColor: .primaryColor,
-                                             boarderColor: .primaryColor)
-                            
-                            Spacer()
-                            
-                            Text("Футзал")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .roundedEdge(backgroundColor: .whiteColor,
-                                             boarderColor: .secondaryColor)
-                        }
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                            .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
                     }
+                    
+                    Divider()
+                    
+                    Text("Дополнительная информация")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoMedium20)
+                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                     
                     VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                         
@@ -580,15 +616,35 @@ struct BoxSettingsCreateGame: View {
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                         
                     }
+                    
+                    
+                    Button(action: { showParkingView.toggle() } ) {
+                        VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 0)) {
+                            
+                            Text("Парковка")
+                                .foregroundColor(.defaultColor)
+                                .font(Font.event.robotoRegular14)
+                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                            
+                            HStack {
+                                Text("Выберите тип")
+                                    .foregroundColor(.defaultColor)
+                                    .font(Font.event.robotoRegular18)
 
-                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                        
-                        TextfieldCreateGameView(text: .constant(""),
-                                                title: "Парковка",
-                                                icon: "right",
-                                                iconShow: true,
-                                                placeholder: "Выберите тип")
+                                Spacer()
+                                Image("right")
+                            }
+                            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                            .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+                            
+                            Divider()
+                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+                                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 8))
+                            
+                        }
                     }
+
+                    
                 }
             }
         }
@@ -605,60 +661,33 @@ struct BoxPrivacyCreateGame: View {
     
     var body: some View {
         VStack(spacing: 0) {
-            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                Text("Приватность")
-                    .foregroundColor(.defaultColor)
-                    .font(Font.event.robotoRegular14)
+            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 0)) {
                 
-                VStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        if privacyGame == .open {
-                            Button(action: { privacyGame = .open }) {
-                                ButtonYesCreateGameView()
-                            }
-                        } else {
-                            Button(action: { privacyGame = .open }) {
-                                ButtonNoCreateGameView()
-                            }
-                        }
-                        
-                        Text("Открытая игра. Записаться на эту игру сможет любой желающий.")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium16)
+                
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                    Text("Количество команд")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular14)
+                    
+                    HStack {
+                        Slider(value: $maxCountPlayers, in: 0...10, step: 1)
                         Spacer()
+                        Text("\(String(format: "%.0f", maxCountPlayers))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular24)
+                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
                     }
                     
-                    HStack(spacing: 8) {
-                        
-                        if privacyGame == .close {
-                            Button(action: { privacyGame = .close }) {
-                                ButtonYesCreateGameView()
-                            }
-                        } else {
-                            Button(action: { privacyGame = .close }) {
-                                ButtonNoCreateGameView()
-                            }
-                        }
-                        
-                        Text("Закрытая игра. На эту игру можно попасть только по приглашению администратора.")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium16)
-                        Spacer()
-                    }
-                }
-                
-                Divider()
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
-                
-                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 26)) {
+                    Divider()
+                    
                     Text("Максимальное количество игроков в основе")
                         .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular14)
                     
                     HStack {
-                        Slider(value: $maxCountPlayers, in: 0...30, step: 1)
+                        Slider(value: $maxReservePlayers, in: 0...30, step: 1)
                         Spacer()
-                        Text("\(String(format: "%.0f", maxCountPlayers))")
+                        Text("\(String(format: "%.0f", maxReservePlayers))")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
@@ -678,10 +707,128 @@ struct BoxPrivacyCreateGame: View {
                             .font(Font.event.robotoRegular24)
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
                     }
+                    
                 }
+                
+                Text("Приватность")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
+                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+                
+                VStack(spacing: 16) {
+                    HStack(spacing: 16) {
+                        if privacyGame == .open {
+                            Button(action: { privacyGame = .open }) {
+                                ButtonYesCreateGameView()
+                                    .frame(width: 30)
+                            }
+                        } else {
+                            Button(action: { privacyGame = .open }) {
+                                ButtonNoCreateGameView()
+                                    .frame(width: 30)
+                            }
+                        }
+                        
+                        Text("Открытая игра. Записаться на эту игру сможет любой желающий.")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium16)
+                            .offset(x: -10)
+                        Spacer()
+                    }
+                    
+                    HStack(spacing: 8) {
+                        
+                        if privacyGame == .close {
+                            Button(action: { privacyGame = .close }) {
+                                ButtonYesCreateGameView()
+                                    .frame(width: 30)
+                            }
+                        } else {
+                            Button(action: { privacyGame = .close }) {
+                                ButtonNoCreateGameView()
+                                    .frame(width: 30)
+                            }
+                        }
+                        
+                        Text("Закрытая игра. На эту игру можно попасть только по приглашению администратора.")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium16)
+                        Spacer()
+                    }
+                }
+                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
                 
             }
             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+        }
+        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+    }
+}
+
+struct BoxAboutGameCreateGame: View {
+    
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
+                
+                TextfieldCreateGameView(text: .constant(""),
+                                        title: "Описание площадки",
+                                        icon: "",
+                                        iconShow: false,
+                                        placeholder: "Расскажите о площадке")
+                
+                TextfieldCreateGameView(text: .constant(""),
+                                        title: "Свои правила",
+                                        icon: "",
+                                        iconShow: false,
+                                        placeholder: "К примеру: играем без подкатов")
+                
+                TextfieldCreateGameView(text: .constant(""),
+                                        title: "Комментарий от организатора",
+                                        icon: "",
+                                        iconShow: false,
+                                        placeholder: "Напишите комментарий")
+                
+                ButtonView(background: .tertiary,
+                           textColor: .whiteColor,
+                           borderColor: .tertiary,
+                           text: "Добавить фото площадки")
+            }
+        }
+        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+    }
+}
+
+struct FinishCreateGame: View {
+    
+    let height = UIScreen.screenHeight
+    let width = UIScreen.screenWidth
+    
+    var body: some View {
+        VStack(spacing: 0) {
+            HStack {
+                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 2)) {
+                    
+                    Text("Все готово!")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoMedium32)
+                    
+                    Text("Осталось пригласить друзей!")
+                        .foregroundColor(.defaultColor)
+                        .font(Font.event.robotoRegular18)
+                }
+                Spacer()
+            }
+            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
+            
+            ButtonView(background: .tertiary,
+                       textColor: .whiteColor,
+                       borderColor: .tertiary,
+                       text: "Пригласить друзей")
+                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
         }
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
     }

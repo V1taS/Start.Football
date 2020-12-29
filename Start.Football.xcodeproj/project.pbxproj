@@ -56,6 +56,7 @@
 		1BB63B24257D92BF00FCE9E0 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB63B23257D92BF00FCE9E0 /* TimePickerView.swift */; };
 		1BB63B27257D96A900FCE9E0 /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB63B26257D96A900FCE9E0 /* CostView.swift */; };
 		1BD9109A25759C47005B3CFC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9109925759C46005B3CFC /* ProfileView.swift */; };
+		1BE00B6D259BE32E00E144C5 /* TypeOfParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE00B6C259BE32E00E144C5 /* TypeOfParking.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -111,6 +112,7 @@
 		1BB63B23257D92BF00FCE9E0 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		1BB63B26257D96A900FCE9E0 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
 		1BD9109925759C46005B3CFC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1BE00B6C259BE32E00E144C5 /* TypeOfParking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfParking.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -226,12 +228,13 @@
 				1B966C27257706940084FFB4 /* ButtonGoogle.swift */,
 				1B155F46256C09A200019C2F /* ButtonView.swift */,
 				1B966C2D257717760084FFB4 /* ButtonCancel.swift */,
-				1B327200257ADE4E0085EC67 /* FiltrsView.swift */,
-				1B327203257AE6D10085EC67 /* PreviewGameView.swift */,
 				1BB63B20257D92A900FCE9E0 /* DatePickerView.swift */,
 				1BB63B23257D92BF00FCE9E0 /* TimePickerView.swift */,
 				1BB63B26257D96A900FCE9E0 /* CostView.swift */,
 				1B7F7C8025840E0500308106 /* RoundedEdge.swift */,
+				1B327203257AE6D10085EC67 /* PreviewGameView.swift */,
+				1B327200257ADE4E0085EC67 /* FiltrsView.swift */,
+				1BE00B6C259BE32E00E144C5 /* TypeOfParking.swift */,
 			);
 			path = Tools;
 			sourceTree = "<group>";
@@ -427,6 +430,7 @@
 				1B155F42256C07F800019C2F /* PageView.swift in Sources */,
 				1B78CCE8256DBC7100297221 /* Font.swift in Sources */,
 				1B966C2E257717760084FFB4 /* ButtonCancel.swift in Sources */,
+				1BE00B6D259BE32E00E144C5 /* TypeOfParking.swift in Sources */,
 				1B155F58256C4EBC00019C2F /* PasswordResetViewModel.swift in Sources */,
 				1B327204257AE6D10085EC67 /* PreviewGameView.swift in Sources */,
 				1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */,
@@ -597,7 +601,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -607,7 +611,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.15;
+				MARKETING_VERSION = 1.0.16;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -621,7 +625,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 15;
+				CURRENT_PROJECT_VERSION = 17;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -631,7 +635,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.15;
+				MARKETING_VERSION = 1.0.16;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

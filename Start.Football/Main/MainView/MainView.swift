@@ -40,12 +40,16 @@ struct MainView: View {
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
                                         CurrentGameView()
-                                    } }) { CellMenuView() }
+                                    }
+                                
+                            }) { CellMenuView() }
                             
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
                                         CurrentGameView()
-                                    } }) { CellMenuView() }
+                                    }
+                                
+                            }) { CellMenuView() }
                             
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
