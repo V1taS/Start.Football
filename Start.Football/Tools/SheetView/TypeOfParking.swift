@@ -43,7 +43,7 @@ struct TypeOfParking: View {
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular18)
                         Spacer()
-                        ButtonNoCreateGameView()
+                        ButtonRoundGreen(status: false)
                     }
                     Divider()
                     
@@ -52,7 +52,7 @@ struct TypeOfParking: View {
                             .foregroundColor(.primaryColor)
                             .font(Font.event.robotoRegular18)
                         Spacer()
-                        ButtonYesCreateGameView()
+                        ButtonRoundGreen(status: true)
                     }
                     Divider()
                     
@@ -61,7 +61,7 @@ struct TypeOfParking: View {
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular18)
                         Spacer()
-                        ButtonNoCreateGameView()
+                        ButtonRoundGreen(status: false)
                     }
                     Divider()
                     
@@ -70,7 +70,7 @@ struct TypeOfParking: View {
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular18)
                         Spacer()
-                        ButtonNoCreateGameView()
+                        ButtonRoundGreen(status: true)
                     }
                     Divider()
                     
@@ -78,23 +78,24 @@ struct TypeOfParking: View {
                 .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 25))
                 
-                TextfieldCreateGameView(text: .constant(""),
-                                        title: "Стоимость",
-                                        icon: "",
-                                        iconShow: false,
-                                        placeholder: "Укажите стоимость")
+                TextfieldOneLineView(text: .constant(""),
+                                     title: "Стоимость",
+                                     icon: "",
+                                     iconShow: false,
+                                     placeholder: "Укажите стоимость",
+                                     keyboardType: .numberPad)
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
                 
                 HStack {
                     HStack {
-                        ButtonYesCreateGameView()
+                        ButtonRoundGreen(status: true)
                         Text("Разово")
                             .foregroundColor(.primaryColor)
                             .font(Font.event.robotoRegular16)
                     }
                     Spacer()
                     HStack {
-                        ButtonNoCreateGameView()
+                        ButtonRoundGreen(status: false)
                         Text("За час")
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoRegular16)

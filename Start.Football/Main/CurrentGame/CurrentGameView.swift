@@ -230,29 +230,6 @@ struct WhoWillBePlayCurrentGame: View {
     }
 }
 
-struct DayOfWeeakCurrentGame: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    let background: UIColor
-    let textColor: UIColor
-    let day: String
-    
-    
-    var body: some View {
-        ZStack {
-            Color(background)
-                .clipShape(RoundedRectangle(cornerRadius: 3))
-                .overlay(RoundedRectangle(cornerRadius: 3)
-                            .stroke(Color.secondaryColor))
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 32))
-            Text(day)
-                .foregroundColor(Color(textColor))
-                .font(Font.event.robotoRegular16)
-        }
-    }
-}
-
 struct CalendarCurrentGame: View {
     
     let height = UIScreen.screenHeight
