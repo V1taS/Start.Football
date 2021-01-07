@@ -16,7 +16,6 @@ struct ButtonApple: View {
         ZStack {
             Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
             Text(" Продолжить с Apple")
                 .foregroundColor(.whiteColor)

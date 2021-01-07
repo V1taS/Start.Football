@@ -46,6 +46,7 @@ struct CreateGameView: View {
                 }
                 Spacer()
                 ButtonNextStepCreateGameView(selectionCreateGame: $viewModel.selectionCreateGame)
+                    .padding(.horizontal, 24)
             }
         } .dismissingKeyboard()
     }

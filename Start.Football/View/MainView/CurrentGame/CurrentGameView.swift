@@ -25,28 +25,31 @@ struct CurrentGameView: View {
             NavigationView {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
-                        Group {
-                            HeaderCurrentGame()
-                            CellGameCurrentGame()
-                            Divider()
-                            WhoWillPlayCurrentGame()
-                            CalendarCurrentGame()
-                            Divider()
-                            AboutCurrentGame()
-                            Divider()
-                            OrganizerCurrentGame()
-                            Divider()
+                        HeaderCurrentGame()
+                        VStack(spacing: 0) {
+                            Group {
+                                CellGameCurrentGame()
+                                Divider()
+                                WhoWillPlayCurrentGame()
+                                CalendarCurrentGame()
+                                Divider()
+                                AboutCurrentGame()
+                                Divider()
+                                OrganizerCurrentGame()
+                                Divider()
+                            }
+                            Group {
+                                AboutTheAreaCurrentGame()
+                                Divider()
+                                RulesCurrentGame()
+                                Divider()
+                                CommentCurrentGame()
+                                ADVCurrentGame()
+                                ButtonsCurrentGame()
+                            }
+                            Spacer()
                         }
-                        Group {
-                            AboutTheAreaCurrentGame()
-                            Divider()
-                            RulesCurrentGame()
-                            Divider()
-                            CommentCurrentGame()
-                            ADVCurrentGame()
-                            ButtonsCurrentGame()
-                        }
-                        Spacer()
+                        .padding(.horizontal, 16)
                     }
                 }
                 

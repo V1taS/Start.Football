@@ -17,7 +17,6 @@ struct ButtonGoogle: View {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(RoundedRectangle(cornerRadius: 8)
                             .stroke(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))))
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
             
             Image("google")

@@ -52,7 +52,6 @@ struct WhoWillPlayCurrentGame: View {
                 Image("right")
             }
         }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
     }
 }

@@ -26,7 +26,6 @@ struct CreateGameStepFive: View {
                 }
                 Spacer()
             }
-            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
             
             ButtonView(background: .tertiary,
                        textColor: .whiteColor,
@@ -34,6 +33,7 @@ struct CreateGameStepFive: View {
                        text: "Пригласить друзей")
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
         }
+        .padding(.horizontal, 24)
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
     }
 }

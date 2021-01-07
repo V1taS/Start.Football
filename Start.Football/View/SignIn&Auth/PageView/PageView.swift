@@ -24,7 +24,6 @@ struct PageView: View {
             
             VStack(spacing: 0) {
                 Image("pageViewImage")
-                    .frame(width: UIScreen.screenWidth, height: height / 2)
                 
                 VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
                     VStack {
@@ -70,6 +69,7 @@ struct PageView: View {
                 .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
             }
         }
+        .padding(.horizontal, 24)
     }
 }
 

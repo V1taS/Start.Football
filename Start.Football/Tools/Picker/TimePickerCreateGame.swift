@@ -1,13 +1,13 @@
 //
-//  TimePickerView.swift
+//  TimePickerCreateGame.swift
 //  Start.Football
 //
-//  Created by Виталий Сосин on 07.12.2020.
+//  Created by Vitalii Sosin on 07.01.2021.
 //
 
 import SwiftUI
 
-struct TimePickerView: View {
+struct TimePickerCreateGame: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
@@ -21,20 +21,10 @@ struct TimePickerView: View {
                 .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
             
             HStack {
-                Image("datePicerTime")
-                
-                DatePicker("", selection: $currentDate,
+                DatePicker("vsdvsvdbdb", selection: $currentDate,
                            displayedComponents: .hourAndMinute)
                             .labelsHidden()
-                
-                Text("-")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular24)
-                
-                DatePicker("", selection: $currentDate,
-                           displayedComponents: .hourAndMinute)
-                            .labelsHidden()
-                
+
                 Spacer()
                 
                 Image("datePicerClose")
@@ -44,12 +34,11 @@ struct TimePickerView: View {
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                        height: height * Size.shared.getAdaptSizeHeight(px: 2))
         }
-//        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
     }
 }
 
-struct TimePickerView_Previews: PreviewProvider {
+struct TimePickerCreateGame_Previews: PreviewProvider {
     static var previews: some View {
-        TimePickerView()
+        TimePickerCreateGame()
     }
 }

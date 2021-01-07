@@ -46,7 +46,6 @@ struct CalendarCurrentGame: View {
                 .font(Font.event.robotoRegular16)
             
         }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 24))
     }
 }

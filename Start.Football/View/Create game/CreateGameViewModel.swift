@@ -37,7 +37,7 @@ protocol CreateGameViewModelProtocol {
 }
 
 class CreateGameViewModel: CreateGameViewModelProtocol, ObservableObject {
-    @Published var selectionCreateGame: SelectionCreateGame = .stepThree {
+    @Published var selectionCreateGame: SelectionCreateGame = .stepOne {
         didSet {
             switch selectionCreateGame {
             case .stepOne:

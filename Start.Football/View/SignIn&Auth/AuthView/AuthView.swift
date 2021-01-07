@@ -35,7 +35,6 @@ struct AuthView: View {
                             .font(Font.event.robotoRegular16)
                         
                     }
-                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
                     Spacer()
                 }
@@ -115,8 +114,10 @@ struct AuthView: View {
                     }
                 }
                 .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
-            } .dismissingKeyboard()
+            }
         }
+        .padding(.horizontal, 24)
+        .dismissingKeyboard()
     }
 }
 

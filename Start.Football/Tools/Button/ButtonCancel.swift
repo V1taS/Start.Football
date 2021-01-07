@@ -18,7 +18,6 @@ struct ButtonCancel: View {
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(.error)))
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
             Text("Отмена")
                 .foregroundColor(Color(.error))

@@ -21,7 +21,6 @@ struct ADVCurrentGame: View {
                            height: height * Size.shared.getAdaptSizeHeight(px: 120))
             }
         }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 32))
     }
 }

@@ -42,6 +42,7 @@ struct CreateGameStepFour: View {
                            text: "Добавить фото площадки")
             }
         }
+        .padding(.horizontal, 24)
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
     }
 }

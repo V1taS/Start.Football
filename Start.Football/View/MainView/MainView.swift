@@ -68,26 +68,9 @@ struct MainView: View {
                     }
                 }
             }
-            
-            FiltrsView()
-                .offset(y: height * Size.shared.getAdaptSizeHeight(px: 50))
-                .animation(.spring())
-                .offset(y: viewModel.showFiltrsView ? viewState.height : 1000)
-                .gesture(
-                    DragGesture().onChanged { value in
-                        self.viewState = value.translation
-                        if value.translation.height < -40 {
-                            self.viewState.height = .zero
-                        }
-                        
-                        if value.translation.height > 100 {
-                            self.viewModel.showFiltrsView.toggle()
-                        }
-                    }
-                    .onEnded { value in
-                        self.viewState.height = .zero
-                    }
-                )
+            FilterGameSheet(isSheetActive: $viewModel.showFiltrsView)
+                .offset(y: 30)
+
         } .dismissingKeyboard()
     }
 }

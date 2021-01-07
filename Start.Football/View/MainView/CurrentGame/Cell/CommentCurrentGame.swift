@@ -24,7 +24,6 @@ struct CommentCurrentGame: View {
             }
             Spacer()
         }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
     }
 }

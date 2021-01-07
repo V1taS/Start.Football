@@ -14,7 +14,6 @@ struct ButtonView: View {
     let borderColor: UIColor
     let text: String
     let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
 
     var body: some View {
         ZStack {
@@ -22,7 +21,6 @@ struct ButtonView: View {
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(borderColor)))
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 
                 .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
                 

@@ -17,7 +17,6 @@ struct CreateGameStepTwo: View {
             Text("Это регулярная игра?")
                 .foregroundColor(.defaultColor)
                 .font(Font.event.robotoRegular18)
-                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                 .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
             
             VStack(spacing: 24) {
@@ -60,13 +59,11 @@ struct CreateGameStepTwo: View {
                     Spacer()
                 }
             }
-            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
             
             if selectionRegularGame == .no {
                 VStack {
                     BoxDateButton(disabledButton: false)
                         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
                     
                     Button(action: {}) {
                         ButtonView(background: .whiteColor,
@@ -78,6 +75,7 @@ struct CreateGameStepTwo: View {
                 }
             }
         }
+        .padding(.horizontal, 24)
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
     }
 }

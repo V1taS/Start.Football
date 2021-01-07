@@ -114,7 +114,6 @@ struct BoxPrivacyCreateGame: View {
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
                 
             }
-            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
         }
         .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
     }

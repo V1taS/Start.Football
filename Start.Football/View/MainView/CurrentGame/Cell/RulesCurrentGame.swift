@@ -23,7 +23,6 @@ struct RulesCurrentGame: View {
             }
             Spacer()
         }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
         .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 24))
     }
 }

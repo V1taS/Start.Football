@@ -23,9 +23,13 @@ struct ProfileView: View {
                 ZStack {
                     VStack(spacing: 0) {
                         HeaderProfileView()
-                        AboutMySelfProfileView()
-                        BoxStatisticsProfileView()
-                        ContactsProfileView()
+                        
+                        VStack(spacing: 0) {
+                            AboutMySelfProfileView()
+                            BoxStatisticsProfileView()
+                            ContactsProfileView()
+                        }
+                        .padding(.horizontal, 16)
                     }
                     
                 }
