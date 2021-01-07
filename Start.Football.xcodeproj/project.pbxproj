@@ -219,7 +219,7 @@
 			children = (
 				1BF3664625A783A100B196EE /* View */,
 				1B155F45256C092700019C2F /* Tools */,
-				1B155F1B256C06FA00019C2F /* Other */,
+				1B155F1B256C06FA00019C2F /* App */,
 				1B155F0E256C06D200019C2F /* Preview Content */,
 			);
 			path = Start.Football;
@@ -233,7 +233,7 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		1B155F1B256C06FA00019C2F /* Other */ = {
+		1B155F1B256C06FA00019C2F /* App */ = {
 			isa = PBXGroup;
 			children = (
 				1B78CCBE256DAA8B00297221 /* Extensions */,
@@ -241,7 +241,7 @@
 				1B155F38256C076A00019C2F /* Sources */,
 				1B155F36256C073E00019C2F /* Storyboards */,
 			);
-			path = Other;
+			path = App;
 			sourceTree = "<group>";
 		};
 		1B155F36256C073E00019C2F /* Storyboards */ = {
@@ -439,21 +439,12 @@
 			path = Fonts;
 			sourceTree = "<group>";
 		};
-		1B78CCEA256DC28A00297221 /* Main */ = {
-			isa = PBXGroup;
-			children = (
-				1B78CCEB256DC2C200297221 /* TabViewApp.swift */,
-				1B7970E5256DC9FD006DAFC0 /* MainView */,
-				1BD9108E257598E4005B3CFC /* CurrentGame */,
-			);
-			path = Main;
-			sourceTree = "<group>";
-		};
 		1B7970E5256DC9FD006DAFC0 /* MainView */ = {
 			isa = PBXGroup;
 			children = (
 				1B78CCEF256DC4E300297221 /* MainView.swift */,
 				1B7970F5256DDB1D006DAFC0 /* MainViewModel.swift */,
+				1BD9108E257598E4005B3CFC /* CurrentGame */,
 				1BD9109825759C08005B3CFC /* Profile */,
 				1BA208B425A777BF005B4D0C /* Header */,
 				1BA208BA25A77816005B4D0C /* Menu */,
@@ -571,7 +562,8 @@
 			isa = PBXGroup;
 			children = (
 				1B155F39256C078500019C2F /* SignIn&Auth */,
-				1B78CCEA256DC28A00297221 /* Main */,
+				1B78CCEB256DC2C200297221 /* TabViewApp.swift */,
+				1B7970E5256DC9FD006DAFC0 /* MainView */,
 				1B24DEF825802A6300510132 /* Create game */,
 			);
 			path = View;
