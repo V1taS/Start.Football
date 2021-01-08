@@ -12,7 +12,7 @@ struct DatePickerView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
-    @State private var currentDate = Date()
+    @Binding var currentDate: Date
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -27,10 +27,7 @@ struct DatePickerView: View {
                 DatePicker("", selection: $currentDate,
                            displayedComponents: .date)
                     .labelsHidden()
-                
                 Spacer()
-                
-                Image("datePicerClose")
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
             Color(#colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
@@ -42,6 +39,6 @@ struct DatePickerView: View {
 
 struct DatePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerView()
+        DatePickerView(currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(12))))
     }
 }

@@ -63,10 +63,11 @@ struct CreateGameStepTwo: View {
                                       su: $viewModel.su)
 
                         Button(action: { viewModel.showTimePicker.toggle() }) {
-                            NoTextfieldOneLineView(text: "Укажите время",
+                            NoTextfieldOneLineView(text: viewModel.time,
                                                    header: "Время",
                                                    iconShow: true,
-                                                   icon: "timeGreateGame")
+                                                   icon: "timeGreateGame",
+                                                   textHasBeenChanged: viewModel.timeTextHasBeenChanged)
                         }
                         
                         Button(action: {}) {
@@ -81,7 +82,8 @@ struct CreateGameStepTwo: View {
             }
             .padding(.horizontal, 24)
     
-            TimePickerSheet(isSheetActive: $viewModel.showTimePicker)
+            TimePickerSheet(isSheetActive: $viewModel.showTimePicker,
+                            currentDate: $viewModel.currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
         }

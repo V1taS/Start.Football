@@ -36,8 +36,6 @@ struct TimePickerView: View {
                             .labelsHidden()
                 
                 Spacer()
-                
-                Image("datePicerClose")
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
             Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))

@@ -11,7 +11,7 @@ struct TimePickerCreateGame: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
-    @State private var currentDate = Date()
+    @Binding var currentDate: Date
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
@@ -26,10 +26,7 @@ struct TimePickerCreateGame: View {
                 DatePicker("vsdvsvdbdb", selection: $currentDate,
                            displayedComponents: .hourAndMinute)
                             .labelsHidden()
-
                 Spacer()
-                
-                Image("datePicerClose")
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
             Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
@@ -41,6 +38,6 @@ struct TimePickerCreateGame: View {
 
 struct TimePickerCreateGame_Previews: PreviewProvider {
     static var previews: some View {
-        TimePickerCreateGame()
+        TimePickerCreateGame(currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(10))))
     }
 }

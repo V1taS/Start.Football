@@ -51,7 +51,7 @@ struct FilterGameSheet: View {
                     
                     VStack(alignment: .leading, spacing: 10) {
                         Group {
-                            DatePickerView()
+                            DatePickerView(currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(12))))
                             TimePickerView()
                             CostView()
                         }

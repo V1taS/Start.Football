@@ -16,18 +16,19 @@ struct NoTextfieldOneLineView: View {
     let header: String
     let iconShow: Bool
     let icon: String
+    let textHasBeenChanged: Bool
     
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(header)
                 .foregroundColor(.defaultColor)
-                .font(Font.event.robotoMedium14)
-                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
+                .font(Font.event.robotoRegular14)
+                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
             
             HStack {
                 Text(text)
-                    .foregroundColor(.inactive).opacity(0.7)
+                    .foregroundColor(textHasBeenChanged ? Color.secondaryColor : (Color.inactive).opacity(0.7))
                     .font(Font.event.robotoRegular18)
                 
                 Spacer()
@@ -49,7 +50,8 @@ struct NoTextfieldOneLineView_Previews: PreviewProvider {
         NoTextfieldOneLineView(text: "Введите название",
                                header: "Название",
                                iconShow: true,
-                               icon: "locationCreateGame")
+                               icon: "locationCreateGame",
+                               textHasBeenChanged: true)
     }
 }
 

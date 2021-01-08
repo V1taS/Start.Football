@@ -33,17 +33,19 @@ struct CreateGameStepOne: View {
                                          keyboardType: .default)
                     
                     Button(action: { viewModel.showTimePicker.toggle() }) {
-                        NoTextfieldOneLineView(text: "Укажите время",
+                        NoTextfieldOneLineView(text: viewModel.time,
                                                header: "Время",
                                                iconShow: true,
-                                               icon: "timeGreateGame")
+                                               icon: "timeGreateGame",
+                                               textHasBeenChanged: viewModel.timeTextHasBeenChanged)
                     }
                     
                     Button(action: { viewModel.showDatePicker.toggle() }) {
-                        NoTextfieldOneLineView(text: "Укажите дату начала",
+                        NoTextfieldOneLineView(text: viewModel.date,
                                                header: "Дата игры",
                                                iconShow: true,
-                                               icon: "dateCreateGame")
+                                               icon: "dateCreateGame",
+                                               textHasBeenChanged: viewModel.dateTextHasBeenChanged)
                     }
                     
                     TextfieldOneLineView(text: .constant(""),
@@ -67,10 +69,12 @@ struct CreateGameStepOne: View {
             .padding(.horizontal, 24)
             .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
 
-            TimePickerSheet(isSheetActive: $viewModel.showTimePicker)
+            TimePickerSheet(isSheetActive: $viewModel.showTimePicker,
+                            currentDate: $viewModel.currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
-            DatePickerSheet(isSheetActive: $viewModel.showDatePicker)
+            DatePickerSheet(isSheetActive: $viewModel.showDatePicker,
+                            currentDate: $viewModel.currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
         } .dismissingKeyboard()

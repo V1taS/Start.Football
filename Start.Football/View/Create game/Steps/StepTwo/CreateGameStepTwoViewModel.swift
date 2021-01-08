@@ -14,8 +14,12 @@ enum SelectionRegularGame {
 }
 
 protocol CreateGameStepTwoViewModelProtocol {
+    var currentDate: Date { get }
     var selectionRegularGame: SelectionRegularGame { get }
     var showTimePicker: Bool { get }
+    
+    var time: String { get }
+    var timeTextHasBeenChanged: Bool { get }
     
     var mo: Bool { get }
     var tu: Bool { get }
@@ -27,8 +31,24 @@ protocol CreateGameStepTwoViewModelProtocol {
 }
 
 class CreateGameStepTwoViewModel: CreateGameStepTwoViewModelProtocol, ObservableObject {
+    @Published var currentDate = Date() {
+        didSet {
+            time = GetDateStringFromDate.shared.getTimeString(date: currentDate)
+        }
+    }
     @Published var selectionRegularGame: SelectionRegularGame = .no
     @Published var showTimePicker: Bool = false
+    
+    @Published var time = "Укажите время" {
+        didSet {
+            timeTextHasBeenChanged = true
+            
+            if time.isEmpty {
+                timeTextHasBeenChanged = false
+            }
+        }
+    }
+    @Published var timeTextHasBeenChanged = false
     
     // MARK: - 
     @Published var mo: Bool = false

@@ -12,6 +12,7 @@ struct TimePickerSheet: View {
     let width = UIScreen.screenWidth
     
     @Binding var isSheetActive: Bool
+    @Binding var currentDate: Date
     let animation = Animation.interpolatingSpring(stiffness: 100,
                                                   damping: 30,
                                                   initialVelocity: 10)
@@ -48,7 +49,7 @@ struct TimePickerSheet: View {
                     
                     
                     VStack(alignment: .leading) {
-                        TimePickerCreateGame()
+                        TimePickerCreateGame(currentDate: $currentDate)
                     }
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
                     
@@ -107,6 +108,7 @@ struct TimePickerSheet: View {
 
 struct TimePickerSheet_Previews: PreviewProvider {
     static var previews: some View {
-        TimePickerSheet(isSheetActive: .constant(true))
+        TimePickerSheet(isSheetActive: .constant(true),
+                        currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(12))))
     }
 }
