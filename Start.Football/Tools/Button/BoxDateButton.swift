@@ -13,48 +13,84 @@ struct BoxDateButton: View {
     let width = UIScreen.screenWidth
     let disabledButton: Bool
     
+    @Binding var mo: Bool
+    @Binding var tu: Bool
+    @Binding var we: Bool
+    @Binding var th: Bool
+    @Binding var fr: Bool
+    @Binding var sa: Bool
+    @Binding var su: Bool
+    
     var body: some View {
         HStack {
             Group {
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .primaryColor, textColor: .whiteColor, day: "Пн")
+                Button(action: { mo.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: mo ? UIColor.primaryColor : .whiteColor,
+                        textColor: mo ? UIColor.whiteColor : .secondaryColor,
+                        day: "Пн"
+                    )
                 } .disabled(disabledButton)
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .primaryColor, textColor: .whiteColor, day: "Вт")
+                Button(action: { tu.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: tu ? UIColor.primaryColor : .whiteColor,
+                        textColor: tu ? UIColor.whiteColor : .secondaryColor,
+                        day: "Вт"
+                    )
                 } .disabled(disabledButton)
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .whiteColor, textColor: .secondaryColor, day: "Ср")
+                Button(action: { we.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: we ? UIColor.primaryColor : .whiteColor,
+                        textColor: we ? UIColor.whiteColor : .secondaryColor,
+                        day: "Ср"
+                    )
                 } .disabled(disabledButton)
 
                 Spacer()
             }
             Group {
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .primaryColor, textColor: .whiteColor, day: "Чт")
+                Button(action: { th.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: th ? UIColor.primaryColor : .whiteColor,
+                        textColor: th ? UIColor.whiteColor : .secondaryColor,
+                        day: "Чт"
+                    )
                 } .disabled(disabledButton)
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .whiteColor, textColor: .secondaryColor, day: "Пт")
+                Button(action: { fr.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: fr ? UIColor.primaryColor : .whiteColor,
+                        textColor: fr ? UIColor.whiteColor : .secondaryColor,
+                        day: "Пт"
+                    )
                 } .disabled(disabledButton)
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .primaryColor, textColor: .whiteColor, day: "Сб")
+                Button(action: { sa.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: sa ? UIColor.primaryColor : .whiteColor,
+                        textColor: sa ? UIColor.whiteColor : .secondaryColor,
+                        day: "Сб"
+                    )
                 } .disabled(disabledButton)
                 
                 Spacer()
                 
-                Button(action: {}) {
-                    DayOfWeeakCurrentGame(background: .primaryColor, textColor: .whiteColor, day: "Вс")
+                Button(action: { su.toggle() }) {
+                    DayOfWeeakCurrentGame(
+                        background: su ? UIColor.primaryColor : .whiteColor,
+                        textColor: su ? UIColor.whiteColor : .secondaryColor,
+                        day: "Вс"
+                    )
                 } .disabled(disabledButton)
             }
         }
@@ -87,6 +123,13 @@ struct DayOfWeeakCurrentGame: View {
 
 struct BoxDateButton_Previews: PreviewProvider {
     static var previews: some View {
-        BoxDateButton(disabledButton: true)
+        BoxDateButton(disabledButton: false,
+                      mo: .constant(false),
+                      tu: .constant(false),
+                      we: .constant(false),
+                      th: .constant(false),
+                      fr: .constant(false),
+                      sa: .constant(false),
+                      su: .constant(false))
     }
 }

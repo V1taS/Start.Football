@@ -9,18 +9,17 @@ import SwiftUI
 
 struct TextButtonRound: View {
     let name: String
-    let foregroundColor: Color
-    let backgroundColor: Color
-    let boarderColor: Color
+    @Binding var isOn: Bool
     let disabledButton: Bool
     
     var body: some View {
-        Button(action: {}) {
+        Button(action: { isOn.toggle() }) {
             Text(name)
-                .foregroundColor(foregroundColor)
+                .foregroundColor(isOn ? Color.whiteColor : .secondaryColor)
                 .font(Font.event.robotoRegular16)
-                .roundedEdge(backgroundColor: backgroundColor,
-                             boarderColor: boarderColor)
+                .roundedEdge(backgroundColor: isOn ? Color.primaryColor : .whiteColor,
+                             boarderColor: isOn ? Color.primaryColor : .secondaryColor)
+                .padding(.leading, 2)
         } .disabled(disabledButton)
     }
 }
@@ -28,9 +27,7 @@ struct TextButtonRound: View {
 struct BoxButtonRound_Previews: PreviewProvider {
     static var previews: some View {
         TextButtonRound(name: "Мини-футбол",
-                        foregroundColor: .secondaryColor,
-                        backgroundColor: .whiteColor,
-                        boarderColor: .secondaryColor,
-                        disabledButton: true)
+                        isOn: .constant(true),
+                        disabledButton: false)
     }
 }

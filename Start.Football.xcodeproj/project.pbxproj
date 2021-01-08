@@ -34,6 +34,10 @@
 		1B23563225A7C25400E33DA8 /* DatePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23563125A7C25400E33DA8 /* DatePickerSheet.swift */; };
 		1B24DEFA25802A9700510132 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24DEF925802A9700510132 /* CreateGameView.swift */; };
 		1B24DEFD25802AC300510132 /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24DEFC25802AC300510132 /* CreateGameViewModel.swift */; };
+		1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */; };
+		1B4B65F925A8A6C100801E12 /* CreateGameStepThreeViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65F825A8A6C100801E12 /* CreateGameStepThreeViewModel.swift */; };
+		1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65FB25A8B42800801E12 /* ButtonParking.swift */; };
+		1B4B660225A8C24600801E12 /* CreateGameStepTwoViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B660125A8C24600801E12 /* CreateGameStepTwoViewModel.swift */; };
 		1B5CCDB7257ED7AB0000BC79 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */; };
 		1B5E4DD925A74CA500287D98 /* BackButtonCreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */; };
 		1B68131525744A7F00B54977 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131425744A7F00B54977 /* KeyboardListener.swift */; };
@@ -126,6 +130,10 @@
 		1B23563125A7C25400E33DA8 /* DatePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheet.swift; sourceTree = "<group>"; };
 		1B24DEF925802A9700510132 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		1B24DEFC25802AC300510132 /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
+		1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatGameTextField.swift; sourceTree = "<group>"; };
+		1B4B65F825A8A6C100801E12 /* CreateGameStepThreeViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameStepThreeViewModel.swift; sourceTree = "<group>"; };
+		1B4B65FB25A8B42800801E12 /* ButtonParking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParking.swift; sourceTree = "<group>"; };
+		1B4B660125A8C24600801E12 /* CreateGameStepTwoViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameStepTwoViewModel.swift; sourceTree = "<group>"; };
 		1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonCreateGameView.swift; sourceTree = "<group>"; };
 		1B68131425744A7F00B54977 /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
@@ -366,6 +374,15 @@
 			path = "Create game";
 			sourceTree = "<group>";
 		};
+		1B4B65FE25A8C23400801E12 /* StepTwo */ = {
+			isa = PBXGroup;
+			children = (
+				1B765D8425A7489A00105940 /* CreateGameStepTwo.swift */,
+				1B4B660125A8C24600801E12 /* CreateGameStepTwoViewModel.swift */,
+			);
+			path = StepTwo;
+			sourceTree = "<group>";
+		};
 		1B765D6525A7221B00105940 /* TextField */ = {
 			isa = PBXGroup;
 			children = (
@@ -375,6 +392,7 @@
 				1B23561A25A79A7C00E33DA8 /* NoTextfieldOneLineView.swift */,
 				1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */,
 				1B155F4A256C15F600019C2F /* TextFieldViewOld.swift */,
+				1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -390,6 +408,7 @@
 				1B966C2D257717760084FFB4 /* ButtonCancel.swift */,
 				1B765D7325A724AA00105940 /* ButtonRoundGreen.swift */,
 				1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */,
+				1B4B65FB25A8B42800801E12 /* ButtonParking.swift */,
 			);
 			path = Button;
 			sourceTree = "<group>";
@@ -420,7 +439,7 @@
 			isa = PBXGroup;
 			children = (
 				1B23561525A7989F00E33DA8 /* StepOne */,
-				1B765D8425A7489A00105940 /* CreateGameStepTwo.swift */,
+				1B4B65FE25A8C23400801E12 /* StepTwo */,
 				1BA208AC25A774F1005B4D0C /* StepThree */,
 				1B765D8A25A748BE00105940 /* CreateGameStepFour.swift */,
 				1B765D8D25A748CC00105940 /* CreateGameStepFive.swift */,
@@ -480,6 +499,7 @@
 			isa = PBXGroup;
 			children = (
 				1B765D8725A748AA00105940 /* CreateGameStepThree.swift */,
+				1B4B65F825A8A6C100801E12 /* CreateGameStepThreeViewModel.swift */,
 				1BA208AE25A7750D005B4D0C /* BoxPrivacyCreateGame.swift */,
 			);
 			path = StepThree;
@@ -691,15 +711,18 @@
 				1BF3660D25A77E4700B196EE /* CellStatisticsProfileView.swift in Sources */,
 				1B155F58256C4EBC00019C2F /* PasswordResetViewModel.swift in Sources */,
 				1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */,
+				1B4B65F925A8A6C100801E12 /* CreateGameStepThreeViewModel.swift in Sources */,
 				1B155F4B256C15F600019C2F /* TextFieldViewOld.swift in Sources */,
 				1BD9109A25759C47005B3CFC /* ProfileView.swift in Sources */,
 				1B68131925745DEE00B54977 /* ADV.swift in Sources */,
+				1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */,
 				1B966C23257702D70084FFB4 /* ButtonApple.swift in Sources */,
 				1B155F3C256C07BE00019C2F /* SignUpView.swift in Sources */,
 				1BF3662725A7820E00B196EE /* CalendarCurrentGame.swift in Sources */,
 				1B155F53256C471D00019C2F /* CheckboxFieldView.swift in Sources */,
 				1BF3664325A7832700B196EE /* ButtonsCurrentGame.swift in Sources */,
 				1B155F4F256C351500019C2F /* SignUpViewModel.swift in Sources */,
+				1B4B660225A8C24600801E12 /* CreateGameStepTwoViewModel.swift in Sources */,
 				1B23562F25A7BFE200E33DA8 /* CreateGameStepOneViewModel.swift in Sources */,
 				1B23561825A798DA00E33DA8 /* TimePickerCreateGame.swift in Sources */,
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,
@@ -729,6 +752,7 @@
 				1B155F0B256C06D000019C2F /* AuthView.swift in Sources */,
 				1B04FC372571A56A00AC40D5 /* UIScreen.swift in Sources */,
 				1BF3663F25A782F800B196EE /* ADVCurrentGame.swift in Sources */,
+				1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */,
 				1BA208B225A77795005B4D0C /* HeaderMainView.swift in Sources */,
 				1B765D8125A7488500105940 /* CreateGameStepOne.swift in Sources */,
 				1BA208AF25A7750D005B4D0C /* BoxPrivacyCreateGame.swift in Sources */,
@@ -885,7 +909,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -895,7 +919,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -909,7 +933,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 17;
+				CURRENT_PROJECT_VERSION = 18;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -919,7 +943,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.16;
+				MARKETING_VERSION = 1.0.17;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

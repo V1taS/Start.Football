@@ -11,6 +11,7 @@ struct BoxPrivacyCreateGame: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     @Binding var privacyGame: PrivacyGame
+    @Binding var maxCountTeams: Double
     @Binding var maxCountPlayers: Double
     @Binding var maxReservePlayers: Double
     
@@ -25,9 +26,9 @@ struct BoxPrivacyCreateGame: View {
                         .font(Font.event.robotoRegular14)
                     
                     HStack {
-                        Slider(value: $maxCountPlayers, in: 0...10, step: 1)
+                        Slider(value: $maxCountTeams, in: 2...4, step: 1)
                         Spacer()
-                        Text("\(String(format: "%.0f", maxCountPlayers))")
+                        Text("\(String(format: "%.0f", maxCountTeams))")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
@@ -40,9 +41,9 @@ struct BoxPrivacyCreateGame: View {
                         .font(Font.event.robotoRegular14)
                     
                     HStack {
-                        Slider(value: $maxReservePlayers, in: 0...30, step: 1)
+                        Slider(value: $maxCountPlayers, in: 10...22, step: 1)
                         Spacer()
-                        Text("\(String(format: "%.0f", maxReservePlayers))")
+                        Text("\(String(format: "%.0f", maxCountPlayers))")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
@@ -55,7 +56,7 @@ struct BoxPrivacyCreateGame: View {
                         .font(Font.event.robotoRegular14)
                     
                     HStack {
-                        Slider(value: $maxReservePlayers, in: 0...30, step: 1)
+                        Slider(value: $maxReservePlayers, in: 0...22, step: 1)
                         Spacer()
                         Text("\(String(format: "%.0f", maxReservePlayers))")
                             .foregroundColor(.secondaryColor)
@@ -122,7 +123,8 @@ struct BoxPrivacyCreateGame: View {
 struct BoxPrivacyCreateGame_Previews: PreviewProvider {
     static var previews: some View {
         BoxPrivacyCreateGame(privacyGame: .constant(.open),
-                             maxCountPlayers: .constant(10),
-                             maxReservePlayers: .constant(20))
+                             maxCountTeams: .constant(3),
+                             maxCountPlayers: .constant(15),
+                             maxReservePlayers: .constant(22))
     }
 }

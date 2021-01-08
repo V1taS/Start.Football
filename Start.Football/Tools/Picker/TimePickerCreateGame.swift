@@ -21,6 +21,8 @@ struct TimePickerCreateGame: View {
                 .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
             
             HStack {
+                Image("datePicerTime")
+                
                 DatePicker("vsdvsvdbdb", selection: $currentDate,
                            displayedComponents: .hourAndMinute)
                             .labelsHidden()

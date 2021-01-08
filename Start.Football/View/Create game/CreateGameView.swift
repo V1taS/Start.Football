@@ -26,15 +26,11 @@ struct CreateGameView: View {
                     }
                     
                     else if viewModel.selectionCreateGame == .stepTwo {
-                        CreateGameStepTwo(selectionRegularGame: $viewModel.selectionRegularGame)
+                        CreateGameStepTwo()
                     }
                     
                     else if viewModel.selectionCreateGame == .stepThree {
-                        CreateGameStepThree(
-                            maxCountPlayers: $viewModel.maxCountPlayers,
-                            maxReservePlayers: $viewModel.maxReservePlayers,
-                            privacyGame: $viewModel.privacyGame,
-                            showParkingView: $viewModel.showParkingView)
+                        CreateGameStepThree()
                     }
                     else if viewModel.selectionCreateGame == .stepFour {
                         CreateGameStepFour()

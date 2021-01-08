@@ -22,7 +22,7 @@ struct PageView: View {
             Color(.backgroundColor)
                 .edgesIgnoringSafeArea(.all)
             
-            VStack(spacing: 0) {
+            VStack(spacing: 16) {
                 Image("pageViewImage")
                 
                 VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
