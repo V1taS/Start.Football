@@ -22,7 +22,16 @@ struct CreateGameView: View {
                 
                 Group {
                     if viewModel.selectionCreateGame == .stepOne {
-                        CreateGameStepOne()
+                        CreateGameStepOne(nameGame: $viewModel.nameGame,
+                                          addressGame: $viewModel.addressGame,
+                                          participationCost: $viewModel.participationCost,
+                                          currentDate: $viewModel.currentDate,
+                                          showTimePicker: $viewModel.showTimePicker,
+                                          showDatePicker: $viewModel.showDatePicker,
+                                          oneTime: $viewModel.oneTime,
+                                          oneTimeTextHasBeenChanged: $viewModel.oneTimeTextHasBeenChanged,
+                                          oneDay: $viewModel.oneDay,
+                                          oneDayTextHasBeenChanged: $viewModel.oneDayTextHasBeenChanged)
                     }
                     
                     else if viewModel.selectionCreateGame == .stepTwo {

@@ -30,7 +30,6 @@
 		1B23562325A7B09900E33DA8 /* FilterGameSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23562225A7B09900E33DA8 /* FilterGameSheet.swift */; };
 		1B23562625A7B8FD00E33DA8 /* TypeOfParkingSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23562525A7B8FD00E33DA8 /* TypeOfParkingSheet.swift */; };
 		1B23562C25A7BD2400E33DA8 /* TimePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23562B25A7BD2400E33DA8 /* TimePickerSheet.swift */; };
-		1B23562F25A7BFE200E33DA8 /* CreateGameStepOneViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23562E25A7BFE200E33DA8 /* CreateGameStepOneViewModel.swift */; };
 		1B23563225A7C25400E33DA8 /* DatePickerSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23563125A7C25400E33DA8 /* DatePickerSheet.swift */; };
 		1B24DEFA25802A9700510132 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24DEF925802A9700510132 /* CreateGameView.swift */; };
 		1B24DEFD25802AC300510132 /* CreateGameViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24DEFC25802AC300510132 /* CreateGameViewModel.swift */; };
@@ -127,7 +126,6 @@
 		1B23562225A7B09900E33DA8 /* FilterGameSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterGameSheet.swift; sourceTree = "<group>"; };
 		1B23562525A7B8FD00E33DA8 /* TypeOfParkingSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TypeOfParkingSheet.swift; sourceTree = "<group>"; };
 		1B23562B25A7BD2400E33DA8 /* TimePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerSheet.swift; sourceTree = "<group>"; };
-		1B23562E25A7BFE200E33DA8 /* CreateGameStepOneViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameStepOneViewModel.swift; sourceTree = "<group>"; };
 		1B23563125A7C25400E33DA8 /* DatePickerSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheet.swift; sourceTree = "<group>"; };
 		1B24DEF925802A9700510132 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		1B24DEFC25802AC300510132 /* CreateGameViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameViewModel.swift; sourceTree = "<group>"; };
@@ -360,7 +358,6 @@
 			isa = PBXGroup;
 			children = (
 				1B765D8025A7488500105940 /* CreateGameStepOne.swift */,
-				1B23562E25A7BFE200E33DA8 /* CreateGameStepOneViewModel.swift */,
 			);
 			path = StepOne;
 			sourceTree = "<group>";
@@ -726,7 +723,6 @@
 				1BF3664325A7832700B196EE /* ButtonsCurrentGame.swift in Sources */,
 				1B155F4F256C351500019C2F /* SignUpViewModel.swift in Sources */,
 				1B4B660225A8C24600801E12 /* CreateGameStepTwoViewModel.swift in Sources */,
-				1B23562F25A7BFE200E33DA8 /* CreateGameStepOneViewModel.swift in Sources */,
 				1B23561825A798DA00E33DA8 /* TimePickerCreateGame.swift in Sources */,
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,
 				1B765D7425A724AA00105940 /* ButtonRoundGreen.swift in Sources */,
@@ -913,7 +909,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -923,7 +919,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.19;
+				MARKETING_VERSION = 1.0.20;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -937,7 +933,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 19;
+				CURRENT_PROJECT_VERSION = 20;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -947,7 +943,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.19;
+				MARKETING_VERSION = 1.0.20;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

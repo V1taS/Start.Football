@@ -8,10 +8,7 @@
 import SwiftUI
 import Combine
 
-enum SelectionRegularGame {
-    case yes
-    case no
-}
+
 
 protocol CreateGameStepTwoViewModelProtocol {
     var currentDate: Date { get }

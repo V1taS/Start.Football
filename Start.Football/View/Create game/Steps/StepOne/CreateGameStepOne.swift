@@ -10,45 +10,56 @@ import SwiftUI
 struct CreateGameStepOne: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
+ 
+    @Binding var nameGame: String
+    @Binding var addressGame: String
+    @Binding var participationCost: String
     
-    @ObservedObject var viewModel = CreateGameStepOneViewModel()
+    @Binding var currentDate: Date
+    @Binding var showTimePicker: Bool
+    @Binding var showDatePicker: Bool
+    @Binding var oneTime: String
+    @Binding var oneTimeTextHasBeenChanged: Bool
+    @Binding var oneDay: String
+    @Binding var oneDayTextHasBeenChanged: Bool
+    
     
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
                 VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
                     
-                    TextfieldOneLineView(text: .constant(""),
+                    TextfieldOneLineView(text: $nameGame,
                                          title: "Название",
                                          icon: "",
                                          iconShow: false,
                                          placeholder: "Введите название",
                                          keyboardType: .default)
                     
-                    TextfieldOneLineView(text: .constant(""),
+                    TextfieldOneLineView(text: $addressGame,
                                          title: "Адрес",
                                          icon: "locationCreateGame",
                                          iconShow: true,
                                          placeholder: "Укажите адрес",
                                          keyboardType: .default)
                     
-                    Button(action: { viewModel.showTimePicker.toggle() }) {
-                        NoTextfieldOneLineView(text: viewModel.time,
+                    Button(action: { showTimePicker.toggle() }) {
+                        NoTextfieldOneLineView(text: oneTime,
                                                header: "Время",
                                                iconShow: true,
                                                icon: "timeGreateGame",
-                                               textHasBeenChanged: viewModel.timeTextHasBeenChanged)
+                                               textHasBeenChanged: oneTimeTextHasBeenChanged)
                     }
                     
-                    Button(action: { viewModel.showDatePicker.toggle() }) {
-                        NoTextfieldOneLineView(text: viewModel.date,
+                    Button(action: { showDatePicker.toggle() }) {
+                        NoTextfieldOneLineView(text: oneDay,
                                                header: "Дата игры",
                                                iconShow: true,
                                                icon: "dateCreateGame",
-                                               textHasBeenChanged: viewModel.dateTextHasBeenChanged)
+                                               textHasBeenChanged: oneDayTextHasBeenChanged)
                     }
                     
-                    TextfieldOneLineView(text: .constant(""),
+                    TextfieldOneLineView(text: $participationCost,
                                          title: "Стоимость участия одного игрока",
                                          icon: "rublsCreateGame",
                                          iconShow: true,
@@ -69,12 +80,12 @@ struct CreateGameStepOne: View {
             .padding(.horizontal, 24)
             .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
 
-            TimePickerSheet(isSheetActive: $viewModel.showTimePicker,
-                            currentDate: $viewModel.currentDate)
+            TimePickerSheet(isSheetActive: $showTimePicker,
+                            currentDate: $currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
-            DatePickerSheet(isSheetActive: $viewModel.showDatePicker,
-                            currentDate: $viewModel.currentDate)
+            DatePickerSheet(isSheetActive: $showDatePicker,
+                            currentDate: $currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
         } .dismissingKeyboard()
@@ -85,6 +96,15 @@ struct CreateGameStepOne: View {
 
 struct CreateGameStepOne_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepOne()
+        CreateGameStepOne(nameGame: .constant(""),
+                          addressGame: .constant(""),
+                          participationCost: .constant(""),
+                          currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(12))),
+                          showTimePicker: .constant(false),
+                          showDatePicker: .constant(false),
+                          oneTime: .constant("12:30"),
+                          oneTimeTextHasBeenChanged: .constant(false),
+                          oneDay: .constant("12.01.2021"),
+                          oneDayTextHasBeenChanged: .constant(false))
     }
 }
