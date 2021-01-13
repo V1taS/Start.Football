@@ -68,6 +68,7 @@
 		1B78CCF0256DC4E300297221 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78CCEF256DC4E300297221 /* MainView.swift */; };
 		1B7970F6256DDB1D006DAFC0 /* MainViewModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7970F5256DDB1D006DAFC0 /* MainViewModel.swift */; };
 		1B7F7C8125840E0500308106 /* RoundedColorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */; };
+		1B8C82BF25AF21B200197D3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */; };
 		1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */; };
 		1B966C1F2576F2130084FFB4 /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */; };
 		1B966C23257702D70084FFB4 /* ButtonApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C22257702D70084FFB4 /* ButtonApple.swift */; };
@@ -164,6 +165,7 @@
 		1B78CCEF256DC4E300297221 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1B7970F5256DDB1D006DAFC0 /* MainViewModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainViewModel.swift; sourceTree = "<group>"; };
 		1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedColorEdge.swift; sourceTree = "<group>"; };
+		1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
 		1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
 		1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
 		1B966C22257702D70084FFB4 /* ButtonApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApple.swift; sourceTree = "<group>"; };
@@ -235,10 +237,15 @@
 		1B155F05256C06D000019C2F /* Start.Football */ = {
 			isa = PBXGroup;
 			children = (
-				1BF3664625A783A100B196EE /* View */,
-				1B155F45256C092700019C2F /* Tools */,
-				1B155F1B256C06FA00019C2F /* App */,
-				1B155F0E256C06D200019C2F /* Preview Content */,
+				1B8C82B025AF1E7D00197D3E /* Injected */,
+				1B8C82B125AF1E9000197D3E /* Interactors */,
+				1B8C82B225AF1EA900197D3E /* Models */,
+				1B8C82B325AF1EC300197D3E /* Persistence */,
+				1B8C82B425AF1ED900197D3E /* Repositories */,
+				1B8C82B525AF1EEB00197D3E /* Resources */,
+				1B8C82B625AF1F0100197D3E /* System */,
+				1B8C82B725AF1F2000197D3E /* UI */,
+				1B8C82BA25AF1F5F00197D3E /* Utilities */,
 			);
 			path = Start.Football;
 			sourceTree = "<group>";
@@ -251,42 +258,13 @@
 			path = "Preview Content";
 			sourceTree = "<group>";
 		};
-		1B155F1B256C06FA00019C2F /* App */ = {
-			isa = PBXGroup;
-			children = (
-				1B78CCBE256DAA8B00297221 /* Extensions */,
-				1B155F37256C075300019C2F /* Supporting files */,
-				1B155F38256C076A00019C2F /* Sources */,
-				1B155F36256C073E00019C2F /* Storyboards */,
-			);
-			path = App;
-			sourceTree = "<group>";
-		};
 		1B155F36256C073E00019C2F /* Storyboards */ = {
 			isa = PBXGroup;
 			children = (
+				1B155F0E256C06D200019C2F /* Preview Content */,
 				1B155F11256C06D200019C2F /* LaunchScreen.storyboard */,
 			);
 			path = Storyboards;
-			sourceTree = "<group>";
-		};
-		1B155F37256C075300019C2F /* Supporting files */ = {
-			isa = PBXGroup;
-			children = (
-				1B155F14256C06D200019C2F /* Info.plist */,
-				1B155F08256C06D000019C2F /* SceneDelegate.swift */,
-				1B155F06256C06D000019C2F /* AppDelegate.swift */,
-			);
-			path = "Supporting files";
-			sourceTree = "<group>";
-		};
-		1B155F38256C076A00019C2F /* Sources */ = {
-			isa = PBXGroup;
-			children = (
-				1B78CCC6256DB9E000297221 /* Fonts */,
-				1B155F0C256C06D200019C2F /* Assets.xcassets */,
-			);
-			path = Sources;
 			sourceTree = "<group>";
 		};
 		1B155F39256C078500019C2F /* SignIn&Auth */ = {
@@ -298,25 +276,6 @@
 				1B155F56256C4E9F00019C2F /* PageView */,
 			);
 			path = "SignIn&Auth";
-			sourceTree = "<group>";
-		};
-		1B155F45256C092700019C2F /* Tools */ = {
-			isa = PBXGroup;
-			children = (
-				1B765D6F25A723BA00105940 /* Picker */,
-				1B765D6B25A7226A00105940 /* SheetView */,
-				1B765D6825A7223700105940 /* Button */,
-				1B765D6525A7221B00105940 /* TextField */,
-				1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */,
-				1B155F52256C471D00019C2F /* CheckboxFieldView.swift */,
-				1B6A0902257041330001861F /* Size.swift */,
-				1B68131825745DEE00B54977 /* ADV.swift */,
-				1B68131B2574602D00B54977 /* Plug.swift */,
-				1B68132425746E4B00B54977 /* MapGameView.swift */,
-				1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */,
-				1BB6FEE425A8E8A00040843C /* GetDateStringFromDate.swift */,
-			);
-			path = Tools;
 			sourceTree = "<group>";
 		};
 		1B155F4D256C34FB00019C2F /* SignUp */ = {
@@ -495,6 +454,117 @@
 			path = MainView;
 			sourceTree = "<group>";
 		};
+		1B8C82B025AF1E7D00197D3E /* Injected */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Injected;
+			sourceTree = "<group>";
+		};
+		1B8C82B125AF1E9000197D3E /* Interactors */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Interactors;
+			sourceTree = "<group>";
+		};
+		1B8C82B225AF1EA900197D3E /* Models */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Models;
+			sourceTree = "<group>";
+		};
+		1B8C82B325AF1EC300197D3E /* Persistence */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Persistence;
+			sourceTree = "<group>";
+		};
+		1B8C82B425AF1ED900197D3E /* Repositories */ = {
+			isa = PBXGroup;
+			children = (
+			);
+			path = Repositories;
+			sourceTree = "<group>";
+		};
+		1B8C82B525AF1EEB00197D3E /* Resources */ = {
+			isa = PBXGroup;
+			children = (
+				1B78CCC6256DB9E000297221 /* Fonts */,
+				1B155F0C256C06D200019C2F /* Assets.xcassets */,
+				1B155F14256C06D200019C2F /* Info.plist */,
+			);
+			path = Resources;
+			sourceTree = "<group>";
+		};
+		1B8C82B625AF1F0100197D3E /* System */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F08256C06D000019C2F /* SceneDelegate.swift */,
+				1B155F06256C06D000019C2F /* AppDelegate.swift */,
+			);
+			path = System;
+			sourceTree = "<group>";
+		};
+		1B8C82B725AF1F2000197D3E /* UI */ = {
+			isa = PBXGroup;
+			children = (
+				1B8C82B825AF1F3400197D3E /* Components */,
+				1B8C82B925AF1F4400197D3E /* Screens */,
+				1B155F36256C073E00019C2F /* Storyboards */,
+				1B8C82BD25AF21B200197D3E /* Preview Content */,
+			);
+			path = UI;
+			sourceTree = "<group>";
+		};
+		1B8C82B825AF1F3400197D3E /* Components */ = {
+			isa = PBXGroup;
+			children = (
+				1B765D6F25A723BA00105940 /* Picker */,
+				1B765D6B25A7226A00105940 /* SheetView */,
+				1B765D6825A7223700105940 /* Button */,
+				1B765D6525A7221B00105940 /* TextField */,
+				1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */,
+				1B155F52256C471D00019C2F /* CheckboxFieldView.swift */,
+				1B68131825745DEE00B54977 /* ADV.swift */,
+				1B68131B2574602D00B54977 /* Plug.swift */,
+				1B68132425746E4B00B54977 /* MapGameView.swift */,
+				1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */,
+			);
+			path = Components;
+			sourceTree = "<group>";
+		};
+		1B8C82B925AF1F4400197D3E /* Screens */ = {
+			isa = PBXGroup;
+			children = (
+				1B155F39256C078500019C2F /* SignIn&Auth */,
+				1B78CCEB256DC2C200297221 /* TabViewApp.swift */,
+				1B7970E5256DC9FD006DAFC0 /* MainView */,
+				1B24DEF825802A6300510132 /* Create game */,
+			);
+			path = Screens;
+			sourceTree = "<group>";
+		};
+		1B8C82BA25AF1F5F00197D3E /* Utilities */ = {
+			isa = PBXGroup;
+			children = (
+				1B78CCBE256DAA8B00297221 /* Extensions */,
+				1B6A0902257041330001861F /* Size.swift */,
+				1BB6FEE425A8E8A00040843C /* GetDateStringFromDate.swift */,
+			);
+			path = Utilities;
+			sourceTree = "<group>";
+		};
+		1B8C82BD25AF21B200197D3E /* Preview Content */ = {
+			isa = PBXGroup;
+			children = (
+				1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */,
+			);
+			path = "Preview Content";
+			sourceTree = "<group>";
+		};
 		1BA208AC25A774F1005B4D0C /* StepThree */ = {
 			isa = PBXGroup;
 			children = (
@@ -601,17 +671,6 @@
 			path = Cell;
 			sourceTree = "<group>";
 		};
-		1BF3664625A783A100B196EE /* View */ = {
-			isa = PBXGroup;
-			children = (
-				1B155F39256C078500019C2F /* SignIn&Auth */,
-				1B78CCEB256DC2C200297221 /* TabViewApp.swift */,
-				1B7970E5256DC9FD006DAFC0 /* MainView */,
-				1B24DEF825802A6300510132 /* Create game */,
-			);
-			path = View;
-			sourceTree = "<group>";
-		};
 /* End PBXGroup section */
 
 /* Begin PBXNativeTarget section */
@@ -671,6 +730,7 @@
 			files = (
 				1B78CCD6256DBA0600297221 /* Roboto-Thin.ttf in Resources */,
 				1B78CCD8256DBA0600297221 /* Roboto-Bold.ttf in Resources */,
+				1B8C82BF25AF21B200197D3E /* Preview Assets.xcassets in Resources */,
 				1B78CCDE256DBA0600297221 /* Roboto-Light.ttf in Resources */,
 				1B155F13256C06D200019C2F /* LaunchScreen.storyboard in Resources */,
 				1B155F10256C06D200019C2F /* Preview Assets.xcassets in Resources */,
@@ -910,10 +970,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20;
-				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Start.Football/App/Supporting files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Start.Football/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
@@ -934,10 +994,10 @@
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
 				CURRENT_PROJECT_VERSION = 20;
-				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/Preview Content\"";
+				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
-				INFOPLIST_FILE = "$(SRCROOT)/Start.Football/App/Supporting files/Info.plist";
+				INFOPLIST_FILE = "$(SRCROOT)/Start.Football/Resources/Info.plist";
 				IPHONEOS_DEPLOYMENT_TARGET = 13.0;
 				LD_RUNPATH_SEARCH_PATHS = (
 					"$(inherited)",
