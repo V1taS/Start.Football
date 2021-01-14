@@ -8,7 +8,6 @@
 import SwiftUI
 
 struct PageView: View {
-    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!

@@ -1,5 +1,5 @@
 //
-//  ContentView.swift
+//  AuthView.swift
 //  Start.Football
 //
 //  Created by Виталий Сосин on 23.11.2020.
@@ -11,7 +11,6 @@ struct AuthView: View {
     
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
-    
     @ObservedObject var viewModel = AuthViewModel()
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -121,7 +120,7 @@ struct AuthView: View {
     }
 }
 
-struct ContentView_Previews: PreviewProvider {
+struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
         AuthView()
     }

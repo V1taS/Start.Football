@@ -14,24 +14,14 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        if UserDefaults.standard.bool(forKey: "tabViewApp") {
-            let contentView = AuthView()
-            // Use a UIHostingController as window root view controller.
-            if let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: contentView)
-                self.window = window
-                window.makeKeyAndVisible()
-            }
-        } else {
-            let contentView = PageView()
-            // Use a UIHostingController as window root view controller.
-            if let windowScene = scene as? UIWindowScene {
-                let window = UIWindow(windowScene: windowScene)
-                window.rootViewController = UIHostingController(rootView: contentView)
-                self.window = window
-                window.makeKeyAndVisible()
-            }
+        _ = AppEnvironment.bootstrap()
+        
+        let contentView = ContentView()
+        if let windowScene = scene as? UIWindowScene {
+            let window = UIWindow(windowScene: windowScene)
+            window.rootViewController = UIHostingController(rootView: contentView)
+            self.window = window
+            window.makeKeyAndVisible()
         }
     }
     

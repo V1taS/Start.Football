@@ -8,19 +8,6 @@
 import SwiftUI
 import Combine
 
-enum SelectionCreateGame {
-    case stepOne
-    case stepTwo
-    case stepThree
-    case stepFour
-    case stepFive
-}
-
-enum SelectionRegularGame {
-    case yes
-    case no
-}
-
 protocol CreateGameViewModelProtocol {
     var selectionCreateGame: SelectionCreateGame { get }
     var progressValue: Float { get }

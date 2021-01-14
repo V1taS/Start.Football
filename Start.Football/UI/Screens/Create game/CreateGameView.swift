@@ -6,13 +6,20 @@
 //
 
 import SwiftUI
+import Combine
 
 struct CreateGameView: View {
-    
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
+    @State private var routingState: AppState.AppData.CreateGame = .init()
+    private var routingBinding: Binding<AppState.AppData.CreateGame> {
+        $routingState.dispatched(to: injected.appState, \.appData.createGame)
+    }
     @ObservedObject var viewModel = CreateGameViewModel()
+    
+    
+    @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
         ZStack {
@@ -22,16 +29,7 @@ struct CreateGameView: View {
                 
                 Group {
                     if viewModel.selectionCreateGame == .stepOne {
-                        CreateGameStepOne(nameGame: $viewModel.nameGame,
-                                          addressGame: $viewModel.addressGame,
-                                          participationCost: $viewModel.participationCost,
-                                          currentDate: $viewModel.currentDate,
-                                          showTimePicker: $viewModel.showTimePicker,
-                                          showDatePicker: $viewModel.showDatePicker,
-                                          oneTime: $viewModel.oneTime,
-                                          oneTimeTextHasBeenChanged: $viewModel.oneTimeTextHasBeenChanged,
-                                          oneDay: $viewModel.oneDay,
-                                          oneDayTextHasBeenChanged: $viewModel.oneDayTextHasBeenChanged)
+                        CreateGameStepOne()
                     }
                     
                     else if viewModel.selectionCreateGame == .stepTwo {
@@ -60,5 +58,14 @@ struct CreateGameView: View {
 struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
         CreateGameView()
+    }
+}
+
+// MARK: - Side Effects
+
+private extension CreateGameView {
+    func refreshProgressBar() {
+        injected.interactors.createGameInteractor
+            .refreshProgressBar(step: routingState.selectionCreateGame)
     }
 }
