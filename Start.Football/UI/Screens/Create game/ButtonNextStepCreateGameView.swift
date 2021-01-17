@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct ButtonNextStepCreateGameView: View {
-    @Binding var selectionCreateGame: SelectionCreateGame
+    @Binding var selectionCreateGame: AppActions.CreateGame.SelectionStep
     
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth

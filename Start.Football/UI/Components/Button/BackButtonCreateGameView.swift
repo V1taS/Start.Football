@@ -10,31 +10,49 @@ import SwiftUI
 struct BackButtonCreateGameView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
-    @Binding var selectionCreateGame: SelectionCreateGame
+    @Binding var appBinding: AppState.AppData.CreateGame
+    @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
         Button(action: {
-            switch selectionCreateGame {
-            case .stepOne:
-                return
-            case .stepTwo:
-                selectionCreateGame = .stepOne
-            case .stepThree:
-                selectionCreateGame = .stepTwo
-            case .stepFour:
-                selectionCreateGame = .stepThree
-            case .stepFive:
-                selectionCreateGame = .stepFour
-            }
+            backStepProgressBar()
+            refreshProgressBar()
         }) {
-            Image("backCreateGame").opacity(selectionCreateGame == .stepOne ? 0 : 1)
+            Image("backCreateGame").opacity(appBinding.selectionCreateGame == .stepOne ? 0 : 1)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 6))
         }
     }
 }
 
+private extension BackButtonCreateGameView {
+    func backStepProgressBar() {
+        injected.interactors.createGameInteractor
+            .backStepProgressBar(state: $appBinding)
+    }
+}
+
+private extension BackButtonCreateGameView {
+    func refreshProgressBar() {
+        injected.interactors.createGameInteractor
+            .refreshProgressBar(state: $appBinding)
+    }
+}
+
+
 struct BackButtonCreateGameView_Previews: PreviewProvider {
     static var previews: some View {
-        BackButtonCreateGameView(selectionCreateGame: .constant(.stepOne))
+        BackButtonCreateGameView(appBinding: .constant(.init(
+                                                        selectionCreateGame: .stepTwo,
+                                                        progressValue: 0.25,
+                                                        nameGame: "Игра",
+                                                        addressGame: "Khimki",
+                                                        participationCost: "23",
+                                                        currentDate: Date(),
+                                                        showTimePicker: false,
+                                                        showDatePicker: false,
+                                                        oneTime: "",
+                                                        oneTimeTextHasBeenChanged: false,
+                                                        oneDay: "",
+                                                        oneDayTextHasBeenChanged: false)))
     }
 }

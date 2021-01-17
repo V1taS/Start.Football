@@ -8,58 +8,10 @@
 import SwiftUI
 import Combine
 
-protocol CreateGameViewModelProtocol {
-    var selectionCreateGame: SelectionCreateGame { get }
-    var progressValue: Float { get }
-    
-    // Step 1
-    var nameGame: String { get }
-    var addressGame: String { get }
-    var participationCost: String { get }
-    var currentDate: Date { get }
-    var showTimePicker: Bool { get }
-    var showDatePicker: Bool { get }
-    var oneTime: String { get }
-    var oneTimeTextHasBeenChanged: Bool { get }
-    var oneDay: String { get }
-    var oneDayTextHasBeenChanged: Bool { get }
-    
-    // Step 2
-    var regularDate: [Date] { get }
-    var selectionRegularGame: SelectionRegularGame { get }
-    var regularTimePicker: Bool { get }
-    
-    var regularTime: String { get }
-    var timeTextHasBeenChanged: Bool { get }
-    
-    var mo: Bool { get }
-    var tu: Bool { get }
-    var we: Bool { get }
-    var th: Bool { get }
-    var fr: Bool { get }
-    var sa: Bool { get }
-    var su: Bool { get }
-}
-
-class CreateGameViewModel: CreateGameViewModelProtocol, ObservableObject {
+class CreateGameViewModel: ObservableObject {
     
     // MARK: - Шкала прогресса действий
-    @Published var selectionCreateGame: SelectionCreateGame = .stepOne {
-        didSet {
-            switch selectionCreateGame {
-            case .stepOne:
-                progressValue = 0.0
-            case .stepTwo:
-                progressValue = 0.25
-            case .stepThree:
-                progressValue = 0.50
-            case .stepFour:
-                progressValue = 0.75
-            case .stepFive:
-                progressValue = 1.0
-            }
-        }
-    }
+    @Published var selectionCreateGame: AppActions.CreateGame.SelectionStep = .stepOne
     @Published var progressValue: Float = 0.0
     
     // MARK: - Step 1
@@ -109,7 +61,7 @@ class CreateGameViewModel: CreateGameViewModelProtocol, ObservableObject {
             regularTime = GetDateStringFromDate.shared.getTimeString(date: currentDate)
         }
     }
-    @Published var selectionRegularGame: SelectionRegularGame = .no
+    @Published var selectionRegularGame: AppActions.CreateGame.SelectionRegularGame = .no
     @Published var regularTimePicker: Bool = false
     
     @Published var regularTime = "Укажите время" {

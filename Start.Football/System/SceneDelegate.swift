@@ -1,7 +1,7 @@
 //
 //  SceneDelegate.swift
 //  Start.Football
-//
+///Users/v1tas/Desktop/Temporary documents/Разработка/Start.Football/Start.Football/System/AppDelegate.swift
 //  Created by Виталий Сосин on 23.11.2020.
 //
 
@@ -14,12 +14,10 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
     
     func scene(_ scene: UIScene, willConnectTo session: UISceneSession, options connectionOptions: UIScene.ConnectionOptions) {
         
-        _ = AppEnvironment.bootstrap()
-        
         let contentView = ContentView()
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
-            window.rootViewController = UIHostingController(rootView: contentView)
+            window.rootViewController = UIHostingController( rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
         }

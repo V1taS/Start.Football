@@ -9,63 +9,85 @@ import SwiftUI
 import Combine
 
 struct CreateGameView: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    @State private var routingState: AppState.AppData.CreateGame = .init()
-    private var routingBinding: Binding<AppState.AppData.CreateGame> {
-        $routingState.dispatched(to: injected.appState, \.appData.createGame)
+    @State private var appState: AppState.AppData.CreateGame = .init()
+    private var appBinding: Binding<AppState.AppData.CreateGame> {
+        $appState.dispatched(to: injected.appState, \.appData.createGame)
     }
-    @ObservedObject var viewModel = CreateGameViewModel()
-    
-    
     @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                HeaderCreateGameView(selectionCreateGame: $viewModel.selectionCreateGame,
-                                     progressValue: $viewModel.progressValue)
-                
-                Group {
-                    if viewModel.selectionCreateGame == .stepOne {
-                        CreateGameStepOne()
-                    }
-                    
-                    else if viewModel.selectionCreateGame == .stepTwo {
-                        CreateGameStepTwo()
-                    }
-                    
-                    else if viewModel.selectionCreateGame == .stepThree {
-                        CreateGameStepThree()
-                    }
-                    else if viewModel.selectionCreateGame == .stepFour {
-                        CreateGameStepFour()
-                    }
-                    
-                    else if viewModel.selectionCreateGame == .stepFive {
-                        CreateGameStepFive()
-                    }
-                }
+                header
+                content
                 Spacer()
-                ButtonNextStepCreateGameView(selectionCreateGame: $viewModel.selectionCreateGame)
-                    .padding(.horizontal, 24)
+                buttonNextStep
             }
-        } .dismissingKeyboard()
+        }
+        .dismissingKeyboard()
+    }
+}
+
+// MARK: - View Header
+private extension CreateGameView {
+    private var header: AnyView {
+        AnyView(HeaderCreateGameView(appBinding: appBinding))
+    }
+}
+
+// MARK: - View Сontent
+private extension CreateGameView {
+    private var content: AnyView {
+        switch appState.selectionCreateGame {
+        case .stepOne:
+            return AnyView(CreateGameStepOne(appBinding: appBinding))
+        case .stepTwo:
+            return AnyView(CreateGameStepTwo(appBinding: appBinding))
+        case .stepThree:
+            return AnyView(CreateGameStepThree())
+        case .stepFour:
+            return AnyView(CreateGameStepFour())
+        case .stepFive:
+            return AnyView(CreateGameStepFive())
+        }
+    }
+}
+
+// MARK: - View Button
+private extension CreateGameView {
+    var buttonNextStep: some View {
+        Button(action: {
+            nextStepProgressBar()
+            refreshProgressBar()
+        }) {
+            ButtonView(background: .primaryColor,
+                       textColor: .whiteColor,
+                       borderColor: .primaryColor,
+                       text: appState.selectionCreateGame ==
+                        .stepFive ? "Создать игру" : "Следующий шаг")
+        }
+        .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
+        .padding(.horizontal, 24)
+    }
+}
+
+// MARK: - Injected Interactors
+private extension CreateGameView {
+    func nextStepProgressBar() {
+        injected.interactors.createGameInteractor
+            .nextStepProgressBar(state: appBinding)
+    }
+}
+
+private extension CreateGameView {
+    func refreshProgressBar() {
+        injected.interactors.createGameInteractor
+            .refreshProgressBar(state: appBinding)
     }
 }
 
 struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
         CreateGameView()
-    }
-}
-
-// MARK: - Side Effects
-
-private extension CreateGameView {
-    func refreshProgressBar() {
-        injected.interactors.createGameInteractor
-            .refreshProgressBar(step: routingState.selectionCreateGame)
     }
 }

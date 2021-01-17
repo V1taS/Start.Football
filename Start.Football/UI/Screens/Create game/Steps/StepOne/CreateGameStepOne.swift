@@ -10,11 +10,7 @@ import Combine
 
 struct CreateGameStepOne: View {
     
-    @State private var routingState: AppState.AppData.CreateGame = .init()
-    private var routingBinding: Binding<AppState.AppData.CreateGame> {
-        $routingState.dispatched(to: injected.appState, \.appData.createGame)
-    }
-    @Environment(\.injected) private var injected: DIContainer
+    var appBinding: Binding<AppState.AppData.CreateGame>
     
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
@@ -24,7 +20,7 @@ struct CreateGameStepOne: View {
             VStack(spacing: 0) {
                 VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 32)) {
                     
-                    TextfieldOneLineView(text: $routingState.nameGame,
+                    TextfieldOneLineView(text: appBinding.nameGame,
                                          title: "Название",
                                          icon: "",
                                          iconShow: false,
@@ -32,30 +28,30 @@ struct CreateGameStepOne: View {
                                          keyboardType: .default)
                     
                     
-                    TextfieldOneLineView(text: $routingState.addressGame,
+                    TextfieldOneLineView(text: appBinding.addressGame,
                                          title: "Адрес",
                                          icon: "locationCreateGame",
                                          iconShow: true,
                                          placeholder: "Укажите адрес",
                                          keyboardType: .default)
                     
-                    Button(action: { routingState.showTimePicker.toggle() }) {
-                        NoTextfieldOneLineView(text: routingState.oneTime,
+                    Button(action: { appBinding.showTimePicker.wrappedValue.toggle() }) {
+                        NoTextfieldOneLineView(text: appBinding.oneTime.wrappedValue,
                                                header: "Время",
                                                iconShow: true,
                                                icon: "timeGreateGame",
-                                               textHasBeenChanged: routingState.oneTimeTextHasBeenChanged)
+                                               textHasBeenChanged: appBinding.oneTimeTextHasBeenChanged.wrappedValue)
                     }
                     
-                    Button(action: { routingState.showDatePicker.toggle() }) {
-                        NoTextfieldOneLineView(text: routingState.oneDay,
+                    Button(action: { appBinding.showDatePicker.wrappedValue.toggle() }) {
+                        NoTextfieldOneLineView(text: appBinding.oneDay.wrappedValue,
                                                header: "Дата игры",
                                                iconShow: true,
                                                icon: "dateCreateGame",
-                                               textHasBeenChanged: routingState.oneDayTextHasBeenChanged)
+                                               textHasBeenChanged: appBinding.oneDayTextHasBeenChanged.wrappedValue)
                     }
                     
-                    TextfieldOneLineView(text: $routingState.participationCost,
+                    TextfieldOneLineView(text: appBinding.participationCost,
                                          title: "Стоимость участия одного игрока",
                                          icon: "rublsCreateGame",
                                          iconShow: true,
@@ -76,22 +72,33 @@ struct CreateGameStepOne: View {
             .padding(.horizontal, 24)
             .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
 
-            TimePickerSheet(isSheetActive: $routingState.showTimePicker,
-                            currentDate: $routingState.currentDate)
+            TimePickerSheet(isSheetActive: appBinding.showTimePicker,
+                            currentDate: appBinding.currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
-            DatePickerSheet(isSheetActive: $routingState.showDatePicker,
-                            currentDate: $routingState.currentDate)
+            DatePickerSheet(isSheetActive: appBinding.showDatePicker,
+                            currentDate: appBinding.currentDate)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 170))
             
         } .dismissingKeyboard()
-        
     }
 }
 
 
 struct CreateGameStepOne_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepOne()
+        CreateGameStepOne(appBinding: .constant(.init(
+                                                    selectionCreateGame: .stepTwo,
+                                                    progressValue: 0.25,
+                                                    nameGame: "Игра",
+                                                    addressGame: "Khimki",
+                                                    participationCost: "23",
+                                                    currentDate: Date(),
+                                                    showTimePicker: false,
+                                                    showDatePicker: false,
+                                                    oneTime: "",
+                                                    oneTimeTextHasBeenChanged: false,
+                                                    oneDay: "",
+                                                    oneDayTextHasBeenChanged: false)))
     }
 }
