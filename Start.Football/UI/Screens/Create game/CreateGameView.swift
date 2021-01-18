@@ -23,19 +23,22 @@ struct CreateGameView: View {
                 Spacer()
                 buttonNextStep
             }
+            timePicker
+            datePicker
+            typeOfParking
         }
         .dismissingKeyboard()
     }
 }
 
-// MARK: - View Header
+// MARK: - Header
 private extension CreateGameView {
     private var header: AnyView {
         AnyView(HeaderCreateGameView(appBinding: appBinding))
     }
 }
 
-// MARK: - View Сontent
+// MARK: - Сontent
 private extension CreateGameView {
     private var content: AnyView {
         switch appState.selectionCreateGame {
@@ -53,7 +56,7 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - View Button
+// MARK: - Button Next Step
 private extension CreateGameView {
     var buttonNextStep: some View {
         Button(action: {
@@ -68,6 +71,30 @@ private extension CreateGameView {
         }
         .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
         .padding(.horizontal, 24)
+    }
+}
+
+// MARK: - Time picker
+private extension CreateGameView {
+    var timePicker: some View {
+        TimePickerSheet(appBinding: appBinding)
+            .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 230))
+    }
+}
+
+// MARK: - Date picker
+private extension CreateGameView {
+    var datePicker: some View {
+        DatePickerSheet(appBinding: appBinding)
+            .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 230))
+    }
+}
+
+// MARK: - Type of parking
+private extension CreateGameView {
+    var typeOfParking: some View {
+        TypeOfParkingSheet(appBinding: appBinding)
+            .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 85))
     }
 }
 

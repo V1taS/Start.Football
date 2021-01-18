@@ -23,6 +23,15 @@ protocol StepThreeCreateGameInteractor {
     func selectSynthetics(state: Binding<AppState.AppData.CreateGame>)
     func selectHair(state: Binding<AppState.AppData.CreateGame>)
     func selectCrumb(state: Binding<AppState.AppData.CreateGame>)
+    
+    func paidCity(state: Binding<AppState.AppData.CreateGame>)
+    func paidOnTheTerritory(state: Binding<AppState.AppData.CreateGame>)
+    func freeOnTheTerritory(state: Binding<AppState.AppData.CreateGame>)
+    func freeCity(state: Binding<AppState.AppData.CreateGame>)
+    
+    func oneTime(state: Binding<AppState.AppData.CreateGame>)
+    func inAnHour(state: Binding<AppState.AppData.CreateGame>)
+    func non(state: Binding<AppState.AppData.CreateGame>)
 }
 
 // MARK: Type Game
@@ -106,5 +115,35 @@ extension CreateGameInteractorImpl {
         state.synthetics.wrappedValue = false
         state.hair.wrappedValue = false
         state.crumb.wrappedValue = true
+    }
+    
+    // MARK: Type of parking
+    func paidCity(state: Binding<AppState.AppData.CreateGame>) {
+        state.typeOfParking.wrappedValue = .paidCity
+    }
+    
+    func paidOnTheTerritory(state: Binding<AppState.AppData.CreateGame>) {
+        state.typeOfParking.wrappedValue = .paidOnTheTerritory
+    }
+    
+    func freeOnTheTerritory(state: Binding<AppState.AppData.CreateGame>) {
+        state.typeOfParking.wrappedValue = .freeOnTheTerritory
+    }
+    
+    func freeCity(state: Binding<AppState.AppData.CreateGame>) {
+        state.typeOfParking.wrappedValue = .freeCity
+    }
+    
+    // MARK: Payment for parking
+    func oneTime(state: Binding<AppState.AppData.CreateGame>) {
+        state.paymentForParking.wrappedValue = .oneTime
+    }
+    
+    func inAnHour(state: Binding<AppState.AppData.CreateGame>) {
+        state.paymentForParking.wrappedValue = .inAnHour
+    }
+    
+    func non(state: Binding<AppState.AppData.CreateGame>) {
+        state.paymentForParking.wrappedValue = .non
     }
 }

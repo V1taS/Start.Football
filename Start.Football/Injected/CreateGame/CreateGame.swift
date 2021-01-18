@@ -72,8 +72,13 @@ extension AppState.AppData {
         // MARK: Приватность
         var privacyGame: AppActions.CreateGame.PrivacyGame = .open
         
+        // MARK: Удобства
         var dressingRooms: Bool = false
         var showers: Bool = false
-        var showParkingView: Bool = false
+        
+        // MARK: Парковка
+        var showParking: Bool = false
+        var typeOfParking: AppActions.CreateGame.TypeOfParking = .freeCity
+        var paymentForParking: AppActions.CreateGame.PaymentForParking = .non
     }
 }

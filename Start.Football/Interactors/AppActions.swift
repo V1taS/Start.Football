@@ -31,38 +31,17 @@ extension AppActions {
             case close
         }
         
-        enum SelectTypeGame {
-            case miniFootball
-            case football
-            case footsal
+        enum TypeOfParking {
+            case paidCity
+            case paidOnTheTerritory
+            case freeOnTheTerritory
+            case freeCity
         }
         
-        enum SelectPlacePlay {
-            case street
-            case manege
-            case hall
-        }
-        
-        enum SelectTypeField {
-            case parquet
-            case grass
-            case caoutchouc
-        }
-        
-        enum SelectCoatingProperties {
-            case synthetics
-            case hair
-            case crumb
-        }
-        
-        enum SelectDayOfWeek {
-            case mo
-            case tu
-            case we
-            case th
-            case fr
-            case sa
-            case su
+        enum PaymentForParking {
+            case oneTime
+            case inAnHour
+            case non
         }
     }
 }

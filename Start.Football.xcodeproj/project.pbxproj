@@ -337,14 +337,6 @@
 			path = AuthView;
 			sourceTree = "<group>";
 		};
-		1B23561525A7989F00E33DA8 /* StepOne */ = {
-			isa = PBXGroup;
-			children = (
-				1B765D8025A7488500105940 /* CreateGameStepOne.swift */,
-			);
-			path = StepOne;
-			sourceTree = "<group>";
-		};
 		1B24DEF825802A6300510132 /* Create game */ = {
 			isa = PBXGroup;
 			children = (
@@ -362,14 +354,6 @@
 				1B2D84B125B503450068693B /* CreateGame.swift */,
 			);
 			path = CreateGame;
-			sourceTree = "<group>";
-		};
-		1B4B65FE25A8C23400801E12 /* StepTwo */ = {
-			isa = PBXGroup;
-			children = (
-				1B765D8425A7489A00105940 /* CreateGameStepTwo.swift */,
-			);
-			path = StepTwo;
 			sourceTree = "<group>";
 		};
 		1B6BD01325B5B167008DAD8B /* CreateGameInteractor */ = {
@@ -439,8 +423,8 @@
 		1B765D7F25A7485200105940 /* Steps */ = {
 			isa = PBXGroup;
 			children = (
-				1B23561525A7989F00E33DA8 /* StepOne */,
-				1B4B65FE25A8C23400801E12 /* StepTwo */,
+				1B765D8025A7488500105940 /* CreateGameStepOne.swift */,
+				1B765D8425A7489A00105940 /* CreateGameStepTwo.swift */,
 				1BA208AC25A774F1005B4D0C /* StepThree */,
 				1B765D8A25A748BE00105940 /* CreateGameStepFour.swift */,
 				1B765D8D25A748CC00105940 /* CreateGameStepFive.swift */,

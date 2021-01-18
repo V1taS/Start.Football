@@ -16,71 +16,28 @@ struct CreateGameStepThree: View {
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 16) {
-                    
-                    gameType
-                    
                     Group {
-                        FormatGameTextField(firstValue: appBinding.firstValue,
-                                            secondValue: appBinding.secondValue)
-                        
-                        BoxSliderCreateGame(maxCountTeams: appBinding.maxCountTeams,
-                                            maxCountPlayers: appBinding.maxCountPlayers,
-                                            maxReservePlayers: appBinding.maxReservePlayers)
-                        
-                        BoxPrivacyCreateGame(privacyGame: appBinding.privacyGame)
+                        gameType
+                        formatGameTextField
+                        boxSliderCreateGame
+                        boxPrivacyCreateGame
                     }
-                    
                     Divider()
-                    
-                    Text("Дополнительная информация")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoMedium20)
-                    
                     Group {
-                        Text("Где играть")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoRegular14)
+                        Text("Дополнительная информация")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoMedium20)
                         
                         placeType
-                    }
-                    
-                    Group {
-                        Text("Тип покрытия")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoRegular14)
-                        
                         fieldType
                         coatingProperties
+                        infrastructure
+                        ButtonParking(showParkingView: appBinding.showParking)
                     }
-                    
-                    Group {
-                        Text("Инфраструктура")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoRegular14)
-                        
-                        HStack {
-                            Button(action: {
-                                appBinding.dressingRooms.wrappedValue.toggle()
-                            }) {
-                                TextButtonRound(name: "Раздевалки",
-                                                isOn: appBinding.dressingRooms.wrappedValue)
-                            }
-                            
-                            Button(action: {
-                                appBinding.showers.wrappedValue.toggle()
-                            }) {
-                                TextButtonRound(name: "Душевые",
-                                                isOn: appBinding.showers.wrappedValue)
-                            }
-
-                        }
-                    }
-                    ButtonParking(showParkingView: appBinding.showParkingView)
                 }
             }
             .padding(.horizontal, 24)
             .padding(.top, 32)
-            TypeOfParkingSheet(isSheetActive: appBinding.showParkingView)
         }
         .dismissingKeyboard()
     }
@@ -123,26 +80,32 @@ private extension CreateGameStepThree {
 private extension CreateGameStepThree {
     private var placeType: AnyView {
         AnyView(
-            HStack {
-                Button(action: {
-                    selectStreet()
-                }) {
-                    TextButtonRound(name: "Улица",
-                                    isOn: appBinding.street.wrappedValue)
-                }
+            Group {
+                Text("Где играть")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
                 
-                Button(action: {
-                    selectManege()
-                }) {
-                    TextButtonRound(name: "Манеж",
-                                    isOn: appBinding.manege.wrappedValue)
-                }
-                
-                Button(action: {
-                    selectHall()
-                }) {
-                    TextButtonRound(name: "Зал",
-                                    isOn: appBinding.hall.wrappedValue)
+                HStack {
+                    Button(action: {
+                        selectStreet()
+                    }) {
+                        TextButtonRound(name: "Улица",
+                                        isOn: appBinding.street.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectManege()
+                    }) {
+                        TextButtonRound(name: "Манеж",
+                                        isOn: appBinding.manege.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectHall()
+                    }) {
+                        TextButtonRound(name: "Зал",
+                                        isOn: appBinding.hall.wrappedValue)
+                    }
                 }
             }
         )
@@ -152,27 +115,33 @@ private extension CreateGameStepThree {
 private extension CreateGameStepThree {
     private var fieldType: AnyView {
         AnyView(
-            HStack {
+            Group {
+                Text("Тип покрытия")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
                 
-                Button(action: {
-                    selectParquet()
-                }) {
-                    TextButtonRound(name: "Паркет",
-                                    isOn: appBinding.parquet.wrappedValue)
-                }
-                
-                Button(action: {
-                    selectGrass()
-                }) {
-                    TextButtonRound(name: "Газон",
-                                    isOn: appBinding.grass.wrappedValue)
-                }
-                
-                Button(action: {
-                    selectCaoutchouc()
-                }) {
-                    TextButtonRound(name: "Резина",
-                                    isOn: appBinding.caoutchouc.wrappedValue)
+                HStack {
+                    
+                    Button(action: {
+                        selectParquet()
+                    }) {
+                        TextButtonRound(name: "Паркет",
+                                        isOn: appBinding.parquet.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectGrass()
+                    }) {
+                        TextButtonRound(name: "Газон",
+                                        isOn: appBinding.grass.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectCaoutchouc()
+                    }) {
+                        TextButtonRound(name: "Резина",
+                                        isOn: appBinding.caoutchouc.wrappedValue)
+                    }
                 }
             }
         )
@@ -205,6 +174,62 @@ private extension CreateGameStepThree {
                         TextButtonRound(name: "Крошка",
                                         isOn: appBinding.crumb.wrappedValue)
                     }
+                }
+            }
+        )
+    }
+}
+
+private extension CreateGameStepThree {
+    private var formatGameTextField: AnyView {
+        AnyView(
+            FormatGameTextField(firstValue: appBinding.firstValue,
+                                secondValue: appBinding.secondValue)
+        )
+    }
+}
+
+private extension CreateGameStepThree {
+    private var boxSliderCreateGame: AnyView {
+        AnyView(
+            BoxSliderCreateGame(maxCountTeams: appBinding.maxCountTeams,
+                                maxCountPlayers: appBinding.maxCountPlayers,
+                                maxReservePlayers: appBinding.maxReservePlayers)
+        )
+    }
+}
+
+private extension CreateGameStepThree {
+    private var boxPrivacyCreateGame: AnyView {
+        AnyView(
+            BoxPrivacyCreateGame(privacyGame: appBinding.privacyGame)
+        )
+    }
+}
+
+private extension CreateGameStepThree {
+    private var infrastructure: AnyView {
+        AnyView(
+            Group {
+                Text("Инфраструктура")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
+                
+                HStack {
+                    Button(action: {
+                        appBinding.dressingRooms.wrappedValue.toggle()
+                    }) {
+                        TextButtonRound(name: "Раздевалки",
+                                        isOn: appBinding.dressingRooms.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        appBinding.showers.wrappedValue.toggle()
+                    }) {
+                        TextButtonRound(name: "Душевые",
+                                        isOn: appBinding.showers.wrappedValue)
+                    }
+                    
                 }
             }
         )

@@ -20,25 +20,28 @@ struct TextfieldOneLineView: View {
     let keyboardType: UIKeyboardType
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text(title)
-                .foregroundColor(.defaultColor)
-                .font(Font.event.robotoRegular14)
-                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
-            
-            HStack {
-                TextField(placeholder, text: $text)
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular18)
-                    .keyboardType(keyboardType)
-                if iconShow {
-                    Image(icon)
-                }
-            } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 8))
-            
-            Color(.dividerColor)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 2))
+        VStack(spacing: 0) {
+            VStack(alignment: .leading, spacing: 0) {
+                Text(title)
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
+                    .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
+                
+                HStack {
+                    TextField(placeholder, text: $text)
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular18)
+                        .keyboardType(keyboardType)
+                    if iconShow {
+                        Image(icon)
+                    }
+                } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 8))
+            }
+            VStack(alignment: .leading, spacing: 0) {
+                Color(.dividerColor)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
+                           height: height * Size.shared.getAdaptSizeHeight(px: 2))
+            }
         }
     }
 }

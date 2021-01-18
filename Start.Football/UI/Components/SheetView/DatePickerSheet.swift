@@ -8,18 +8,17 @@
 import SwiftUI
 
 struct DatePickerSheet: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
-    @Binding var isSheetActive: Bool
-    @Binding var currentDate: Date
+    var appBinding: Binding<AppState.AppData.CreateGame>
+    @Environment(\.injected) private var injected: DIContainer
+
     let animation = Animation.interpolatingSpring(stiffness: 100,
                                                   damping: 30,
                                                   initialVelocity: 10)
     
     @State var viewState = CGSize.zero
     var isExpanded: Bool {
-        isSheetActive
+        appBinding.showDatePicker.wrappedValue
     }
     
     var body: some View {
@@ -38,20 +37,30 @@ struct DatePickerSheet: View {
                 }
             }
             
-            if isSheetActive {
+            if appBinding.showDatePicker.wrappedValue{
                 VStack(spacing: 0) {
                     Color(.shotDividerColor)
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 48),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 5))
+                        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 48),
+                               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 5))
                         .overlay(RoundedRectangle(cornerRadius: 20)
                                     .stroke(Color(.shotDividerColor)))
-                        .offset(y: -40)
+                        .offset(y: -15)
                     
                     
                     VStack(alignment: .leading) {
-                        DatePickerView(currentDate: $currentDate)
+                        DatePickerView(currentDate: appBinding.currentDate)
+                        Button(action: {
+                            injected.interactors.createGameInteractor.showDayInTextfield(state: appBinding)
+                            self.collapse()
+                        }) {
+                            ButtonView(background: .primaryColor,
+                                       textColor: .whiteColor,
+                                       borderColor: .primaryColor,
+                                       text: "Применить")
+                                .scaleEffect(0.7)
+                        }
                     }
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+                    .padding(.top, 16)
                     
 
                 }
@@ -72,7 +81,7 @@ struct DatePickerSheet: View {
             .onEnded(onDragEnded)
         )
         .animation(animation)
-        .frame(width: width - 10, height: height * Size.shared.getAdaptSizeHeight(px: 200))
+        .frame(width: UIScreen.screenWidth - 40, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 200))
     }
     
     func onDragEnded(drag: DragGesture.Value) {
@@ -98,17 +107,28 @@ struct DatePickerSheet: View {
     }
     
     func collapse() {
-        self.isSheetActive = false
+        self.appBinding.showDatePicker.wrappedValue = false
     }
     
     func expand() {
-        self.isSheetActive = false
+        self.appBinding.showDatePicker.wrappedValue = false
     }
 }
 
 struct DatePickerSheet_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerSheet(isSheetActive: .constant(true),
-                        currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(12))))
+        DatePickerSheet(appBinding: .constant(.init(
+                                                selectionCreateGame: .stepTwo,
+                                                progressValue: 0.25,
+                                                nameGame: "Игра",
+                                                addressGame: "Khimki",
+                                                participationCost: "23",
+                                                currentDate: Date(),
+                                                showTimePicker: false,
+                                                showDatePicker: true,
+                                                oneTime: "",
+                                                oneTimeTextHasBeenChanged: false,
+                                                oneDay: "",
+                                                oneDayTextHasBeenChanged: false)))
     }
 }
