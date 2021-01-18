@@ -26,6 +26,8 @@ extension AppState.AppData {
         
         // MARK: - Step 2
         var selectionRegularGame: AppActions.CreateGame.RegularGame = .no
+        
+        // MARK: Day Of Week
         var mo = false
         var tu = false
         var we = false
@@ -33,33 +35,42 @@ extension AppState.AppData {
         var fr = false
         var sa = false
         var su = false
-        var selectDayOfWeek: AppActions.CreateGame.SelectDayOfWeek = .mo
         var time = "Укажите время"
         var timeTextHasBeenChanged: Bool = false
         
         // MARK: - Step 3
-        var miniFootball = false
+        
+        // MARK: Type Game
+        var miniFootball = true
         var football = false
         var footsal = false
-        var street = false
+        
+        // MARK: Place Play
+        var street = true
         var manege = false
         var hall = false
+        
+        // MARK: Type Field
         var parquet = false
-        var grass = false
+        var grass = true
         var caoutchouc = false
+        
+        // MARK: Coating Properties
         var synthetics = false
         var hair = false
-        var crumb = false
-        var firstValue: String = ""
-        var secondValue: String = ""
-        var maxCountTeams: Double = 0
-        var maxCountPlayers: Double = 0
-        var maxReservePlayers: Double = 0
+        var crumb = true
+        
+        // MARK: Формат игры
+        var firstValue: String = "5"
+        var secondValue: String = "5"
+        
+        // MARK: Кол-во команд, игроков
+        var maxCountTeams: Double = 3
+        var maxCountPlayers: Double = 15
+        var maxReservePlayers: Double = 3
+        
+        // MARK: Приватность
         var privacyGame: AppActions.CreateGame.PrivacyGame = .open
-        var selectTypeGame: AppActions.CreateGame.SelectTypeGame = .miniFootball
-        var selectPlacePlay: AppActions.CreateGame.SelectPlacePlay = .street
-        var selectTypeField: AppActions.CreateGame.SelectTypeField = .grass
-        var selectCoatingProperties: AppActions.CreateGame.SelectCoatingProperties = .crumb
         
         var dressingRooms: Bool = false
         var showers: Bool = false
