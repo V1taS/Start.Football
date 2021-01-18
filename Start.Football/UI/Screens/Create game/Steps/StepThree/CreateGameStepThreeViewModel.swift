@@ -8,43 +8,7 @@
 import SwiftUI
 import Combine
 
-enum PrivacyGame {
-    case open
-    case close
-}
-
-protocol CreateGameStepThreeViewModelProtocol {
-    var height: CGFloat { get }
-    var width: CGFloat { get }
-    var firstValue: String { get }
-    var secondValue: String { get }
-    var maxCountTeams: Double { get }
-    var maxCountPlayers: Double { get }
-    var maxReservePlayers: Double { get }
-    var privacyGame: PrivacyGame { get }
-    var showParkingView: Bool { get }
-    
-    var miniFootball: Bool { get }
-    var football: Bool { get }
-    var footsal: Bool { get }
-    
-    var street: Bool { get }
-    var manege: Bool { get }
-    var hall: Bool { get }
-    
-    var parquet: Bool { get }
-    var grass: Bool { get }
-    var caoutchouc: Bool { get }
-    
-    var synthetics: Bool { get }
-    var hair: Bool { get }
-    var crumb: Bool { get }
-    
-    var dressingRooms: Bool { get }
-    var showers: Bool { get }
-}
-
-class CreateGameStepThreeViewModel: CreateGameStepThreeViewModelProtocol, ObservableObject {
+class CreateGameStepThreeViewModel: ObservableObject {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
@@ -84,7 +48,7 @@ class CreateGameStepThreeViewModel: CreateGameStepThreeViewModelProtocol, Observ
     @Published var maxReservePlayers: Double = 3
     
     // MARK: Приватность
-    @Published var privacyGame: PrivacyGame = .open
+    @Published var privacyGame: AppActions.CreateGame.PrivacyGame = .open
     
     // MARK: Где играть
     @Published var street: Bool = true {

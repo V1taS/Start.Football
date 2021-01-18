@@ -12,6 +12,7 @@ protocol CreateGameInteractor {
     func refreshProgressBar(state: Binding<AppState.AppData.CreateGame>)
     func nextStepProgressBar(state: Binding<AppState.AppData.CreateGame>)
     func backStepProgressBar(state: Binding<AppState.AppData.CreateGame>)
+    
 }
 
 struct CreateGameInteractorImpl: CreateGameInteractor {
@@ -58,6 +59,17 @@ struct CreateGameInteractorImpl: CreateGameInteractor {
             state.selectionCreateGame.wrappedValue = .stepThree
         case .stepFive:
             state.selectionCreateGame.wrappedValue = .stepFour
+        }
+    }
+    
+    func selectTypeGame(state: Binding<AppState.AppData.CreateGame>) {
+        switch state.selectTypeGame.wrappedValue {
+        case .miniFootball:
+            break
+        case .football:
+            break
+        case .footsal:
+            break
         }
     }
 }

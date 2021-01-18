@@ -9,40 +9,27 @@ import SwiftUI
 
 struct CreateGameStepThree: View {
     
-    @ObservedObject var viewModel = CreateGameStepThreeViewModel()
+    var appBinding: Binding<AppState.AppData.CreateGame>
     
     var body: some View {
         ZStack {
             ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: viewModel.height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                VStack(alignment: .leading, spacing: 16) {
+                    
+                    gameType
                     
                     Group {
-                        Text("Тип игры")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoRegular14)
-                        HStack {
-                            TextButtonRound(name: "Мини-футбол",
-                                            isOn: $viewModel.miniFootball,
-                                            disabledButton: false)
-                            
-                            TextButtonRound(name: "Футбол",
-                                            isOn: $viewModel.football,
-                                            disabledButton: false)
-
-                            TextButtonRound(name: "Футзал",
-                                            isOn: $viewModel.footsal,
-                                            disabledButton: false)
-                        }
+                        FormatGameTextField(firstValue: appBinding.firstValue,
+                                            secondValue: appBinding.secondValue)
+                        
+                        BoxSliderCreateGame(maxCountTeams: appBinding.maxCountTeams,
+                                            maxCountPlayers: appBinding.maxCountPlayers,
+                                            maxReservePlayers: appBinding.maxReservePlayers)
+                        
+                        BoxPrivacyCreateGame(privacyGame: appBinding.privacyGame)
                     }
                     
-                    FormatGameTextField(firstValue: $viewModel.firstValue,
-                                        secondValue: $viewModel.secondValue)
                     
-                    
-                    BoxPrivacyCreateGame(privacyGame: $viewModel.privacyGame,
-                                         maxCountTeams: $viewModel.maxCountTeams,
-                                         maxCountPlayers: $viewModel.maxCountPlayers,
-                                         maxReservePlayers: $viewModel.maxReservePlayers)
                     
                     Divider()
                     
@@ -58,15 +45,15 @@ struct CreateGameStepThree: View {
                         HStack {
                             
                             TextButtonRound(name: "Улица",
-                                            isOn: $viewModel.street,
+                                            isOn: appBinding.street,
                                             disabledButton: false)
                             
                             TextButtonRound(name: "Манеж",
-                                            isOn: $viewModel.manege,
+                                            isOn: appBinding.manege,
                                             disabledButton: false)
                             
                             TextButtonRound(name: "Зал",
-                                            isOn: $viewModel.hall,
+                                            isOn: appBinding.hall,
                                             disabledButton: false)
                             
                         }
@@ -80,15 +67,15 @@ struct CreateGameStepThree: View {
                         HStack {
                             
                             TextButtonRound(name: "Паркет",
-                                            isOn: $viewModel.parquet,
+                                            isOn: appBinding.parquet,
                                             disabledButton: false)
                             
                             TextButtonRound(name: "Газон",
-                                            isOn: $viewModel.grass,
+                                            isOn: appBinding.grass,
                                             disabledButton: false)
 
                             TextButtonRound(name: "Резина",
-                                            isOn: $viewModel.caoutchouc,
+                                            isOn: appBinding.caoutchouc,
                                             disabledButton: false)
                         }
                     }
@@ -96,15 +83,15 @@ struct CreateGameStepThree: View {
                     Group {
                         HStack {
                             TextButtonRound(name: "Синтетика",
-                                            isOn: $viewModel.synthetics,
+                                            isOn: appBinding.synthetics,
                                             disabledButton: false)
                             
                             TextButtonRound(name: "Ворс",
-                                            isOn: $viewModel.hair,
+                                            isOn: appBinding.hair,
                                             disabledButton: false)
                             
                             TextButtonRound(name: "Крошка",
-                                            isOn: $viewModel.crumb,
+                                            isOn: appBinding.crumb,
                                             disabledButton: false)
                         }
                     }
@@ -116,27 +103,64 @@ struct CreateGameStepThree: View {
                         
                         HStack {
                             TextButtonRound(name: "Раздевалки",
-                                            isOn: $viewModel.dressingRooms,
+                                            isOn: appBinding.dressingRooms,
                                             disabledButton: false)
                             
                             TextButtonRound(name: "Душевые",
-                                            isOn: $viewModel.showers,
+                                            isOn: appBinding.showers,
                                             disabledButton: false)
                         }
                     }
-                    ButtonParking(showParkingView: $viewModel.showParkingView)
+                    ButtonParking(showParkingView: appBinding.showParkingView)
                 }
             }
             .padding(.horizontal, 24)
-            .padding(.top, viewModel.height * Size.shared.getAdaptSizeHeight(px: 32))
-            TypeOfParkingSheet(isSheetActive: $viewModel.showParkingView)
+            .padding(.top, 32)
+            TypeOfParkingSheet(isSheetActive: appBinding.showParkingView)
         }
         .dismissingKeyboard()
     }
 }
 
+private extension CreateGameStepThree {
+    private var gameType: AnyView {
+        AnyView(
+            Group {
+                Text("Тип игры")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
+                HStack {
+                    TextButtonRound(name: "Мини-футбол",
+                                    isOn: appBinding.miniFootball,
+                                    disabledButton: false)
+                    
+                    TextButtonRound(name: "Футбол",
+                                    isOn: appBinding.football,
+                                    disabledButton: false)
+
+                    TextButtonRound(name: "Футзал",
+                                    isOn: appBinding.footsal,
+                                    disabledButton: false)
+                }
+            }
+        )
+    }
+}
+
 struct CreateGameStepThree_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepThree()
+        CreateGameStepThree(appBinding: .constant(.init(
+                                                    selectionCreateGame: .stepTwo,
+                                                    progressValue: 0.25,
+                                                    nameGame: "Игра",
+                                                    addressGame: "Khimki",
+                                                    participationCost: "23",
+                                                    currentDate: Date(),
+                                                    showTimePicker: false,
+                                                    showDatePicker: false,
+                                                    oneTime: "",
+                                                    oneTimeTextHasBeenChanged: false,
+                                                    oneDay: "",
+                                                    oneDayTextHasBeenChanged: false)))
     }
 }

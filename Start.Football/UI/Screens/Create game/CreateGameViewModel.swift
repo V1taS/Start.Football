@@ -11,7 +11,7 @@ import Combine
 class CreateGameViewModel: ObservableObject {
     
     // MARK: - Шкала прогресса действий
-    @Published var selectionCreateGame: AppActions.CreateGame.SelectionStep = .stepOne
+    @Published var selectionCreateGame: AppActions.CreateGame.SelectStep = .stepOne
     @Published var progressValue: Float = 0.0
     
     // MARK: - Step 1
@@ -61,7 +61,7 @@ class CreateGameViewModel: ObservableObject {
             regularTime = GetDateStringFromDate.shared.getTimeString(date: currentDate)
         }
     }
-    @Published var selectionRegularGame: AppActions.CreateGame.SelectionRegularGame = .no
+    @Published var selectionRegularGame: AppActions.CreateGame.RegularGame = .no
     @Published var regularTimePicker: Bool = false
     
     @Published var regularTime = "Укажите время" {

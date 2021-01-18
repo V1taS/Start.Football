@@ -44,7 +44,7 @@ private extension CreateGameView {
         case .stepTwo:
             return AnyView(CreateGameStepTwo(appBinding: appBinding))
         case .stepThree:
-            return AnyView(CreateGameStepThree())
+            return AnyView(CreateGameStepThree(appBinding: appBinding))
         case .stepFour:
             return AnyView(CreateGameStepFour())
         case .stepFive:

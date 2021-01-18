@@ -10,62 +10,11 @@ import SwiftUI
 struct BoxPrivacyCreateGame: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
-    @Binding var privacyGame: PrivacyGame
-    @Binding var maxCountTeams: Double
-    @Binding var maxCountPlayers: Double
-    @Binding var maxReservePlayers: Double
+    @Binding var privacyGame: AppActions.CreateGame.PrivacyGame
     
     var body: some View {
         VStack(spacing: 0) {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 0)) {
-                
-                
-                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                    Text("Количество команд")
-                        .foregroundColor(.defaultColor)
-                        .font(Font.event.robotoRegular14)
-                    
-                    HStack {
-                        Slider(value: $maxCountTeams, in: 2...4, step: 1)
-                        Spacer()
-                        Text("\(String(format: "%.0f", maxCountTeams))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular24)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
-                    }
-                    
-                    Divider()
-                    
-                    Text("Максимальное количество игроков в основе")
-                        .foregroundColor(.defaultColor)
-                        .font(Font.event.robotoRegular14)
-                    
-                    HStack {
-                        Slider(value: $maxCountPlayers, in: 10...22, step: 1)
-                        Spacer()
-                        Text("\(String(format: "%.0f", maxCountPlayers))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular24)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
-                    }
-                    
-                    Divider()
-                    
-                    Text("Максимальное количество игроков в резерве")
-                        .foregroundColor(.defaultColor)
-                        .font(Font.event.robotoRegular14)
-                    
-                    HStack {
-                        Slider(value: $maxReservePlayers, in: 0...22, step: 1)
-                        Spacer()
-                        Text("\(String(format: "%.0f", maxReservePlayers))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular24)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32))
-                    }
-                    
-                }
-                
                 Text("Приватность")
                     .foregroundColor(.defaultColor)
                     .font(Font.event.robotoRegular14)
@@ -116,15 +65,11 @@ struct BoxPrivacyCreateGame: View {
                 
             }
         }
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
     }
 }
 
 struct BoxPrivacyCreateGame_Previews: PreviewProvider {
     static var previews: some View {
-        BoxPrivacyCreateGame(privacyGame: .constant(.open),
-                             maxCountTeams: .constant(3),
-                             maxCountPlayers: .constant(15),
-                             maxReservePlayers: .constant(22))
+        BoxPrivacyCreateGame(privacyGame: .constant(.open))
     }
 }
