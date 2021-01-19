@@ -13,7 +13,7 @@ struct PasswordTextFieldView: View {
     let width = UIScreen.screenWidth
     
     @Binding var text: String
-    @Binding var success: Bool
+    var success: Bool
     @State var showPassword = false
     let placeholder: String
     
@@ -56,7 +56,7 @@ struct PasswordTextFieldView: View {
 struct PasswordTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         PasswordTextFieldView(text: .constant("Placeholder"),
-                              success: .constant(false),
+                              success: false,
                               placeholder: "Placeholder")
     }
 }

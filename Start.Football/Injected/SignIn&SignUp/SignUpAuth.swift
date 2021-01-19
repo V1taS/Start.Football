@@ -10,10 +10,10 @@ import Foundation
 extension AppState.AppData {
     struct SignUpAuth: Equatable {
         var mail: String = ""
-        var mailSuccess: Bool = false
+        var mailSuccess: Bool = true
         
         var login: String = ""
-        var loginSuccess: Bool = false
+        var loginSuccess: Bool = true
         
         var password: String = ""
         var passwordSuccess: Bool = true

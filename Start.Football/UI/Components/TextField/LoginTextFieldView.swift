@@ -13,7 +13,7 @@ struct LoginTextFieldView: View {
     let width = UIScreen.screenWidth
     
     @Binding var text: String
-    @Binding var success: Bool
+    var success: Bool
     
     let title: String
     let icon: String
@@ -22,7 +22,7 @@ struct LoginTextFieldView: View {
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
             Text(title)
-                .foregroundColor(.defaultColor)
+                .foregroundColor(success ? .defaultColor : .error)
                 .font(Font.event.robotoMedium14)
                 .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
             
@@ -37,10 +37,12 @@ struct LoginTextFieldView: View {
                     .keyboardType(.default)
                 
                 Image("itsOk")
-                    .opacity(success ? 1 : 0)
+                    .renderingMode(.template)
+                    .foregroundColor(.error)
+                    .opacity(success ? 0 : 1)
             } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
             
-            Color(success ? .primaryColor : .dividerColor)
+            Color(success ? .dividerColor : .error)
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
                        height: height * Size.shared.getAdaptSizeHeight(px: 2))
         }
@@ -50,7 +52,7 @@ struct LoginTextFieldView: View {
 struct LoginTextFieldView_Previews: PreviewProvider {
     static var previews: some View {
         LoginTextFieldView(text: .constant("Placeholder"),
-                           success: .constant(true),
+                           success: false,
                            title: "Логин или Email",
                            icon: "login",
                            placeholder: "Placeholder")

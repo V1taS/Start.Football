@@ -43,7 +43,7 @@ struct PasswordResetView: View {
                 VStack(spacing: 40) {
                     
                     LoginTextFieldView(text: appBinding.resetAuth.mail,
-                                       success: appBinding.resetAuth.mailSuccess,
+                                       success: appBinding.resetAuth.mailSuccess.wrappedValue,
                                        title: "Email",
                                        icon: "mail",
                                        placeholder: "Placeholder")

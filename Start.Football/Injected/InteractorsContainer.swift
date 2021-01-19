@@ -8,13 +8,17 @@
 extension DIContainer {
     struct Interactors {
         let createGameInteractor: CreateGameInteractor
+        let authInteractor: AuthInteractor
         
-        init(createGameInteractor: CreateGameInteractor) {
+        init(createGameInteractor: CreateGameInteractor,
+             authInteractor: AuthInteractor) {
             self.createGameInteractor = createGameInteractor
+            self.authInteractor = authInteractor
         }
         
         static var stub: Self {
-            .init(createGameInteractor: CreateGameInteractorImpl())
+            .init(createGameInteractor: CreateGameInteractorImpl(),
+                  authInteractor: AuthInteractorImpl())
         }
     }
 }

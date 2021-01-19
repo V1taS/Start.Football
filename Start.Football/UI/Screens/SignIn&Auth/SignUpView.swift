@@ -43,19 +43,19 @@ struct SignUpView: View {
                 VStack(spacing: 40) {
                     
                     LoginTextFieldView(text: appBinding.signUpAuth.mail,
-                                       success: appBinding.signUpAuth.mailSuccess,
+                                       success: appBinding.signUpAuth.mailSuccess.wrappedValue,
                                        title: "Email",
                                        icon: "mail",
                                        placeholder: "roman@start.football")
                     
                     LoginTextFieldView(text: appBinding.signUpAuth.login,
-                                       success: appBinding.signUpAuth.loginSuccess,
+                                       success: appBinding.signUpAuth.loginSuccess.wrappedValue,
                                        title: "Логин",
                                        icon: "login",
                                        placeholder: "Roman")
                     
                     PasswordTextFieldView(text: appBinding.signUpAuth.password,
-                                          success: appBinding.signUpAuth.passwordSuccess,
+                                          success: appBinding.signUpAuth.passwordSuccess.wrappedValue,
                                           placeholder: "**********")
                     
                     

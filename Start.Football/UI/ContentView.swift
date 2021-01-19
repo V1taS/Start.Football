@@ -12,7 +12,6 @@ struct ContentView: View {
     init(container: DIContainer) {
         self.container = container
     }
-    
     @State private var appState: AppState.AppData = .init()
     private var appBinding: Binding<AppState.AppData> {
         $appState.dispatched(to: injected.appState, \.appData)

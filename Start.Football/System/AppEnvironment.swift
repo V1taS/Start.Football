@@ -22,6 +22,8 @@ extension AppEnvironment {
     
     private static func configuredInteractors(appState: Store<AppState>) -> DIContainer.Interactors {
         let createGameInteractor = CreateGameInteractorImpl()
-        return .init(createGameInteractor: createGameInteractor)
+        let authInteractor = AuthInteractorImpl()
+        return .init(createGameInteractor: createGameInteractor,
+                     authInteractor: authInteractor)
     }
 }
