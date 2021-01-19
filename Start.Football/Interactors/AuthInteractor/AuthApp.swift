@@ -11,7 +11,7 @@ extension AppActions {
     struct AuthApp {
         enum AuthError: String {
             case notFilled = "Поля не заполнены"
-            case invalidEmail = "Неверный адрес электронной почты или логин"
+            case invalidEmail = "Неверный адрес электронной почты"
             case passwordsNotMatched = "Пароли не соответствуют"
             case unknownError = "Неизвестная ошибка"
             case serverError = "Ошибка сервера"

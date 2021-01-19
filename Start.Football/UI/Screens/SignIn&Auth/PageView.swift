@@ -9,12 +9,6 @@ import SwiftUI
 
 struct PageView: View {
     
-    private var appBinding: Binding<AppState.AppData>
-    
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
-    }
-    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -40,7 +34,7 @@ private extension PageView {
         AnyView(
             Button(action: {
                 self.viewController?.present(style: .fullScreen) {
-                    AuthView(appBinding: appBinding)
+                    AuthView()
                 }
             }) {
                 ButtonView(background: .primaryColor,
@@ -93,6 +87,6 @@ private extension PageView {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView(appBinding: .constant(.init()))
+        PageView()
     }
 }

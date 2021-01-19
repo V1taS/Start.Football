@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-protocol AuthInteractor  {
+protocol AuthInteractor: SignUPAuthInteractor, ResetAuthInteractor  {
     func verificationLogin(state: Binding<AppState.AppData>)
     func verificationPassword(state: Binding<AppState.AppData>)
 }

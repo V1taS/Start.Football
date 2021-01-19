@@ -9,10 +9,11 @@ import SwiftUI
 
 struct AuthView: View {
     
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    @State private var appState: AppState.AppData = .init()
+    private var appBinding: Binding<AppState.AppData> {
+        $appState.dispatched(to: injected.appState, \.appData)
     }
+    
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -165,7 +166,7 @@ private extension AuthView {
                     .font(Font.event.robotoRegular16)
                 Button(action: {
                     self.viewController?.present(style: .fullScreen) {
-                        SignUpView(appBinding: appBinding)
+                        SignUpView()
                     }
                 } ) {
                     Text("Зарегистрируйтесь")
@@ -250,6 +251,6 @@ private extension AuthView {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView(appBinding: .constant(.init()))
+        AuthView()
     }
 }

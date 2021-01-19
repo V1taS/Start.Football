@@ -10,6 +10,6 @@ import Foundation
 extension AppState.AppData {
     struct ResetAuth: Equatable {
         var mail: String = ""
-        var mailSuccess: Bool = false
+        var mailSuccess: Bool = true
     }
 }

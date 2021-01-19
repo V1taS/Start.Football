@@ -20,5 +20,7 @@ extension AppState.AppData {
         
         var confidentiality: Bool = false
         var receiveNews: Bool = false
+        
+        var authError: AppActions.AuthApp.AuthError = .success
     }
 }

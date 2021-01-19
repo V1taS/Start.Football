@@ -101,6 +101,8 @@
 		1BB63B27257D96A900FCE9E0 /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB63B26257D96A900FCE9E0 /* CostView.swift */; };
 		1BB6FEE525A8E8A00040843C /* GetDateStringFromDate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB6FEE425A8E8A00040843C /* GetDateStringFromDate.swift */; };
 		1BD9109A25759C47005B3CFC /* ProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BD9109925759C46005B3CFC /* ProfileView.swift */; };
+		1BE105E725B743400060DA3D /* SignUPAuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE105E625B743400060DA3D /* SignUPAuthInteractor.swift */; };
+		1BE105EA25B743840060DA3D /* ResetAuthInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BE105E925B743840060DA3D /* ResetAuthInteractor.swift */; };
 		1BF3660225A77D7A00B196EE /* HeaderProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3660125A77D7A00B196EE /* HeaderProfileView.swift */; };
 		1BF3660725A77DD600B196EE /* AboutMySelfProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3660625A77DD600B196EE /* AboutMySelfProfileView.swift */; };
 		1BF3660D25A77E4700B196EE /* CellStatisticsProfileView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3660C25A77E4700B196EE /* CellStatisticsProfileView.swift */; };
@@ -219,6 +221,8 @@
 		1BB63B26257D96A900FCE9E0 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
 		1BB6FEE425A8E8A00040843C /* GetDateStringFromDate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GetDateStringFromDate.swift; sourceTree = "<group>"; };
 		1BD9109925759C46005B3CFC /* ProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProfileView.swift; sourceTree = "<group>"; };
+		1BE105E625B743400060DA3D /* SignUPAuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignUPAuthInteractor.swift; sourceTree = "<group>"; };
+		1BE105E925B743840060DA3D /* ResetAuthInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ResetAuthInteractor.swift; sourceTree = "<group>"; };
 		1BF3660125A77D7A00B196EE /* HeaderProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderProfileView.swift; sourceTree = "<group>"; };
 		1BF3660625A77DD600B196EE /* AboutMySelfProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutMySelfProfileView.swift; sourceTree = "<group>"; };
 		1BF3660C25A77E4700B196EE /* CellStatisticsProfileView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellStatisticsProfileView.swift; sourceTree = "<group>"; };
@@ -479,6 +483,8 @@
 			children = (
 				1B7B649225B71FF50067A334 /* AuthApp.swift */,
 				1B7B649725B724FB0067A334 /* AuthInteractor.swift */,
+				1BE105E625B743400060DA3D /* SignUPAuthInteractor.swift */,
+				1BE105E925B743840060DA3D /* ResetAuthInteractor.swift */,
 			);
 			path = AuthInteractor;
 			sourceTree = "<group>";
@@ -836,6 +842,7 @@
 				1B23561825A798DA00E33DA8 /* TimePickerCreateGame.swift in Sources */,
 				1B37B02825AF4CBE0007AEF3 /* ContentView.swift in Sources */,
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,
+				1BE105EA25B743840060DA3D /* ResetAuthInteractor.swift in Sources */,
 				1B67934C25B2F78C00DADFC4 /* AppActions.swift in Sources */,
 				1B368A5C25B64F49007D1365 /* SignInAuth.swift in Sources */,
 				1B765D7425A724AA00105940 /* ButtonRoundGreen.swift in Sources */,
@@ -881,6 +888,7 @@
 				1B368A5925B640E5007D1365 /* CellWithPlayerButton.swift in Sources */,
 				1B23562625A7B8FD00E33DA8 /* TypeOfParkingSheet.swift in Sources */,
 				1B765D9225A74B8100105940 /* HeaderCreateGameView.swift in Sources */,
+				1BE105E725B743400060DA3D /* SignUPAuthInteractor.swift in Sources */,
 				1B7970F6256DDB1D006DAFC0 /* MainViewModel.swift in Sources */,
 				1BF3662F25A7827700B196EE /* OrganizerCurrentGame.swift in Sources */,
 				1B78CCEC256DC2C200297221 /* TabViewApp.swift in Sources */,
