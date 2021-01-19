@@ -15,19 +15,22 @@ struct CheckboxFieldView : View {
     let width = UIScreen.screenWidth
     
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 7) {
-            Image(systemName: checked ? "checkmark.square.fill" : "square")
-                .foregroundColor(checked ? .secondaryColor : .defaultColor)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 14),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 14))
-                .onTapGesture {
-                    self.checked.toggle()
-                }
-            Text(text)
-                .foregroundColor(.secondaryColor)
-                .font(Font.event.robotoRegular16)
+        HStack {
+            HStack(alignment: .firstTextBaseline, spacing: 7) {
+                Image(systemName: checked ? "checkmark.square.fill" : "square")
+                    .foregroundColor(checked ? .secondaryColor : .defaultColor)
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 14),
+                           height: height * Size.shared.getAdaptSizeHeight(px: 14))
+                    .onTapGesture {
+                        self.checked.toggle()
+                    }
+                Text(text)
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoRegular16)
+            }
+            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270), alignment: .leading)
+            Spacer()
         }
-        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327), alignment: .leading)
     }
 }
 

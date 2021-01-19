@@ -56,16 +56,17 @@ struct TypeOfParkingSheet: View {
                     .padding(.top, 8)
                     
                     VStack(spacing: 16) {
-                        
-                        paidCity
-                        Divider()
-                        paidOnTheTerritory
-                        Divider()
-                        freeOnTheTerritory
-                        Divider()
-                        freeCity
-                        Divider()
-                        parkingCost
+                        Group {
+                            paidCity
+                            Divider()
+                            paidOnTheTerritory
+                            Divider()
+                            freeOnTheTerritory
+                            Divider()
+                            freeCity
+                            Divider()
+                            parkingCost
+                        }
                         HStack {
                             oneTime
                             Spacer()
@@ -197,7 +198,7 @@ private extension TypeOfParkingSheet {
             selectFreeCity()
         }) {
             HStack {
-                Text("Бесплатная на территории")
+                Text("Бесплатная городская")
                     .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreateGame
                                         .TypeOfParking.freeCity ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular18)
@@ -213,7 +214,7 @@ private extension TypeOfParkingSheet {
 // MARK: - Parking cost
 private extension TypeOfParkingSheet {
     var parkingCost: some View {
-        TextfieldOneLineView(text: .constant(""),
+        TextfieldOneLineView(text: appBinding.parkingCost,
                              title: "Стоимость",
                              icon: "",
                              iconShow: false,
@@ -309,18 +310,6 @@ private extension TypeOfParkingSheet {
 
 struct TypeOfParkingSheet_Previews: PreviewProvider {
     static var previews: some View {
-        TypeOfParkingSheet(appBinding: .constant(.init(
-                                                    selectionCreateGame: .stepThree,
-                                                    progressValue: 0.25,
-                                                    nameGame: "Игра",
-                                                    addressGame: "Khimki",
-                                                    participationCost: "23",
-                                                    currentDate: Date(),
-                                                    showTimePicker: false,
-                                                    showDatePicker: false,
-                                                    oneTime: "",
-                                                    oneTimeTextHasBeenChanged: false,
-                                                    oneDay: "",
-                                                    oneDayTextHasBeenChanged: false)))
+        TypeOfParkingSheet(appBinding: .constant(.init()))
     }
 }

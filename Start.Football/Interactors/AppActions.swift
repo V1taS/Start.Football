@@ -31,17 +31,17 @@ extension AppActions {
             case close
         }
         
-        enum TypeOfParking {
-            case paidCity
-            case paidOnTheTerritory
-            case freeOnTheTerritory
-            case freeCity
+        enum TypeOfParking: String {
+            case paidCity = "Платная городская"
+            case paidOnTheTerritory = "Платная на территории"
+            case freeOnTheTerritory = "Бесплатная на территории"
+            case freeCity = "Бесплатная городская"
         }
         
-        enum PaymentForParking {
-            case oneTime
-            case inAnHour
-            case non
+        enum PaymentForParking: String {
+            case oneTime = "Разово"
+            case inAnHour = "За час"
+            case non = ""
         }
     }
 }

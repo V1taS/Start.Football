@@ -81,7 +81,7 @@ struct FilterGameSheet: View {
                                 .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                                 .overlay(RoundedRectangle(cornerRadius: 16)
                                             .stroke(Color.secondaryColor))
-                            
+
                             Text("Мини-футбол")
                                 .foregroundColor(.secondaryColor)
                                 .font(Font.event.robotoRegular16)
@@ -89,7 +89,7 @@ struct FilterGameSheet: View {
                                 .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                                 .overlay(RoundedRectangle(cornerRadius: 16)
                                             .stroke(Color.secondaryColor))
-                            
+
                             Text("Футзал")
                                 .foregroundColor(.secondaryColor)
                                 .font(Font.event.robotoRegular16)
@@ -112,7 +112,7 @@ struct FilterGameSheet: View {
                                 .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                                 .overlay(RoundedRectangle(cornerRadius: 16)
                                             .stroke(Color.secondaryColor))
-                            
+
                             Text("Манеж")
                                 .foregroundColor(.secondaryColor)
                                 .font(Font.event.robotoRegular16)
@@ -120,7 +120,7 @@ struct FilterGameSheet: View {
                                 .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
                                 .overlay(RoundedRectangle(cornerRadius: 16)
                                             .stroke(Color.secondaryColor))
-                            
+
                             Text("Улица")
                                 .foregroundColor(.secondaryColor)
                                 .font(Font.event.robotoRegular16)
@@ -151,8 +151,8 @@ struct FilterGameSheet: View {
             .onEnded(onDragEnded)
         )
         .animation(animation)
-        .frame(width: width,
-               height: height * Size.shared.getAdaptSizeHeight(px: 670))
+        .frame(width: width-40,
+               height: height * Size.shared.getAdaptSizeHeight(px: 555))
     }
     
     func onDragEnded(drag: DragGesture.Value) {

@@ -8,13 +8,17 @@
 import SwiftUI
 
 struct PageView: View {
+    
+    private var appBinding: Binding<AppState.AppData>
+    
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
-    
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
     var body: some View {
         ZStack {
@@ -24,7 +28,7 @@ struct PageView: View {
             VStack(spacing: 16) {
                 Image("pageViewImage")
                 
-                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                VStack(spacing: 16) {
                     VStack {
                         Text("Мы хотим популяризировать футбол в ")
                             .font(Font.event.robotoRegular16)
@@ -55,17 +59,19 @@ struct PageView: View {
                 
                 Button(action: {
                     self.viewController?.present(style: .fullScreen) {
-                        AuthView()
+                        AuthView(appBinding: appBinding)
                     }
                 }) {
                     ButtonView(background: .primaryColor,
                                textColor: .whiteColor,
                                borderColor: .primaryColor,
-                               text: "Давай начнем!")
+                               text: "Давай начнем!",
+                               switchImage: false,
+                               image: "")
                 } .onAppear {
                     UserDefaults.standard.set(true, forKey: "tabViewApp")
                 }
-                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
+                .padding(.bottom, 17)
             }
         }
         .padding(.horizontal, 24)
@@ -74,6 +80,6 @@ struct PageView: View {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView()
+        PageView(appBinding: .constant(.init()))
     }
 }

@@ -9,7 +9,10 @@ import SwiftUI
 
 struct CreateGameStepTwo: View {
     
-    var appBinding: Binding<AppState.AppData.CreateGame>
+    private var appBinding: Binding<AppState.AppData.CreateGame>
+    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+        self.appBinding = appBinding
+    }
     
     var body: some View {
         ZStack {
@@ -88,7 +91,9 @@ private extension CreateGameStepTwo {
                 ButtonView(background: .whiteColor,
                            textColor: .primaryColor,
                            borderColor: .primaryColor,
-                           text: "Добавить другой день или время")
+                           text: "Добавить другой день или время",
+                           switchImage: false,
+                           image: "")
             }
         }
     }

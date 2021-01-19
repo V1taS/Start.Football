@@ -69,7 +69,7 @@ struct MainView: View {
                 }
             }
             FilterGameSheet(isSheetActive: $viewModel.showFiltrsView)
-                .offset(y: 30)
+                .offset(y: 0)
 
         } .dismissingKeyboard()
     }

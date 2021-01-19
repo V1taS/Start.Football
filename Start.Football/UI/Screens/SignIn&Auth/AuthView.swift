@@ -9,9 +9,11 @@ import SwiftUI
 
 struct AuthView: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    @ObservedObject var viewModel = AuthViewModel()
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -24,7 +26,7 @@ struct AuthView: View {
             
             VStack(spacing: 0) {
                 HStack {
-                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text("Авторизация")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoMedium32)
@@ -34,34 +36,36 @@ struct AuthView: View {
                             .font(Font.event.robotoRegular16)
                         
                     }
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
+                    .padding(.top, 11)
                     Spacer()
                 }
                 
-                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
+                VStack(spacing: 40) {
                     
-                    LoginTextFieldView(text: $viewModel.login,
-                                       success: $viewModel.loginSuccess,
+                    LoginTextFieldView(text: appBinding.signInAuth.login,
+                                       success: appBinding.signInAuth.loginSuccess,
                                        title: "Логин или Email",
                                        icon: "login",
                                        placeholder: "Placeholder")
                     
-                    PasswordTextFieldView(text: $viewModel.password,
-                                          success: $viewModel.passwordSuccess,
+                    PasswordTextFieldView(text: appBinding.signInAuth.password,
+                                          success: appBinding.signInAuth.passwordSuccess,
                                           placeholder: "Placeholder")
                     
                     Button(action: {
                         self.viewController?.present(style: .fullScreen) {
-                            SignUpView()
+                            SignUpView(appBinding: appBinding)
                         }
                     }) {
                         ButtonView(background: .inactive,
                                    textColor: .whiteColor,
                                    borderColor: .inactive,
-                                   text: "Войти")
+                                   text: "Войти",
+                                   switchImage: false,
+                                   image: "")
                     }
                     
-                } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
+                } .padding(.top, 37)
                 
                 HStack {
                     Text("Забыли")
@@ -73,7 +77,8 @@ struct AuthView: View {
                             .font(Font.event.robotoMedium18)
                     }
                     
-                } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 33))
+                }
+                .padding(.top, 33)
                 
                 Spacer()
                 
@@ -88,7 +93,7 @@ struct AuthView: View {
                     }
                     
                 }
-                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 33))
+                .padding(.bottom, 33)
                 
                 HStack {
                     VStack {
@@ -101,9 +106,9 @@ struct AuthView: View {
                         Divider()
                     }
                 }
-                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 24))
+                .padding(.bottom, 24)
                 
-                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                VStack(spacing: 16) {
                     Button(action: {} ) {
                         ButtonApple()
                     }
@@ -112,7 +117,7 @@ struct AuthView: View {
                         ButtonGoogle()
                     }
                 }
-                .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
+                .padding(.bottom, 17)
             }
         }
         .padding(.horizontal, 24)
@@ -122,6 +127,6 @@ struct AuthView: View {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        AuthView(appBinding: .constant(.init()))
     }
 }

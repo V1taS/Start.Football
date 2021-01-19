@@ -23,6 +23,13 @@ struct CreateGameView: View {
                 Spacer()
                 buttonNextStep
             }
+            
+            if appBinding.showParking.wrappedValue || appBinding.showDatePicker.wrappedValue || appBinding.showTimePicker.wrappedValue {
+                Color.secondary
+                    .edgesIgnoringSafeArea(.all)
+                    .animation(.linear(duration: 10))
+            }
+            
             timePicker
             datePicker
             typeOfParking
@@ -49,7 +56,7 @@ private extension CreateGameView {
         case .stepThree:
             return AnyView(CreateGameStepThree(appBinding: appBinding))
         case .stepFour:
-            return AnyView(CreateGameStepFour())
+            return AnyView(CreateGameStepFour(appBinding: appBinding))
         case .stepFive:
             return AnyView(CreateGameStepFive())
         }
@@ -67,7 +74,9 @@ private extension CreateGameView {
                        textColor: .whiteColor,
                        borderColor: .primaryColor,
                        text: appState.selectionCreateGame ==
-                        .stepFive ? "Создать игру" : "Следующий шаг")
+                        .stepFive ? "Создать игру" : "Следующий шаг",
+                       switchImage: false,
+                       image: "")
         }
         .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
         .padding(.horizontal, 24)

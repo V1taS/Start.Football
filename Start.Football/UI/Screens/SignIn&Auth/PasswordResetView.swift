@@ -9,10 +9,11 @@ import SwiftUI
 
 struct PasswordResetView: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    @ObservedObject var viewModel = PasswordResetViewModel()
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -25,7 +26,7 @@ struct PasswordResetView: View {
             
             VStack(spacing: 0) {
                 HStack {
-                    VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 3)) {
+                    VStack(alignment: .leading, spacing: 3) {
                         Text("Сброс пароля")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoMedium32)
@@ -35,22 +36,22 @@ struct PasswordResetView: View {
                             .font(Font.event.robotoRegular16)
                         
                     }
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 11))
+                    .padding(.top, 11)
                     Spacer()
                 }
                 
-                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 40)) {
+                VStack(spacing: 40) {
                     
-                    LoginTextFieldView(text: $viewModel.mail,
-                                       success: $viewModel.mailSuccess,
+                    LoginTextFieldView(text: appBinding.resetAuth.mail,
+                                       success: appBinding.resetAuth.mailSuccess,
                                        title: "Email",
                                        icon: "mail",
                                        placeholder: "Placeholder")
-                } .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 37))
+                } .padding(.top, 37)
                 
                 Spacer()
                 
-                VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                VStack(spacing: 16) {
                     Button(action: {
                         self.viewController?.present(style: .fullScreen) {
                             TabViewApp()
@@ -59,13 +60,15 @@ struct PasswordResetView: View {
                         ButtonView(background: .primaryColor,
                                    textColor: .whiteColor,
                                    borderColor: .primaryColor,
-                                   text: "Зарегистрироваться")
+                                   text: "Зарегистрироваться",
+                                   switchImage: false,
+                                   image: "")
                     }
                     
                     Button(action: {}) {
                         ButtonCancel()
                     }
-                } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 17))
+                } .padding(.bottom, 17)
                 
             }
         }
@@ -76,6 +79,6 @@ struct PasswordResetView: View {
 
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordResetView()
+        PasswordResetView(appBinding: .constant(.init()))
     }
 }

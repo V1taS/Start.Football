@@ -22,14 +22,18 @@ struct ButtonsCurrentGame: View {
                 ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
                            borderColor: .primaryColor,
-                           text: "Записаться на игру")
+                           text: "Записаться на игру",
+                           switchImage: false,
+                           image: "")
             }
             
             Button(action: {}) {
                 ButtonView(background: .whiteColor,
                            textColor: .primaryColor,
                            borderColor: .primaryColor,
-                           text: "Записаться в резерв")
+                           text: "Записаться в резерв",
+                           switchImage: false,
+                           image: "")
             }
         }
     }

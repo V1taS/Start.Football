@@ -15,6 +15,9 @@ struct AppState: Equatable {
 
 extension AppState {
     struct AppData: Equatable {
+        var signInAuth = SignInAuth()
+        var signUpAuth = SignUpAuth()
+        var resetAuth = ResetAuth()
         var createGame = CreateGame()
     }
 }

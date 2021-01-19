@@ -22,7 +22,7 @@ struct DatePickerSheet: View {
     }
     
     var body: some View {
-        ZStack{
+        ZStack {
             if isExpanded {
                 VStack {
                     HStack {
@@ -56,8 +56,10 @@ struct DatePickerSheet: View {
                             ButtonView(background: .primaryColor,
                                        textColor: .whiteColor,
                                        borderColor: .primaryColor,
-                                       text: "Применить")
-                                .scaleEffect(0.7)
+                                       text: "Применить",
+                                       switchImage: false,
+                                       image: "")
+                                .scaleEffect(0.9)
                         }
                     }
                     .padding(.top, 16)
@@ -117,18 +119,6 @@ struct DatePickerSheet: View {
 
 struct DatePickerSheet_Previews: PreviewProvider {
     static var previews: some View {
-        DatePickerSheet(appBinding: .constant(.init(
-                                                selectionCreateGame: .stepTwo,
-                                                progressValue: 0.25,
-                                                nameGame: "Игра",
-                                                addressGame: "Khimki",
-                                                participationCost: "23",
-                                                currentDate: Date(),
-                                                showTimePicker: false,
-                                                showDatePicker: true,
-                                                oneTime: "",
-                                                oneTimeTextHasBeenChanged: false,
-                                                oneDay: "",
-                                                oneDayTextHasBeenChanged: false)))
+        DatePickerSheet(appBinding: .constant(.init()))
     }
 }

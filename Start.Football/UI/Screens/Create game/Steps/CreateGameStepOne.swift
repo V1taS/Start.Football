@@ -10,7 +10,10 @@ import Combine
 
 struct CreateGameStepOne: View {
     
-    var appBinding: Binding<AppState.AppData.CreateGame>
+    private var appBinding: Binding<AppState.AppData.CreateGame>
+    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+        self.appBinding = appBinding
+    }
     
     var body: some View {
         ZStack {
@@ -112,18 +115,6 @@ private extension CreateGameStepOne {
 
 struct CreateGameStepOne_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepOne(appBinding: .constant(.init(
-                                                    selectionCreateGame: .stepTwo,
-                                                    progressValue: 0.25,
-                                                    nameGame: "Игра",
-                                                    addressGame: "Khimki",
-                                                    participationCost: "23",
-                                                    currentDate: Date(),
-                                                    showTimePicker: true,
-                                                    showDatePicker: false,
-                                                    oneTime: "",
-                                                    oneTimeTextHasBeenChanged: false,
-                                                    oneDay: "",
-                                                    oneDayTextHasBeenChanged: false)))
+        CreateGameStepOne(appBinding: .constant(.init()))
     }
 }

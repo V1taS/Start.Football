@@ -13,8 +13,9 @@ struct ButtonView: View {
     let textColor: UIColor
     let borderColor: UIColor
     let text: String
-    let height = UIScreen.screenHeight
-
+    let switchImage: Bool
+    let image: String
+    
     var body: some View {
         ZStack {
             Color(background)
@@ -22,11 +23,19 @@ struct ButtonView: View {
                 .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(borderColor)))
                 
-                .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
+                .frame(height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 51))
+            
+            HStack {
+                if switchImage {
+                    Image(image)
+                        .renderingMode(.template)
+                        .foregroundColor(Color(textColor))
+                }
                 
-            Text(text)
-                .foregroundColor(Color(textColor))
-                .font(Font.event.robotoMedium18)
+                Text(text)
+                    .foregroundColor(Color(textColor))
+                    .font(Font.event.robotoMedium18)
+            }
         }
     }
 }
@@ -36,6 +45,8 @@ struct ButtonView_Previews: PreviewProvider {
         ButtonView(background: .primaryColor,
                    textColor: .whiteColor,
                    borderColor: .primaryColor,
-                   text: "Продолжить с Apple")
+                   text: "Продолжить с Apple",
+                   switchImage: true,
+                   image: "datePicerRubls")
     }
 }

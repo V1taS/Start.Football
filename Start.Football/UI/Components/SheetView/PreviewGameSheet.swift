@@ -123,7 +123,9 @@ struct PreviewGameSheet: View {
                         ButtonView(background: .primaryColor,
                                    textColor: .whiteColor,
                                    borderColor: .primaryColor,
-                                   text: "Подробнее об игре")
+                                   text: "Подробнее об игре",
+                                   switchImage: false,
+                                   image: "")
                     }
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
                 }

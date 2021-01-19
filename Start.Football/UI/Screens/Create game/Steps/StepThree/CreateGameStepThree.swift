@@ -10,7 +10,10 @@ import SwiftUI
 struct CreateGameStepThree: View {
     
     @Environment(\.injected) private var injected: DIContainer
-    var appBinding: Binding<AppState.AppData.CreateGame>
+    private var appBinding: Binding<AppState.AppData.CreateGame>
+    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+        self.appBinding = appBinding
+    }
     
     var body: some View {
         ZStack {
@@ -32,7 +35,7 @@ struct CreateGameStepThree: View {
                         fieldType
                         coatingProperties
                         infrastructure
-                        ButtonParking(showParkingView: appBinding.showParking)
+                        ButtonParking(appBinding: appBinding)
                     }
                 }
             }

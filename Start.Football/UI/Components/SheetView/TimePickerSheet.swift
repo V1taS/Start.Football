@@ -57,8 +57,10 @@ struct TimePickerSheet: View {
                             ButtonView(background: .primaryColor,
                                        textColor: .whiteColor,
                                        borderColor: .primaryColor,
-                                       text: "Применить")
-                                .scaleEffect(0.7)
+                                       text: "Применить",
+                                       switchImage: false,
+                                       image: "")
+                                .scaleEffect(0.9)
                         }
                     }
                     .padding(.top, 16)
