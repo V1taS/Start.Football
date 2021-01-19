@@ -9,11 +9,11 @@ import SwiftUI
 
 struct SignUpView: View {
     
+    @State var isHiddenTextConfidentiality = true
     @State private var appState: AppState.AppData = .init()
     private var appBinding: Binding<AppState.AppData> {
         $appState.dispatched(to: injected.appState, \.appData)
     }
-    
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -35,7 +35,7 @@ struct SignUpView: View {
                 }
                 .padding(.top, 37)
                 
-                VStack(alignment: .leading, spacing: 16) {
+                VStack(alignment: .leading, spacing: 10) {
                     confidentiality
                     getNews
                 }
@@ -113,11 +113,15 @@ private extension SignUpView {
 
 // MARK: Сonfidentiality
 private extension SignUpView {
+    
     private var confidentiality: AnyView {
         AnyView(
-            CheckboxFieldView(checked: appBinding.signUpAuth.confidentiality,
-                              text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
-                .padding(.top)
+            VStack(spacing: 0) {
+                CheckboxFieldView(checked: appBinding.signUpAuth.confidentiality,
+                                  text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
+                accessTextConfidentiality
+            }
+            .padding(.top, 24)
         )
     }
 }
@@ -138,9 +142,8 @@ private extension SignUpView {
         AnyView(
             Button(action: {
                 register()
-//                self.viewController?.present(style: .fullScreen) {
-//                    PasswordResetView(appBinding: appBinding)
-//                }
+                switchConfidentiality()
+                presentPage()
             }) {
                 ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
@@ -162,12 +165,13 @@ private extension SignUpView {
                 Text("Уже есть аккаунт?")
                     .foregroundColor(.desc)
                     .font(Font.event.robotoRegular16)
-                Button(action: {} ) {
+                Button(action: {
+                    self.viewController?.dismiss(animated: true, completion: nil)
+                } ) {
                     Text("Войдите")
                         .foregroundColor(.primaryColor)
                         .font(Font.event.robotoMedium18)
                 }
-                
             }
             .padding(.bottom, 17)
         )
@@ -191,9 +195,46 @@ private extension SignUpView {
     }
 }
 
+// MARK: Access text confidentiality
+private extension SignUpView {
+    private var accessTextConfidentiality: AnyView {
+        AnyView(
+            HStack {
+                Text(isHiddenTextConfidentiality ? "" : "Подтвердите правила сервиса")
+                    .foregroundColor(.error)
+                    .font(Font.event.robotoMedium14)
+                Spacer()
+            }
+        )
+    }
+}
+
 private extension SignUpView {
     private func register() {
         injected.interactors.authInteractor.register(state: appBinding)
+    }
+}
+
+private extension SignUpView {
+    private func switchConfidentiality() {
+        if appBinding.signUpAuth.confidentiality.wrappedValue {
+            isHiddenTextConfidentiality = true
+        } else {
+            isHiddenTextConfidentiality = false
+        }
+    }
+}
+
+private extension SignUpView {
+    private func presentPage() {
+        if appBinding.signUpAuth.mailSuccess.wrappedValue &&
+            appBinding.signUpAuth.loginSuccess.wrappedValue &&
+            appBinding.signUpAuth.passwordSuccess.wrappedValue &&
+            appBinding.signUpAuth.confidentiality.wrappedValue {
+            self.viewController?.present(style: .fullScreen) {
+                TabViewApp()
+            }
+        }
     }
 }
 

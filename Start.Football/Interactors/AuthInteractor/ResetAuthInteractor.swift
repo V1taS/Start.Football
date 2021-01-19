@@ -9,9 +9,17 @@ import Combine
 import SwiftUI
 
 protocol ResetAuthInteractor  {
-    
+    func resetVerificationMail(state: Binding<AppState.AppData>)
 }
 
 extension AuthInteractorImpl {
-    
+    func resetVerificationMail(state: Binding<AppState.AppData>) {
+        guard Validators.isSimpleEmail(state.resetAuth.mail.wrappedValue) else {
+            state.resetAuth.authError.wrappedValue = .invalidEmail
+            state.resetAuth.mailSuccess.wrappedValue = false
+            return
+        }
+        state.resetAuth.mailSuccess.wrappedValue = true
+        state.resetAuth.authError.wrappedValue = .success
+    }
 }

@@ -120,9 +120,9 @@ private extension AuthView {
                 }
                 appBinding.signInAuth.authError.wrappedValue = .notFilled
             }) {
-                ButtonView(background: .inactive,
+                ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
-                           borderColor: .inactive,
+                           borderColor: .primaryColor,
                            text: "Войти",
                            switchImage: false,
                            image: "")
@@ -142,7 +142,7 @@ private extension AuthView {
                     .font(Font.event.robotoRegular16)
                 Button(action: {
                     self.viewController?.present(style: .pageSheet) {
-                        PasswordResetView(appBinding: appBinding)
+                        PasswordResetView()
                     }
                 } ) {
                     Text("пароль?")
@@ -215,7 +215,11 @@ private extension AuthView {
 private extension AuthView {
     private var signUPGoogle: AnyView {
         AnyView(
-            Button(action: {} ) {
+            Button(action: {
+                self.viewController?.present(style: .fullScreen) {
+                    TabViewApp()
+                }
+            } ) {
                 ButtonGoogle()
             }
         )

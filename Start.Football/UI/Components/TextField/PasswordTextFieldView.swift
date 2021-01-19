@@ -31,12 +31,12 @@ struct PasswordTextFieldView: View {
                 
                 if showPassword {
                     TextField(placeholder, text: $text)
-                        .foregroundColor(Color(success ? .secondaryColor : .error))
+                        .foregroundColor(Color.secondaryColor)
                         .font(Font.event.robotoMedium16)
                         .keyboardType(.default)
                 } else {
                     SecureField(placeholder, text: $text)
-                        .foregroundColor(Color(success ? .secondaryColor : .error))
+                        .foregroundColor(Color.secondaryColor)
                         .font(Font.event.robotoMedium16)
                         .keyboardType(.default)
                 }
