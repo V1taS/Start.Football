@@ -17,6 +17,7 @@ class SceneDelegate: UIResponder, UIWindowSceneDelegate {
         let contentView = ContentView()
         if let windowScene = scene as? UIWindowScene {
             let window = UIWindow(windowScene: windowScene)
+            window.overrideUserInterfaceStyle = .light
             window.rootViewController = UIHostingController( rootView: contentView)
             self.window = window
             window.makeKeyAndVisible()
