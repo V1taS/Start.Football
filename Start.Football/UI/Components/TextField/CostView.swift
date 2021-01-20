@@ -23,10 +23,13 @@ struct CostView: View {
                     Image("datePicerRubls")
                     
                     HStack(spacing: 0) {
-                        TextField("500", text: appBinding.main.costSince)
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular24)
-                            .keyboardType(.numberPad)
+                        TextfieldWithButton(placeholder: "500",
+                                            text: appBinding.main.costSince,
+                                            font: UIFont.event.robotoRegular24!,
+                                            foregroundColor: .secondaryColor,
+                                            keyType: .numberPad,
+                                            isSecureText: false)
+                            .frame(height: 30)
                             .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 55))
                         
                         Text("₽")
@@ -40,10 +43,13 @@ struct CostView: View {
                         .font(Font.event.robotoRegular24)
                     
                     HStack {
-                        TextField("1000", text: appBinding.main.costUntil)
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular24)
-                            .keyboardType(.numberPad)
+                        TextfieldWithButton(placeholder: "1000",
+                                            text: appBinding.main.costUntil,
+                                            font: UIFont.event.robotoRegular24!,
+                                            foregroundColor: .secondaryColor,
+                                            keyType: .numberPad,
+                                            isSecureText: false)
+                            .frame(height: 30)
                             .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 55))
                         
                         Text("₽")

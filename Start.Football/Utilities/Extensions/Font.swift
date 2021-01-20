@@ -30,6 +30,29 @@ extension Font {
     static let event = Event()
 }
 
+extension UIFont {
+    struct Event {
+        let robotoBold20 = UIFont(name: "Roboto-Bold", size: 20)
+        let robotoBold14 = UIFont(name: "Roboto-Bold", size: 14)
+        let robotoBold13 = UIFont(name: "Roboto-Bold", size: 13)
+        let robotoRegular32 = UIFont(name: "Roboto-Regular", size: 32)
+        let robotoRegular24 = UIFont(name: "Roboto-Regular", size: 24)
+        let robotoRegular18 = UIFont(name: "Roboto-Regular", size: 18)
+        let robotoRegular16 = UIFont(name: "Roboto-Regular", size: 16)
+        let robotoRegular14 = UIFont(name: "Roboto-Regular", size: 14)
+        let robotoRegular13 = UIFont(name: "Roboto-Regular", size: 13)
+        let robotoMedium32 = UIFont(name: "Roboto-Medium", size: 32)
+        let robotoMedium20 = UIFont(name: "Roboto-Medium", size: 20)
+        let robotoMedium18 = UIFont(name: "Roboto-Medium", size: 18)
+        let robotoMedium16 = UIFont(name: "Roboto-Medium", size: 16)
+        let robotoMedium14 = UIFont(name: "Roboto-Medium", size: 14)
+        let robotoMedium10 = UIFont(name: "Roboto-Medium", size: 10)
+        let robotoLight48 = UIFont(name: "Roboto-Light", size: 48)
+        let SFProDisplayMedium18 = UIFont(name: "SFProDisplay-Medium", size: 18)
+    }
+    static let event = Event()
+}
+
 /*
  Roboto-Black
  Roboto-Bold

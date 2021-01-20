@@ -30,15 +30,21 @@ struct PasswordTextFieldView: View {
                     .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
                 
                 if showPassword {
-                    TextField(placeholder, text: $text)
-                        .foregroundColor(Color.secondaryColor)
-                        .font(Font.event.robotoMedium16)
-                        .keyboardType(.default)
+                    TextfieldWithButton(placeholder: placeholder,
+                                        text: $text,
+                                        font: UIFont.event.robotoMedium16!,
+                                        foregroundColor: .secondaryColor,
+                                        keyType: .default,
+                                        isSecureText: false)
+                        .frame(height: 30)
                 } else {
-                    SecureField(placeholder, text: $text)
-                        .foregroundColor(Color.secondaryColor)
-                        .font(Font.event.robotoMedium16)
-                        .keyboardType(.default)
+                    TextfieldWithButton(placeholder: placeholder,
+                                        text: $text,
+                                        font: UIFont.event.robotoMedium16!,
+                                        foregroundColor: .secondaryColor,
+                                        keyType: .default,
+                                        isSecureText: true)
+                        .frame(height: 30)
                 }
                 
                 Image(showPassword ? "eye.slash" : "eye")

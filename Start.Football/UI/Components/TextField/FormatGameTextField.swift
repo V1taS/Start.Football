@@ -16,39 +16,59 @@ struct FormatGameTextField: View {
     @Binding var secondValue: String
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 0) {
-            Text("Формат игры")
-                .foregroundColor(.defaultColor)
-                .font(Font.event.robotoMedium14)
-                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
-            
-            HStack {
-                Spacer()
-                HStack(spacing: 0) {
-                    TextField("10", text: $firstValue)
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular24)
-                        .keyboardType(.numberPad)
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 30))
-                }
-                Spacer()
-                Text("—")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular24)
-                Spacer()
-                HStack {
-                    TextField("10", text: $secondValue)
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular24)
-                        .keyboardType(.numberPad)
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 30))
-                }
+        VStack {
+            HStack() {
+                Text("Формат игры")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoMedium14)
+                    .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
+                
                 Spacer()
             }
             
-            Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 2))
+            VStack(alignment: .center, spacing: 0) {
+                HStack {
+                    Spacer()
+                    Spacer()
+                    HStack(spacing: 0) {
+                        TextfieldWithButton(placeholder: "10",
+                                            text: $firstValue,
+                                            font: UIFont.event.robotoRegular24!,
+                                            foregroundColor: .secondaryColor,
+                                            keyType: .numberPad,
+                                            isSecureText: false)
+                            .frame(height: 30)
+                    }
+                    .frame(width: 60)
+                    
+                    Spacer()
+                    
+                    Text("—")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular24)
+                    Spacer()
+                    Spacer()
+                    
+                    HStack {
+                        TextfieldWithButton(placeholder: "10",
+                                            text: $secondValue,
+                                            font: UIFont.event.robotoRegular24!,
+                                            foregroundColor: .secondaryColor,
+                                            keyType: .numberPad,
+                                            isSecureText: false)
+                            .frame(height: 30)
+                    }
+                    .frame(width: 60)
+                    
+                    Spacer()
+                }
+            }
+            
+            VStack(alignment: .center, spacing: 0) {
+                Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
+                           height: height * Size.shared.getAdaptSizeHeight(px: 2))
+            }
         }
     }
 }

@@ -46,6 +46,7 @@
 		1B37B01425AF316B0007AEF3 /* AppEnvironment.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37B01325AF316B0007AEF3 /* AppEnvironment.swift */; };
 		1B37B02825AF4CBE0007AEF3 /* ContentView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37B02725AF4CBE0007AEF3 /* ContentView.swift */; };
 		1B37B02B25AF52C00007AEF3 /* ActivityIndicatorView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B37B02A25AF52C00007AEF3 /* ActivityIndicatorView.swift */; };
+		1B3828AC25B867760007790A /* TextfieldWithButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3828AB25B867760007790A /* TextfieldWithButton.swift */; };
 		1B3ED80E25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3ED80D25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift */; };
 		1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */; };
 		1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65FB25A8B42800801E12 /* ButtonParking.swift */; };
@@ -167,6 +168,7 @@
 		1B37B01325AF316B0007AEF3 /* AppEnvironment.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppEnvironment.swift; sourceTree = "<group>"; };
 		1B37B02725AF4CBE0007AEF3 /* ContentView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ContentView.swift; sourceTree = "<group>"; };
 		1B37B02A25AF52C00007AEF3 /* ActivityIndicatorView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ActivityIndicatorView.swift; sourceTree = "<group>"; };
+		1B3828AB25B867760007790A /* TextfieldWithButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextfieldWithButton.swift; sourceTree = "<group>"; };
 		1B3ED80D25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameInteractorImpl.swift; sourceTree = "<group>"; };
 		1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatGameTextField.swift; sourceTree = "<group>"; };
 		1B4B65FB25A8B42800801E12 /* ButtonParking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParking.swift; sourceTree = "<group>"; };
@@ -396,6 +398,7 @@
 				1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */,
 				1B155F4A256C15F600019C2F /* TextFieldViewOld.swift */,
 				1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */,
+				1B3828AB25B867760007790A /* TextfieldWithButton.swift */,
 			);
 			path = TextField;
 			sourceTree = "<group>";
@@ -859,6 +862,7 @@
 				1B155F53256C471D00019C2F /* CheckboxFieldView.swift in Sources */,
 				1BF3664325A7832700B196EE /* ButtonsCurrentGame.swift in Sources */,
 				1B03BE7425B7A69C00F032F7 /* MainAppInteractor.swift in Sources */,
+				1B3828AC25B867760007790A /* TextfieldWithButton.swift in Sources */,
 				1B7B649825B724FB0067A334 /* AuthInteractor.swift in Sources */,
 				1B6BD02625B5BEBA008DAD8B /* StepOneCreateGameInteractor.swift in Sources */,
 				1B3ED80E25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift in Sources */,
@@ -1065,7 +1069,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1075,7 +1079,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.24;
+				MARKETING_VERSION = 1.0.26;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1089,7 +1093,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 24;
+				CURRENT_PROJECT_VERSION = 26;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1099,7 +1103,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.24;
+				MARKETING_VERSION = 1.0.26;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

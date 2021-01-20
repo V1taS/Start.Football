@@ -27,11 +27,16 @@ struct TextfieldOneLineView: View {
                     .font(Font.event.robotoRegular14)
                     .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
                 
+                
+                
                 HStack {
-                    TextField(placeholder, text: $text)
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular18)
-                        .keyboardType(keyboardType)
+                    TextfieldWithButton(placeholder: placeholder,
+                                        text: $text,
+                                        font: UIFont.event.robotoRegular18!,
+                                        foregroundColor: .secondaryColor,
+                                        keyType: .default,
+                                        isSecureText: false)
+                        .frame(height: 30)
                     if iconShow {
                         Image(icon)
                     }

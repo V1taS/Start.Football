@@ -21,7 +21,7 @@ struct MainView: View {
     }
     
     @Environment(\.injected) private var injected: DIContainer
-    
+
     var body: some View {
         ZStack {
             Color(.paleWhite)

@@ -31,10 +31,13 @@ struct LoginTextFieldView: View {
                     .renderingMode(.template)
                     .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
                 
-                TextField(placeholder, text: $text)
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium16)
-                    .keyboardType(.default)
+                TextfieldWithButton(placeholder: placeholder,
+                                    text: $text,
+                                    font: UIFont.event.robotoMedium16!,
+                                    foregroundColor: .secondaryColor,
+                                    keyType: .default,
+                                    isSecureText: false)
+                    .frame(height: 30)
                 
                 Image("itsOk")
                     .renderingMode(.template)
