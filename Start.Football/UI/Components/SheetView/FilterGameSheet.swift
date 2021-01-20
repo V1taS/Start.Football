@@ -9,20 +9,16 @@ import SwiftUI
 
 struct FilterGameSheet: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    @Binding var isSheetActive: Bool
+    var appBinding: Binding<AppState.AppData>
+    @Environment(\.injected) private var injected: DIContainer
     let animation = Animation.interpolatingSpring(stiffness: 100,
                                                   damping: 30,
                                                   initialVelocity: 10)
     
     @State var viewState = CGSize.zero
     var isExpanded: Bool {
-        isSheetActive
+        appBinding.main.showFiltrsView.wrappedValue
     }
-    
-    
     
     var body: some View {
         ZStack{
@@ -40,98 +36,21 @@ struct FilterGameSheet: View {
                 }
             }
             
-            if isSheetActive {
+            if appBinding.main.showFiltrsView.wrappedValue {
                 VStack(spacing: 0) {
-                    Color(.shotDividerColor)
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 48),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 5))
-                        .overlay(RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(.shotDividerColor)))
-                        .offset(y: -15)
+                    
+                    divider
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        Group {
-                            DatePickerView(currentDate: .constant(Date(timeIntervalSince1970: TimeInterval(12))))
-                            TimePickerView()
-                            CostView()
-                        }
+                        DatePickerView(currentDate: appBinding.main.selectedData)
+                        TimePickerView(appBinding: appBinding)
+                        CostView(appBinding: appBinding)
                         
-                        Group {
-                            Text("Доступность")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoMedium18)
-                            CheckboxFieldView(checked: .constant(false),
-                                              text: "Только бесплатные игры")
-                            CheckboxFieldView(checked: .constant(false),
-                                              text: "Не показывать игры с резервом")
-                            CheckboxFieldView(checked: .constant(false),
-                                              text: "Для всех желающих (без заявок)")
-                        }
-                        
-                        
-                        Text("Тип игры")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium18)
-                        
-                        HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 6)) {
-                            Text("Футбол")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                                .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.secondaryColor))
-
-                            Text("Мини-футбол")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                                .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.secondaryColor))
-
-                            Text("Футзал")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                                .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.secondaryColor))
-                            Spacer()
-                        }
-                        
-                        Text("Где играть")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium18)
-                        
-                        HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 6)) {
-                            Text("Зал")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                                .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.secondaryColor))
-
-                            Text("Манеж")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                                .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.secondaryColor))
-
-                            Text("Улица")
-                                .foregroundColor(.secondaryColor)
-                                .font(Font.event.robotoRegular16)
-                                .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                                .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                                .overlay(RoundedRectangle(cornerRadius: 16)
-                                            .stroke(Color.secondaryColor))
-                            Spacer()
-                        }
+                        availability
+                        gameType
+                        placeType
                     }
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 8))
+                    .padding(.top, 8)
                     Spacer()
                 }
             }
@@ -151,8 +70,8 @@ struct FilterGameSheet: View {
             .onEnded(onDragEnded)
         )
         .animation(animation)
-        .frame(width: width-40,
-               height: height * Size.shared.getAdaptSizeHeight(px: 555))
+        .frame(width: UIScreen.screenWidth - 40,
+               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 555))
     }
     
     func onDragEnded(drag: DragGesture.Value) {
@@ -178,17 +97,149 @@ struct FilterGameSheet: View {
     }
     
     func collapse() {
-        self.isSheetActive = false
+        appBinding.main.showFiltrsView.wrappedValue = false
     }
     
     func expand() {
-        self.isSheetActive = false
+        appBinding.main.showFiltrsView.wrappedValue = false
+    }
+}
+
+private extension FilterGameSheet {
+    private var gameType: AnyView {
+        AnyView(
+            Group {
+                Text("Тип игры")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoMedium18)
+                HStack {
+                    Button(action: {
+                        selectMiniFootball()
+                    }) {
+                        TextButtonRound(name: "Мини",
+                                        isOn: appBinding.main.miniFootball.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectFootball()
+                    }) {
+                        TextButtonRound(name: "Стандарт",
+                                        isOn: appBinding.main.football.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectFootsal()
+                    }) {
+                        TextButtonRound(name: "Футзал",
+                                        isOn: appBinding.main.footsal.wrappedValue)
+                    }
+                }
+            }
+        )
+    }
+}
+
+private extension FilterGameSheet {
+    private var placeType: AnyView {
+        AnyView(
+            Group {
+                Text("Где играть")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoMedium18)
+                
+                HStack {
+                    Button(action: {
+                        selectStreet()
+                    }) {
+                        TextButtonRound(name: "Улица",
+                                        isOn: appBinding.main.street.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectManege()
+                    }) {
+                        TextButtonRound(name: "Манеж",
+                                        isOn: appBinding.main.manege.wrappedValue)
+                    }
+                    
+                    Button(action: {
+                        selectHall()
+                    }) {
+                        TextButtonRound(name: "Зал",
+                                        isOn: appBinding.main.hall.wrappedValue)
+                    }
+                }
+            }
+        )
+    }
+}
+
+private extension FilterGameSheet {
+    private var divider: AnyView {
+        AnyView(
+            Color(.shotDividerColor)
+                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 48),
+                       height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 5))
+                .overlay(RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(.shotDividerColor)))
+                .offset(y: -15)
+        )
+    }
+}
+
+private extension FilterGameSheet {
+    private var availability: AnyView {
+        AnyView(
+            Group {
+                Text("Доступность")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoMedium18)
+                
+                CheckboxFieldView(checked: appBinding.main.onlyFreeGame,
+                                  text: "Только бесплатные игры")
+                CheckboxFieldView(checked: appBinding.main.doNotShowGamesWithReserve,
+                                  text: "Не показывать игры с резервом")
+                CheckboxFieldView(checked: appBinding.main.availableToAll,
+                                  text: "Для всех желающих")
+            }
+        )
+    }
+}
+
+private extension FilterGameSheet {
+    // MARK: Type Game
+    private func selectMiniFootball() {
+        injected.interactors.mainAppInteractor.selectMiniFootball(state: appBinding)
+    }
+    
+    private func selectFootball() {
+        injected.interactors.mainAppInteractor.selectFootball(state: appBinding)
+    }
+    
+    private func selectFootsal() {
+        injected.interactors.mainAppInteractor.selectFootsal(state: appBinding)
+    }
+}
+
+private extension FilterGameSheet {
+    // MARK: Place Play
+    private func selectStreet() {
+        injected.interactors.mainAppInteractor.selectStreet(state: appBinding)
+    }
+    
+    private func selectManege() {
+        injected.interactors.mainAppInteractor.selectManege(state: appBinding)
+    }
+    
+    private func selectHall() {
+        injected.interactors.mainAppInteractor.selectHall(state: appBinding)
     }
 }
 
 
+
 struct FilterGameSheet_Previews: PreviewProvider {
     static var previews: some View {
-        FilterGameSheet(isSheetActive: .constant(true))
+        FilterGameSheet(appBinding: .constant(.init()))
     }
 }

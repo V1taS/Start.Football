@@ -117,15 +117,12 @@ private extension PasswordResetView {
 private extension PasswordResetView {
     private var authError: AnyView {
         AnyView(
-            ZStack {
-                HStack {
-                    Text("\(appBinding.resetAuth.authError.wrappedValue.rawValue)")
-                        .foregroundColor(.error)
-                        .font(Font.event.robotoMedium14)
-                    Spacer()
-                }
+            HStack {
+                Text("\(appBinding.resetAuth.authError.wrappedValue.rawValue)")
+                    .foregroundColor(.error)
+                    .font(Font.event.robotoMedium14)
+                Spacer()
             }
-            .padding(.top, 34)
         )
     }
 }

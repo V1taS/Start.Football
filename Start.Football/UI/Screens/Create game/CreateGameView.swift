@@ -23,13 +23,7 @@ struct CreateGameView: View {
                 Spacer()
                 buttonNextStep
             }
-            
-            if appBinding.showParking.wrappedValue || appBinding.showDatePicker.wrappedValue || appBinding.showTimePicker.wrappedValue {
-                Color.secondary
-                    .edgesIgnoringSafeArea(.all)
-                    .animation(.linear(duration: 10))
-            }
-            
+            backgroundColor
             timePicker
             datePicker
             typeOfParking
@@ -107,7 +101,20 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - Injected Interactors
+// MARK: - Background color
+private extension CreateGameView {
+    var backgroundColor: some View {
+        ZStack {
+            if appBinding.showParking.wrappedValue || appBinding.showDatePicker.wrappedValue || appBinding.showTimePicker.wrappedValue {
+                Color.secondary
+                    .edgesIgnoringSafeArea(.all)
+                    .animation(.linear(duration: 10))
+            }
+        }
+    }
+}
+
+
 private extension CreateGameView {
     func nextStepProgressBar() {
         injected.interactors.createGameInteractor

@@ -1,5 +1,5 @@
 //
-//  GameView.swift
+//  MainView.swift
 //  Start.Football
 //
 //  Created by Виталий Сосин on 25.11.2020.
@@ -9,17 +9,15 @@ import SwiftUI
 
 struct MainView: View {
     
+    @State private var appState: AppState.AppData = .init()
+    private var appBinding: Binding<AppState.AppData> {
+        $appState.dispatched(to: injected.appState, \.appData)
+    }
+    @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
-    
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    @State var viewState = CGSize.zero
-    
-    @ObservedObject var viewModel = MainViewModel()
     
     var body: some View {
         ZStack {
@@ -27,17 +25,47 @@ struct MainView: View {
                 .edgesIgnoringSafeArea(.all)
             
             VStack(spacing: 0) {
-                
-                HeaderMainView(selectionGame: $viewModel.selectionGame,
-                               showFiltrsView: $viewModel.showFiltrsView)
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 8))
-                
-                MenuMainView(selectionGame: $viewModel.selectionGame)
-                    .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 8))
-                
-                if viewModel.selectionGame == .allGame {
+                header
+                menu
+                allGame
+                myGame
+            }
+            backgroundColor
+            filterGame
+        }
+        .dismissingKeyboard()
+    }
+}
+
+// MARK: Header
+private extension MainView {
+    private var header: AnyView {
+        AnyView(
+            HeaderMainView(selectionGame: appBinding.main.selectionGame,
+                           showFiltrsView: appBinding.main.showFiltrsView)
+                .padding(.top, 8)
+        )
+    }
+}
+
+// MARK: Main menu
+private extension MainView {
+    private var menu: AnyView {
+        AnyView(
+            MenuMainView(selectionGame: appBinding.main.selectionGame)
+                .padding(.top, 8)
+        )
+    }
+}
+
+// MARK: All game
+private extension MainView {
+    private var allGame: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if appBinding.main.selectionGame.wrappedValue == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+                        VStack(spacing: 16) {
                             
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
@@ -55,12 +83,21 @@ struct MainView: View {
                                     self.viewController?.present(style: .fullScreen) {
                                         CurrentGameView()
                                     } }) { CellMainView() }
-                            
-                        } .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 16))
+                        }
+                        .padding(.vertical, 16)
                     }
                 }
-                
-                else if viewModel.selectionGame == .myGames {
+            }
+        )
+    }
+}
+
+// MARK: My game
+private extension MainView {
+    private var myGame: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if appBinding.main.selectionGame.wrappedValue == .myGames {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
                             Plug(text: "Пока у тебя нет игр", createGame: true)
@@ -68,10 +105,33 @@ struct MainView: View {
                     }
                 }
             }
-            FilterGameSheet(isSheetActive: $viewModel.showFiltrsView)
-                .offset(y: 0)
+        )
+    }
+}
 
-        } .dismissingKeyboard()
+// MARK: Filter game
+private extension MainView {
+    private var filterGame: AnyView {
+        AnyView(
+            VStack {
+                Spacer()
+                FilterGameSheet(appBinding: appBinding)
+            }
+            .padding(.bottom, 70)
+        )
+    }
+}
+
+// MARK: - Background color
+private extension MainView {
+    var backgroundColor: some View {
+        ZStack {
+            if appBinding.main.showFiltrsView.wrappedValue {
+                Color.secondary
+                    .edgesIgnoringSafeArea(.all)
+                    .animation(.linear(duration: 10))
+            }
+        }
     }
 }
 

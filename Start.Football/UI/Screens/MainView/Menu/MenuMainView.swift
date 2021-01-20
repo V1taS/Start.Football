@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct MenuMainView: View {
-    @Binding var selectionGame: SelectionGame
+    @Binding var selectionGame: AppActions.MainApp.SelectionGame
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     

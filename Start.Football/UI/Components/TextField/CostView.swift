@@ -9,10 +9,7 @@ import SwiftUI
 
 struct CostView: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    @State var text = ""
+    var appBinding: Binding<AppState.AppData>
     
     var body: some View {
         VStack(spacing: 0) {
@@ -26,16 +23,16 @@ struct CostView: View {
                     Image("datePicerRubls")
                     
                     HStack(spacing: 0) {
-                        TextField("500", text: $text)
+                        TextField("500", text: appBinding.main.costSince)
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .keyboardType(.numberPad)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 55))
+                            .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 55))
                         
                         Text("₽")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 20))
+                            .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 20))
                     }
                     
                     Text("—")
@@ -43,16 +40,16 @@ struct CostView: View {
                         .font(Font.event.robotoRegular24)
                     
                     HStack {
-                        TextField("1000", text: $text)
+                        TextField("1000", text: appBinding.main.costUntil)
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
                             .keyboardType(.numberPad)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 55))
+                            .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 55))
                         
                         Text("₽")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular24)
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 20))
+                            .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 20))
                     }
                     Spacer()
                     
@@ -62,8 +59,8 @@ struct CostView: View {
             
             VStack(alignment: .center, spacing: 0) {
                 Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
-                           height: height * Size.shared.getAdaptSizeHeight(px: 2))
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 270),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 2))
             }
         }
     }
@@ -71,6 +68,6 @@ struct CostView: View {
 
 struct CostView_Previews: PreviewProvider {
     static var previews: some View {
-        CostView()
+        CostView(appBinding: .constant(.init()))
     }
 }

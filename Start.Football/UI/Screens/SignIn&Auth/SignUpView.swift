@@ -34,6 +34,7 @@ struct SignUpView: View {
                     passwordTextField
                 }
                 .padding(.top, 37)
+                authError
                 
                 VStack(alignment: .leading, spacing: 10) {
                     confidentiality
@@ -45,7 +46,7 @@ struct SignUpView: View {
                 signUPButtton
                 loginButton
             }
-            authError
+            
         }
         .padding(.horizontal, 24)
         .dismissingKeyboard()
@@ -182,15 +183,12 @@ private extension SignUpView {
 private extension SignUpView {
     private var authError: AnyView {
         AnyView(
-            ZStack {
-                HStack {
-                    Text("\(appBinding.signUpAuth.authError.wrappedValue.rawValue)")
-                        .foregroundColor(.error)
-                        .font(Font.event.robotoMedium14)
-                    Spacer()
-                }
+            HStack {
+                Text("\(appBinding.signUpAuth.authError.wrappedValue.rawValue)")
+                    .foregroundColor(.error)
+                    .font(Font.event.robotoMedium14)
+                Spacer()
             }
-            .padding(.top, 34)
         )
     }
 }

@@ -15,7 +15,7 @@ struct HeaderMainView: View {
     
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
-    @Binding var selectionGame: SelectionGame
+    @Binding var selectionGame: AppActions.MainApp.SelectionGame
     @Binding var showFiltrsView: Bool
     
     var body: some View {

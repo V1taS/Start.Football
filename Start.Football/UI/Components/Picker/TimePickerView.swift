@@ -8,10 +8,8 @@
 import SwiftUI
 
 struct TimePickerView: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
-    @State private var currentDate = Date()
+
+    var appBinding: Binding<AppState.AppData>
     
     var body: some View {
         VStack(spacing: 0) {
@@ -24,7 +22,7 @@ struct TimePickerView: View {
                 HStack {
                     Image("datePicerTime")
                     
-                    DatePicker("", selection: $currentDate,
+                    DatePicker("", selection: appBinding.main.timeSince,
                                displayedComponents: .hourAndMinute)
                         .labelsHidden()
                     
@@ -32,7 +30,7 @@ struct TimePickerView: View {
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular24)
                     
-                    DatePicker("", selection: $currentDate,
+                    DatePicker("", selection: appBinding.main.timeUntil,
                                displayedComponents: .hourAndMinute)
                         .labelsHidden()
                     
@@ -42,8 +40,8 @@ struct TimePickerView: View {
             
             VStack(alignment: .center, spacing: 0) {
                 Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
-                           height: height * Size.shared.getAdaptSizeHeight(px: 2))
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 270),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 2))
             }
         }
     }
@@ -51,6 +49,6 @@ struct TimePickerView: View {
 
 struct TimePickerView_Previews: PreviewProvider {
     static var previews: some View {
-        TimePickerView()
+        TimePickerView(appBinding: .constant(.init()))
     }
 }

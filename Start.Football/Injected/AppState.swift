@@ -18,6 +18,7 @@ extension AppState {
         var signInAuth = SignInAuth()
         var signUpAuth = SignUpAuth()
         var resetAuth = ResetAuth()
+        var main = Main()
         var createGame = CreateGame()
     }
 }
@@ -42,5 +43,6 @@ extension AppState {
 
 func == (lhs: AppState, rhs: AppState) -> Bool {
     return lhs.appData == rhs.appData &&
-        lhs.system == rhs.system
+        lhs.system == rhs.system &&
+        lhs.appData.main == rhs.appData.main
 }

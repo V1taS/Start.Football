@@ -10,6 +10,7 @@ import Foundation
 struct AppActions {
     var createGame: CreateGame
     var authApp: AuthApp
+    var mainApp: MainApp
 }
 
 
