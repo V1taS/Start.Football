@@ -33,5 +33,7 @@ extension AppState.AppData {
         var street = true
         var manege = false
         var hall = false
+        
+        var loadMoreGames = true
     }
 }

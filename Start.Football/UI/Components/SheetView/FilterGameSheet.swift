@@ -11,9 +11,6 @@ struct FilterGameSheet: View {
     
     var appBinding: Binding<AppState.AppData>
     @Environment(\.injected) private var injected: DIContainer
-    let animation = Animation.interpolatingSpring(stiffness: 100,
-                                                  damping: 30,
-                                                  initialVelocity: 10)
     
     @State var viewState = CGSize.zero
     var isExpanded: Bool {
@@ -69,9 +66,9 @@ struct FilterGameSheet: View {
             }
             .onEnded(onDragEnded)
         )
-        .animation(animation)
         .frame(width: UIScreen.screenWidth - 40,
-               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 555))
+               height: 777)
+        .animation(.spring())
     }
     
     func onDragEnded(drag: DragGesture.Value) {

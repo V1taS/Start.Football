@@ -9,15 +9,18 @@ import SwiftUI
 
 struct MainView: View {
     
-    @State private var appState: AppState.AppData = .init()
-    private var appBinding: Binding<AppState.AppData> {
-        $appState.dispatched(to: injected.appState, \.appData)
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
     }
-    @Environment(\.injected) private var injected: DIContainer
+    
+    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
+    
+    @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
         ZStack {
@@ -30,8 +33,6 @@ struct MainView: View {
                 allGame
                 myGame
             }
-            backgroundColor
-            filterGame
         }
         .dismissingKeyboard()
     }
@@ -54,6 +55,7 @@ private extension MainView {
         AnyView(
             MenuMainView(selectionGame: appBinding.main.selectionGame)
                 .padding(.top, 8)
+                .padding(.bottom, 3)
         )
     }
 }
@@ -66,6 +68,17 @@ private extension MainView {
                 if appBinding.main.selectionGame.wrappedValue == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 16) {
+                            
+                            if appBinding.main.loadMoreGames.wrappedValue {
+                                Button(action: {
+                                    appBinding.main.loadMoreGames.wrappedValue = false
+                                }) {
+                                    Text("Появились новые игры")
+                                        .font(Font.event.robotoMedium16)
+                                        .foregroundColor(.error)
+                                        .fontWeight(.bold)
+                                }
+                            }
                             
                             Button(action: {
                                     self.viewController?.present(style: .fullScreen) {
@@ -84,7 +97,7 @@ private extension MainView {
                                         CurrentGameView()
                                     } }) { CellMainView() }
                         }
-                        .padding(.vertical, 16)
+                        .padding(16)
                     }
                 }
             }
@@ -109,34 +122,8 @@ private extension MainView {
     }
 }
 
-// MARK: Filter game
-private extension MainView {
-    private var filterGame: AnyView {
-        AnyView(
-            VStack {
-                Spacer()
-                FilterGameSheet(appBinding: appBinding)
-            }
-            .padding(.bottom, 70)
-        )
-    }
-}
-
-// MARK: - Background color
-private extension MainView {
-    var backgroundColor: some View {
-        ZStack {
-            if appBinding.main.showFiltrsView.wrappedValue {
-                Color.secondary
-                    .edgesIgnoringSafeArea(.all)
-                    .animation(.linear(duration: 10))
-            }
-        }
-    }
-}
-
 struct MainView_Previews: PreviewProvider {
     static var previews: some View {
-        MainView()
+        MainView(appBinding: .constant(.init()))
     }
 }

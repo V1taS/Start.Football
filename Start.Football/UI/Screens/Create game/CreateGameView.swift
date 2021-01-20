@@ -111,6 +111,19 @@ private extension CreateGameView {
                     .animation(.linear(duration: 10))
             }
         }
+        .onTapGesture {
+            if appBinding.showTimePicker.wrappedValue {
+                appBinding.showTimePicker.wrappedValue = false
+            }
+            
+            if appBinding.showDatePicker.wrappedValue {
+                appBinding.showDatePicker.wrappedValue = false
+            }
+            
+            if appBinding.showParking.wrappedValue {
+                appBinding.showParking.wrappedValue = false
+            }
+        }
     }
 }
 
