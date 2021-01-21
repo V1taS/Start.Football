@@ -44,7 +44,7 @@ struct TextfieldOneLineView: View {
             }
             VStack(alignment: .leading, spacing: 0) {
                 Color(.dividerColor)
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                            height: height * Size.shared.getAdaptSizeHeight(px: 2))
             }
         }

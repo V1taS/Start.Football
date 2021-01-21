@@ -20,7 +20,7 @@ struct FormatGameTextField: View {
             HStack() {
                 Text("Формат игры")
                     .foregroundColor(.defaultColor)
-                    .font(Font.event.robotoMedium14)
+                    .font(Font.event.robotoRegular14)
                     .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
                 
                 Spacer()

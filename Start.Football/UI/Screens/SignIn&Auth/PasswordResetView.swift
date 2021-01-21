@@ -36,7 +36,6 @@ struct PasswordResetView: View {
                     cancelButton
                 }
                 .padding(.bottom, 17)
-                
             }
         }
         .padding(.horizontal, 24)
@@ -44,7 +43,7 @@ struct PasswordResetView: View {
     }
 }
 
-// MARK: Header
+// MARK: UI
 private extension PasswordResetView {
     private var header: AnyView {
         AnyView(
@@ -57,7 +56,6 @@ private extension PasswordResetView {
                     Text("Введите email, указанный при регистрации")
                         .foregroundColor(.desc)
                         .font(Font.event.robotoRegular16)
-                    
                 }
                 .padding(.top, 60)
                 Spacer()
@@ -66,7 +64,6 @@ private extension PasswordResetView {
     }
 }
 
-// MARK: Text field
 private extension PasswordResetView {
     private var loginTextField: AnyView {
         AnyView(
@@ -80,40 +77,6 @@ private extension PasswordResetView {
     }
 }
 
-// MARK: Login button
-private extension PasswordResetView {
-    private var loginButton: AnyView {
-        AnyView(
-            Button(action: {
-                verificationMail()
-                showPage = appBinding.resetAuth.mailSuccess.wrappedValue
-                presentPage()
-            }) {
-                ButtonView(background: .primaryColor,
-                           textColor: .whiteColor,
-                           borderColor: .primaryColor,
-                           text: "Продолжить",
-                           switchImage: false,
-                           image: "")
-            }
-        )
-    }
-}
-
-// MARK: Cancel button
-private extension PasswordResetView {
-    private var cancelButton: AnyView {
-        AnyView(
-            Button(action: {
-                self.viewController?.dismiss(animated: true, completion: nil)
-            }) {
-                ButtonCancel()
-            }
-        )
-    }
-}
-
-// MARK: Auth error
 private extension PasswordResetView {
     private var authError: AnyView {
         AnyView(
@@ -128,18 +91,53 @@ private extension PasswordResetView {
 }
 
 private extension PasswordResetView {
-    private func verificationMail() {
-        injected.interactors.authInteractor.resetVerificationMail(state: appBinding)
+    private var loginButton: AnyView {
+        AnyView(
+            Button(action: {
+                verificationMail()
+                resetPass()
+            }) {
+                ButtonView(background: .primaryColor,
+                           textColor: .whiteColor,
+                           borderColor: .primaryColor,
+                           text: "Продолжить",
+                           switchImage: false,
+                           image: "")
+            }
+        )
     }
 }
 
 private extension PasswordResetView {
-    private func presentPage() {
+    private var cancelButton: AnyView {
+        AnyView(
+            Button(action: {
+                dismissButton()
+            }) {
+                ButtonCancel()
+            }
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension PasswordResetView {
+    private func verificationMail() {
+        injected.interactors.authInteractor.resetVerificationMail(state: appBinding)
+        showPage = appBinding.resetAuth.mailSuccess.wrappedValue
+    }
+    
+    private func resetPass() {
         if showPage {
             self.viewController?.present(style: .fullScreen) {
-                TabViewApp() // логика во востановлению пароля
+                TabViewApp()
             }
         }
+    }
+    
+    private func dismissButton() {
+        self.viewController?.dismiss(animated: true, completion: nil)
     }
 }
 

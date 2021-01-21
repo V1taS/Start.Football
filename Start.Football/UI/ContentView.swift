@@ -10,7 +10,7 @@ import SwiftUI
 struct ContentView: View {
     
     var body: some View {
-        if UserDefaults.standard.bool(forKey: "tabViewApp") {
+        if UserDefaults.standard.bool(forKey: "pageView") {
             AuthView()
         } else {
             PageView()

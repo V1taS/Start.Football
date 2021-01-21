@@ -66,7 +66,7 @@ struct FilterGameSheet: View {
             }
             .onEnded(onDragEnded)
         )
-        .frame(width: UIScreen.screenWidth - 40,
+        .frame(width: UIScreen.screenWidth,
                height: 777)
         .animation(.spring())
     }

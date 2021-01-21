@@ -80,7 +80,7 @@ extension AppState.AppData {
         var showParking: Bool = false
         var typeOfParking: AppActions.CreateGame.TypeOfParking = .freeCity
         var paymentForParking: AppActions.CreateGame.PaymentForParking = .non
-        var parkingCost: String = "0"
+        var parkingCost: String = ""
         
         // MARK: - Step 4
         var descriptionPlaying = "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну."

@@ -57,7 +57,7 @@ struct AuthView: View {
     }
 }
 
-// MARK: Header
+// MARK: UI
 private extension AuthView {
     private var header: AnyView {
         AnyView(
@@ -79,7 +79,6 @@ private extension AuthView {
     }
 }
 
-// MARK: Login text field
 private extension AuthView {
     private var loginTextField: AnyView {
         AnyView(
@@ -92,7 +91,6 @@ private extension AuthView {
     }
 }
 
-// MARK: Password text field
 private extension AuthView {
     private var passwordTextField: AnyView {
         AnyView(
@@ -103,24 +101,29 @@ private extension AuthView {
     }
 }
 
-// MARK: Login button
+private extension AuthView {
+    private var authError: AnyView {
+        AnyView(
+            ZStack {
+                HStack {
+                    Text("\(appBinding.signInAuth.authError.wrappedValue.rawValue)")
+                        .foregroundColor(.error)
+                        .font(Font.event.robotoMedium14)
+                    Spacer()
+                }
+            }
+            .padding(.top, 8)
+        )
+    }
+}
+
 private extension AuthView {
     private var loginButton: AnyView {
         AnyView(
             Button(action: {
                 verificationLogin()
                 verificationPassword()
-                
-                if appBinding.signInAuth.loginSuccess
-                    .wrappedValue && appBinding.signInAuth.passwordSuccess
-                    .wrappedValue {
-                    appBinding.signInAuth.authError
-                        .wrappedValue = .success
-                    self.viewController?.present(style: .fullScreen) {
-                        TabViewApp()
-                    }
-                }
-                appBinding.signInAuth.authError.wrappedValue = .notFilled
+                presentLogINView()
             }) {
                 ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
@@ -134,7 +137,6 @@ private extension AuthView {
     }
 }
 
-// MARK: Reset password buttton
 private extension AuthView {
     private var resetPasswordButtton: AnyView {
         AnyView(
@@ -143,22 +145,18 @@ private extension AuthView {
                     .foregroundColor(.desc)
                     .font(Font.event.robotoRegular16)
                 Button(action: {
-                    self.viewController?.present(style: .pageSheet) {
-                        PasswordResetView()
-                    }
+                    presentRessetPassView()
                 } ) {
                     Text("пароль?")
                         .foregroundColor(.primaryColor)
                         .font(Font.event.robotoMedium18)
                 }
-                
             }
             .padding(.top, 33)
         )
     }
 }
 
-// MARK: SignUP buttton
 private extension AuthView {
     private var signUPButtton: AnyView {
         AnyView(
@@ -167,22 +165,18 @@ private extension AuthView {
                     .foregroundColor(.desc)
                     .font(Font.event.robotoRegular16)
                 Button(action: {
-                    self.viewController?.present(style: .fullScreen) {
-                        SignUpView()
-                    }
+                    presentSignUpView()
                 } ) {
                     Text("Зарегистрируйтесь")
                         .foregroundColor(.primaryColor)
                         .font(Font.event.robotoMedium18)
                 }
-                
             }
             .padding(.bottom, 33)
         )
     }
 }
 
-// MARK: Or
 private extension AuthView {
     private var or: AnyView {
         AnyView(
@@ -202,25 +196,23 @@ private extension AuthView {
     }
 }
 
-// MARK: SignUP apple
 private extension AuthView {
     private var signUPApple: AnyView {
         AnyView(
-            Button(action: {} ) {
+            Button(action: {
+                presentAppleView()
+            } ) {
                 ButtonApple()
             }
         )
     }
 }
 
-// MARK: SignUP google
 private extension AuthView {
     private var signUPGoogle: AnyView {
         AnyView(
             Button(action: {
-                self.viewController?.present(style: .fullScreen) {
-                    TabViewApp()
-                }
+                presentGoogleView()
             } ) {
                 ButtonGoogle()
             }
@@ -228,23 +220,8 @@ private extension AuthView {
     }
 }
 
-// MARK: Auth error
-private extension AuthView {
-    private var authError: AnyView {
-        AnyView(
-            ZStack {
-                HStack {
-                    Text("\(appBinding.signInAuth.authError.wrappedValue.rawValue)")
-                        .foregroundColor(.error)
-                        .font(Font.event.robotoMedium14)
-                    Spacer()
-                }
-            }
-            .padding(.top, 8)
-        )
-    }
-}
 
+// MARK: Actions
 private extension AuthView {
     private func verificationLogin() {
         injected.interactors.authInteractor.verificationLogin(state: appBinding)
@@ -252,6 +229,37 @@ private extension AuthView {
     
     private func verificationPassword() {
         injected.interactors.authInteractor.verificationPassword(state: appBinding)
+    }
+    
+    private func presentLogINView() {
+        if appBinding.signInAuth.loginSuccess.wrappedValue && appBinding.signInAuth.passwordSuccess.wrappedValue {
+            appBinding.signInAuth.authError.wrappedValue = .success
+            self.viewController?.present(style: .fullScreen) {
+                TabViewApp()
+            }
+        }
+        appBinding.signInAuth.authError.wrappedValue = .notFilled
+    }
+    
+    private func presentRessetPassView() {
+        self.viewController?.present(style: .pageSheet) {
+            PasswordResetView()
+        }
+    }
+    
+    private func presentSignUpView() {
+        self.viewController?.present(style: .fullScreen) {
+            SignUpView()
+        }
+    }
+    
+    private func presentAppleView() {
+    }
+    
+    private func presentGoogleView() {
+        self.viewController?.present(style: .fullScreen) {
+            TabViewApp()
+        }
     }
 }
 

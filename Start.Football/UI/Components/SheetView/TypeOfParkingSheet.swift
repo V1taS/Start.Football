@@ -97,7 +97,7 @@ struct TypeOfParkingSheet: View {
             .onEnded(onDragEnded)
         )
         .animation(animation)
-        .frame(width: UIScreen.screenWidth-40, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 500))
+        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 500))
     }
     
     func onDragEnded(drag: DragGesture.Value) {
@@ -233,6 +233,7 @@ private extension TypeOfParkingSheet {
                 ButtonRoundGreen(status: appBinding.paymentForParking
                                     .wrappedValue == AppActions.CreateGame
                                     .PaymentForParking.oneTime)
+                    .frame(width: 30)
                 Text("Разово")
                     .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreateGame
                                         .PaymentForParking.oneTime ? .primaryColor : .secondaryColor)
@@ -249,6 +250,7 @@ private extension TypeOfParkingSheet {
                 ButtonRoundGreen(status: appBinding.paymentForParking
                                     .wrappedValue == AppActions.CreateGame
                                     .PaymentForParking.inAnHour)
+                    .frame(width: 30)
                 Text("За час")
                     .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreateGame
                                         .PaymentForParking.inAnHour ? .primaryColor : .secondaryColor)
@@ -265,6 +267,7 @@ private extension TypeOfParkingSheet {
                 ButtonRoundGreen(status: appBinding.paymentForParking
                                     .wrappedValue == AppActions.CreateGame
                                     .PaymentForParking.non)
+                    .frame(width: 30)
                 Text("Нет")
                     .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreateGame
                                         .PaymentForParking.non ? .primaryColor : .secondaryColor)

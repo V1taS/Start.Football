@@ -34,7 +34,7 @@ struct DatePickerView: View {
             }
             VStack(alignment: .leading, spacing: 0) {
                 Color(#colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                            height: height * Size.shared.getAdaptSizeHeight(px: 2))
             }
         }

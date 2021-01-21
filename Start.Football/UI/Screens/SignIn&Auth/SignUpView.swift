@@ -48,14 +48,13 @@ struct SignUpView: View {
                     loginButton
                 }
             }
-            
         }
         .padding(.horizontal, 24)
         .dismissingKeyboard()
     }
 }
 
-// MARK: Header
+// MARK: UI
 private extension SignUpView {
     private var header: AnyView {
         AnyView(
@@ -68,7 +67,6 @@ private extension SignUpView {
                     Text("Создайте аккаунт чтобы продолжить")
                         .foregroundColor(.desc)
                         .font(Font.event.robotoRegular16)
-                    
                 }
                 .padding(.top, 11)
                 Spacer()
@@ -77,7 +75,6 @@ private extension SignUpView {
     }
 }
 
-// MARK: Mail text field
 private extension SignUpView {
     private var mailTextField: AnyView {
         AnyView(
@@ -90,7 +87,6 @@ private extension SignUpView {
     }
 }
 
-// MARK: Login text field
 private extension SignUpView {
     private var loginTextField: AnyView {
         AnyView(
@@ -103,7 +99,6 @@ private extension SignUpView {
     }
 }
 
-// MARK: Password text field
 private extension SignUpView {
     private var passwordTextField: AnyView {
         AnyView(
@@ -114,74 +109,6 @@ private extension SignUpView {
     }
 }
 
-// MARK: Сonfidentiality
-private extension SignUpView {
-    
-    private var confidentiality: AnyView {
-        AnyView(
-            VStack(spacing: 0) {
-                CheckboxFieldView(checked: appBinding.signUpAuth.confidentiality,
-                                  text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
-                accessTextConfidentiality
-            }
-            .padding(.top, 24)
-        )
-    }
-}
-
-// MARK: Get news
-private extension SignUpView {
-    private var getNews: AnyView {
-        AnyView(
-            CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
-                              text: "Хочу получать новости на почту")
-        )
-    }
-}
-
-// MARK: SignUP buttton
-private extension SignUpView {
-    private var signUPButtton: AnyView {
-        AnyView(
-            Button(action: {
-                register()
-                switchConfidentiality()
-                presentPage()
-            }) {
-                ButtonView(background: .primaryColor,
-                           textColor: .whiteColor,
-                           borderColor: .primaryColor,
-                           text: "Зарегистрироваться",
-                           switchImage: false,
-                           image: "")
-            }
-            .padding(.bottom, 33)
-        )
-    }
-}
-
-// MARK: Login button
-private extension SignUpView {
-    private var loginButton: AnyView {
-        AnyView(
-            HStack {
-                Text("Уже есть аккаунт?")
-                    .foregroundColor(.desc)
-                    .font(Font.event.robotoRegular16)
-                Button(action: {
-                    self.viewController?.dismiss(animated: true, completion: nil)
-                } ) {
-                    Text("Войдите")
-                        .foregroundColor(.primaryColor)
-                        .font(Font.event.robotoMedium18)
-                }
-            }
-            .padding(.bottom, 17)
-        )
-    }
-}
-
-// MARK: Auth error
 private extension SignUpView {
     private var authError: AnyView {
         AnyView(
@@ -195,9 +122,21 @@ private extension SignUpView {
     }
 }
 
-// MARK: Access text confidentiality
 private extension SignUpView {
-    private var accessTextConfidentiality: AnyView {
+    private var confidentiality: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                CheckboxFieldView(checked: appBinding.signUpAuth.confidentiality,
+                                  text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
+                showTextConfidentialityError
+            }
+            .padding(.top, 24)
+        )
+    }
+}
+
+private extension SignUpView {
+    private var showTextConfidentialityError: AnyView {
         AnyView(
             HStack {
                 Text(isHiddenTextConfidentiality ? "" : "Подтвердите правила сервиса")
@@ -210,12 +149,61 @@ private extension SignUpView {
 }
 
 private extension SignUpView {
-    private func register() {
-        injected.interactors.authInteractor.register(state: appBinding)
+    private var getNews: AnyView {
+        AnyView(
+            CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
+                              text: "Хочу получать новости на почту")
+        )
     }
 }
 
 private extension SignUpView {
+    private var signUPButtton: AnyView {
+        AnyView(
+            Button(action: {
+                register()
+                switchConfidentiality()
+                presentSignUpView()
+            }) {
+                ButtonView(background: .primaryColor,
+                           textColor: .whiteColor,
+                           borderColor: .primaryColor,
+                           text: "Зарегистрироваться",
+                           switchImage: false,
+                           image: "")
+            }
+            .padding(.bottom, 33)
+        )
+    }
+}
+
+private extension SignUpView {
+    private var loginButton: AnyView {
+        AnyView(
+            HStack {
+                Text("Уже есть аккаунт?")
+                    .foregroundColor(.desc)
+                    .font(Font.event.robotoRegular16)
+                Button(action: {
+                    presentLogINView()
+                } ) {
+                    Text("Войдите")
+                        .foregroundColor(.primaryColor)
+                        .font(Font.event.robotoMedium18)
+                }
+            }
+            .padding(.bottom, 17)
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension SignUpView {
+    private func register() {
+        injected.interactors.authInteractor.register(state: appBinding)
+    }
+    
     private func switchConfidentiality() {
         if appBinding.signUpAuth.confidentiality.wrappedValue {
             isHiddenTextConfidentiality = true
@@ -223,10 +211,8 @@ private extension SignUpView {
             isHiddenTextConfidentiality = false
         }
     }
-}
-
-private extension SignUpView {
-    private func presentPage() {
+    
+    private func presentSignUpView() {
         if appBinding.signUpAuth.mailSuccess.wrappedValue &&
             appBinding.signUpAuth.loginSuccess.wrappedValue &&
             appBinding.signUpAuth.passwordSuccess.wrappedValue &&
@@ -235,6 +221,10 @@ private extension SignUpView {
                 TabViewApp()
             }
         }
+    }
+    
+    private func presentLogINView() {
+        self.viewController?.dismiss(animated: true, completion: nil)
     }
 }
 

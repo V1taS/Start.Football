@@ -21,44 +21,55 @@ struct BoxPrivacyCreateGame: View {
                     .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
                 
                 VStack(spacing: 16) {
-                    HStack(spacing: 16) {
-                        if privacyGame == .open {
-                            Button(action: { privacyGame = .open }) {
+                    if privacyGame == .open {
+                        Button(action: { privacyGame = .open }) {
+                            HStack(spacing: 16) {
                                 ButtonRoundGreen(status: privacyGame == .open)
                                     .frame(width: 30)
-                            }
-                        } else {
-                            Button(action: { privacyGame = .open }) {
-                                ButtonRoundGreen(status: privacyGame == .open)
-                                    .frame(width: 30)
+                                Text("Открытая игра. Записаться на эту игру сможет любой желающий.")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoMedium16)
+                                    .offset(x: -10)
+                                Spacer()
                             }
                         }
-                        
-                        Text("Открытая игра. Записаться на эту игру сможет любой желающий.")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium16)
-                            .offset(x: -10)
-                        Spacer()
+                    } else {
+                        Button(action: { privacyGame = .open }) {
+                            HStack(spacing: 16) {
+                                ButtonRoundGreen(status: privacyGame == .open)
+                                    .frame(width: 30)
+                                Text("Открытая игра. Записаться на эту игру сможет любой желающий.")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoMedium16)
+                                    .offset(x: -10)
+                                Spacer()
+                            }
+                            
+                        }
                     }
                     
-                    HStack(spacing: 8) {
-                        
-                        if privacyGame == .close {
-                            Button(action: { privacyGame = .close }) {
+                    if privacyGame == .close {
+                        Button(action: { privacyGame = .close }) {
+                            HStack(spacing: 8) {
                                 ButtonRoundGreen(status: privacyGame == .close)
                                     .frame(width: 30)
-                            }
-                        } else {
-                            Button(action: { privacyGame = .close }) {
-                                ButtonRoundGreen(status: privacyGame == .close)
-                                    .frame(width: 30)
+                                Text("Закрытая игра. На эту игру можно попасть только по приглашению администратора.")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoMedium16)
+                                Spacer()
                             }
                         }
-                        
-                        Text("Закрытая игра. На эту игру можно попасть только по приглашению администратора.")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium16)
-                        Spacer()
+                    } else {
+                        Button(action: { privacyGame = .close }) {
+                            HStack(spacing: 8) {
+                                ButtonRoundGreen(status: privacyGame == .close)
+                                    .frame(width: 30)
+                                Text("Закрытая игра. На эту игру можно попасть только по приглашению администратора.")
+                                    .foregroundColor(.secondaryColor)
+                                    .font(Font.event.robotoMedium16)
+                                Spacer()
+                            }
+                        }
                     }
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))

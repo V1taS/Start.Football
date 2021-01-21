@@ -83,7 +83,7 @@ struct DatePickerSheet: View {
             .onEnded(onDragEnded)
         )
         .animation(animation)
-        .frame(width: UIScreen.screenWidth - 40, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 200))
+        .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 200))
     }
     
     func onDragEnded(drag: DragGesture.Value) {

@@ -18,6 +18,7 @@ struct PageView: View {
         ZStack {
             Color(.backgroundColor)
                 .edgesIgnoringSafeArea(.all)
+            
             VStack(spacing: 16) {
                 Image("pageViewImage")
                 text
@@ -29,28 +30,7 @@ struct PageView: View {
     }
 }
 
-private extension PageView {
-    private var startButton: AnyView {
-        AnyView(
-            Button(action: {
-                self.viewController?.present(style: .fullScreen) {
-                    AuthView()
-                }
-            }) {
-                ButtonView(background: .primaryColor,
-                           textColor: .whiteColor,
-                           borderColor: .primaryColor,
-                           text: "Давай начнем!",
-                           switchImage: false,
-                           image: "")
-            } .onAppear {
-                UserDefaults.standard.set(true, forKey: "tabViewApp")
-            }
-            .padding(.bottom, 17)
-        )
-    }
-}
-
+// MARK: UI
 private extension PageView {
     private var text: AnyView {
         AnyView(
@@ -84,6 +64,37 @@ private extension PageView {
         )
     }
 }
+
+private extension PageView {
+    private var startButton: AnyView {
+        AnyView(
+            Button(action: {
+                presentNextView()
+            }) {
+                ButtonView(background: .primaryColor,
+                           textColor: .whiteColor,
+                           borderColor: .primaryColor,
+                           text: "Давай начнем!",
+                           switchImage: false,
+                           image: "")
+            }
+            .padding(.bottom, 17)
+            .onAppear {
+                UserDefaults.standard.set(true, forKey: "pageView")
+            }
+        )
+    }
+}
+
+// MARK: Actions
+private extension PageView {
+    private func presentNextView() {
+        self.viewController?.present(style: .fullScreen) {
+            AuthView()
+        }
+    }
+}
+
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
