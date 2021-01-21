@@ -38,6 +38,7 @@ struct TextFieldUIKit: UIViewRepresentable {
         let flexButton = UIBarButtonItem(barButtonSystemItem: UIBarButtonItem.SystemItem.flexibleSpace, target: nil, action: nil)
         let color = UIColor.inactive
         
+        textField.delegate = context.coordinator
         textField.keyboardType = keyType
         textField.textColor = foregroundColor
         textField.font = font
@@ -63,7 +64,7 @@ struct TextFieldUIKit: UIViewRepresentable {
         Coordinator(textField: self.textField, text: self._text)
     }
     
-    class Coordinator: NSObject {
+    class Coordinator: NSObject, UITextFieldDelegate {
         private var dispose = Set<AnyCancellable>()
         @Binding var text: String
         
@@ -78,6 +79,11 @@ struct TextFieldUIKit: UIViewRepresentable {
                 .receive(on: RunLoop.main)
                 .assign(to: \.text, on: self)
                 .store(in: &dispose)
+        }
+        
+        func textFieldShouldReturn(_ textField: UITextField) -> Bool {
+            textField.resignFirstResponder()
+            return true
         }
     }
 }

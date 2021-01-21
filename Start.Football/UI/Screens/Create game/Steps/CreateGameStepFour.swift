@@ -22,41 +22,18 @@ struct CreateGameStepFour: View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 0) {
                 VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                    
-//                    TextView(placeholder: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
-//                             text: appBinding.descriptionPlaying)
-//
-//                    TextView(placeholder: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
-//                             text: appBinding.ownRules)
-//
-//                    TextView(placeholder: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!",
-//                             text: appBinding.commentFromOrganizer)
-                    
-                    
-                    
-                    TextviewOneLineView(text: appBinding.descriptionPlaying,
+
+                    TextViewTitlePlaceholder(text: appBinding.descriptionPlaying,
                                         placeholder: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
                                         title: "Описание площадки")
                     
-                    TextviewOneLineView(text: appBinding.ownRules,
+                    TextViewTitlePlaceholder(text: appBinding.ownRules,
                                         placeholder: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
                                         title: "Свои правила")
                     
-                    TextviewOneLineView(text: appBinding.commentFromOrganizer,
+                    TextViewTitlePlaceholder(text: appBinding.commentFromOrganizer,
                                         placeholder: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!",
                                         title: "Комментарий от организатора")
-//
-//                    TextviewOneLineView(text: appBinding.descriptionPlaying,
-//                                        title: "Описание площадки",
-//                                        heightTextView: 120)
-//
-//                    TextviewOneLineView(text: appBinding.ownRules,
-//                                        title: "Свои правила",
-//                                        heightTextView: 70)
-//
-//                    TextviewOneLineView(text: appBinding.commentFromOrganizer,
-//                                        title: "Комментарий от организатора",
-//                                        heightTextView: 70)
                     
                     HStack {
                         ImageViewMiniCG(image: "CGfield_1")

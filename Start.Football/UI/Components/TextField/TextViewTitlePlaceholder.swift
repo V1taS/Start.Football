@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct TextviewOneLineView: View {
+struct TextViewTitlePlaceholder: View {
 
     @Binding var text: String
     let placeholder: String
@@ -39,7 +39,7 @@ struct TextviewOneLineView: View {
 
 struct TextviewOneLineView_Previews: PreviewProvider {
     static var previews: some View {
-        TextviewOneLineView(text: .constant("sdvsdvsdv"), placeholder: "sdv", title: "sv")
+        TextViewTitlePlaceholder(text: .constant("sdvsdvsdv"), placeholder: "sdv", title: "sv")
     }
 }
 

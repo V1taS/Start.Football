@@ -28,23 +28,25 @@ struct SignUpView: View {
             VStack(spacing: 0) {
                 header
                 
-                VStack(spacing: 40) {
-                    mailTextField
-                    loginTextField
-                    passwordTextField
+                ScrollView(.vertical, showsIndicators: false) {
+                    VStack(spacing: 40) {
+                        mailTextField
+                        loginTextField
+                        passwordTextField
+                    }
+                    .padding(.top, 37)
+                    authError
+                    
+                    VStack(alignment: .leading, spacing: 10) {
+                        confidentiality
+                        getNews
+                    }
+                    .padding(.top, 16)
+                    
+                    Spacer()
+                    signUPButtton
+                    loginButton
                 }
-                .padding(.top, 37)
-                authError
-                
-                VStack(alignment: .leading, spacing: 10) {
-                    confidentiality
-                    getNews
-                }
-                .padding(.top, 16)
-                
-                Spacer()
-                signUPButtton
-                loginButton
             }
             
         }

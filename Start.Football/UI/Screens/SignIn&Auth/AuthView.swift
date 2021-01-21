@@ -28,26 +28,28 @@ struct AuthView: View {
             VStack(spacing: 0) {
                 header
                 
-                VStack(spacing: 0) {
-                    VStack(spacing: 40) {
-                        loginTextField
-                        passwordTextField
+                ScrollView(.vertical, showsIndicators: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/) {
+                    VStack(spacing: 0) {
+                        VStack(spacing: 40) {
+                            loginTextField
+                            passwordTextField
+                        }
+                        authError
+                        loginButton
                     }
-                    authError
-                    loginButton
+                    .padding(.top, 37)
+                    
+                    resetPasswordButtton
+                    Spacer()
+                    signUPButtton
+                    or
+                    
+                    VStack(spacing: 16) {
+                        signUPApple
+                        signUPGoogle
+                    }
+                    .padding(.bottom, 17) 
                 }
-                .padding(.top, 37)
-                
-                resetPasswordButtton
-                Spacer()
-                signUPButtton
-                or
-                
-                VStack(spacing: 16) {
-                    signUPApple
-                    signUPGoogle
-                }
-                .padding(.bottom, 17)
             }
         }
         .padding(.horizontal, 24)

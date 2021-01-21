@@ -36,7 +36,7 @@
 		1B24DEFA25802A9700510132 /* CreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B24DEF925802A9700510132 /* CreateGameView.swift */; };
 		1B2D84B225B503450068693B /* CreateGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D84B125B503450068693B /* CreateGame.swift */; };
 		1B2D84B825B505590068693B /* BoxSliderCreateGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B2D84B725B505590068693B /* BoxSliderCreateGame.swift */; };
-		1B368A5325B6351F007D1365 /* TextviewOneLineView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B368A5225B6351F007D1365 /* TextviewOneLineView.swift */; };
+		1B368A5325B6351F007D1365 /* TextViewTitlePlaceholder.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B368A5225B6351F007D1365 /* TextViewTitlePlaceholder.swift */; };
 		1B368A5625B63B1A007D1365 /* ImageViewMiniCG.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B368A5525B63B1A007D1365 /* ImageViewMiniCG.swift */; };
 		1B368A5925B640E5007D1365 /* CellWithPlayerButton.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B368A5825B640E5007D1365 /* CellWithPlayerButton.swift */; };
 		1B368A5C25B64F49007D1365 /* SignInAuth.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B368A5B25B64F49007D1365 /* SignInAuth.swift */; };
@@ -158,7 +158,7 @@
 		1B24DEF925802A9700510132 /* CreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameView.swift; sourceTree = "<group>"; };
 		1B2D84B125B503450068693B /* CreateGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGame.swift; sourceTree = "<group>"; };
 		1B2D84B725B505590068693B /* BoxSliderCreateGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSliderCreateGame.swift; sourceTree = "<group>"; };
-		1B368A5225B6351F007D1365 /* TextviewOneLineView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextviewOneLineView.swift; sourceTree = "<group>"; };
+		1B368A5225B6351F007D1365 /* TextViewTitlePlaceholder.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextViewTitlePlaceholder.swift; sourceTree = "<group>"; };
 		1B368A5525B63B1A007D1365 /* ImageViewMiniCG.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImageViewMiniCG.swift; sourceTree = "<group>"; };
 		1B368A5825B640E5007D1365 /* CellWithPlayerButton.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellWithPlayerButton.swift; sourceTree = "<group>"; };
 		1B368A5B25B64F49007D1365 /* SignInAuth.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SignInAuth.swift; sourceTree = "<group>"; };
@@ -393,7 +393,7 @@
 				1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */,
 				1BB63B26257D96A900FCE9E0 /* CostView.swift */,
 				1B765D6125A71EC800105940 /* TextfieldOneLineView.swift */,
-				1B368A5225B6351F007D1365 /* TextviewOneLineView.swift */,
+				1B368A5225B6351F007D1365 /* TextViewTitlePlaceholder.swift */,
 				1B23561A25A79A7C00E33DA8 /* NoTextfieldOneLineView.swift */,
 				1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */,
 				1B155F4A256C15F600019C2F /* TextFieldViewOld.swift */,
@@ -923,7 +923,7 @@
 				1BF3661A25A7811000B196EE /* HeaderCurrentGame.swift in Sources */,
 				1BF3662425A781B100B196EE /* WhoWillPlayCurrentGame.swift in Sources */,
 				1B37B01425AF316B0007AEF3 /* AppEnvironment.swift in Sources */,
-				1B368A5325B6351F007D1365 /* TextviewOneLineView.swift in Sources */,
+				1B368A5325B6351F007D1365 /* TextViewTitlePlaceholder.swift in Sources */,
 				1B23561F25A7A2CC00E33DA8 /* PreviewGameSheet.swift in Sources */,
 				1BF3663725A782BB00B196EE /* RulesCurrentGame.swift in Sources */,
 				1B765D7725A72F8E00105940 /* BoxDateButton.swift in Sources */,
