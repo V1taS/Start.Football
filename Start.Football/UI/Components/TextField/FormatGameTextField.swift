@@ -31,7 +31,7 @@ struct FormatGameTextField: View {
                     Spacer()
                     Spacer()
                     HStack(spacing: 0) {
-                        TextfieldWithButton(placeholder: "10",
+                        TextFieldUIKit(placeholder: "10",
                                             text: $firstValue,
                                             font: UIFont.event.robotoRegular24!,
                                             foregroundColor: .secondaryColor,
@@ -50,7 +50,7 @@ struct FormatGameTextField: View {
                     Spacer()
                     
                     HStack {
-                        TextfieldWithButton(placeholder: "10",
+                        TextFieldUIKit(placeholder: "10",
                                             text: $secondValue,
                                             font: UIFont.event.robotoRegular24!,
                                             foregroundColor: .secondaryColor,

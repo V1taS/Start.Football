@@ -30,7 +30,7 @@ struct PasswordTextFieldView: View {
                     .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
                 
                 if showPassword {
-                    TextfieldWithButton(placeholder: placeholder,
+                    TextFieldUIKit(placeholder: placeholder,
                                         text: $text,
                                         font: UIFont.event.robotoMedium16!,
                                         foregroundColor: .secondaryColor,
@@ -38,7 +38,7 @@ struct PasswordTextFieldView: View {
                                         isSecureText: false)
                         .frame(height: 30)
                 } else {
-                    TextfieldWithButton(placeholder: placeholder,
+                    TextFieldUIKit(placeholder: placeholder,
                                         text: $text,
                                         font: UIFont.event.robotoMedium16!,
                                         foregroundColor: .secondaryColor,

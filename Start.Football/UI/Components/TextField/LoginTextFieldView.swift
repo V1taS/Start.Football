@@ -31,7 +31,7 @@ struct LoginTextFieldView: View {
                     .renderingMode(.template)
                     .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
                 
-                TextfieldWithButton(placeholder: placeholder,
+                TextFieldUIKit(placeholder: placeholder,
                                     text: $text,
                                     font: UIFont.event.robotoMedium16!,
                                     foregroundColor: .secondaryColor,

@@ -23,7 +23,7 @@ struct CostView: View {
                     Image("datePicerRubls")
                     
                     HStack(spacing: 0) {
-                        TextfieldWithButton(placeholder: "500",
+                        TextFieldUIKit(placeholder: "500",
                                             text: appBinding.main.costSince,
                                             font: UIFont.event.robotoRegular24!,
                                             foregroundColor: .secondaryColor,
@@ -43,7 +43,7 @@ struct CostView: View {
                         .font(Font.event.robotoRegular24)
                     
                     HStack {
-                        TextfieldWithButton(placeholder: "1000",
+                        TextFieldUIKit(placeholder: "1000",
                                             text: appBinding.main.costUntil,
                                             font: UIFont.event.robotoRegular24!,
                                             foregroundColor: .secondaryColor,

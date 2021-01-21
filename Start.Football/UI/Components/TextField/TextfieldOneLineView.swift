@@ -30,7 +30,7 @@ struct TextfieldOneLineView: View {
                 
                 
                 HStack {
-                    TextfieldWithButton(placeholder: placeholder,
+                    TextFieldUIKit(placeholder: placeholder,
                                         text: $text,
                                         font: UIFont.event.robotoRegular18!,
                                         foregroundColor: .secondaryColor,
