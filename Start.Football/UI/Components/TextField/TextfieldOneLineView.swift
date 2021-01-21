@@ -34,7 +34,7 @@ struct TextfieldOneLineView: View {
                                         text: $text,
                                         font: UIFont.event.robotoRegular18!,
                                         foregroundColor: .secondaryColor,
-                                        keyType: .default,
+                                        keyType: keyboardType,
                                         isSecureText: false)
                         .frame(height: 30)
                     if iconShow {

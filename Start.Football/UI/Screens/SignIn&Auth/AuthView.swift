@@ -28,7 +28,7 @@ struct AuthView: View {
             VStack(spacing: 0) {
                 header
                 
-                ScrollView(.vertical, showsIndicators: /*@START_MENU_TOKEN@*/true/*@END_MENU_TOKEN@*/) {
+                ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         VStack(spacing: 40) {
                             loginTextField
