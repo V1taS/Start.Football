@@ -101,6 +101,7 @@
 		1BA208AF25A7750D005B4D0C /* BoxPrivacyCreateGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA208AE25A7750D005B4D0C /* BoxPrivacyCreateGame.swift */; };
 		1BA208B225A77795005B4D0C /* HeaderMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA208B125A77795005B4D0C /* HeaderMainView.swift */; };
 		1BA208B725A777F3005B4D0C /* MenuMainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BA208B625A777F3005B4D0C /* MenuMainView.swift */; };
+		1BAA201425BB3A4B00888B82 /* BoxSelectDateGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BAA201325BB3A4B00888B82 /* BoxSelectDateGames.swift */; };
 		1BB63B21257D92A900FCE9E0 /* DatePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB63B20257D92A900FCE9E0 /* DatePickerView.swift */; };
 		1BB63B24257D92BF00FCE9E0 /* TimePickerView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB63B23257D92BF00FCE9E0 /* TimePickerView.swift */; };
 		1BB63B27257D96A900FCE9E0 /* CostView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BB63B26257D96A900FCE9E0 /* CostView.swift */; };
@@ -226,6 +227,7 @@
 		1BA208AE25A7750D005B4D0C /* BoxPrivacyCreateGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxPrivacyCreateGame.swift; sourceTree = "<group>"; };
 		1BA208B125A77795005B4D0C /* HeaderMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = HeaderMainView.swift; sourceTree = "<group>"; };
 		1BA208B625A777F3005B4D0C /* MenuMainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MenuMainView.swift; sourceTree = "<group>"; };
+		1BAA201325BB3A4B00888B82 /* BoxSelectDateGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BoxSelectDateGames.swift; sourceTree = "<group>"; };
 		1BB63B20257D92A900FCE9E0 /* DatePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerView.swift; sourceTree = "<group>"; };
 		1BB63B23257D92BF00FCE9E0 /* TimePickerView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerView.swift; sourceTree = "<group>"; };
 		1BB63B26257D96A900FCE9E0 /* CostView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CostView.swift; sourceTree = "<group>"; };
@@ -669,6 +671,7 @@
 				1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */,
 				1B37B02A25AF52C00007AEF3 /* ActivityIndicatorView.swift */,
 				1BA208AE25A7750D005B4D0C /* BoxPrivacyCreateGame.swift */,
+				1BAA201325BB3A4B00888B82 /* BoxSelectDateGames.swift */,
 			);
 			path = Components;
 			sourceTree = "<group>";
@@ -926,6 +929,7 @@
 				1BE105EA25B743840060DA3D /* ResetAuthInteractor.swift in Sources */,
 				1B67934C25B2F78C00DADFC4 /* AppActions.swift in Sources */,
 				1B368A5C25B64F49007D1365 /* SignInAuth.swift in Sources */,
+				1BAA201425BB3A4B00888B82 /* BoxSelectDateGames.swift in Sources */,
 				1B765D7425A724AA00105940 /* ButtonRoundGreen.swift in Sources */,
 				1BA208B725A777F3005B4D0C /* MenuMainView.swift in Sources */,
 				1B3ACC0325B9E733005886AA /* CurrentGame.swift in Sources */,

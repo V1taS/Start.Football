@@ -42,6 +42,7 @@ private extension BoxSliderCreateGame {
                         .font(Font.event.robotoRegular24)
                         .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 32))
                 }
+                .padding(3)
             }
         )
     }
@@ -63,6 +64,7 @@ private extension BoxSliderCreateGame {
                         .font(Font.event.robotoRegular24)
                         .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 32))
                 }
+                .padding(3)
             }
         )
     }
@@ -84,6 +86,7 @@ private extension BoxSliderCreateGame {
                         .font(Font.event.robotoRegular24)
                         .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 32))
                 }
+                .padding(3)
             }
         )
     }

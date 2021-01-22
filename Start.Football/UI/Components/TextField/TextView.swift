@@ -21,7 +21,7 @@ struct TextView: UIViewRepresentable {
 
         textView.delegate = context.coordinator
         
-        textView.font = UIFont.event.robotoMedium16!
+        textView.font = UIFont.event.robotoRegular18!
         textView.textColor = UIColor.inactive
         textView.autocapitalizationType = .sentences
         textView.isSelectable = true

@@ -29,7 +29,7 @@ struct DatePickerLineView: View {
             Text(header)
                 .foregroundColor(.defaultColor)
                 .font(Font.event.robotoRegular14)
-                .padding(.bottom, 16)
+                .padding(.bottom, 8)
             
             HStack {
                 Text(text)
@@ -51,7 +51,8 @@ struct DatePickerLineView: View {
                 if iconShow {
                     Image(icon)
                 }
-            } .padding(.bottom, 11)
+            }
+            .padding(.bottom, 11)
             
             Color(.dividerColor)
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),

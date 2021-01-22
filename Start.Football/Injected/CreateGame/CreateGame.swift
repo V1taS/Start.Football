@@ -25,27 +25,7 @@ extension AppState.AppData {
         var selectionRegularGame: AppActions.CreateGame.RegularGame = .yes
         
         // MARK: Day Of Week
-//        var mo = false
-//        var tu = false
-//        var we = false
-//        var th = false
-//        var fr = false
-//        var sa = false
-//        var su = false
-        
-        var countOfGames = 0
-        
-        var listGame = [
-            [false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false],
-            [false, false, false, false, false, false, false]
-        ]
-        
-        var selectListGame = [[String]]()
+        var listGame = [true, false, false, false, false, false, false]
         var anyDate = [Date(), Date(), Date(), Date(), Date(), Date(), Date()]
         var anyTimeHasBeenChanged: Bool = false
         
