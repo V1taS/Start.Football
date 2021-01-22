@@ -25,6 +25,7 @@ struct TimePickerView: View {
                     DatePicker("", selection: appBinding.main.timeSince,
                                displayedComponents: .hourAndMinute)
                         .labelsHidden()
+                        .accentColor(.secondaryColor)
                     
                     Text("-")
                         .foregroundColor(.secondaryColor)
@@ -33,6 +34,7 @@ struct TimePickerView: View {
                     DatePicker("", selection: appBinding.main.timeUntil,
                                displayedComponents: .hourAndMinute)
                         .labelsHidden()
+                        .accentColor(.secondaryColor)
                     
                     Spacer()
                 } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))

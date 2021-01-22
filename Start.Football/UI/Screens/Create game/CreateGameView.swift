@@ -24,8 +24,6 @@ struct CreateGameView: View {
                 buttonNextStep
             }
             backgroundColor
-            timePicker
-            datePicker
             typeOfParking
         }
         .dismissingKeyboard()
@@ -77,20 +75,6 @@ private extension CreateGameView {
 }
 
 private extension CreateGameView {
-    var timePicker: some View {
-        TimePickerSheet(appBinding: appBinding)
-            .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 230))
-    }
-}
-
-private extension CreateGameView {
-    var datePicker: some View {
-        DatePickerSheet(appBinding: appBinding)
-            .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 230))
-    }
-}
-
-private extension CreateGameView {
     var typeOfParking: some View {
         TypeOfParkingSheet(appBinding: appBinding)
             .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 85))
@@ -100,7 +84,7 @@ private extension CreateGameView {
 private extension CreateGameView {
     var backgroundColor: some View {
         ZStack {
-            if appBinding.showParking.wrappedValue || appBinding.showDatePicker.wrappedValue || appBinding.showTimePicker.wrappedValue {
+            if appBinding.showParking.wrappedValue {
                 Color.secondary
                     .edgesIgnoringSafeArea(.all)
                     .animation(.linear(duration: 10))
@@ -126,14 +110,6 @@ private extension CreateGameView {
     }
     
     private func dismissButton() {
-        if appBinding.showTimePicker.wrappedValue {
-            appBinding.showTimePicker.wrappedValue = false
-        }
-        
-        if appBinding.showDatePicker.wrappedValue {
-            appBinding.showDatePicker.wrappedValue = false
-        }
-        
         if appBinding.showParking.wrappedValue {
             appBinding.showParking.wrappedValue = false
         }

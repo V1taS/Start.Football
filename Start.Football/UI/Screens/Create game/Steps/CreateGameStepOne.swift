@@ -29,14 +29,14 @@ struct CreateGameStepOne: View {
                 Spacer()
             }
             .padding(.horizontal, 24)
-            .padding(.top, 32)
+            .padding(.top, 10)
         }
         .dismissingKeyboard()
     }
 }
 
 
-// MARK: Actions
+// MARK: UI
 private extension CreateGameStepOne {
     var nameGame: some View {
         TextfieldOneLineView(text: appBinding.nameGame,
@@ -66,7 +66,7 @@ private extension CreateGameStepOne {
                                header: "Время",
                                iconShow: true,
                                icon: "timeGreateGame",
-                               textHasBeenChanged: appBinding.oneTimeTextHasBeenChanged,
+                               textHasBeenChanged: appBinding.currentTimeHasBeenChanged,
                                hourAndMinute: .hourAndMinute)
     }
 }
@@ -78,7 +78,7 @@ private extension CreateGameStepOne {
                                header: "Дата игры",
                                iconShow: true,
                                icon: "dateCreateGame",
-                               textHasBeenChanged: appBinding.oneDayTextHasBeenChanged,
+                               textHasBeenChanged: appBinding.currentDateHasBeenChanged,
                                hourAndMinute: .date)
     }
 }

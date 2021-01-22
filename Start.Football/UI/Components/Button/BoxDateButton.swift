@@ -118,6 +118,7 @@ struct DayOfWeeakCurrentGame: View {
                 .foregroundColor(Color(textColor))
                 .font(Font.event.robotoRegular16)
         }
+        .padding(3)
     }
 }
 

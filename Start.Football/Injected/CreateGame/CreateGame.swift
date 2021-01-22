@@ -16,28 +16,38 @@ extension AppState.AppData {
         var nameGame = ""
         var addressGame = ""
         var participationCost = ""
-        var currentDate = Date()
         
-        var showTimePicker = false
-        var showDatePicker = false
-        var oneTime = "Укажите время"
-        var oneTimeTextHasBeenChanged = false
-        var oneDay = "Укажите дату начала"
-        var oneDayTextHasBeenChanged = false
+        var currentDate = Date()
+        var currentTimeHasBeenChanged = false
+        var currentDateHasBeenChanged = false
         
         // MARK: - Step 2
         var selectionRegularGame: AppActions.CreateGame.RegularGame = .yes
         
         // MARK: Day Of Week
-        var mo = false
-        var tu = false
-        var we = false
-        var th = false
-        var fr = false
-        var sa = false
-        var su = false
-        var time = "Укажите время"
-        var timeTextHasBeenChanged: Bool = false
+//        var mo = false
+//        var tu = false
+//        var we = false
+//        var th = false
+//        var fr = false
+//        var sa = false
+//        var su = false
+        
+        var countOfGames = 0
+        
+        var listGame = [
+            [false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false],
+            [false, false, false, false, false, false, false]
+        ]
+        
+        var selectListGame = [[String]]()
+        var anyDate = [Date(), Date(), Date(), Date(), Date(), Date(), Date()]
+        var anyTimeHasBeenChanged: Bool = false
         
         // MARK: - Step 3
         

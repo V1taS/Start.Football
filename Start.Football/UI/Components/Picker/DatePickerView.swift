@@ -28,6 +28,8 @@ struct DatePickerView: View {
                     DatePicker("", selection: $currentDate,
                                displayedComponents: .date)
                         .labelsHidden()
+                        .accentColor(.secondaryColor)
+                        
                     Spacer()
                 } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
                 

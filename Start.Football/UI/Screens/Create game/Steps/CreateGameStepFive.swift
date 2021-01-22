@@ -20,7 +20,7 @@ struct CreateGameStepFive: View {
         }
         .dismissingKeyboard()
         .padding(.horizontal, 24)
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+        .padding(.top, 16)
     }
 }
 

@@ -33,7 +33,7 @@ struct DatePickerLineView: View {
             
             HStack {
                 Text(text)
-                    .foregroundColor(textHasBeenChanged ? Color.secondaryColor : (Color.inactive).opacity(1))
+                    .foregroundColor(textHasBeenChanged ? Color.secondaryColor : Color.inactive)
                     .font(Font.event.robotoRegular18)
                 
                 Button(action: {

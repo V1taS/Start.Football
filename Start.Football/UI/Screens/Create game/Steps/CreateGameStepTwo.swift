@@ -15,7 +15,7 @@ struct CreateGameStepTwo: View {
     }
     
     var body: some View {
-        ZStack {
+        ScrollView(.vertical, showsIndicators: false) {
             VStack(alignment: .leading, spacing: 16) {
                 Text("Это регулярная игра?")
                     .foregroundColor(.defaultColor)
@@ -27,7 +27,7 @@ struct CreateGameStepTwo: View {
             }
             .padding(.horizontal, 24)
         }
-        .padding(.top, 32)
+        .padding(.top, 16)
     }
 }
 
@@ -64,34 +64,67 @@ private extension CreateGameStepTwo {
 
 private extension CreateGameStepTwo {
     var regularGame: some View {
-        VStack(alignment: .leading, spacing: 24) {
+        VStack(alignment: .leading, spacing: 0) {
             if appBinding.selectionRegularGame.wrappedValue == .yes {
-                BoxDateButton(disabledButton: false,
-                              mo: appBinding.mo,
-                              tu: appBinding.tu,
-                              we: appBinding.we,
-                              th: appBinding.th,
-                              fr: appBinding.fr,
-                              sa: appBinding.sa,
-                              su: appBinding.su)
                 
-                Button(action: {
-                    presentTime()
-                }) {
-                    NoTextfieldOneLineView(text: appBinding.time.wrappedValue,
-                                           header: "Время",
-                                           iconShow: true,
-                                           icon: "timeGreateGame",
-                                           textHasBeenChanged: appBinding.timeTextHasBeenChanged.wrappedValue)
+                Color(.dividerColor)
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 327),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 2))
+                
+                
+                ForEach(0..<appBinding.countOfGames.wrappedValue, id: \.self) { index in
+                    
+                    HStack {
+                        Text("Игра номер - \(index + 1)")
+                            .foregroundColor(Color.secondaryColor)
+                            .font(Font.event.robotoRegular18)
+                        
+                        Spacer()
+                    }
+                    
+                    BoxDateButton(disabledButton: false,
+                                  mo: appBinding.listGame[index][0],
+                                  tu: appBinding.listGame[index][1],
+                                  we: appBinding.listGame[index][2],
+                                  th: appBinding.listGame[index][3],
+                                  fr: appBinding.listGame[index][4],
+                                  sa: appBinding.listGame[index][5],
+                                  su: appBinding.listGame[index][6])
+                                                         
+                    DatePickerLineView(date: appBinding.anyDate[index],
+                                       text: "Укажите время:",
+                                       header: "Время",
+                                       iconShow: true,
+                                       icon: "timeGreateGame",
+                                       textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
+                                       hourAndMinute: .hourAndMinute)
                 }
+                .padding(.top)
                 
                 Button(action: {
+                    if appBinding.countOfGames.wrappedValue <= 6 {
+                        appBinding.countOfGames.wrappedValue += 1
+                    }
                     
                 }) {
                     ButtonView(background: .whiteColor,
                                textColor: .primaryColor,
                                borderColor: .primaryColor,
                                text: "Добавить другой день или время",
+                               switchImage: false,
+                               image: "")
+                }
+                
+                Button(action: {
+                    if appBinding.countOfGames.wrappedValue > 0 {
+                        appBinding.countOfGames.wrappedValue -= 1
+                    }
+                    
+                }) {
+                    ButtonView(background: .whiteColor,
+                               textColor: .error,
+                               borderColor: .error,
+                               text: "Удалить день",
                                switchImage: false,
                                image: "")
                 }
@@ -103,24 +136,12 @@ private extension CreateGameStepTwo {
 // MARK: Actions
 private extension CreateGameStepTwo {
     private func presentTime() {
-        appBinding.showTimePicker.wrappedValue.toggle()
+        //        appBinding.showTimePicker.wrappedValue.toggle()
     }
 }
 
 struct CreateGameStepTwo_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepTwo(appBinding: .constant(.init(
-                                                    selectionCreateGame: .stepTwo,
-                                                    progressValue: 0.25,
-                                                    nameGame: "Игра",
-                                                    addressGame: "Khimki",
-                                                    participationCost: "23",
-                                                    currentDate: Date(),
-                                                    showTimePicker: false,
-                                                    showDatePicker: false,
-                                                    oneTime: "",
-                                                    oneTimeTextHasBeenChanged: false,
-                                                    oneDay: "",
-                                                    oneDayTextHasBeenChanged: false)))
+        CreateGameStepTwo(appBinding: .constant(.init()))
     }
 }

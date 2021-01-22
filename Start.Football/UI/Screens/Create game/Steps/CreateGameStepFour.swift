@@ -33,7 +33,7 @@ struct CreateGameStepFour: View {
         }
         .dismissingKeyboard()
         .padding(.horizontal, 24)
-        .padding(.top, 32)
+        .padding(.top, 16)
     }
 }
 

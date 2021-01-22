@@ -40,7 +40,7 @@ struct CreateGameStepThree: View {
                 }
             }
             .padding(.horizontal, 24)
-            .padding(.top, 32)
+            .padding(.top, 16)
         }
         .dismissingKeyboard()
     }
@@ -304,18 +304,6 @@ private extension CreateGameStepThree {
 
 struct CreateGameStepThree_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepThree(appBinding: .constant(.init(
-                                                    selectionCreateGame: .stepTwo,
-                                                    progressValue: 0.25,
-                                                    nameGame: "Игра",
-                                                    addressGame: "Khimki",
-                                                    participationCost: "23",
-                                                    currentDate: Date(),
-                                                    showTimePicker: false,
-                                                    showDatePicker: false,
-                                                    oneTime: "",
-                                                    oneTimeTextHasBeenChanged: false,
-                                                    oneDay: "",
-                                                    oneDayTextHasBeenChanged: false)))
+        CreateGameStepThree(appBinding: .constant(.init()))
     }
 }

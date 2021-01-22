@@ -31,19 +31,6 @@ struct HeaderCreateGameView: View {
 
 struct HeaderCreateGameView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderCreateGameView(appBinding: .constant(.init(
-                                                    selectionCreateGame: .stepTwo,
-                                                    progressValue: 0.25,
-                                                    nameGame: "Игра",
-                                                    addressGame: "Khimki",
-                                                    participationCost: "23",
-                                                    currentDate: Date(),
-                                                    showTimePicker: false,
-                                                    showDatePicker: false,
-                                                    oneTime: "",
-                                                    oneTimeTextHasBeenChanged: false,
-                                                    oneDay: "",
-                                                    oneDayTextHasBeenChanged: false))
-        )
+        HeaderCreateGameView(appBinding: .constant(.init()))
     }
 }

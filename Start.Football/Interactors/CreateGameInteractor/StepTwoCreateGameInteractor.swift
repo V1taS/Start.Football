@@ -12,5 +12,7 @@ protocol StepTwoCreateGameInteractor {
 }
 
 extension CreateGameInteractorImpl {
-    
+    func addSevralGame(state: Binding<AppState.AppData>) {
+        
+    }
 }
