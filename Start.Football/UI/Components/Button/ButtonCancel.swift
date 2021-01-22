@@ -23,6 +23,7 @@ struct ButtonCancel: View {
                 .foregroundColor(Color(.error))
                 .font(Font.event.robotoMedium16)
         }
+        .padding(3)
     }
 }
 

@@ -35,7 +35,8 @@ struct CreateGameStepOne: View {
     }
 }
 
-// MARK: - Name game
+
+// MARK: Actions
 private extension CreateGameStepOne {
     var nameGame: some View {
         TextfieldOneLineView(text: appBinding.nameGame,
@@ -47,7 +48,6 @@ private extension CreateGameStepOne {
     }
 }
 
-// MARK: - Address Game
 private extension CreateGameStepOne {
     var addressGame: some View {
         TextfieldOneLineView(text: appBinding.addressGame,
@@ -59,37 +59,30 @@ private extension CreateGameStepOne {
     }
 }
 
-
-// MARK: - Time
 private extension CreateGameStepOne {
     var time: some View {
-        Button(action: {
-            appBinding.showTimePicker.wrappedValue.toggle()
-            
-        }) {
-            NoTextfieldOneLineView(text: appBinding.oneTime.wrappedValue,
-                                   header: "Время",
-                                   iconShow: true,
-                                   icon: "timeGreateGame",
-                                   textHasBeenChanged: appBinding.oneTimeTextHasBeenChanged.wrappedValue)
-        }
+            DatePickerLineView(date: appBinding.currentDate,
+                               text: "Укажите время:",
+                               header: "Время",
+                               iconShow: true,
+                               icon: "timeGreateGame",
+                               textHasBeenChanged: appBinding.oneTimeTextHasBeenChanged,
+                               hourAndMinute: .hourAndMinute)
     }
 }
 
-// MARK: - Day
 private extension CreateGameStepOne {
     var day: some View {
-        Button(action: { appBinding.showDatePicker.wrappedValue.toggle() }) {
-            NoTextfieldOneLineView(text: appBinding.oneDay.wrappedValue,
-                                   header: "Дата игры",
-                                   iconShow: true,
-                                   icon: "dateCreateGame",
-                                   textHasBeenChanged: appBinding.oneDayTextHasBeenChanged.wrappedValue)
-        }
+            DatePickerLineView(date: appBinding.currentDate,
+                               text: "Укажите дату:",
+                               header: "Дата игры",
+                               iconShow: true,
+                               icon: "dateCreateGame",
+                               textHasBeenChanged: appBinding.oneDayTextHasBeenChanged,
+                               hourAndMinute: .date)
     }
 }
 
-// MARK: - Participation cost
 private extension CreateGameStepOne {
     var participationCost: some View {
         TextfieldOneLineView(text: appBinding.participationCost,
@@ -101,14 +94,13 @@ private extension CreateGameStepOne {
     }
 }
 
-// MARK: - Free game text
 private extension CreateGameStepOne {
     var freeGameText: some View {
         HStack {
             Text("0 ₽ — игра бесплатная")
                 .foregroundColor(.defaultColor)
                 .font(Font.event.robotoRegular14)
-                .padding(.top, 8)
+                .padding(.top, 2)
             Spacer()
         }
     }

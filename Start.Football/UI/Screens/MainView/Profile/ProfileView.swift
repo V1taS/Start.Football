@@ -18,40 +18,23 @@ struct ProfileView: View {
     let width = UIScreen.screenWidth
     
     var body: some View {
-        NavigationView {
-            ScrollView(.vertical, showsIndicators: false) {
-                ZStack {
-                    VStack(spacing: 0) {
-                        HeaderProfileView()
-                        
-                        VStack(spacing: 0) {
-                            AboutMySelfProfileView()
-                            BoxStatisticsProfileView()
-                            ContactsProfileView()
-                        }
-                        .padding(.horizontal, 16)
-                    }
+        ScrollView(.vertical, showsIndicators: false) {
+            ZStack {
+                VStack(spacing: 0) {
+                    HeaderProfileView()
                     
+                    VStack(spacing: 0) {
+                        AboutMySelfProfileView()
+                        BoxStatisticsProfileView()
+                        ContactsProfileView()
+                    }
+                    .padding(.horizontal, 16)
                 }
+                
             }
-            .background(Color(.backgroundColor))
-            .edgesIgnoringSafeArea(.bottom)
-            
-            .navigationBarTitle("Профиль", displayMode: .inline)
-            .navigationBarItems(
-                leading: Button(action: {}) {
-                    Image(systemName: "pencil")
-                        .font(.title)
-                        .foregroundColor(.secondaryColor)
-                },
-                trailing: Button(action: {
-                    self.viewController?.dismiss(animated: true)
-                }) {
-                    Image(systemName: "multiply")
-                        .font(.title)
-                        .foregroundColor(.secondaryColor)
-                })
         }
+        .background(Color(.backgroundColor))
+        .edgesIgnoringSafeArea(.bottom)
     }
 }
 

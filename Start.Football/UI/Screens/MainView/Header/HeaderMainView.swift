@@ -20,9 +20,24 @@ struct HeaderMainView: View {
     
     var body: some View {
         HStack {
+            player
+            Spacer()
+            HStack(spacing: 16) {
+                map
+                filter
+            }
+        }
+        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
+    }
+}
+
+
+// MARK: UI
+private extension HeaderMainView {
+    private var player: AnyView {
+        AnyView(
             Button(action: {
-                self.viewController?.present(style: .fullScreen) {
-                    ProfileView() }
+                presentPlayer()
             }) {
                 HStack(spacing: 13) {
                     Image("test")
@@ -38,32 +53,56 @@ struct HeaderMainView: View {
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoBold20)
                             .lineLimit(1)
-                    } .frame(width: width * Size.shared.getAdaptSizeWidth(px: 180),
-                             height: height * Size.shared.getAdaptSizeHeight(px: 50),
-                             alignment: .leading)
+                    }
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 180),
+                           height: height * Size.shared.getAdaptSizeHeight(px: 50),
+                           alignment: .leading)
                 }
             }
-            Spacer()
-            HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {
-                Button(action: { }) {
-                    Image("map_turnedOff")
-                        .resizable()
-                        .renderingMode(.original)
-                        .scaledToFill()
-                        .frame(width: 24, height: 24)
-                }
-                Button(action: {
-                    self.showFiltrsView.toggle()
-                }) {
-                    Image("filter")
-                        .resizable()
-                        .renderingMode(.original)
-                        .scaledToFill()
-                        .frame(width: 24, height: 24)
-                }
+        )
+    }
+}
+
+private extension HeaderMainView {
+    private var map: AnyView {
+        AnyView(
+            Button(action: { }) {
+                Image("map_turnedOff")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFill()
+                    .frame(width: 24, height: 24)
             }
-        }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
+        )
+    }
+}
+
+private extension HeaderMainView {
+    private var filter: AnyView {
+        AnyView(
+            Button(action: {
+                presentFiltrsSheet()
+            }) {
+                Image("filter")
+                    .resizable()
+                    .renderingMode(.original)
+                    .scaledToFill()
+                    .frame(width: 24, height: 24)
+            }
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension HeaderMainView {
+    private func presentPlayer() {
+        self.viewController?.present(style: .pageSheet) {
+            ProfileView() }
+    }
+    
+    private func presentFiltrsSheet() {
+        self.showFiltrsView.toggle()
     }
 }
 

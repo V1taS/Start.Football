@@ -16,18 +16,21 @@ struct OrganizerCurrentGame: View {
                 Text("ОРГАНИЗАТОР")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                HStack {
-                    Image("testOrganizator")
-                        .resizable()
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 32))
-                    Text("Юрий Долговязов")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoBold20)
-                    Spacer()
-                    Text(">")
-                        .foregroundColor(.primaryColor)
-                        .font(Font.event.robotoBold20)
+                
+                Button(action: {}) {
+                    HStack {
+                        Image("testOrganizator")
+                            .resizable()
+                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32),
+                                   height: height * Size.shared.getAdaptSizeHeight(px: 32))
+                        Text("Юрий Долговязов")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoBold20)
+                        Spacer()
+                        Text(">")
+                            .foregroundColor(.primaryColor)
+                            .font(Font.event.robotoBold20)
+                    }
                 }
             }
             Spacer()

@@ -13,8 +13,24 @@ struct CreateGameStepFive: View {
     
     var body: some View {
         VStack(spacing: 0) {
+            header
+            inviteFriendsButton
+            listFriends
+            Spacer()
+        }
+        .dismissingKeyboard()
+        .padding(.horizontal, 24)
+        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+    }
+}
+
+
+// MARK: UI
+private extension CreateGameStepFive {
+    private var header: AnyView {
+        AnyView(
             HStack {
-                VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 2)) {
+                VStack(alignment: .leading, spacing: 2) {
                     
                     Text("Все готово!")
                         .foregroundColor(.secondaryColor)
@@ -26,8 +42,16 @@ struct CreateGameStepFive: View {
                 }
                 Spacer()
             }
-            
-            Button(action: {}) {
+        )
+    }
+}
+
+private extension CreateGameStepFive {
+    private var inviteFriendsButton: AnyView {
+        AnyView(
+            Button(action: {
+                inviteFriends()
+            }) {
                 ButtonView(background: .tertiary,
                            textColor: .whiteColor,
                            borderColor: .tertiary,
@@ -36,14 +60,15 @@ struct CreateGameStepFive: View {
                            image: "CGperson")
             }
             .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
-            
+        )
+    }
+}
+
+private extension CreateGameStepFive {
+    private var listFriends: AnyView {
+        AnyView(
             ScrollView(.vertical, showsIndicators: false) {
                 VStack(alignment: .leading, spacing: 16) {
-                    Button(action: {}) {
-                        CellWithPlayerButton(image: "player1CG",
-                                             name: "Виталий Сосин",
-                                             typePlayers: "Защитник, полузащитник, нападающий")
-                    }
                     
                     Divider()
                     
@@ -79,10 +104,15 @@ struct CreateGameStepFive: View {
                 }
                 .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
             }
-            Spacer()
-        }
-        .padding(.horizontal, 24)
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension CreateGameStepFive {
+    private func inviteFriends() {
+        
     }
 }
 

@@ -13,15 +13,12 @@ struct MainView: View {
     init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
-    
-    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
-    
     @Environment(\.injected) private var injected: DIContainer
-
+    
     var body: some View {
         ZStack {
             Color(.paleWhite)
@@ -38,7 +35,7 @@ struct MainView: View {
     }
 }
 
-// MARK: Header
+// MARK: UI
 private extension MainView {
     private var header: AnyView {
         AnyView(
@@ -49,7 +46,6 @@ private extension MainView {
     }
 }
 
-// MARK: Main menu
 private extension MainView {
     private var menu: AnyView {
         AnyView(
@@ -60,7 +56,6 @@ private extension MainView {
     }
 }
 
-// MARK: All game
 private extension MainView {
     private var allGame: AnyView {
         AnyView(
@@ -68,34 +63,8 @@ private extension MainView {
                 if appBinding.main.selectionGame.wrappedValue == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 16) {
-                            
-                            if appBinding.main.loadMoreGames.wrappedValue {
-                                Button(action: {
-                                    appBinding.main.loadMoreGames.wrappedValue = false
-                                }) {
-                                    Text("Появились новые игры")
-                                        .font(Font.event.robotoMedium16)
-                                        .foregroundColor(.error)
-                                        .fontWeight(.bold)
-                                }
-                            }
-                            
-                            Button(action: {
-                                    self.viewController?.present(style: .fullScreen) {
-                                        CurrentGameView()
-                                    } }) { CellMainView() }
-                            
-                            Button(action: {
-                                    self.viewController?.present(style: .fullScreen) {
-                                        CurrentGameView()
-                                    } }) { CellMainView() }
-                            
-                            Button(action: {}) { ADV()}
-                            
-                            Button(action: {
-                                    self.viewController?.present(style: .fullScreen) {
-                                        CurrentGameView()
-                                    } }) { CellMainView() }
+                            moreGames
+                            plugGames
                         }
                         .padding(16)
                     }
@@ -105,7 +74,67 @@ private extension MainView {
     }
 }
 
-// MARK: My game
+private extension MainView {
+    private var moreGames: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if appBinding.main.loadMoreGames.wrappedValue {
+                    Button(action: {
+                        loadMoreGames()
+                    }) {
+                        Text("Появились новые игры")
+                            .font(Font.event.robotoMedium16)
+                            .foregroundColor(.error)
+                            .fontWeight(.bold)
+                    }
+                }
+            }
+        )
+    }
+}
+
+private extension MainView {
+    private var plugGames: AnyView {
+        AnyView(
+            VStack(spacing: 16) {
+                Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            CurrentGameView(appBinding: appBinding)
+                        } }) { CellMainView() }
+                
+                Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            CurrentGameView(appBinding: appBinding)
+                        } }) { CellMainView() }
+                
+                Button(action: {}) { ADV()}
+                
+                Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            CurrentGameView(appBinding: appBinding)
+                        } }) { CellMainView() }
+                
+                Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            CurrentGameView(appBinding: appBinding)
+                        } }) { CellMainView() }
+                
+                Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            CurrentGameView(appBinding: appBinding)
+                        } }) { CellMainView() }
+                
+                Button(action: {}) { ADVCurrentGame()}
+                
+                Button(action: {
+                        self.viewController?.present(style: .fullScreen) {
+                            CurrentGameView(appBinding: appBinding)
+                        } }) { CellMainView() }
+            }
+        )
+    }
+}
+
 private extension MainView {
     private var myGame: AnyView {
         AnyView(
@@ -119,6 +148,14 @@ private extension MainView {
                 }
             }
         )
+    }
+}
+
+
+// MARK: Actions
+private extension MainView {
+    private func loadMoreGames() {
+        appBinding.main.loadMoreGames.wrappedValue = false
     }
 }
 

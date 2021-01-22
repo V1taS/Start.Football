@@ -9,6 +9,7 @@ import Foundation
 
 extension AppState.AppData {
     struct Main: Equatable {
+        // Main View
         var selectionGame: AppActions.MainApp.SelectionGame = .allGame
         var showFiltrsView: Bool = false
         
@@ -24,12 +25,10 @@ extension AppState.AppData {
         var doNotShowGamesWithReserve = false
         var availableToAll = true
         
-        // MARK: Type Game
         var miniFootball = true
         var football = false
         var footsal = false
         
-        // MARK: Place Play
         var street = true
         var manege = false
         var hall = false

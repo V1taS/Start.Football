@@ -36,19 +36,16 @@ struct AuthView: View {
                         }
                         authError
                         loginButton
+                        resetPasswordButtton
+                        signUPButtton
+                        or
+                        VStack(spacing: 16) {
+                            signUPApple
+                            signUPGoogle
+                        }
+                        Spacer()
                     }
                     .padding(.top, 37)
-                    
-                    resetPasswordButtton
-                    Spacer()
-                    signUPButtton
-                    or
-                    
-                    VStack(spacing: 16) {
-                        signUPApple
-                        signUPGoogle
-                    }
-                    .padding(.bottom, 17) 
                 }
             }
         }
@@ -131,7 +128,6 @@ private extension AuthView {
                            text: "Войти",
                            switchImage: false,
                            image: "")
-                    .padding(.top, 37)
             }
         )
     }
@@ -152,7 +148,7 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.top, 33)
+            .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -172,7 +168,8 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.bottom, 33)
+            .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 80))
+            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -191,7 +188,7 @@ private extension AuthView {
                     Divider()
                 }
             }
-            .padding(.bottom, 24)
+            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
         )
     }
 }

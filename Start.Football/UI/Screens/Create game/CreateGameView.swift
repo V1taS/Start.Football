@@ -32,14 +32,14 @@ struct CreateGameView: View {
     }
 }
 
-// MARK: - Header
+
+// MARK: Actions
 private extension CreateGameView {
     private var header: AnyView {
         AnyView(HeaderCreateGameView(appBinding: appBinding))
     }
 }
 
-// MARK: - Сontent
 private extension CreateGameView {
     private var content: AnyView {
         switch appState.selectionCreateGame {
@@ -57,7 +57,6 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - Button Next Step
 private extension CreateGameView {
     var buttonNextStep: some View {
         Button(action: {
@@ -77,7 +76,6 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - Time picker
 private extension CreateGameView {
     var timePicker: some View {
         TimePickerSheet(appBinding: appBinding)
@@ -85,7 +83,6 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - Date picker
 private extension CreateGameView {
     var datePicker: some View {
         DatePickerSheet(appBinding: appBinding)
@@ -93,7 +90,6 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - Type of parking
 private extension CreateGameView {
     var typeOfParking: some View {
         TypeOfParkingSheet(appBinding: appBinding)
@@ -101,7 +97,6 @@ private extension CreateGameView {
     }
 }
 
-// MARK: - Background color
 private extension CreateGameView {
     var backgroundColor: some View {
         ZStack {
@@ -112,33 +107,36 @@ private extension CreateGameView {
             }
         }
         .onTapGesture {
-            if appBinding.showTimePicker.wrappedValue {
-                appBinding.showTimePicker.wrappedValue = false
-            }
-            
-            if appBinding.showDatePicker.wrappedValue {
-                appBinding.showDatePicker.wrappedValue = false
-            }
-            
-            if appBinding.showParking.wrappedValue {
-                appBinding.showParking.wrappedValue = false
-            }
+            dismissButton()
         }
     }
 }
 
 
+// MARK: Actions
 private extension CreateGameView {
-    func nextStepProgressBar() {
+    private func nextStepProgressBar() {
         injected.interactors.createGameInteractor
             .nextStepProgressBar(state: appBinding)
     }
-}
-
-private extension CreateGameView {
-    func refreshProgressBar() {
+    
+    private func refreshProgressBar() {
         injected.interactors.createGameInteractor
             .refreshProgressBar(state: appBinding)
+    }
+    
+    private func dismissButton() {
+        if appBinding.showTimePicker.wrappedValue {
+            appBinding.showTimePicker.wrappedValue = false
+        }
+        
+        if appBinding.showDatePicker.wrappedValue {
+            appBinding.showDatePicker.wrappedValue = false
+        }
+        
+        if appBinding.showParking.wrappedValue {
+            appBinding.showParking.wrappedValue = false
+        }
     }
 }
 

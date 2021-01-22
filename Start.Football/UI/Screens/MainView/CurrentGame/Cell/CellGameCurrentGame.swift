@@ -8,65 +8,92 @@
 import SwiftUI
 
 struct CellGameCurrentGame: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
+    
+    @Environment(\.injected) private var injected: DIContainer
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
     
     var body: some View {
-        VStack(alignment: .leading,
-               spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-            
+        VStack(alignment: .leading, spacing: 16) {
+            header
+            dateGame
+            streetGame
+        }
+        .padding(.top, 16)
+        .padding(.bottom, 24)
+    }
+}
+
+// MARK: UI
+private extension CellGameCurrentGame {
+    private var header: AnyView {
+        AnyView(
             HStack {
-                Text("Мини-футбол")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
-                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                    .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.secondaryColor))
+                TextButtonRound(name: "Мини-футбол",
+                                isOn: false)
                 
-                Text("10 на 10")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
-                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                    .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.secondaryColor))
+                TextButtonRound(name: "10 на 10",
+                                isOn: false)
                 
-                Text("Для всех")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
-                    .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                    .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                    .overlay(RoundedRectangle(cornerRadius: 16)
-                                .stroke(Color.secondaryColor))
-                Spacer()
+                TextButtonRound(name: "Для всех",
+                                isOn: false)
             }
-            
-            HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
+        )
+    }
+}
+
+private extension CellGameCurrentGame {
+    private var dateGame: AnyView {
+        AnyView(
+            HStack(spacing: 10) {
                 Image("cellDate")
                 Text("30 августа, 16:00-18:00")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
-            HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
+        )
+    }
+}
+
+private extension CellGameCurrentGame {
+    private var streetGame: AnyView {
+        AnyView(
+            HStack(spacing: 10) {
                 Image("cellLocator")
                 Text("ул. Хачтуряна, 12, стр. 2")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                 Spacer()
-                Text("5,2 км")
-                    .foregroundColor(.primaryColor)
-                    .font(Font.event.robotoRegular16)
-                Image("right")
+                distance
             }
-        }
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
-        .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 24))
+        )
     }
+}
+
+private extension CellGameCurrentGame {
+    private var distance: AnyView {
+        AnyView(
+            Button(action: {}) {
+                HStack(spacing: 10)  {
+                    Text("5,2 км")
+                        .foregroundColor(.primaryColor)
+                        .font(Font.event.robotoRegular16)
+                    Image("right")
+                }
+            }
+        )
+    }
+}
+
+// MARK: Actions
+private extension CellGameCurrentGame {
+    private func actions() {}
 }
 
 struct CellGameCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        CellGameCurrentGame()
+        CellGameCurrentGame(appBinding: .constant(.init()))
     }
 }

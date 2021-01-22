@@ -31,6 +31,7 @@ struct CheckboxFieldView : View {
             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270), alignment: .leading)
             Spacer()
         }
+        .padding(3)
     }
 }
 

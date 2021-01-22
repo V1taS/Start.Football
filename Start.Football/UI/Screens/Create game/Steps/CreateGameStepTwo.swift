@@ -22,11 +22,7 @@ struct CreateGameStepTwo: View {
                     .font(Font.event.robotoRegular18)
                 
                 selectionRegularGame
-                
-                if appBinding.selectionRegularGame
-                    .wrappedValue == .yes {
-                    regularGame
-                }
+                regularGame
                 Spacer()
             }
             .padding(.horizontal, 24)
@@ -35,7 +31,7 @@ struct CreateGameStepTwo: View {
     }
 }
 
-// MARK: - Selection regularGame
+// MARK: UI
 private extension CreateGameStepTwo {
     var selectionRegularGame: some View {
         VStack(spacing: 24) {
@@ -66,36 +62,48 @@ private extension CreateGameStepTwo {
     }
 }
 
-// MARK: - Regular Game
 private extension CreateGameStepTwo {
     var regularGame: some View {
         VStack(alignment: .leading, spacing: 24) {
-            BoxDateButton(disabledButton: false,
-                          mo: appBinding.mo,
-                          tu: appBinding.tu,
-                          we: appBinding.we,
-                          th: appBinding.th,
-                          fr: appBinding.fr,
-                          sa: appBinding.sa,
-                          su: appBinding.su)
-            
-            Button(action: { appBinding.showTimePicker.wrappedValue.toggle() }) {
-                NoTextfieldOneLineView(text: appBinding.time.wrappedValue,
-                                       header: "Время",
-                                       iconShow: true,
-                                       icon: "timeGreateGame",
-                                       textHasBeenChanged: appBinding.timeTextHasBeenChanged.wrappedValue)
-            }
-            
-            Button(action: {}) {
-                ButtonView(background: .whiteColor,
-                           textColor: .primaryColor,
-                           borderColor: .primaryColor,
-                           text: "Добавить другой день или время",
-                           switchImage: false,
-                           image: "")
+            if appBinding.selectionRegularGame.wrappedValue == .yes {
+                BoxDateButton(disabledButton: false,
+                              mo: appBinding.mo,
+                              tu: appBinding.tu,
+                              we: appBinding.we,
+                              th: appBinding.th,
+                              fr: appBinding.fr,
+                              sa: appBinding.sa,
+                              su: appBinding.su)
+                
+                Button(action: {
+                    presentTime()
+                }) {
+                    NoTextfieldOneLineView(text: appBinding.time.wrappedValue,
+                                           header: "Время",
+                                           iconShow: true,
+                                           icon: "timeGreateGame",
+                                           textHasBeenChanged: appBinding.timeTextHasBeenChanged.wrappedValue)
+                }
+                
+                Button(action: {
+                    
+                }) {
+                    ButtonView(background: .whiteColor,
+                               textColor: .primaryColor,
+                               borderColor: .primaryColor,
+                               text: "Добавить другой день или время",
+                               switchImage: false,
+                               image: "")
+                }
             }
         }
+    }
+}
+
+// MARK: Actions
+private extension CreateGameStepTwo {
+    private func presentTime() {
+        appBinding.showTimePicker.wrappedValue.toggle()
     }
 }
 

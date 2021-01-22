@@ -46,6 +46,7 @@ struct CreateGameStepThree: View {
     }
 }
 
+// MARK: UI
 private extension CreateGameStepThree {
     private var gameType: AnyView {
         AnyView(
@@ -239,8 +240,10 @@ private extension CreateGameStepThree {
     }
 }
 
+
+// MARK: Actions
 private extension CreateGameStepThree {
-    // MARK: Type Game
+    // Type Game
     private func selectMiniFootball() {
         injected.interactors.createGameInteractor.selectMiniFootball(state: appBinding)
     }
@@ -255,7 +258,7 @@ private extension CreateGameStepThree {
 }
 
 private extension CreateGameStepThree {
-    // MARK: Place Play
+    // Place Play
     private func selectStreet() {
         injected.interactors.createGameInteractor.selectStreet(state: appBinding)
     }
@@ -270,7 +273,7 @@ private extension CreateGameStepThree {
 }
 
 private extension CreateGameStepThree {
-    // MARK: Type Field
+    // Type Field
     private func selectParquet() {
         injected.interactors.createGameInteractor.selectParquet(state: appBinding)
     }
@@ -285,7 +288,7 @@ private extension CreateGameStepThree {
 }
 
 private extension CreateGameStepThree {
-    // MARK: Coating Properties
+    // Coating Properties
     private func selectSynthetics() {
         injected.interactors.createGameInteractor.selectSynthetics(state: appBinding)
     }

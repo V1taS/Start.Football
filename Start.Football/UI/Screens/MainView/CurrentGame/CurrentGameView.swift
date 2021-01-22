@@ -8,7 +8,11 @@
 import SwiftUI
 
 struct CurrentGameView: View {
-    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -28,10 +32,10 @@ struct CurrentGameView: View {
                         HeaderCurrentGame()
                         VStack(spacing: 0) {
                             Group {
-                                CellGameCurrentGame()
+                                CellGameCurrentGame(appBinding: appBinding)
                                 Divider()
-                                WhoWillPlayCurrentGame()
-                                CalendarCurrentGame()
+                                WhoWillPlayCurrentGame(appBinding: appBinding)
+                                CalendarCurrentGame(appBinding: appBinding)
                                 Divider()
                                 AboutCurrentGame()
                                 Divider()
@@ -81,6 +85,6 @@ struct CurrentGameView: View {
 
 struct CurrentGameView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentGameView()
+        CurrentGameView(appBinding: .constant(.init()))
     }
 }

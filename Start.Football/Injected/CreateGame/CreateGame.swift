@@ -17,6 +17,7 @@ extension AppState.AppData {
         var addressGame = ""
         var participationCost = ""
         var currentDate = Date()
+        
         var showTimePicker = false
         var showDatePicker = false
         var oneTime = "Укажите время"
@@ -25,7 +26,7 @@ extension AppState.AppData {
         var oneDayTextHasBeenChanged = false
         
         // MARK: - Step 2
-        var selectionRegularGame: AppActions.CreateGame.RegularGame = .no
+        var selectionRegularGame: AppActions.CreateGame.RegularGame = .yes
         
         // MARK: Day Of Week
         var mo = false

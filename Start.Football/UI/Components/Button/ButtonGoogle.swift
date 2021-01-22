@@ -28,6 +28,7 @@ struct ButtonGoogle: View {
                 .foregroundColor(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1)))
                 .font(Font.event.robotoMedium16)
         }
+        .padding(3)
     }
 }
 

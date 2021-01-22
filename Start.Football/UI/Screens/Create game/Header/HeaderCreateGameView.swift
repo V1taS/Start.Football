@@ -8,9 +8,7 @@
 import SwiftUI
 
 struct HeaderCreateGameView: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
+
     var appBinding: Binding<AppState.AppData.CreateGame>
     
     var body: some View {
@@ -26,8 +24,8 @@ struct HeaderCreateGameView: View {
             }
             Spacer()
         }
-        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 24))
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 13))
+        .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24))
+        .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 13))
     }
 }
 

@@ -20,6 +20,7 @@ extension AppState {
         var resetAuth = ResetAuth()
         var main = Main()
         var createGame = CreateGame()
+        var currentGame = CurrentGame()
     }
 }
 

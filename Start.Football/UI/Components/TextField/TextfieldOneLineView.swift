@@ -25,7 +25,7 @@ struct TextfieldOneLineView: View {
                 Text(title)
                     .foregroundColor(.defaultColor)
                     .font(Font.event.robotoRegular14)
-                    .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
+                    .padding(.bottom, 16)
                 
                 
                 

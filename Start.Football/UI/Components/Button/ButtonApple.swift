@@ -21,6 +21,7 @@ struct ButtonApple: View {
                 .foregroundColor(.whiteColor)
                 .font(Font.event.SFProDisplayMedium18)
         }
+        .padding(3)
     }
 }
 

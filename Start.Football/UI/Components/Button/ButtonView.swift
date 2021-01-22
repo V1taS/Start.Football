@@ -37,6 +37,7 @@ struct ButtonView: View {
                     .font(Font.event.robotoMedium18)
             }
         }
+        .padding(3)
     }
 }
 

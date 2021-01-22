@@ -14,7 +14,6 @@ struct TabViewApp: View {
         $appState.dispatched(to: injected.appState, \.appData)
     }
     @Environment(\.injected) private var injected: DIContainer
-    
     @State private var selection = 0
     
     var body: some View {
@@ -22,16 +21,7 @@ struct TabViewApp: View {
             TabView(selection: $selection) {
                 MainView(appBinding: appBinding)
                     .tabItem {
-                        if selection == 0 {
-                            Image("tab_search")
-                                .renderingMode(.template)
-                                .foregroundColor(.secondaryColor)
-                        } else {
-                            Image("tab_search")
-                                .renderingMode(.template)
-                                .foregroundColor(.defaultColor)
-                        }
-                        Image("tab_search")
+                        searchView
                         Text("Поиск")
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
@@ -39,15 +29,7 @@ struct TabViewApp: View {
                 
                 CreateGameView()
                     .tabItem {
-                        if selection == 1 {
-                            Image("tab_create")
-                                .renderingMode(.template)
-                                .foregroundColor(.secondaryColor)
-                        } else {
-                            Image("tab_create")
-                                .renderingMode(.template)
-                                .foregroundColor(.defaultColor)
-                        }
+                        createView
                         Text("Создать")
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
@@ -55,15 +37,7 @@ struct TabViewApp: View {
                 
                 Plug(text: "Меню (В разработке...)", createGame: false)
                     .tabItem {
-                        if selection == 2 {
-                            Image("tab_menu")
-                                .renderingMode(.template)
-                                .foregroundColor(.secondaryColor)
-                        } else {
-                            Image("tab_menu")
-                                .renderingMode(.template)
-                                .foregroundColor(.defaultColor)
-                        }
+                        menuView
                         Text("Меню")
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
@@ -77,7 +51,8 @@ struct TabViewApp: View {
     }
 }
 
-// MARK: Filter game
+
+// MARK: Sheet View
 private extension TabViewApp {
     private var filterGame: AnyView {
         AnyView(
@@ -88,11 +63,8 @@ private extension TabViewApp {
             .padding(.bottom, -150)
         )
     }
-}
-
-// MARK: - Background color
-private extension TabViewApp {
-    var backgroundColor: some View {
+    
+    private var backgroundColor: some View {
         ZStack {
             if appBinding.main.showFiltrsView.wrappedValue {
                 Color.secondary
@@ -106,6 +78,61 @@ private extension TabViewApp {
     }
 }
 
+
+// MARK: UI
+private extension TabViewApp {
+    private var searchView: AnyView {
+        AnyView(
+            VStack {
+                if selection == 0 {
+                    Image("tab_search")
+                        .renderingMode(.template)
+                        .foregroundColor(.secondaryColor)
+                } else {
+                    Image("tab_search")
+                        .renderingMode(.template)
+                        .foregroundColor(.defaultColor)
+                }
+            }
+        )
+    }
+}
+
+private extension TabViewApp {
+    private var createView: AnyView {
+        AnyView(
+            VStack {
+                if selection == 1 {
+                    Image("tab_create")
+                        .renderingMode(.template)
+                        .foregroundColor(.secondaryColor)
+                } else {
+                    Image("tab_create")
+                        .renderingMode(.template)
+                        .foregroundColor(.defaultColor)
+                }
+            }
+        )
+    }
+}
+
+private extension TabViewApp {
+    private var menuView: AnyView {
+        AnyView(
+            VStack {
+                if selection == 2 {
+                    Image("tab_menu")
+                        .renderingMode(.template)
+                        .foregroundColor(.secondaryColor)
+                } else {
+                    Image("tab_menu")
+                        .renderingMode(.template)
+                        .foregroundColor(.defaultColor)
+                }
+            }
+        )
+    }
+}
 
 struct TabView_Previews: PreviewProvider {
     static var previews: some View {

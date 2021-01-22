@@ -13,11 +13,11 @@ struct RoundedColorEdge: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 16))
-            .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 10))
+            .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 12))
+            .padding(.vertical, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 9))
             .background(backgroundColor)
-            .cornerRadius(16)
-            .overlay(RoundedRectangle(cornerRadius: 16)
+            .cornerRadius(12)
+            .overlay(RoundedRectangle(cornerRadius: 12)
                         .stroke(boarderColor))
     }
 }
