@@ -39,8 +39,7 @@ struct MainView: View {
 private extension MainView {
     private var header: AnyView {
         AnyView(
-            HeaderMainView(selectionGame: appBinding.main.selectionGame,
-                           showFiltrsView: appBinding.main.showFiltrsView)
+            HeaderMainView(appBinding: appBinding)
                 .padding(.top, 8)
         )
     }

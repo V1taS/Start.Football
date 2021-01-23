@@ -52,7 +52,7 @@ struct FilterGameSheet: View {
                 }
             }
         }
-        .padding(.all, 24)
+        .padding(24)
         .background(Color(.backgroundColor))
         .cornerRadius(25)
         .shadow(color: Color(.black)

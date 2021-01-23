@@ -12,10 +12,6 @@ struct TypeOfParkingSheet: View {
     var appBinding: Binding<AppState.AppData.CreateGame>
     @Environment(\.injected) private var injected: DIContainer
     
-    let animation = Animation.interpolatingSpring(stiffness: 100,
-                                                  damping: 30,
-                                                  initialVelocity: 10)
-    
     @State var viewState = CGSize.zero
     var isExpanded: Bool {
         appBinding.showParking.wrappedValue
@@ -77,6 +73,7 @@ struct TypeOfParkingSheet: View {
                             Spacer()
                         }
                     }
+                    .animation(.default)
                     .padding(.top, 25)
                     Spacer()
                 }
@@ -96,7 +93,6 @@ struct TypeOfParkingSheet: View {
             }
             .onEnded(onDragEnded)
         )
-        .animation(animation)
         .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 500))
     }
     

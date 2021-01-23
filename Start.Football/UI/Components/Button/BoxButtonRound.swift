@@ -18,6 +18,7 @@ struct TextButtonRound: View {
             .roundedEdge(backgroundColor: isOn ? Color.primaryColor : .whiteColor,
                          boarderColor: isOn ? Color.primaryColor : .secondaryColor)
             .padding(3)
+            .animation(.default)
     }
 }
 

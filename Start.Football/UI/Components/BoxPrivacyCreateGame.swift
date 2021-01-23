@@ -100,7 +100,7 @@ private extension BoxPrivacyCreateGame {
                         }
                     }
                 }
-            }
+            } .animation(.default)
         )
     }
 }

@@ -77,6 +77,7 @@ private extension CreateGameView {
 private extension CreateGameView {
     var typeOfParking: some View {
         TypeOfParkingSheet(appBinding: appBinding)
+            .animation(.easeInOut(duration: 0.5))
             .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 85))
     }
 }

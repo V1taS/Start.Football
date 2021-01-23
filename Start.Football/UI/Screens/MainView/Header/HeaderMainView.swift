@@ -8,6 +8,11 @@
 import SwiftUI
 
 struct HeaderMainView: View {
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -15,8 +20,6 @@ struct HeaderMainView: View {
     
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
-    @Binding var selectionGame: AppActions.MainApp.SelectionGame
-    @Binding var showFiltrsView: Bool
     
     var body: some View {
         HStack {
@@ -66,7 +69,9 @@ private extension HeaderMainView {
 private extension HeaderMainView {
     private var map: AnyView {
         AnyView(
-            Button(action: { }) {
+            Button(action: {
+                presentMap()
+            }) {
                 Image("map_turnedOff")
                     .resizable()
                     .renderingMode(.original)
@@ -101,14 +106,18 @@ private extension HeaderMainView {
             ProfileView() }
     }
     
+    private func presentMap() {
+        self.viewController?.present(style: .pageSheet) {
+            MapGameView(appBinding: appBinding) }
+    }
+    
     private func presentFiltrsSheet() {
-        self.showFiltrsView.toggle()
+        self.appBinding.main.showFiltrsView.wrappedValue.toggle()
     }
 }
 
 struct HeaderMainView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderMainView(selectionGame: .constant(.allGame),
-                       showFiltrsView: .constant(false))
+        HeaderMainView(appBinding: .constant(.init()))
     }
 }
