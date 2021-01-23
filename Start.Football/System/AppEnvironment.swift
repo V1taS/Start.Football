@@ -24,8 +24,12 @@ extension AppEnvironment {
         let createGameInteractor = CreateGameInteractorImpl()
         let authInteractor = AuthInteractorImpl()
         let mainAppInteractor = MainAppInteractorImpl()
+        let currentGameInteractor = CurrentGameInteractorImpl()
+        let menuInteractor = MenuInteractorImpl()
         return .init(createGameInteractor: createGameInteractor,
                      authInteractor: authInteractor,
-                     mainAppInteractor: mainAppInteractor)
+                     mainAppInteractor: mainAppInteractor,
+                     currentGameInteractor: currentGameInteractor,
+                     menuInteractor: menuInteractor)
     }
 }

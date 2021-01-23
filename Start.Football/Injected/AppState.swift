@@ -18,9 +18,11 @@ extension AppState {
         var signInAuth = SignInAuth()
         var signUpAuth = SignUpAuth()
         var resetAuth = ResetAuth()
+        
         var main = Main()
         var createGame = CreateGame()
         var currentGame = CurrentGame()
+        var menu = MenuApp()
     }
 }
 

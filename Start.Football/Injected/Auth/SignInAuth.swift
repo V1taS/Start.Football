@@ -1,5 +1,5 @@
 //
-//  SignUpAuth.swift
+//  SignInAuth.swift
 //  Start.Football
 //
 //  Created by Vitalii Sosin on 19.01.2021.
@@ -8,19 +8,13 @@
 import Foundation
 
 extension AppState.AppData {
-    struct SignUpAuth: Equatable {
-        var mail: String = ""
-        var mailSuccess: Bool = true
-        
+    struct SignInAuth: Equatable {
         var login: String = ""
         var loginSuccess: Bool = true
         
         var password: String = ""
         var passwordSuccess: Bool = true
         
-        var confidentiality: Bool = false
-        var receiveNews: Bool = false
-        
-        var authError: AppActions.AuthApp.AuthError = .success
+        var authError: AppActions.AuthActions.AuthError = .success
     }
 }

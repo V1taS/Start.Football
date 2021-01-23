@@ -24,7 +24,7 @@ struct CostView: View {
                     
                     HStack(spacing: 0) {
                         TextFieldUIKit(placeholder: "500",
-                                            text: appBinding.main.costSince,
+                                       text: appBinding.main.filter.costSince,
                                             font: UIFont.event.robotoRegular24!,
                                             foregroundColor: .secondaryColor,
                                             keyType: .numberPad,
@@ -44,7 +44,7 @@ struct CostView: View {
                     
                     HStack {
                         TextFieldUIKit(placeholder: "1000",
-                                            text: appBinding.main.costUntil,
+                                       text: appBinding.main.filter.costUntil,
                                             font: UIFont.event.robotoRegular24!,
                                             foregroundColor: .secondaryColor,
                                             keyType: .numberPad,

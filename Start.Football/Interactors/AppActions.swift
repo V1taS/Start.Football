@@ -8,9 +8,9 @@
 import Foundation
 
 struct AppActions {
-    var createGame: CreateGame
-    var authApp: AuthApp
-    var mainApp: MainApp
+    var createGame: CreatGameActions
+    var authApp: AuthActions
+    var mainApp: MainActions
 }
 
 

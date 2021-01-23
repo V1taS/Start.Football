@@ -11,6 +11,6 @@ extension AppState.AppData {
     struct ResetAuth: Equatable {
         var mail: String = ""
         var mailSuccess: Bool = true
-        var authError: AppActions.AuthApp.AuthError = .success
+        var authError: AppActions.AuthActions.AuthError = .success
     }
 }

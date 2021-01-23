@@ -8,7 +8,7 @@
 import Foundation
 
 extension AppActions {
-    struct AuthApp {
+    struct AuthActions {
         enum AuthError: String {
             case notFilled = "Поля не заполнены"
             case invalidEmail = "Неверный адрес электронной почты"
@@ -26,7 +26,7 @@ extension AppActions {
     }
 }
 
-extension AppActions.AuthApp.AuthError: LocalizedError {
+extension AppActions.AuthActions.AuthError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notFilled:
@@ -45,7 +45,7 @@ extension AppActions.AuthApp.AuthError: LocalizedError {
     }
 }
 
-extension AppActions.AuthApp.UserError: LocalizedError {
+extension AppActions.AuthActions.UserError: LocalizedError {
     var errorDescription: String? {
         switch self {
         case .notFilled:

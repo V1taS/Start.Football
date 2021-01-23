@@ -112,7 +112,7 @@ private extension HeaderMainView {
     }
     
     private func presentFiltrsSheet() {
-        self.appBinding.main.showFiltrsView.wrappedValue.toggle()
+        self.appBinding.main.filter.showFiltrsView.wrappedValue.toggle()
     }
 }
 

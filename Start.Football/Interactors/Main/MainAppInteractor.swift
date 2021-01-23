@@ -8,7 +8,7 @@
 import Combine
 import SwiftUI
 
-protocol MainAppInteractor: MainFilterAppInteractor, MainCurrentGameInteractor {
+protocol MainAppInteractor: MainFilterAppInteractor {
 
 }
 

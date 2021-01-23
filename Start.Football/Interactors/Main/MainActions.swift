@@ -8,7 +8,7 @@
 import Foundation
 
 extension AppActions {
-    struct MainApp {
+    struct MainActions {
         enum SelectionGame {
             case allGame
             case myGames

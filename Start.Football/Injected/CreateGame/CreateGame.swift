@@ -9,7 +9,7 @@ import Foundation
 
 extension AppState.AppData {
     struct CreateGame: Equatable {
-        var selectionCreateGame: AppActions.CreateGame.SelectStep = .stepOne
+        var selectionCreateGame: AppActions.CreatGameActions.SelectStep = .stepOne
         var progressValue: Float = 0.0
         
         // MARK: - Step 1
@@ -22,7 +22,7 @@ extension AppState.AppData {
         var currentDateHasBeenChanged = false
         
         // MARK: - Step 2
-        var selectionRegularGame: AppActions.CreateGame.RegularGame = .yes
+        var selectionRegularGame: AppActions.CreatGameActions.RegularGame = .yes
         
         // MARK: Day Of Week
         var listGame = [true, false, false, false, false, false, false]
@@ -61,7 +61,7 @@ extension AppState.AppData {
         var maxReservePlayers: Double = 3
         
         // MARK: Приватность
-        var privacyGame: AppActions.CreateGame.PrivacyGame = .open
+        var privacyGame: AppActions.CreatGameActions.PrivacyGame = .open
         
         // MARK: Удобства
         var dressingRooms: Bool = false
@@ -69,8 +69,8 @@ extension AppState.AppData {
         
         // MARK: Парковка
         var showParking: Bool = false
-        var typeOfParking: AppActions.CreateGame.TypeOfParking = .freeCity
-        var paymentForParking: AppActions.CreateGame.PaymentForParking = .non
+        var typeOfParking: AppActions.CreatGameActions.TypeOfParking = .freeCity
+        var paymentForParking: AppActions.CreatGameActions.PaymentForParking = .non
         var parkingCost: String = ""
         
         // MARK: - Step 4

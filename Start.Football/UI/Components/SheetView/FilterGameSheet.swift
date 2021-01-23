@@ -14,7 +14,7 @@ struct FilterGameSheet: View {
     
     @State var viewState = CGSize.zero
     var isExpanded: Bool {
-        appBinding.main.showFiltrsView.wrappedValue
+        appBinding.main.filter.showFiltrsView.wrappedValue
     }
     
     var body: some View {
@@ -33,13 +33,13 @@ struct FilterGameSheet: View {
                 }
             }
             
-            if appBinding.main.showFiltrsView.wrappedValue {
+            if appBinding.main.filter.showFiltrsView.wrappedValue {
                 VStack(spacing: 0) {
                     
                     divider
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        DatePickerView(currentDate: appBinding.main.selectedData)
+                        DatePickerView(currentDate: appBinding.main.filter.selectedData)
                         TimePickerView(appBinding: appBinding)
                         CostView(appBinding: appBinding)
                         
@@ -94,11 +94,11 @@ struct FilterGameSheet: View {
     }
     
     func collapse() {
-        appBinding.main.showFiltrsView.wrappedValue = false
+        appBinding.main.filter.showFiltrsView.wrappedValue = false
     }
     
     func expand() {
-        appBinding.main.showFiltrsView.wrappedValue = false
+        appBinding.main.filter.showFiltrsView.wrappedValue = false
     }
 }
 
@@ -114,21 +114,21 @@ private extension FilterGameSheet {
                         selectMiniFootball()
                     }) {
                         TextButtonRound(name: "Мини",
-                                        isOn: appBinding.main.miniFootball.wrappedValue)
+                                        isOn: appBinding.main.filter.miniFootball.wrappedValue)
                     }
                     
                     Button(action: {
                         selectFootball()
                     }) {
                         TextButtonRound(name: "Стандарт",
-                                        isOn: appBinding.main.football.wrappedValue)
+                                        isOn: appBinding.main.filter.football.wrappedValue)
                     }
                     
                     Button(action: {
                         selectFootsal()
                     }) {
                         TextButtonRound(name: "Футзал",
-                                        isOn: appBinding.main.footsal.wrappedValue)
+                                        isOn: appBinding.main.filter.footsal.wrappedValue)
                     }
                 }
             }
@@ -149,21 +149,21 @@ private extension FilterGameSheet {
                         selectStreet()
                     }) {
                         TextButtonRound(name: "Улица",
-                                        isOn: appBinding.main.street.wrappedValue)
+                                        isOn: appBinding.main.filter.street.wrappedValue)
                     }
                     
                     Button(action: {
                         selectManege()
                     }) {
                         TextButtonRound(name: "Манеж",
-                                        isOn: appBinding.main.manege.wrappedValue)
+                                        isOn: appBinding.main.filter.manege.wrappedValue)
                     }
                     
                     Button(action: {
                         selectHall()
                     }) {
                         TextButtonRound(name: "Зал",
-                                        isOn: appBinding.main.hall.wrappedValue)
+                                        isOn: appBinding.main.filter.hall.wrappedValue)
                     }
                 }
             }
@@ -192,11 +192,11 @@ private extension FilterGameSheet {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
                 
-                CheckboxFieldView(checked: appBinding.main.onlyFreeGame,
+                CheckboxFieldView(checked: appBinding.main.filter.onlyFreeGame,
                                   text: "Только бесплатные игры")
-                CheckboxFieldView(checked: appBinding.main.doNotShowGamesWithReserve,
+                CheckboxFieldView(checked: appBinding.main.filter.doNotShowGamesWithReserve,
                                   text: "Не показывать игры с резервом")
-                CheckboxFieldView(checked: appBinding.main.availableToAll,
+                CheckboxFieldView(checked: appBinding.main.filter.availableToAll,
                                   text: "Для всех желающих")
             }
         )

@@ -22,7 +22,7 @@ struct TimePickerView: View {
                 HStack {
                     Image("datePicerTime")
                     
-                    DatePicker("", selection: appBinding.main.timeSince,
+                    DatePicker("", selection: appBinding.main.filter.timeSince,
                                displayedComponents: .hourAndMinute)
                         .labelsHidden()
                         .accentColor(.secondaryColor)
@@ -31,7 +31,7 @@ struct TimePickerView: View {
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular24)
                     
-                    DatePicker("", selection: appBinding.main.timeUntil,
+                    DatePicker("", selection: appBinding.main.filter.timeUntil,
                                displayedComponents: .hourAndMinute)
                         .labelsHidden()
                         .accentColor(.secondaryColor)

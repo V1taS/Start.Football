@@ -23,7 +23,7 @@ struct MapGameView: View {
         NavigationView {
             ZStack {
                 backgroundColor
-                MapView(checkpoints: appBinding.main.gamePoint)
+                MapView(checkpoints: appBinding.main.map.gamePoint)
                     .edgesIgnoringSafeArea(.all)
                     .navigationBarTitle(Text("Start.Football"), displayMode: .large)
                     .navigationBarItems(trailing: Button(action: {

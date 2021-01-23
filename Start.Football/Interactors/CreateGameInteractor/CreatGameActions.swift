@@ -6,7 +6,7 @@
 //
 
 extension AppActions {
-    struct CreateGame {
+    struct CreatGameActions {
         enum RegularGame {
             case yes
             case no

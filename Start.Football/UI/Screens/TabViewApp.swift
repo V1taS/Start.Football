@@ -66,14 +66,14 @@ private extension TabViewApp {
     
     private var backgroundColor: some View {
         ZStack {
-            if appBinding.main.showFiltrsView.wrappedValue {
+            if appBinding.main.filter.showFiltrsView.wrappedValue {
                 Color.secondary
                     .edgesIgnoringSafeArea(.all)
                     .animation(.linear(duration: 10))
             }
         }
         .onTapGesture {
-            appBinding.main.showFiltrsView.wrappedValue = false
+            appBinding.main.filter.showFiltrsView.wrappedValue = false
         }
     }
 }

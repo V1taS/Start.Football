@@ -21,7 +21,7 @@ extension AppState.AppData {
         var secondValue: String = "5"
         
         // Приватность
-        var privacyGame: AppActions.CreateGame.PrivacyGame = .open
+        var privacyGame: AppActions.CreatGameActions.PrivacyGame = .open
         var currentDate = Date()
         var listDate = [Date(), Date()]
         var addressGame = ""

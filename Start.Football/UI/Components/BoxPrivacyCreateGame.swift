@@ -9,7 +9,7 @@ import SwiftUI
 
 struct BoxPrivacyCreateGame: View {
 
-    @Binding var privacyGame: AppActions.CreateGame.PrivacyGame
+    @Binding var privacyGame: AppActions.CreatGameActions.PrivacyGame
     
     var body: some View {
         VStack(spacing: 0) {

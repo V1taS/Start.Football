@@ -135,12 +135,12 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 Text("Платная городская")
-                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreatGameActions
                                         .TypeOfParking.paidCity ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular18)
                 Spacer()
                 ButtonRoundGreen(status: appBinding.typeOfParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .TypeOfParking.paidCity)
             }
         }
@@ -155,12 +155,12 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 Text("Платная на территории")
-                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreatGameActions
                                         .TypeOfParking.paidOnTheTerritory ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular18)
                 Spacer()
                 ButtonRoundGreen(status: appBinding.typeOfParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .TypeOfParking.paidOnTheTerritory)
             }
         }
@@ -175,12 +175,12 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 Text("Бесплатная на территории")
-                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreatGameActions
                                         .TypeOfParking.freeOnTheTerritory ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular18)
                 Spacer()
                 ButtonRoundGreen(status: appBinding.typeOfParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .TypeOfParking.freeOnTheTerritory)
             }
         }
@@ -195,12 +195,12 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 Text("Бесплатная городская")
-                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.typeOfParking.wrappedValue == AppActions.CreatGameActions
                                         .TypeOfParking.freeCity ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular18)
                 Spacer()
                 ButtonRoundGreen(status: appBinding.typeOfParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .TypeOfParking.freeCity)
             }
         }
@@ -227,11 +227,11 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 ButtonRoundGreen(status: appBinding.paymentForParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .PaymentForParking.oneTime)
                     .frame(width: 30)
                 Text("Разово")
-                    .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreatGameActions
                                         .PaymentForParking.oneTime ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
@@ -244,11 +244,11 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 ButtonRoundGreen(status: appBinding.paymentForParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .PaymentForParking.inAnHour)
                     .frame(width: 30)
                 Text("За час")
-                    .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreatGameActions
                                         .PaymentForParking.inAnHour ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
@@ -261,11 +261,11 @@ private extension TypeOfParkingSheet {
         }) {
             HStack {
                 ButtonRoundGreen(status: appBinding.paymentForParking
-                                    .wrappedValue == AppActions.CreateGame
+                                    .wrappedValue == AppActions.CreatGameActions
                                     .PaymentForParking.non)
                     .frame(width: 30)
                 Text("Нет")
-                    .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreateGame
+                    .foregroundColor(appBinding.paymentForParking.wrappedValue == AppActions.CreatGameActions
                                         .PaymentForParking.non ? .primaryColor : .secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
