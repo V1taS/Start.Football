@@ -22,7 +22,17 @@ class GetDateStringFromDate {
     // MARK: Преобразуем дату: "четверг 21 января 2021"
     func getDateString(date: Date) -> String {
         let dateFormatter = DateFormatter()
-        dateFormatter.dateFormat = "EEEE d MMMM yyyy"
+//        dateFormatter.dateFormat = "EEEE d MMMM yyyy"
+        dateFormatter.dateFormat = "EEEE"
+        dateFormatter.locale = Locale(identifier: "ru_RU")
+        let time = dateFormatter.string(from: date)
+        return time
+    }
+    
+    // MARK: Преобразуем дату: "четверг 21 января 2021"
+    func getDateStringFull(date: Date) -> String {
+        let dateFormatter = DateFormatter()
+        dateFormatter.dateFormat = "EEEE d MMMM"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         let time = dateFormatter.string(from: date)
         return time

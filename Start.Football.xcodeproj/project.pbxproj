@@ -48,6 +48,9 @@
 		1B3828AC25B867760007790A /* TextFieldUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3828AB25B867760007790A /* TextFieldUIKit.swift */; };
 		1B3ACC0325B9E733005886AA /* CurrentGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3ACC0225B9E733005886AA /* CurrentGame.swift */; };
 		1B3ED80E25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B3ED80D25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift */; };
+		1B41A08725BD96090065A7C2 /* GamePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08625BD96090065A7C2 /* GamePoint.swift */; };
+		1B41A08A25BD962F0065A7C2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08925BD962F0065A7C2 /* MapView.swift */; };
+		1B41A08D25BD9A180065A7C2 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */; };
 		1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */; };
 		1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65FB25A8B42800801E12 /* ButtonParking.swift */; };
 		1B5CCDB7257ED7AB0000BC79 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */; };
@@ -180,6 +183,9 @@
 		1B3828AB25B867760007790A /* TextFieldUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TextFieldUIKit.swift; sourceTree = "<group>"; };
 		1B3ACC0225B9E733005886AA /* CurrentGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CurrentGame.swift; sourceTree = "<group>"; };
 		1B3ED80D25AFAB0C00EEF45D /* CreateGameInteractorImpl.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreateGameInteractorImpl.swift; sourceTree = "<group>"; };
+		1B41A08625BD96090065A7C2 /* GamePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePoint.swift; sourceTree = "<group>"; };
+		1B41A08925BD962F0065A7C2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
+		1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
 		1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatGameTextField.swift; sourceTree = "<group>"; };
 		1B4B65FB25A8B42800801E12 /* ButtonParking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParking.swift; sourceTree = "<group>"; };
 		1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
@@ -452,6 +458,16 @@
 			path = CurrentGame;
 			sourceTree = "<group>";
 		};
+		1B41A08425BD95EB0065A7C2 /* Map */ = {
+			isa = PBXGroup;
+			children = (
+				1B68132425746E4B00B54977 /* MapGameView.swift */,
+				1B41A08625BD96090065A7C2 /* GamePoint.swift */,
+				1B41A08925BD962F0065A7C2 /* MapView.swift */,
+			);
+			path = Map;
+			sourceTree = "<group>";
+		};
 		1B6BD01325B5B167008DAD8B /* CreateGameInteractor */ = {
 			isa = PBXGroup;
 			children = (
@@ -549,6 +565,7 @@
 				1B04FC362571A56A00AC40D5 /* UIScreen.swift */,
 				1B68131425744A7F00B54977 /* KeyboardListener.swift */,
 				1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */,
+				1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -571,7 +588,7 @@
 			isa = PBXGroup;
 			children = (
 				1B78CCEF256DC4E300297221 /* MainView.swift */,
-				1B68132425746E4B00B54977 /* MapGameView.swift */,
+				1B41A08425BD95EB0065A7C2 /* Map */,
 				1BD9108E257598E4005B3CFC /* CurrentGame */,
 				1BD9109825759C08005B3CFC /* Profile */,
 				1BA208B425A777BF005B4D0C /* Header */,
@@ -925,6 +942,7 @@
 			isa = PBXSourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				1B41A08725BD96090065A7C2 /* GamePoint.swift in Sources */,
 				1B2D84B825B505590068693B /* BoxSliderCreateGame.swift in Sources */,
 				1B7F7C8125840E0500308106 /* RoundedColorEdge.swift in Sources */,
 				1B68131525744A7F00B54977 /* KeyboardListener.swift in Sources */,
@@ -1001,6 +1019,7 @@
 				1BF3663B25A782DA00B196EE /* CommentCurrentGame.swift in Sources */,
 				1B68132525746E4B00B54977 /* MapGameView.swift in Sources */,
 				1B368A5625B63B1A007D1365 /* ImageViewMiniCG.swift in Sources */,
+				1B41A08A25BD962F0065A7C2 /* MapView.swift in Sources */,
 				1B78CCC0256DAB0800297221 /* FullscreenSheet.swift in Sources */,
 				1B24DEFA25802A9700510132 /* CreateGameView.swift in Sources */,
 				1B03BE7C25B7B6E200F032F7 /* MainFilterAppInteractor.swift in Sources */,
@@ -1027,6 +1046,7 @@
 				1B127E1625BA4AE300C97BE9 /* DatePickerLineView.swift in Sources */,
 				1B368A5925B640E5007D1365 /* CellWithPlayerButton.swift in Sources */,
 				1B23562625A7B8FD00E33DA8 /* TypeOfParkingSheet.swift in Sources */,
+				1B41A08D25BD9A180065A7C2 /* StringProtocol.swift in Sources */,
 				1B765D9225A74B8100105940 /* HeaderCreateGameView.swift in Sources */,
 				1BE105E725B743400060DA3D /* SignUPAuthInteractor.swift in Sources */,
 				1B03BE7125B7A64D00F032F7 /* MainActions.swift in Sources */,

@@ -22,14 +22,15 @@ struct CurrentGameView: View {
     let width = UIScreen.screenWidth
     
     var body: some View {
-        ZStack {
-            Color(.backgroundColor)
-                .edgesIgnoringSafeArea(.all)
-            
-            NavigationView {
+        NavigationView {
+            ZStack {
+                Color(.backgroundColor)
+                    .edgesIgnoringSafeArea(.all)
+                
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
-                        HeaderCurrentGame()
+                        HeaderCurrentGame(appBinding: appBinding)
+
                         VStack(spacing: 0) {
                             Group {
                                 CellGameCurrentGame(appBinding: appBinding)
@@ -43,13 +44,16 @@ struct CurrentGameView: View {
                                 Divider()
                             }
                             Group {
-                                AboutTheAreaCurrentGame()
+                                AboutTheAreaCurrentGame(appBinding: appBinding)
                                 Divider()
-                                RulesCurrentGame()
+                                RulesCurrentGame(appBinding: appBinding)
                                 Divider()
-                                CommentCurrentGame()
+                                CommentCurrentGame(appBinding: appBinding)
+                                    .padding(.bottom, 16)
                                 ADVCurrentGame()
+                                    .padding(.bottom, 16)
                                 ButtonsCurrentGame()
+                                    .padding(.bottom, 24)
                             }
                             Spacer()
                         }
@@ -57,26 +61,29 @@ struct CurrentGameView: View {
                     }
                 }
                 
-                .navigationBarItems(trailing:
-                                        HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {
-                                            Button(action: {
-                                                self.viewController?.dismiss(animated: true)
-                                            }) {
-                                                Image("currenrGameEdit")
-                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
-                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
-                                            }
-                                            
-                                            Button(action: {
-                                                self.viewController?.dismiss(animated: true)
-                                            }) {
-                                                Image("currenrGameVector")
-                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
-                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
-                                                
-                                            }
-                                        }
-                )
+                .edgesIgnoringSafeArea(.all)
+                .navigationBarTitle("Игра №\(appBinding.currentGame.idGame.wrappedValue)", displayMode: .large).accentColor(.primaryColor)
+                
+                                .navigationBarItems(trailing:
+                                                        HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {
+                                                            Button(action: {
+                                                                self.viewController?.dismiss(animated: true)
+                                                            }) {
+                                                                Image("currenrGameEdit")
+                                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
+                                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                                                            }
+                
+                                                            Button(action: {
+                                                                self.viewController?.dismiss(animated: true)
+                                                            }) {
+                                                                Image("currenrGameVector")
+                                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
+                                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
+                
+                                                            }
+                                                        }
+                                )
                 
             }
         }

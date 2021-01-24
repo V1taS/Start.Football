@@ -23,7 +23,7 @@ struct CreateGameStepOne: View {
                     addressGame
                     time
                     day
-                    participationCost
+                    costGame
                 }
                 freeGameText
                 Spacer()
@@ -84,8 +84,8 @@ private extension CreateGameStepOne {
 }
 
 private extension CreateGameStepOne {
-    var participationCost: some View {
-        TextfieldOneLineView(text: appBinding.participationCost,
+    var costGame: some View {
+        TextfieldOneLineView(text: appBinding.costGame,
                              title: "Стоимость участия одного игрока",
                              icon: "rublsCreateGame",
                              iconShow: true,

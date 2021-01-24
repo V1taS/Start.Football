@@ -15,7 +15,8 @@ extension AppState.AppData {
         // MARK: - Step 1
         var nameGame = ""
         var addressGame = ""
-        var participationCost = ""
+        var costGame = ""
+        
         
         var currentDate = Date()
         var currentTimeHasBeenChanged = false

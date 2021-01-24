@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct HeaderCurrentGame: View {
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
@@ -19,7 +25,7 @@ struct HeaderCurrentGame: View {
                        height: height * Size.shared.getAdaptSizeHeight(px: 230))
             
             HStack {
-                Text("Тренировка в ФОК")
+                Text("\(appBinding.currentGame.nameGame.wrappedValue)")
                     .foregroundColor(.whiteColor)
                     .font(Font.event.robotoBold20)
                     .lineLimit(3)
@@ -31,7 +37,7 @@ struct HeaderCurrentGame: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
                                height: height * Size.shared.getAdaptSizeHeight(px: 52))
-                    Text("500 ₽")
+                    Text("\(appBinding.currentGame.costGame.wrappedValue) ₽")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular24)
                 }
@@ -40,12 +46,11 @@ struct HeaderCurrentGame: View {
             .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0),
                     y: height * Size.shared.getAdaptSizeHeight(px: 75))
         }
-        .navigationBarTitle("Игра №4867", displayMode: .inline)
     }
 }
 
 struct HeaderCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderCurrentGame()
+        HeaderCurrentGame(appBinding: .constant(.init()))
     }
 }

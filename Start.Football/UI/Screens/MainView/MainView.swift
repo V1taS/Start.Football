@@ -97,36 +97,36 @@ private extension MainView {
         AnyView(
             VStack(spacing: 16) {
                 Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
+                        self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
                         } }) { CellMainView() }
                 
                 Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
+                        self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
                         } }) { CellMainView() }
                 
                 Button(action: {}) { ADV()}
                 
                 Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
+                        self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
                         } }) { CellMainView() }
                 
                 Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
+                        self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
                         } }) { CellMainView() }
                 
                 Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
+                        self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
                         } }) { CellMainView() }
                 
                 Button(action: {}) { ADVCurrentGame()}
                 
                 Button(action: {
-                        self.viewController?.present(style: .fullScreen) {
+                        self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
                         } }) { CellMainView() }
             }

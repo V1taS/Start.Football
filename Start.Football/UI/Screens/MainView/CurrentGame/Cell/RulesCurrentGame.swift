@@ -8,27 +8,31 @@
 import SwiftUI
 
 struct RulesCurrentGame: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
+
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
+            VStack(alignment: .leading, spacing: 16) {
                 Text("ПРАВИЛА")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.")
+                Text("\(appBinding.currentGame.ownRules.wrappedValue)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
             }
             Spacer()
         }
-        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 24))
+        .padding(.vertical, 24)
     }
 }
 
 struct RulesCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        RulesCurrentGame()
+        RulesCurrentGame(appBinding: .constant(.init()))
     }
 }
