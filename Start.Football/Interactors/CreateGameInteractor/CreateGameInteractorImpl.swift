@@ -12,54 +12,54 @@ protocol CreateGameInteractor: StepOneCreateGameInteractor,
                                StepTwoCreateGameInteractor,
                                StepThreeCreateGameInteractor,
                                StepFourCreateGameInteractor {
-    func refreshProgressBar(state: Binding<AppState.AppData.CreateGame>)
-    func nextStepProgressBar(state: Binding<AppState.AppData.CreateGame>)
-    func backStepProgressBar(state: Binding<AppState.AppData.CreateGame>)
+    func refreshProgressBar(state: Binding<AppState.AppData>)
+    func nextStepProgressBar(state: Binding<AppState.AppData>)
+    func backStepProgressBar(state: Binding<AppState.AppData>)
 }
 
 struct CreateGameInteractorImpl: CreateGameInteractor {
-    func refreshProgressBar(state: Binding<AppState.AppData.CreateGame>) {
-        switch state.selectionCreateGame.wrappedValue {
+    func refreshProgressBar(state: Binding<AppState.AppData>) {
+        switch state.createGame.selectionCreateGame.wrappedValue {
         case .stepOne:
-            state.progressValue.wrappedValue = 0.0
+            state.createGame.progressValue.wrappedValue = 0.0
         case .stepTwo:
-            state.progressValue.wrappedValue = 0.25
+            state.createGame.progressValue.wrappedValue = 0.25
         case .stepThree:
-            state.progressValue.wrappedValue = 0.50
+            state.createGame.progressValue.wrappedValue = 0.50
         case .stepFour:
-            state.progressValue.wrappedValue = 0.75
+            state.createGame.progressValue.wrappedValue = 0.75
         case .stepFive:
-            state.progressValue.wrappedValue = 1.0
+            state.createGame.progressValue.wrappedValue = 1.0
         }
     }
     
-    func nextStepProgressBar(state: Binding<AppState.AppData.CreateGame>)  {
-        switch state.selectionCreateGame.wrappedValue {
+    func nextStepProgressBar(state: Binding<AppState.AppData>)  {
+        switch state.createGame.selectionCreateGame.wrappedValue {
         case .stepOne:
-            state.selectionCreateGame.wrappedValue = .stepTwo
+            state.createGame.selectionCreateGame.wrappedValue = .stepTwo
         case .stepTwo:
-            state.selectionCreateGame.wrappedValue = .stepThree
+            state.createGame.selectionCreateGame.wrappedValue = .stepThree
         case .stepThree:
-            state.selectionCreateGame.wrappedValue = .stepFour
+            state.createGame.selectionCreateGame.wrappedValue = .stepFour
         case .stepFour:
-            state.selectionCreateGame.wrappedValue = .stepFive
+            state.createGame.selectionCreateGame.wrappedValue = .stepFive
         case .stepFive:
             break
         }
     }
     
-    func backStepProgressBar(state: Binding<AppState.AppData.CreateGame>)  {
-        switch state.selectionCreateGame.wrappedValue {
+    func backStepProgressBar(state: Binding<AppState.AppData>)  {
+        switch state.createGame.selectionCreateGame.wrappedValue {
         case .stepOne:
-            state.selectionCreateGame.wrappedValue = .stepOne
+            state.createGame.selectionCreateGame.wrappedValue = .stepOne
         case .stepTwo:
-            state.selectionCreateGame.wrappedValue = .stepOne
+            state.createGame.selectionCreateGame.wrappedValue = .stepOne
         case .stepThree:
-            state.selectionCreateGame.wrappedValue = .stepTwo
+            state.createGame.selectionCreateGame.wrappedValue = .stepTwo
         case .stepFour:
-            state.selectionCreateGame.wrappedValue = .stepThree
+            state.createGame.selectionCreateGame.wrappedValue = .stepThree
         case .stepFive:
-            state.selectionCreateGame.wrappedValue = .stepFour
+            state.createGame.selectionCreateGame.wrappedValue = .stepFour
         }
     }
 }

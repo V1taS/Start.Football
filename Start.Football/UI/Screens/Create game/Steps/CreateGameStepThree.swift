@@ -10,8 +10,8 @@ import SwiftUI
 struct CreateGameStepThree: View {
     
     @Environment(\.injected) private var injected: DIContainer
-    private var appBinding: Binding<AppState.AppData.CreateGame>
-    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
     
@@ -59,21 +59,21 @@ private extension CreateGameStepThree {
                         selectMiniFootball()
                     }) {
                         TextButtonRound(name: "Мини-футбол",
-                                        isOn: appBinding.miniFootball.wrappedValue)
+                                        isOn: appBinding.createGame.miniFootball.wrappedValue)
                     }
                     
                     Button(action: {
                         selectFootball()
                     }) {
                         TextButtonRound(name: "Футбол",
-                                        isOn: appBinding.football.wrappedValue)
+                                        isOn: appBinding.createGame.usualFootball.wrappedValue)
                     }
                     
                     Button(action: {
                         selectFootsal()
                     }) {
                         TextButtonRound(name: "Футзал",
-                                        isOn: appBinding.footsal.wrappedValue)
+                                        isOn: appBinding.createGame.footsal.wrappedValue)
                     }
                 }
             }
@@ -94,21 +94,21 @@ private extension CreateGameStepThree {
                         selectStreet()
                     }) {
                         TextButtonRound(name: "Улица",
-                                        isOn: appBinding.street.wrappedValue)
+                                        isOn: appBinding.createGame.street.wrappedValue)
                     }
                     
                     Button(action: {
                         selectManege()
                     }) {
                         TextButtonRound(name: "Манеж",
-                                        isOn: appBinding.manege.wrappedValue)
+                                        isOn: appBinding.createGame.manege.wrappedValue)
                     }
                     
                     Button(action: {
                         selectHall()
                     }) {
                         TextButtonRound(name: "Зал",
-                                        isOn: appBinding.hall.wrappedValue)
+                                        isOn: appBinding.createGame.hall.wrappedValue)
                     }
                 }
             }
@@ -130,21 +130,21 @@ private extension CreateGameStepThree {
                         selectParquet()
                     }) {
                         TextButtonRound(name: "Паркет",
-                                        isOn: appBinding.parquet.wrappedValue)
+                                        isOn: appBinding.createGame.parquet.wrappedValue)
                     }
                     
                     Button(action: {
                         selectGrass()
                     }) {
                         TextButtonRound(name: "Газон",
-                                        isOn: appBinding.grass.wrappedValue)
+                                        isOn: appBinding.createGame.grass.wrappedValue)
                     }
                     
                     Button(action: {
                         selectCaoutchouc()
                     }) {
                         TextButtonRound(name: "Резина",
-                                        isOn: appBinding.caoutchouc.wrappedValue)
+                                        isOn: appBinding.createGame.caoutchouc.wrappedValue)
                     }
                 }
             }
@@ -162,21 +162,21 @@ private extension CreateGameStepThree {
                         selectSynthetics()
                     }) {
                         TextButtonRound(name: "Синтетика",
-                                        isOn: appBinding.synthetics.wrappedValue)
+                                        isOn: appBinding.createGame.synthetics.wrappedValue)
                     }
                     
                     Button(action: {
                         selectHair()
                     }) {
                         TextButtonRound(name: "Ворс",
-                                        isOn: appBinding.hair.wrappedValue)
+                                        isOn: appBinding.createGame.hair.wrappedValue)
                     }
                     
                     Button(action: {
                         selectCrumb()
                     }) {
                         TextButtonRound(name: "Крошка",
-                                        isOn: appBinding.crumb.wrappedValue)
+                                        isOn: appBinding.createGame.crumb.wrappedValue)
                     }
                 }
             }
@@ -187,8 +187,8 @@ private extension CreateGameStepThree {
 private extension CreateGameStepThree {
     private var formatGameTextField: AnyView {
         AnyView(
-            FormatGameTextField(firstValue: appBinding.firstValue,
-                                secondValue: appBinding.secondValue)
+            FormatGameTextField(firstValue: appBinding.createGame.firstValue,
+                                secondValue: appBinding.createGame.secondValue)
         )
     }
 }
@@ -196,9 +196,9 @@ private extension CreateGameStepThree {
 private extension CreateGameStepThree {
     private var boxSliderCreateGame: AnyView {
         AnyView(
-            BoxSliderCreateGame(maxCountTeams: appBinding.maxCountTeams,
-                                maxCountPlayers: appBinding.maxCountPlayers,
-                                maxReservePlayers: appBinding.maxReservePlayers)
+            BoxSliderCreateGame(maxCountTeams: appBinding.createGame.maxCountTeams,
+                                maxCountPlayers: appBinding.createGame.maxCountPlayers,
+                                maxReservePlayers: appBinding.createGame.maxReservePlayers)
         )
     }
 }
@@ -206,7 +206,7 @@ private extension CreateGameStepThree {
 private extension CreateGameStepThree {
     private var boxPrivacyCreateGame: AnyView {
         AnyView(
-            BoxPrivacyCreateGame(privacyGame: appBinding.privacyGame)
+            BoxPrivacyCreateGame(privacyGame: appBinding.createGame.privacyGame)
         )
     }
 }
@@ -221,17 +221,17 @@ private extension CreateGameStepThree {
                 
                 HStack {
                     Button(action: {
-                        appBinding.dressingRooms.wrappedValue.toggle()
+                        appBinding.createGame.dressingRooms.wrappedValue.toggle()
                     }) {
                         TextButtonRound(name: "Раздевалки",
-                                        isOn: appBinding.dressingRooms.wrappedValue)
+                                        isOn: appBinding.createGame.dressingRooms.wrappedValue)
                     }
                     
                     Button(action: {
-                        appBinding.showers.wrappedValue.toggle()
+                        appBinding.createGame.showers.wrappedValue.toggle()
                     }) {
                         TextButtonRound(name: "Душевые",
-                                        isOn: appBinding.showers.wrappedValue)
+                                        isOn: appBinding.createGame.showers.wrappedValue)
                     }
                     
                 }

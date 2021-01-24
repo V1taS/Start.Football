@@ -31,7 +31,7 @@ struct CalendarCurrentGame: View {
 private extension CalendarCurrentGame {
     private var header: AnyView {
         AnyView(
-            Text(appBinding.currentGame.selectionRegularGame.wrappedValue == .yes ? "РЕГУЛЯРНЫЕ ТРЕНИРОВКИ" : "РАЗОВАЯ ТРЕНИРОВКА")
+            Text(appBinding.currentGame.regularGame.wrappedValue == .yes ? "РЕГУЛЯРНЫЕ ТРЕНИРОВКИ" : "РАЗОВАЯ ТРЕНИРОВКА")
                 .foregroundColor(.secondaryColor)
                 .font(Font.event.robotoMedium18)
         )
@@ -65,7 +65,7 @@ private extension CalendarCurrentGame {
 
 private extension CalendarCurrentGame {
     private var selectionRegularGame: AnyView {
-        switch appBinding.currentGame.selectionRegularGame.wrappedValue {
+        switch appBinding.currentGame.regularGame.wrappedValue {
         case .yes:
             return AnyView(regularGame)
         case .no:

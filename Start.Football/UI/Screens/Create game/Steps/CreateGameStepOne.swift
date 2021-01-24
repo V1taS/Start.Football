@@ -10,8 +10,8 @@ import Combine
 
 struct CreateGameStepOne: View {
     
-    private var appBinding: Binding<AppState.AppData.CreateGame>
-    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
     
@@ -39,7 +39,7 @@ struct CreateGameStepOne: View {
 // MARK: UI
 private extension CreateGameStepOne {
     var nameGame: some View {
-        TextfieldOneLineView(text: appBinding.nameGame,
+        TextfieldOneLineView(text: appBinding.createGame.nameGame,
                              title: "Название",
                              icon: "",
                              iconShow: false,
@@ -50,7 +50,7 @@ private extension CreateGameStepOne {
 
 private extension CreateGameStepOne {
     var addressGame: some View {
-        TextfieldOneLineView(text: appBinding.addressGame,
+        TextfieldOneLineView(text: appBinding.createGame.addressGame,
                              title: "Адрес",
                              icon: "locationCreateGame",
                              iconShow: true,
@@ -61,31 +61,31 @@ private extension CreateGameStepOne {
 
 private extension CreateGameStepOne {
     var time: some View {
-            DatePickerLineView(date: appBinding.currentDate,
+        DatePickerLineView(date: appBinding.createGame.currentDate,
                                text: "Укажите время:",
                                header: "Время",
                                iconShow: true,
                                icon: "timeGreateGame",
-                               textHasBeenChanged: appBinding.currentTimeHasBeenChanged,
+                               textHasBeenChanged: appBinding.createGame.currentTimeHasBeenChanged,
                                hourAndMinute: .hourAndMinute)
     }
 }
 
 private extension CreateGameStepOne {
     var day: some View {
-            DatePickerLineView(date: appBinding.currentDate,
+        DatePickerLineView(date: appBinding.createGame.currentDate,
                                text: "Укажите дату:",
                                header: "Дата игры",
                                iconShow: true,
                                icon: "dateCreateGame",
-                               textHasBeenChanged: appBinding.currentDateHasBeenChanged,
+                               textHasBeenChanged: appBinding.createGame.currentDateHasBeenChanged,
                                hourAndMinute: .date)
     }
 }
 
 private extension CreateGameStepOne {
     var costGame: some View {
-        TextfieldOneLineView(text: appBinding.costGame,
+        TextfieldOneLineView(text: appBinding.createGame.costGame,
                              title: "Стоимость участия одного игрока",
                              icon: "rublsCreateGame",
                              iconShow: true,

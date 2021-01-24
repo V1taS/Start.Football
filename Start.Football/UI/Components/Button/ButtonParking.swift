@@ -12,10 +12,10 @@ struct ButtonParking: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
 
-    var appBinding: Binding<AppState.AppData.CreateGame>
+    var appBinding: Binding<AppState.AppData>
     
     var body: some View {
-        Button(action: { appBinding.showParking.wrappedValue.toggle() } ) {
+        Button(action: { appBinding.createGame.showParking.wrappedValue.toggle() } ) {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 0)) {
                 
                 Text("Парковка")
@@ -23,19 +23,19 @@ struct ButtonParking: View {
                     .font(Font.event.robotoRegular14)
                 
                 HStack {
-                    Text("\(appBinding.typeOfParking.wrappedValue.rawValue)")
+                    Text("\(appBinding.createGame.typeOfParking.wrappedValue.rawValue)")
                         .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular18)
                     
-                    Text(appBinding.paymentForParking.wrappedValue == .non ? "" : "\(appBinding.parkingCost.wrappedValue)")
+                    Text(appBinding.createGame.paymentForParking.wrappedValue == .non ? "" : "\(appBinding.createGame.parkingCost.wrappedValue)")
                         .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular18)
                     
-                    Text(appBinding.paymentForParking.wrappedValue == .non ? "" : "₽")
+                    Text(appBinding.createGame.paymentForParking.wrappedValue == .non ? "" : "₽")
                         .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular18)
                     
-                    Text(appBinding.paymentForParking.wrappedValue == .non ? "" : "\(appBinding.paymentForParking.wrappedValue.rawValue)")
+                    Text(appBinding.createGame.paymentForParking.wrappedValue == .non ? "" : "\(appBinding.createGame.paymentForParking.wrappedValue.rawValue)")
                         .foregroundColor(.defaultColor)
                         .font(Font.event.robotoRegular18)
                     

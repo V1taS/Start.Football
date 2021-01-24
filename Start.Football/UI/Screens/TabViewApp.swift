@@ -14,11 +14,10 @@ struct TabViewApp: View {
         $appState.dispatched(to: injected.appState, \.appData)
     }
     @Environment(\.injected) private var injected: DIContainer
-    @State private var selection = 0
     
     var body: some View {
         ZStack {
-            TabView(selection: $selection) {
+            TabView(selection: appBinding.main.tag) {
                 MainView(appBinding: appBinding)
                     .tabItem {
                         searchView
@@ -26,14 +25,16 @@ struct TabViewApp: View {
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
                     }
+                    .tag(0)
                 
-                CreateGameView()
+                CreateGameView(appBinding: appBinding)
                     .tabItem {
                         createView
                         Text("Создать")
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
                     }
+                    .tag(1)
                 
                 Plug(text: "Меню (В разработке...)", createGame: false)
                     .tabItem {
@@ -42,6 +43,7 @@ struct TabViewApp: View {
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
                     }
+                    .tag(2)
             }
             .accentColor(Color.secondaryColor)
             backgroundColor
@@ -84,7 +86,7 @@ private extension TabViewApp {
     private var searchView: AnyView {
         AnyView(
             VStack {
-                if selection == 0 {
+                if appBinding.main.tag.wrappedValue == 0 {
                     Image("tab_search")
                         .renderingMode(.template)
                         .foregroundColor(.secondaryColor)
@@ -102,7 +104,7 @@ private extension TabViewApp {
     private var createView: AnyView {
         AnyView(
             VStack {
-                if selection == 1 {
+                if appBinding.main.tag.wrappedValue == 1 {
                     Image("tab_create")
                         .renderingMode(.template)
                         .foregroundColor(.secondaryColor)
@@ -120,7 +122,7 @@ private extension TabViewApp {
     private var menuView: AnyView {
         AnyView(
             VStack {
-                if selection == 2 {
+                if appBinding.main.tag.wrappedValue == 2 {
                     Image("tab_menu")
                         .renderingMode(.template)
                         .foregroundColor(.secondaryColor)

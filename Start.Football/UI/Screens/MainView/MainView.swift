@@ -99,36 +99,36 @@ private extension MainView {
                 Button(action: {
                         self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView() }
+                        } }) { CellMainView(appBinding: appBinding) }
                 
                 Button(action: {
                         self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView() }
+                        } }) { CellMainView(appBinding: appBinding) }
                 
                 Button(action: {}) { ADV()}
                 
                 Button(action: {
                         self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView() }
+                        } }) { CellMainView(appBinding: appBinding) }
                 
                 Button(action: {
                         self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView() }
+                        } }) { CellMainView(appBinding: appBinding) }
                 
                 Button(action: {
                         self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView() }
+                        } }) { CellMainView(appBinding: appBinding) }
                 
                 Button(action: {}) { ADVCurrentGame()}
                 
                 Button(action: {
                         self.viewController?.present(style: .pageSheet) {
                             CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView() }
+                        } }) { CellMainView(appBinding: appBinding) }
             }
         )
     }

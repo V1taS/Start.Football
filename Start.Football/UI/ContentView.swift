@@ -9,11 +9,18 @@ import SwiftUI
 
 struct ContentView: View {
     
+    @State private var appState: AppState.AppData = .init()
+    private var appBinding: Binding<AppState.AppData> {
+        $appState.dispatched(to: injected.appState, \.appData)
+    }
+    
+    @Environment(\.injected) private var injected: DIContainer
+    
     var body: some View {
         if UserDefaults.standard.bool(forKey: "pageView") {
-            AuthView()
+            AuthView(appBinding: appBinding)
         } else {
-            PageView()
+            PageView(appBinding: appBinding)
         }
     }
 }

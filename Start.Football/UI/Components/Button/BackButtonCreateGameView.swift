@@ -10,7 +10,7 @@ import SwiftUI
 struct BackButtonCreateGameView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
-    @Binding var appBinding: AppState.AppData.CreateGame
+    @Binding var appBinding: AppState.AppData
     @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
@@ -18,7 +18,7 @@ struct BackButtonCreateGameView: View {
             backStepProgressBar()
             refreshProgressBar()
         }) {
-            Image("backCreateGame").opacity(appBinding.selectionCreateGame == .stepOne ? 0 : 1)
+            Image("backCreateGame").opacity(appBinding.createGame.selectionCreateGame == .stepOne ? 0 : 1)
                 .offset(y: height * Size.shared.getAdaptSizeHeight(px: 6))
         }
     }

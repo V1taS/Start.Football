@@ -9,6 +9,10 @@ import SwiftUI
 
 struct PageView: View {
     
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -90,7 +94,7 @@ private extension PageView {
 private extension PageView {
     private func presentNextView() {
         self.viewController?.present(style: .fullScreen) {
-            AuthView()
+            AuthView(appBinding: appBinding)
         }
     }
 }
@@ -98,6 +102,6 @@ private extension PageView {
 
 struct PageView_Previews: PreviewProvider {
     static var previews: some View {
-        PageView()
+        PageView(appBinding: .constant(.init()))
     }
 }

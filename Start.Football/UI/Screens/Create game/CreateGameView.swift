@@ -9,10 +9,12 @@ import SwiftUI
 import Combine
 
 struct CreateGameView: View {
-    @State private var appState: AppState.AppData.CreateGame = .init()
-    private var appBinding: Binding<AppState.AppData.CreateGame> {
-        $appState.dispatched(to: injected.appState, \.appData.createGame)
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
     }
+    
     @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
@@ -40,7 +42,7 @@ private extension CreateGameView {
 
 private extension CreateGameView {
     private var content: AnyView {
-        switch appState.selectionCreateGame {
+        switch appBinding.createGame.selectionCreateGame .wrappedValue{
         case .stepOne:
             return AnyView(CreateGameStepOne(appBinding: appBinding))
         case .stepTwo:
@@ -64,7 +66,7 @@ private extension CreateGameView {
             ButtonView(background: .primaryColor,
                        textColor: .whiteColor,
                        borderColor: .primaryColor,
-                       text: appState.selectionCreateGame ==
+                       text: appBinding.createGame.selectionCreateGame.wrappedValue ==
                         .stepFive ? "Создать игру" : "Следующий шаг",
                        switchImage: false,
                        image: "")
@@ -85,7 +87,7 @@ private extension CreateGameView {
 private extension CreateGameView {
     var backgroundColor: some View {
         ZStack {
-            if appBinding.showParking.wrappedValue {
+            if appBinding.createGame.showParking.wrappedValue {
                 Color.secondary
                     .edgesIgnoringSafeArea(.all)
                     .animation(.linear(duration: 10))
@@ -111,14 +113,14 @@ private extension CreateGameView {
     }
     
     private func dismissButton() {
-        if appBinding.showParking.wrappedValue {
-            appBinding.showParking.wrappedValue = false
+        if appBinding.createGame.showParking.wrappedValue {
+            appBinding.createGame.showParking.wrappedValue = false
         }
     }
 }
 
 struct CreateGameView_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameView()
+        CreateGameView(appBinding: .constant(.init()))
     }
 }

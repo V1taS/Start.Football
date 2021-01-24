@@ -97,7 +97,6 @@ private extension CellGameCurrentGame {
     }
 }
 
-// MARK: - Actions
 private extension CellGameCurrentGame {
     private func formatGame() -> String {
         return "\(appBinding.currentGame.firstValue.wrappedValue) на \(appBinding.currentGame.secondValue.wrappedValue)"

@@ -9,7 +9,7 @@ import SwiftUI
 
 struct HeaderCreateGameView: View {
 
-    var appBinding: Binding<AppState.AppData.CreateGame>
+    var appBinding: Binding<AppState.AppData>
     
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
@@ -20,7 +20,7 @@ struct HeaderCreateGameView: View {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium20)
                 
-                ProgressBarView(value: appBinding.progressValue)
+                ProgressBarView(value: appBinding.createGame.progressValue)
             }
             Spacer()
         }

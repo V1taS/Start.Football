@@ -7,9 +7,9 @@
 
 extension AppActions {
     struct CreatGameActions {
-        enum RegularGame {
-            case yes
-            case no
+        enum RegularGame: String {
+            case yes = "yes"
+            case no = "no"
         }
         enum SelectStep {
             case stepOne
@@ -19,9 +19,9 @@ extension AppActions {
             case stepFive
         }
         
-        enum PrivacyGame {
-            case open
-            case close
+        enum PrivacyGame: String {
+            case open = "open"
+            case close = "close"
         }
         
         enum TypeOfParking: String {

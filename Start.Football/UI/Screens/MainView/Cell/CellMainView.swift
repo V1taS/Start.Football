@@ -8,9 +8,12 @@
 import SwiftUI
 
 struct CellMainView: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+
     var body: some View {
         ZStack {
             Color(.whiteColor)
@@ -22,89 +25,203 @@ struct CellMainView: View {
                    spacing: 0) {
                 
                 
-                VStack(alignment: .leading,
-                       spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                    
-                    Text("Тренировка в ФОК Отрадное")
-                        .font(Font.event.robotoBold20)
+                VStack(alignment: .leading, spacing: 16) {
+                    header
+                    date
+                    streetGame
+                    coastAndPeople
+                }
+                typeGame
+                .padding(.top, 16)
+
+            }
+            .padding(16)
+        }
+        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 343),
+               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 252))
+    }
+}
+
+// MARK: UI
+private extension CellMainView {
+    private var header: AnyView {
+        AnyView(
+                Text("\(appBinding.currentGame.nameGame.wrappedValue)")
+                    .font(Font.event.robotoBold20)
+                    .foregroundColor(.secondaryColor)
+        )
+    }
+}
+
+private extension CellMainView {
+    private var date: AnyView {
+        AnyView(
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text(selectDate())
                         .foregroundColor(.secondaryColor)
-                    HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
-                        Image("cellDate")
-                        Text("30 августа, 16:00-18:00")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
-                    HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
-                        Image("cellLocator")
-                        Text("ул. Хачтуряна, 12, стр. 2")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                        Spacer()
-                        Text("5,2 км")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
-                    HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 10)) {
-                        Image("cellMoney")
-                        Text("500 ₽")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular24)
-                        Spacer()
-                        HStack(alignment: .center, spacing: -20) {
-                            Image("p5")
-                                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0))
-                            Image("p4")
-                                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0))
-                            Image("p3")
-                                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0))
-                            Image("p2")
-                                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0))
-                            Image("p1")
-                                .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0))
-                        }
-                    }
-                } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 16))
+                        .font(Font.event.robotoRegular16)
+                }
+        )
+    }
+}
+
+private extension CellMainView {
+    private var streetGame: AnyView {
+        AnyView(
+            HStack(spacing: 10) {
+                Image("cellLocator")
+                Text("\(appBinding.currentGame.addressGame.wrappedValue)")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoRegular16)
+                Spacer()
+                distance
+            }
+        )
+    }
+}
+
+private extension CellMainView {
+    private var distance: AnyView {
+        AnyView(
+            HStack(spacing: 10)  {
+                Text("\(appBinding.currentGame.distance.wrappedValue) км")
+                    .foregroundColor(.primaryColor)
+                    .font(Font.event.robotoRegular16)
+                Image("right")
+            }
+        )
+    }
+}
+
+private extension CellMainView {
+    private var coastAndPeople: AnyView {
+        AnyView(
+            HStack(spacing: 10) {
+                Image("cellMoney")
+                Text("\(appBinding.currentGame.costGame.wrappedValue) ₽")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoRegular24)
+                Spacer()
                 
-                HStack {
-                    Text("Мини-футбол")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                        .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.secondaryColor))
-                    
-                    Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
-                    
-                    Text("10 на 10")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                        .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.secondaryColor))
-                    
-                    Spacer(minLength: width * Size.shared.getAdaptSizeWidth(px: 6))
-                    
-                    Text("По заявке")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                        .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
-                        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 6))
-                        .overlay(RoundedRectangle(cornerRadius: 3)
-                                    .stroke(Color.secondaryColor))
+                
+                HStack(alignment: .center, spacing: -20) {
+                    ForEach(0..<5, id: \.self) { index in
+                        Image(appBinding.currentGame.plugPhotoPlayers[index].wrappedValue)
+                    }
                 }
             }
-            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
-            .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 16))
+        )
+    }
+}
+
+private extension CellMainView {
+    private var typeGame: AnyView {
+        AnyView(
+            HStack {
+                TextButtonRound(name: typeGameString(),
+                                isOn: false)
+                
+                TextButtonRound(name: formatGame(),
+                                isOn: false)
+                
+                TextButtonRound(name: privacyGame(),
+                                isOn: false)
+            }
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension CellMainView {
+    private func selectDate() -> String {
+        if appBinding.currentGame.regularGame.wrappedValue == .yes {
+            return buildRegularGame()
+        } else {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.oneGame.wrappedValue)
+                let dateString = GetDateStringFromDate.shared.getDateStringFull(date: appBinding.currentGame.oneGame.wrappedValue).firstUppercased
+            return "\(dateString) в \(timeString)"
         }
-        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 343),
-               height: height * Size.shared.getAdaptSizeHeight(px: 252))
+    }
+    
+    private func buildRegularGame() -> String {
+        var arrDate = [Date]()
+        
+        if appBinding.currentGame.mo.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[0].wrappedValue)
+        }
+        
+        if appBinding.currentGame.tu.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[1].wrappedValue)
+        }
+        
+        if appBinding.currentGame.we.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[2].wrappedValue)
+        }
+        
+        if appBinding.currentGame.th.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[3].wrappedValue)
+        }
+        
+        if appBinding.currentGame.fr.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[4].wrappedValue)
+        }
+        
+        if appBinding.currentGame.sa.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[5].wrappedValue)
+        }
+        
+        if appBinding.currentGame.su.wrappedValue {
+            arrDate.append(appBinding.currentGame.listDate[6].wrappedValue)
+        }
+        
+        let nearDate = arrDate.sorted(by: { $0 > $1 })
+        let timeString = GetDateStringFromDate.shared.getTimeString(date: nearDate.first!)
+        let dateString = GetDateStringFromDate.shared.getDateStringFull(date: nearDate.first!).firstUppercased
+        
+        return "\(dateString) в \(timeString)"
+    }
+}
+
+private extension CellMainView {
+    private func typeGameString() -> String {
+        if appBinding.currentGame.miniFootball.wrappedValue {
+            return "Мини"
+        }
+        
+        if appBinding.currentGame.football.wrappedValue {
+            return "Футбол"
+        }
+        
+        if appBinding.currentGame.footsal.wrappedValue {
+            return "Футзал"
+        }
+        return ""
+    }
+}
+
+private extension CellMainView {
+    private func formatGame() -> String {
+        return "\(appBinding.currentGame.firstValue.wrappedValue) на \(appBinding.currentGame.secondValue.wrappedValue)"
+    }
+}
+
+private extension CellMainView {
+    private func privacyGame() -> String {
+        if appBinding.currentGame.privacyGame.wrappedValue == .open {
+            return "Для всех"
+        }
+        
+        if appBinding.currentGame.privacyGame.wrappedValue == .close {
+            return "По заявке"
+        }
+        return ""
     }
 }
 
 struct CellMainView_Previews: PreviewProvider {
     static var previews: some View {
-        CellMainView()
+        CellMainView(appBinding: .constant(.init()))
     }
 }

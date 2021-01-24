@@ -22,20 +22,20 @@ extension AppState.AppData {
         var commentFromOrganizer = "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!"
         
         
-        var miniFootball = false
-        var football = true
+        var miniFootball = true
+        var football = false
         var footsal = false
         
         // Формат игры
-        var firstValue: String = "5"
-        var secondValue: String = "5"
+        var firstValue: String = "7"
+        var secondValue: String = "7"
         
         // Приватность
-        var privacyGame: AppActions.CreatGameActions.PrivacyGame = .open
+        var privacyGame: AppActions.CreatGameActions.PrivacyGame = .close
         
         // Разовая игра
         var oneGame = Date()
-        var selectionRegularGame: AppActions.CreatGameActions.RegularGame = .no
+        var regularGame: AppActions.CreatGameActions.RegularGame = .no
         
         // Регулярные игры
         var listDate = [Date(), Date(), Date(), Date(), Date(), Date(), Date()]

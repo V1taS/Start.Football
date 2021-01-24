@@ -15,5 +15,6 @@ extension AppState.AppData {
         // Main View
         var selectionGame: AppActions.MainActions.SelectionGame = .allGame
         var loadMoreGames = true
+        var tag = 0
     }
 }

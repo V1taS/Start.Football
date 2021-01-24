@@ -9,8 +9,8 @@ import SwiftUI
 
 struct CreateGameStepFour: View {
     
-    private var appBinding: Binding<AppState.AppData.CreateGame>
-    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
     
@@ -42,7 +42,7 @@ struct CreateGameStepFour: View {
 private extension CreateGameStepFour {
     private var descriptionPlaying: AnyView {
         AnyView(
-            TextViewTitlePlaceholder(text: appBinding.descriptionPlaying,
+            TextViewTitlePlaceholder(text: appBinding.createGame.descriptionGame,
                                      placeholder: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
                                      title: "Описание площадки")
         )
@@ -52,7 +52,7 @@ private extension CreateGameStepFour {
 private extension CreateGameStepFour {
     private var ownRules: AnyView {
         AnyView(
-            TextViewTitlePlaceholder(text: appBinding.ownRules,
+            TextViewTitlePlaceholder(text: appBinding.createGame.ownRules,
                                      placeholder: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
                                      title: "Свои правила")
         )
@@ -62,7 +62,7 @@ private extension CreateGameStepFour {
 private extension CreateGameStepFour {
     private var commentFromOrganizer: AnyView {
         AnyView(
-            TextViewTitlePlaceholder(text: appBinding.commentFromOrganizer,
+            TextViewTitlePlaceholder(text: appBinding.createGame.commentFromOrganizer,
                                      placeholder: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!",
                                      title: "Комментарий от организатора")
         )

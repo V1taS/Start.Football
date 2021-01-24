@@ -10,8 +10,8 @@ import Combine
 
 struct CreateGameStepTwo: View {
     
-    private var appBinding: Binding<AppState.AppData.CreateGame>
-    init(appBinding: Binding<AppState.AppData.CreateGame>) {
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
     
@@ -40,7 +40,7 @@ private extension CreateGameStepTwo {
                     noSelectionRegularGame()
                 }) {
                     HStack(spacing: 8) {
-                        ButtonRoundGreen(status: appBinding.selectionRegularGame.wrappedValue == .no)
+                        ButtonRoundGreen(status: appBinding.createGame.selectionRegularGame.wrappedValue == .no)
                             .frame(width: 20)
                         
                         Text("Разово. Для проведения одной игры.")
@@ -56,7 +56,7 @@ private extension CreateGameStepTwo {
                     yesSelectionRegularGame()
                 }) {
                     HStack(spacing: 8) {
-                        ButtonRoundGreen(status: appBinding.selectionRegularGame.wrappedValue == .yes)
+                        ButtonRoundGreen(status: appBinding.createGame.selectionRegularGame.wrappedValue == .yes)
                             .frame(width: 20)
                         
                         Text("Регулярно. Проводится на постоянной основе")
@@ -73,7 +73,7 @@ private extension CreateGameStepTwo {
 private extension CreateGameStepTwo {
     var regularGame: some View {
         VStack(alignment: .leading, spacing: 0) {
-            if appBinding.selectionRegularGame.wrappedValue == .yes {
+            if appBinding.createGame.selectionRegularGame.wrappedValue == .yes {
                 boxDateButton
                 boxSelectDateGames
             }
@@ -85,13 +85,13 @@ private extension CreateGameStepTwo {
     private var boxDateButton: AnyView {
         AnyView(
             BoxDateButton(disabledButton: false,
-                          mo: appBinding.listGame[0],
-                          tu: appBinding.listGame[1],
-                          we: appBinding.listGame[2],
-                          th: appBinding.listGame[3],
-                          fr: appBinding.listGame[4],
-                          sa: appBinding.listGame[5],
-                          su: appBinding.listGame[6])
+                          mo: appBinding.createGame.listGame[0],
+                          tu: appBinding.createGame.listGame[1],
+                          we: appBinding.createGame.listGame[2],
+                          th: appBinding.createGame.listGame[3],
+                          fr: appBinding.createGame.listGame[4],
+                          sa: appBinding.createGame.listGame[5],
+                          su: appBinding.createGame.listGame[6])
                 .padding(.bottom, 8)
         )
     }
@@ -102,39 +102,39 @@ private extension CreateGameStepTwo {
         AnyView(
             ScrollView(.vertical, showsIndicators: false) {
                 BoxSelectDateGames(title: "Игра в понедельник",
-                                   date: appBinding.anyDate[0],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[0])
+                                   date: appBinding.createGame.listDate[0],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[0])
                 
                 BoxSelectDateGames(title: "Игра во вторник",
-                                   date: appBinding.anyDate[1],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[1])
+                                   date: appBinding.createGame.listDate[1],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[1])
                 
                 BoxSelectDateGames(title: "Игра в среду",
-                                   date: appBinding.anyDate[2],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[2])
+                                   date: appBinding.createGame.listDate[2],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[2])
                 
                 BoxSelectDateGames(title: "Игра в четверг",
-                                   date: appBinding.anyDate[3],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[3])
+                                   date: appBinding.createGame.listDate[3],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[3])
                 
                 BoxSelectDateGames(title: "Игра в пятницу",
-                                   date: appBinding.anyDate[4],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[4])
+                                   date: appBinding.createGame.listDate[4],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[4])
                 
                 BoxSelectDateGames(title: "Игра в субботу",
-                                   date: appBinding.anyDate[5],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[5])
+                                   date: appBinding.createGame.listDate[5],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[5])
                 
                 BoxSelectDateGames(title: "Игра в воскресенье",
-                                   date: appBinding.anyDate[6],
-                                   textHasBeenChanged: appBinding.anyTimeHasBeenChanged,
-                                   dayOfGame: appBinding.listGame[6])
+                                   date: appBinding.createGame.listDate[6],
+                                   textHasBeenChanged: appBinding.createGame.anyTimeHasBeenChanged,
+                                   dayOfGame: appBinding.createGame.listGame[6])
             }
             .animation(.easeIn)
         )
@@ -144,11 +144,11 @@ private extension CreateGameStepTwo {
 // MARK: Actions
 private extension CreateGameStepTwo {
     private func noSelectionRegularGame() {
-        appBinding.selectionRegularGame.wrappedValue = .no
+        appBinding.createGame.selectionRegularGame.wrappedValue = .no
     }
     
     private func yesSelectionRegularGame() {
-        appBinding.selectionRegularGame.wrappedValue = .yes
+        appBinding.createGame.selectionRegularGame.wrappedValue = .yes
     }
 }
 

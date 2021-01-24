@@ -9,9 +9,9 @@ import SwiftUI
 
 struct AuthView: View {
     
-    @State private var appState: AppState.AppData = .init()
-    private var appBinding: Binding<AppState.AppData> {
-        $appState.dispatched(to: injected.appState, \.appData)
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
     }
     
     @Environment(\.injected) private var injected: DIContainer
@@ -240,13 +240,13 @@ private extension AuthView {
     
     private func presentRessetPassView() {
         self.viewController?.present(style: .pageSheet) {
-            PasswordResetView()
+            PasswordResetView(appBinding: appBinding)
         }
     }
     
     private func presentSignUpView() {
         self.viewController?.present(style: .fullScreen) {
-            SignUpView()
+            SignUpView(appBinding: appBinding)
         }
     }
     
@@ -262,6 +262,6 @@ private extension AuthView {
 
 struct AuthView_Previews: PreviewProvider {
     static var previews: some View {
-        AuthView()
+        AuthView(appBinding: .constant(.init()))
     }
 }

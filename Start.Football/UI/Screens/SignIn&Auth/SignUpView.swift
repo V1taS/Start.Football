@@ -10,9 +10,10 @@ import SwiftUI
 struct SignUpView: View {
     
     @State var isHiddenTextConfidentiality = true
-    @State private var appState: AppState.AppData = .init()
-    private var appBinding: Binding<AppState.AppData> {
-        $appState.dispatched(to: injected.appState, \.appData)
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
     }
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
@@ -230,6 +231,6 @@ private extension SignUpView {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView()
+        SignUpView(appBinding: .constant(.init()))
     }
 }

@@ -27,14 +27,14 @@ extension AppState.AppData {
         
         // MARK: Day Of Week
         var listGame = [true, false, false, false, false, false, false]
-        var anyDate = [Date(), Date(), Date(), Date(), Date(), Date(), Date()]
+        var listDate = [Date(), Date(), Date(), Date(), Date(), Date(), Date()]
         var anyTimeHasBeenChanged: Bool = false
         
         // MARK: - Step 3
         
         // MARK: Type Game
         var miniFootball = true
-        var football = false
+        var usualFootball = false
         var footsal = false
         
         // MARK: Place Play
@@ -75,7 +75,7 @@ extension AppState.AppData {
         var parkingCost: String = ""
         
         // MARK: - Step 4
-        var descriptionPlaying = "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну."
+        var descriptionGame = "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну."
         var ownRules = "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков."
         var commentFromOrganizer = "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!"
     }
