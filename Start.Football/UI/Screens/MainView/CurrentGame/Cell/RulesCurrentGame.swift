@@ -9,9 +9,9 @@ import SwiftUI
 
 struct RulesCurrentGame: View {
 
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    private var game: Game
+    init(game: Game) {
+        self.game = game
     }
     
     var body: some View {
@@ -20,7 +20,7 @@ struct RulesCurrentGame: View {
                 Text("ПРАВИЛА")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("\(appBinding.currentGame.game.ownRulesGame.wrappedValue)")
+                Text("\(game.ownRulesGame)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
@@ -33,6 +33,6 @@ struct RulesCurrentGame: View {
 
 struct RulesCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        RulesCurrentGame(appBinding: .constant(.init()))
+        RulesCurrentGame(game: .plugGame)
     }
 }

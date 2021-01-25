@@ -8,12 +8,14 @@
 import SwiftUI
 
 struct CellGameCurrentGame: View {
-    
+
     @Environment(\.injected) private var injected: DIContainer
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    private var game: Game
+    
+    init(game: Game) {
+        self.game = game
     }
+    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
@@ -52,7 +54,7 @@ private extension CellGameCurrentGame {
         AnyView(
             HStack(spacing: 10) {
                 Image("cellLocator")
-                Text("\(appBinding.currentGame.game.address.wrappedValue)")
+                Text("\(game.address)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                 Spacer()
@@ -69,7 +71,7 @@ private extension CellGameCurrentGame {
                 presentMap()
             }) {
                 HStack(spacing: 10)  {
-                    Text("\(appBinding.currentGame.distance.wrappedValue) км")
+                    Text("5,2 км")
                         .foregroundColor(.primaryColor)
                         .font(Font.event.robotoRegular16)
                     Image("right")
@@ -82,15 +84,15 @@ private extension CellGameCurrentGame {
 // MARK: Actions
 private extension CellGameCurrentGame {
     private func typeGameString() -> String {
-        if appBinding.currentGame.game.miniFootball.wrappedValue {
+        if game.miniFootball {
             return "Мини-футбол"
         }
         
-        if appBinding.currentGame.game.usualFootball.wrappedValue {
+        if game.usualFootball {
             return "Футбол"
         }
         
-        if appBinding.currentGame.game.footsal.wrappedValue {
+        if game.footsal {
             return "Футзал"
         }
         return ""
@@ -99,15 +101,15 @@ private extension CellGameCurrentGame {
 
 private extension CellGameCurrentGame {
     private func formatGame() -> String {
-        return "\(appBinding.currentGame.game.firstTeamCount.wrappedValue) на \(appBinding.currentGame.game.secondTeamCount.wrappedValue)"
+        return "\(game.firstTeamCount) на \(game.secondTeamCount)"
     }
     
     private func privacyGame() -> String {
-        if appBinding.currentGame.game.privacyGame.wrappedValue == "open" {
+        if game.privacyGame == "open" {
             return "Для всех"
         }
         
-        if appBinding.currentGame.game.privacyGame.wrappedValue == "close" {
+        if game.privacyGame == "close" {
             return "По заявке"
         }
         return ""
@@ -115,13 +117,12 @@ private extension CellGameCurrentGame {
     
     private func presentMap() {
         self.viewController?.present(style: .pageSheet) {
-            MapGameView(appBinding: appBinding)
         }
     }
 }
 
 struct CellGameCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        CellGameCurrentGame(appBinding: .constant(.init()))
+        CellGameCurrentGame(game: .plugGame)
     }
 }

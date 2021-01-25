@@ -8,10 +8,9 @@
 import SwiftUI
 
 struct CurrentGameView: View {
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
-    }
+    
+    let game: Game
+    
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -29,14 +28,14 @@ struct CurrentGameView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
-                        HeaderCurrentGame(appBinding: appBinding)
+                        HeaderCurrentGame(game: game)
 
                         VStack(spacing: 0) {
                             Group {
-                                CellGameCurrentGame(appBinding: appBinding)
+                                CellGameCurrentGame(game: game)
                                 Divider()
-                                WhoWillPlayCurrentGame(appBinding: appBinding)
-                                CalendarCurrentGame(appBinding: appBinding)
+                                WhoWillPlayCurrentGame(game: game)
+                                CalendarCurrentGame(game: game)
                                 Divider()
                                 AboutCurrentGame()
                                 Divider()
@@ -44,11 +43,11 @@ struct CurrentGameView: View {
                                 Divider()
                             }
                             Group {
-                                AboutTheAreaCurrentGame(appBinding: appBinding)
+                                AboutTheAreaCurrentGame(game: game)
                                 Divider()
-                                RulesCurrentGame(appBinding: appBinding)
+                                RulesCurrentGame(game: game)
                                 Divider()
-                                CommentCurrentGame(appBinding: appBinding)
+                                CommentCurrentGame(game: game)
                                     .padding(.bottom, 16)
                                 ADVCurrentGame()
                                     .padding(.bottom, 16)
@@ -62,7 +61,7 @@ struct CurrentGameView: View {
                 }
                 
                 .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle("Игра №\(appBinding.currentGame.game.gameNumber.wrappedValue)", displayMode: .large).accentColor(.primaryColor)
+                .navigationBarTitle("Игра №\(game.gameNumber)", displayMode: .large).accentColor(.primaryColor)
                 
                                 .navigationBarItems(trailing:
                                                         HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {
@@ -92,6 +91,6 @@ struct CurrentGameView: View {
 
 struct CurrentGameView_Previews: PreviewProvider {
     static var previews: some View {
-        CurrentGameView(appBinding: .constant(.init()))
+        CurrentGameView(game: .plugGame)
     }
 }

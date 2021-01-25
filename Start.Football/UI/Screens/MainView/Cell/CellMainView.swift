@@ -9,11 +9,11 @@ import SwiftUI
 
 struct CellMainView: View {
     
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    private let game: Game
+    init(game: Game) {
+        self.game = game
     }
-
+    
     var body: some View {
         ZStack {
             Color(.whiteColor)
@@ -46,7 +46,7 @@ struct CellMainView: View {
 private extension CellMainView {
     private var header: AnyView {
         AnyView(
-            Text("\(appBinding.currentGame.game.name.wrappedValue)")
+            Text(game.name)
                     .font(Font.event.robotoBold20)
                     .foregroundColor(.secondaryColor)
         )
@@ -58,7 +58,7 @@ private extension CellMainView {
         AnyView(
                 HStack(spacing: 10) {
                     Image("cellDate")
-                    Text(selectDate())
+                    Text(selectDate(regularGame: game.regularGame, oneGameDate: game.oneGameDate))
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                 }
@@ -71,7 +71,7 @@ private extension CellMainView {
         AnyView(
             HStack(spacing: 10) {
                 Image("cellLocator")
-                Text("\(appBinding.currentGame.game.address.wrappedValue)")
+                Text("\(game.address)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                 Spacer()
@@ -85,7 +85,7 @@ private extension CellMainView {
     private var distance: AnyView {
         AnyView(
             HStack(spacing: 10)  {
-                Text("\(appBinding.currentGame.distance.wrappedValue) км")
+                Text("5,2 км")
                     .foregroundColor(.primaryColor)
                     .font(Font.event.robotoRegular16)
                 Image("right")
@@ -99,15 +99,15 @@ private extension CellMainView {
         AnyView(
             HStack(spacing: 10) {
                 Image("cellMoney")
-                Text("\(appBinding.currentGame.game.costGame.wrappedValue) ₽")
+                Text("\(game.costGame) ₽")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular24)
                 Spacer()
                 
-                
+                let plugPhotoPlayers = ["p1", "p2", "p3", "p4", "p5"]
                 HStack(alignment: .center, spacing: -20) {
                     ForEach(0..<5, id: \.self) { index in
-                        Image(appBinding.currentGame.plugPhotoPlayers[index].wrappedValue)
+                        Image(plugPhotoPlayers[index])
                     }
                 }
             }
@@ -135,12 +135,12 @@ private extension CellMainView {
 
 // MARK: Actions
 private extension CellMainView {
-    private func selectDate() -> String {
-        if appBinding.currentGame.game.regularGame.wrappedValue == "yes" {
+    private func selectDate(regularGame: String, oneGameDate: Date) -> String {
+        if regularGame == "yes" {
             return buildRegularGame()
         } else {
-            let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.oneGameDate.wrappedValue)
-                let dateString = GetDateStringFromDate.shared.getDateStringFull(date: appBinding.currentGame.game.oneGameDate.wrappedValue).firstUppercased
+            let timeString = GetDateStringFromDate.shared.getTimeString(date: oneGameDate)
+                let dateString = GetDateStringFromDate.shared.getDateStringFull(date: oneGameDate).firstUppercased
             return "\(dateString) в \(timeString)"
         }
     }
@@ -148,32 +148,32 @@ private extension CellMainView {
     private func buildRegularGame() -> String {
         var arrDate = [Date]()
         
-        if appBinding.currentGame.game.mo.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[0].wrappedValue)
+        if game.listGameRegularGame[0] {
+            arrDate.append(game.listDateRegularGame[0])
         }
         
-        if appBinding.currentGame.game.tu.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[1].wrappedValue)
+        if game.listGameRegularGame[1] {
+            arrDate.append(game.listDateRegularGame[1])
         }
         
-        if appBinding.currentGame.game.we.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[2].wrappedValue)
+        if game.listGameRegularGame[2] {
+            arrDate.append(game.listDateRegularGame[2])
         }
         
-        if appBinding.currentGame.game.th.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[3].wrappedValue)
+        if game.listGameRegularGame[3] {
+            arrDate.append(game.listDateRegularGame[3])
         }
         
-        if appBinding.currentGame.game.fr.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[4].wrappedValue)
+        if game.listGameRegularGame[4] {
+            arrDate.append(game.listDateRegularGame[4])
         }
         
-        if appBinding.currentGame.game.sa.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[5].wrappedValue)
+        if game.listGameRegularGame[5] {
+            arrDate.append(game.listDateRegularGame[5])
         }
         
-        if appBinding.currentGame.game.su.wrappedValue {
-            arrDate.append(appBinding.currentGame.game.listDateRegularGame[6].wrappedValue)
+        if game.listGameRegularGame[6] {
+            arrDate.append(game.listDateRegularGame[6])
         }
         
         let nearDate = arrDate.sorted(by: { $0 > $1 })
@@ -186,15 +186,15 @@ private extension CellMainView {
 
 private extension CellMainView {
     private func typeGameString() -> String {
-        if appBinding.currentGame.game.miniFootball.wrappedValue {
+        if game.miniFootball {
             return "Мини"
         }
         
-        if appBinding.currentGame.game.usualFootball.wrappedValue {
+        if game.usualFootball {
             return "Футбол"
         }
         
-        if appBinding.currentGame.game.footsal.wrappedValue {
+        if game.footsal {
             return "Футзал"
         }
         return ""
@@ -203,17 +203,17 @@ private extension CellMainView {
 
 private extension CellMainView {
     private func formatGame() -> String {
-        return "\(appBinding.currentGame.game.firstTeamCount.wrappedValue) на \(appBinding.currentGame.game.secondTeamCount.wrappedValue)"
+        return "\(game.firstTeamCount) на \(game.secondTeamCount)"
     }
 }
 
 private extension CellMainView {
     private func privacyGame() -> String {
-        if appBinding.currentGame.game.privacyGame.wrappedValue == "open" {
+        if game.privacyGame == "open" {
             return "Для всех"
         }
         
-        if appBinding.currentGame.game.privacyGame.wrappedValue == "close" {
+        if game.privacyGame == "close" {
             return "По заявке"
         }
         return ""
@@ -222,6 +222,6 @@ private extension CellMainView {
 
 struct CellMainView_Previews: PreviewProvider {
     static var previews: some View {
-        CellMainView(appBinding: .constant(.init()))
+        CellMainView(game: .plugGame)
     }
 }

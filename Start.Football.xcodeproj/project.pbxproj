@@ -95,6 +95,7 @@
 		1B7F7C8125840E0500308106 /* RoundedColorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */; };
 		1B8B61DF25BA1F3C0005E9C8 /* DatePickerUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B61DE25BA1F3C0005E9C8 /* DatePickerUIKit.swift */; };
 		1B8C82BF25AF21B200197D3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */; };
+		1B937A4C25BE669A0033BC20 /* showAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B937A4B25BE669A0033BC20 /* showAlert.swift */; };
 		1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */; };
 		1B966C1F2576F2130084FFB4 /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */; };
 		1B966C23257702D70084FFB4 /* ButtonApple.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C22257702D70084FFB4 /* ButtonApple.swift */; };
@@ -232,6 +233,7 @@
 		1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedColorEdge.swift; sourceTree = "<group>"; };
 		1B8B61DE25BA1F3C0005E9C8 /* DatePickerUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerUIKit.swift; sourceTree = "<group>"; };
 		1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1B937A4B25BE669A0033BC20 /* showAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = showAlert.swift; sourceTree = "<group>"; };
 		1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
 		1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
 		1B966C22257702D70084FFB4 /* ButtonApple.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonApple.swift; sourceTree = "<group>"; };
@@ -570,6 +572,7 @@
 				1B68131425744A7F00B54977 /* KeyboardListener.swift */,
 				1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */,
 				1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */,
+				1B937A4B25BE669A0033BC20 /* showAlert.swift */,
 			);
 			path = Extensions;
 			sourceTree = "<group>";
@@ -1057,6 +1060,7 @@
 				1B41A08D25BD9A180065A7C2 /* StringProtocol.swift in Sources */,
 				1B765D9225A74B8100105940 /* HeaderCreateGameView.swift in Sources */,
 				1BE105E725B743400060DA3D /* SignUPAuthInteractor.swift in Sources */,
+				1B937A4C25BE669A0033BC20 /* showAlert.swift in Sources */,
 				1B03BE7125B7A64D00F032F7 /* MainActions.swift in Sources */,
 				1BF3662F25A7827700B196EE /* OrganizerCurrentGame.swift in Sources */,
 				1B78CCEC256DC2C200297221 /* TabViewApp.swift in Sources */,

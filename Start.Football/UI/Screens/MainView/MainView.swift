@@ -96,39 +96,18 @@ private extension MainView {
     private var plugGames: AnyView {
         AnyView(
             VStack(spacing: 16) {
-                Button(action: {
-                        self.viewController?.present(style: .pageSheet) {
-                            CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView(appBinding: appBinding) }
-                
-                Button(action: {
-                        self.viewController?.present(style: .pageSheet) {
-                            CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView(appBinding: appBinding) }
-                
+                ForEach(appBinding.main.listAllGames.wrappedValue.sorted(by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
+                    Button(action: {
+                            self.viewController?.present(style: .pageSheet) {
+                                CurrentGameView(game: game)
+                            } }) {
+                        CellMainView(game: game)
+                    }
+                    
+                    Button(action: {}) { ADVCurrentGame()}
+                }
+                .animation(.default)
                 Button(action: {}) { ADV()}
-                
-                Button(action: {
-                        self.viewController?.present(style: .pageSheet) {
-                            CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView(appBinding: appBinding) }
-                
-                Button(action: {
-                        self.viewController?.present(style: .pageSheet) {
-                            CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView(appBinding: appBinding) }
-                
-                Button(action: {
-                        self.viewController?.present(style: .pageSheet) {
-                            CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView(appBinding: appBinding) }
-                
-                Button(action: {}) { ADVCurrentGame()}
-                
-                Button(action: {
-                        self.viewController?.present(style: .pageSheet) {
-                            CurrentGameView(appBinding: appBinding)
-                        } }) { CellMainView(appBinding: appBinding) }
             }
         )
     }

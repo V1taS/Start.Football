@@ -10,9 +10,10 @@ import SwiftUI
 struct WhoWillPlayCurrentGame: View {
     
     @Environment(\.injected) private var injected: DIContainer
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    
+    private var game: Game
+    init(game: Game) {
+        self.game = game
     }
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
@@ -38,7 +39,9 @@ private extension WhoWillPlayCurrentGame {
     private var photos: AnyView {
         AnyView(
             HStack(alignment: .center, spacing: -15) {
-                ForEach(appBinding.currentGame.plugPhotoPlayers.wrappedValue, id: \.self) { photo in
+                
+                let plugPhotoPlayers = ["p1", "p2", "p3", "p4", "p5"]
+                ForEach(plugPhotoPlayers, id: \.self) { photo in
                     Image(photo)
                         .resizable()
                         .frame(width: 32, height: 32)
@@ -65,6 +68,6 @@ private extension WhoWillPlayCurrentGame {
 
 struct WhoWillPlayCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        WhoWillPlayCurrentGame(appBinding: .constant(.init()))
+        WhoWillPlayCurrentGame(game: .plugGame)
     }
 }

@@ -44,13 +44,7 @@ struct Game: Hashable, Decodable {
     var descriptionGame: String
     var ownRulesGame: String
     var commentFromOrganizerGame: String
-    var mo: Bool
-    var tu: Bool
-    var we: Bool
-    var th: Bool
-    var fr: Bool
-    var sa: Bool
-    var su: Bool
+    var dataCreateGame = Date()
     
     init(id: String,
          name: String,
@@ -87,14 +81,7 @@ struct Game: Hashable, Decodable {
          parkingCost: String,
          descriptionGame: String,
          ownRulesGame: String,
-         commentFromOrganizerGame: String,
-         mo: Bool,
-         tu: Bool,
-         we: Bool,
-         th: Bool,
-         fr: Bool,
-         sa: Bool,
-         su: Bool) {
+         commentFromOrganizerGame: String) {
         self.id = UUID().uuidString
         self.name = name
         self.imageStringURL = imageStringURL
@@ -131,13 +118,6 @@ struct Game: Hashable, Decodable {
         self.descriptionGame = descriptionGame
         self.ownRulesGame = ownRulesGame
         self.commentFromOrganizerGame = commentFromOrganizerGame
-        self.mo = mo
-        self.tu = tu
-        self.we = we
-        self.th = th
-        self.fr = fr
-        self.sa = sa
-        self.su = su
     }
     
     func hash(into hasher: inout Hasher) {
@@ -192,12 +172,5 @@ extension Game {
                                parkingCost: "0",
                                descriptionGame: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
                                ownRulesGame: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
-                               commentFromOrganizerGame: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!",
-                               mo: false,
-                               tu: false,
-                               we: true,
-                               th: false,
-                               fr: false,
-                               sa: false,
-                               su: false)
+                               commentFromOrganizerGame: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!")
 }

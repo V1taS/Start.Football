@@ -10,9 +10,10 @@ import SwiftUI
 struct CalendarCurrentGame: View {
     
     @Environment(\.injected) private var injected: DIContainer
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    
+    private var game: Game
+    init(game: Game) {
+        self.game = game
     }
     
     var body: some View {
@@ -31,7 +32,7 @@ struct CalendarCurrentGame: View {
 private extension CalendarCurrentGame {
     private var header: AnyView {
         AnyView(
-            Text(appBinding.currentGame.game.regularGame.wrappedValue == "yes" ? "РЕГУЛЯРНЫЕ ТРЕНИРОВКИ" : "РАЗОВАЯ ТРЕНИРОВКА")
+            Text(game.regularGame == "yes" ? "РЕГУЛЯРНЫЕ ТРЕНИРОВКИ" : "РАЗОВАЯ ТРЕНИРОВКА")
                 .foregroundColor(.secondaryColor)
                 .font(Font.event.robotoMedium18)
         )
@@ -42,13 +43,13 @@ private extension CalendarCurrentGame {
     private var boxCalendarGame: AnyView {
         AnyView(
             BoxDateButton(disabledButton: true,
-                          mo: appBinding.currentGame.game.mo,
-                          tu: appBinding.currentGame.game.tu,
-                          we: appBinding.currentGame.game.we,
-                          th: appBinding.currentGame.game.th,
-                          fr: appBinding.currentGame.game.fr,
-                          sa: appBinding.currentGame.game.sa,
-                          su: appBinding.currentGame.game.su)
+                          mo: .constant(game.listGameRegularGame[0]),
+                          tu: .constant(game.listGameRegularGame[1]),
+                          we: .constant(game.listGameRegularGame[2]),
+                          th: .constant(game.listGameRegularGame[3]),
+                          fr: .constant(game.listGameRegularGame[4]),
+                          sa: .constant(game.listGameRegularGame[5]),
+                          su: .constant(game.listGameRegularGame[6]))
         )
     }
 }
@@ -65,7 +66,7 @@ private extension CalendarCurrentGame {
 
 private extension CalendarCurrentGame {
     private var selectionRegularGame: AnyView {
-        if appBinding.currentGame.game.regularGame.wrappedValue == "yes" {
+        if game.regularGame == "yes" {
             return AnyView(regularGame)
         } else {
             return AnyView(oneGame)
@@ -76,8 +77,8 @@ private extension CalendarCurrentGame {
 private extension CalendarCurrentGame {
     private var oneGame: some View {
         VStack(alignment: .leading, spacing: 0) {
-            let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.oneGameDate.wrappedValue)
-            let dateString = GetDateStringFromDate.shared.getDateStringFull(date: appBinding.currentGame.game.oneGameDate.wrappedValue).firstUppercased
+            let timeString = GetDateStringFromDate.shared.getTimeString(date: game.oneGameDate)
+            let dateString = GetDateStringFromDate.shared.getDateStringFull(date: game.oneGameDate).firstUppercased
             
             HStack(spacing: 10) {
                 Image("cellDate")
@@ -86,10 +87,7 @@ private extension CalendarCurrentGame {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
-                
-        }
-        .onAppear {
-            showDateInCalendarOneGame()
+            
         }
     }
 }
@@ -97,67 +95,67 @@ private extension CalendarCurrentGame {
 private extension CalendarCurrentGame {
     private var regularGame: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if appBinding.currentGame.game.mo.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[0].wrappedValue)
+            if game.listGameRegularGame[0] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[0])
                 HStack(spacing: 10) {
-                Text("Понедельник в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Понедельник в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
-            if appBinding.currentGame.game.tu.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[1].wrappedValue)
+            if game.listGameRegularGame[1] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[1])
                 HStack(spacing: 10) {
-                Text("Вторник в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Вторник в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
-            if appBinding.currentGame.game.we.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[2].wrappedValue)
+            if game.listGameRegularGame[2] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[2])
                 HStack(spacing: 10) {
                     Image("cellDate")
-                Text("Среда в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Среда в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
-            if appBinding.currentGame.game.th.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[3].wrappedValue)
+            if game.listGameRegularGame[3] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[3])
                 HStack(spacing: 10) {
-                Text("Четверг в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Четверг в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
-            if appBinding.currentGame.game.fr.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[4].wrappedValue)
+            if game.listGameRegularGame[4] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[4])
                 HStack(spacing: 10) {
-                Text("Пятница в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Пятница в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
-            if appBinding.currentGame.game.sa.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[5].wrappedValue)
+            if game.listGameRegularGame[5] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[5])
                 HStack(spacing: 10) {
-                Text("Суббота в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Суббота в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
-            if appBinding.currentGame.game.su.wrappedValue {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: appBinding.currentGame.game.listDateRegularGame[6].wrappedValue)
+            if game.listGameRegularGame[6] {
+                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[6])
                 HStack(spacing: 10) {
-                Text("Воскресенье в \(timeString)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                    Text("Воскресенье в \(timeString)")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
             
@@ -165,85 +163,8 @@ private extension CalendarCurrentGame {
     }
 }
 
-
-
-// MARK: Actions
-private extension CalendarCurrentGame {
-    private func showDateInCalendarOneGame() {
-        switch GetDateStringFromDate.shared.getDateString(date: appBinding.currentGame.game.oneGameDate.wrappedValue).firstUppercased {
-        case "Понедельник":
-            appBinding.currentGame.game.mo.wrappedValue = true
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = false
-        case "Вторник":
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = true
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = false
-        case "Среда":
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = true
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = false
-        case "Четверг":
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = true
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = false
-        case "Пятница":
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = true
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = false
-        case "Суббота":
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = true
-            appBinding.currentGame.game.su.wrappedValue = false
-        case "Воскресенье":
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = true
-        default:
-            appBinding.currentGame.game.mo.wrappedValue = false
-            appBinding.currentGame.game.tu.wrappedValue = false
-            appBinding.currentGame.game.we.wrappedValue = false
-            appBinding.currentGame.game.th.wrappedValue = false
-            appBinding.currentGame.game.fr.wrappedValue = false
-            appBinding.currentGame.game.sa.wrappedValue = false
-            appBinding.currentGame.game.su.wrappedValue = false
-        }
-    }
-}
-
-
-
-
 struct CalendarCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        CalendarCurrentGame(appBinding: .constant(.init()))
+        CalendarCurrentGame(game: .plugGame)
     }
 }

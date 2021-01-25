@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct CreateGameStepFive: View {
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
@@ -50,7 +56,7 @@ private extension CreateGameStepFive {
     private var inviteFriendsButton: AnyView {
         AnyView(
             Button(action: {
-                inviteFriends()
+                
             }) {
                 ButtonView(background: .tertiary,
                            textColor: .whiteColor,
@@ -111,13 +117,13 @@ private extension CreateGameStepFive {
 
 // MARK: Actions
 private extension CreateGameStepFive {
-    private func inviteFriends() {
+    private func createGame() {
         
     }
 }
 
 struct CreateGameStepFive_Previews: PreviewProvider {
     static var previews: some View {
-        CreateGameStepFive()
+        CreateGameStepFive(appBinding: .constant(.init()))
     }
 }

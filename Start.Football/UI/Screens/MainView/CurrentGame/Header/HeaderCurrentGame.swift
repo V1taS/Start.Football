@@ -9,9 +9,9 @@ import SwiftUI
 
 struct HeaderCurrentGame: View {
     
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    private let game: Game
+    init(game: Game) {
+        self.game = game
     }
     
     let height = UIScreen.screenHeight
@@ -25,7 +25,7 @@ struct HeaderCurrentGame: View {
                        height: height * Size.shared.getAdaptSizeHeight(px: 230))
             
             HStack {
-                Text("\(appBinding.currentGame.game.name.wrappedValue)")
+                Text("\(game.name)")
                     .foregroundColor(.whiteColor)
                     .font(Font.event.robotoBold20)
                     .lineLimit(3)
@@ -37,7 +37,7 @@ struct HeaderCurrentGame: View {
                         .clipShape(RoundedRectangle(cornerRadius: 5))
                         .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
                                height: height * Size.shared.getAdaptSizeHeight(px: 52))
-                    Text("\(appBinding.currentGame.game.costGame.wrappedValue) ₽")
+                    Text("\(game.costGame) ₽")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular24)
                 }
@@ -51,6 +51,6 @@ struct HeaderCurrentGame: View {
 
 struct HeaderCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderCurrentGame(appBinding: .constant(.init()))
+        HeaderCurrentGame(game: .plugGame)
     }
 }

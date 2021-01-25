@@ -9,9 +9,9 @@ import SwiftUI
 
 struct AboutTheAreaCurrentGame: View {
     
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    private var game: Game
+    init(game: Game) {
+        self.game = game
     }
     var body: some View {
         HStack {
@@ -19,7 +19,7 @@ struct AboutTheAreaCurrentGame: View {
                 Text("О ПЛОЩАДКЕ")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("\(appBinding.currentGame.game.descriptionGame.wrappedValue)")
+                Text("\(game.descriptionGame)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
@@ -32,6 +32,6 @@ struct AboutTheAreaCurrentGame: View {
 
 struct AboutTheAreaCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        AboutTheAreaCurrentGame(appBinding: .constant(.init()))
+        AboutTheAreaCurrentGame(game: .plugGame)
     }
 }

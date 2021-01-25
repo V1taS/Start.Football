@@ -9,9 +9,9 @@ import SwiftUI
 
 struct CommentCurrentGame: View {
     
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    private var game: Game
+    init(game: Game) {
+        self.game = game
     }
     
     var body: some View {
@@ -20,7 +20,7 @@ struct CommentCurrentGame: View {
                 Text("КОММЕНТАРИЙ")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("\(appBinding.currentGame.game.commentFromOrganizerGame.wrappedValue)")
+                Text("\(game.commentFromOrganizerGame)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
@@ -33,6 +33,6 @@ struct CommentCurrentGame: View {
 
 struct CommentCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        CommentCurrentGame(appBinding: .constant(.init()))
+        CommentCurrentGame(game: .plugGame)
     }
 }
