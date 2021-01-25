@@ -14,8 +14,13 @@ extension AppState.AppData {
         
         // MARK: - Step 1
         var nameGame = ""
+        var nameGameSuccess = true
+        
         var addressGame = ""
+        var addressGameSuccess = true
+        
         var costGame = ""
+        var costGameSuccess = true
         
         
         var currentDate = Date()
@@ -72,7 +77,9 @@ extension AppState.AppData {
         var showParking: Bool = false
         var typeOfParking: AppActions.CreatGameActions.TypeOfParking = .freeCity
         var paymentForParking: AppActions.CreatGameActions.PaymentForParking = .non
+        
         var parkingCost: String = ""
+        var parkingCostSuccess = true
         
         // MARK: - Step 4
         var descriptionGame = "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну."

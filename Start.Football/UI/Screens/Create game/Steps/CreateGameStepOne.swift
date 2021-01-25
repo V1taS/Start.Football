@@ -44,7 +44,8 @@ private extension CreateGameStepOne {
                              icon: "",
                              iconShow: false,
                              placeholder: "Введите название",
-                             keyboardType: .default)
+                             keyboardType: .default,
+                             success: appBinding.createGame.nameGameSuccess.wrappedValue)
     }
 }
 
@@ -55,7 +56,8 @@ private extension CreateGameStepOne {
                              icon: "locationCreateGame",
                              iconShow: true,
                              placeholder: "Укажите адрес",
-                             keyboardType: .default)
+                             keyboardType: .default,
+                             success: appBinding.createGame.addressGameSuccess.wrappedValue)
     }
 }
 
@@ -90,7 +92,8 @@ private extension CreateGameStepOne {
                              icon: "rublsCreateGame",
                              iconShow: true,
                              placeholder: "Укажите стоимость",
-                             keyboardType: .numberPad)
+                             keyboardType: .numberPad,
+                             success: appBinding.createGame.costGameSuccess.wrappedValue)
     }
 }
 

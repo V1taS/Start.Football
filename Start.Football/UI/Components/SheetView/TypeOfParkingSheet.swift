@@ -215,7 +215,8 @@ private extension TypeOfParkingSheet {
                              icon: "",
                              iconShow: false,
                              placeholder: "Укажите стоимость",
-                             keyboardType: .numberPad)
+                             keyboardType: .numberPad,
+                             success: appBinding.createGame.parkingCostSuccess.wrappedValue)
     }
 }
 

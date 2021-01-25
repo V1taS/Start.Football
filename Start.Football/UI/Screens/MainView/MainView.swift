@@ -120,7 +120,25 @@ private extension MainView {
                 if appBinding.main.selectionGame.wrappedValue == .myGames {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            Plug(text: "Пока у тебя нет игр", createGame: true)
+                            if appBinding.main.listMyGames.wrappedValue.isEmpty {
+                                Plug(appBinding: appBinding,
+                                     text: "Пока у тебя нет игр",
+                                     createGame: true)
+                            } else {
+                                VStack(spacing: 16) {
+                                    ForEach(appBinding.main.listMyGames.wrappedValue.sorted(by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
+                                        Button(action: {
+                                                self.viewController?.present(style: .pageSheet) {
+                                                    CurrentGameView(game: game)
+                                                } }) {
+                                            CellMainView(game: game)
+                                            
+                                        }
+                                    }
+                                    .animation(.default)
+                                }
+                                .padding(.top)
+                            }
                         }
                     }
                 }

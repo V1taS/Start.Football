@@ -11,8 +11,17 @@ struct Plug: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
-    let text: String
-    let createGame: Bool
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>,
+         text: String,
+         createGame: Bool) {
+        self.appBinding = appBinding
+        self.text = text
+        self.createGame = createGame
+    }
+    
+    private let text: String
+    private let createGame: Bool
     
     var body: some View {
         ZStack {
@@ -28,7 +37,9 @@ struct Plug: View {
                         .font(Font.event.robotoBold20)
                     
                     if createGame {
-                        Button(action: {}) {
+                        Button(action: {
+                            appBinding.main.tag.wrappedValue = 1
+                        }) {
                             Text("Создай игру!")
                                 .foregroundColor(.primaryColor)
                                 .font(Font.event.robotoMedium16)
@@ -46,6 +57,6 @@ struct Plug: View {
 
 struct Plug_Previews: PreviewProvider {
     static var previews: some View {
-        Plug(text: "Сейчас никто не играет", createGame: false)
+        Plug(appBinding: .constant(.init()), text: "", createGame: true)
     }
 }

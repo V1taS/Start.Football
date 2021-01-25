@@ -18,6 +18,7 @@ struct TextfieldOneLineView: View {
     let iconShow: Bool
     let placeholder: String
     let keyboardType: UIKeyboardType
+    var success: Bool
     
     var body: some View {
         VStack(spacing: 0) {
@@ -36,14 +37,17 @@ struct TextfieldOneLineView: View {
                                         foregroundColor: .secondaryColor,
                                         keyType: keyboardType,
                                         isSecureText: false)
-                        .frame(height: 30)
+                        .frame(width: 270,
+                               height: height * Size.shared.getAdaptSizeHeight(px: 30))
+                    Spacer()
                     if iconShow {
                         Image(icon)
+                            
                     }
                 } .padding(.bottom, height * Size.shared.getAdaptSizeHeight(px: 8))
             }
             VStack(alignment: .leading, spacing: 0) {
-                Color(.dividerColor)
+                Color(success ? .dividerColor : .error)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                            height: height * Size.shared.getAdaptSizeHeight(px: 2))
             }
@@ -58,6 +62,6 @@ struct TextfieldOneLineView_Previews: PreviewProvider {
                              icon: "locationCreateGame",
                              iconShow: true,
                              placeholder: "Введите название",
-                             keyboardType: .default)
+                             keyboardType: .default, success: true)
     }
 }

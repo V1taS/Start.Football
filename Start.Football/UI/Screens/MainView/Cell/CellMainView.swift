@@ -137,50 +137,12 @@ private extension CellMainView {
 private extension CellMainView {
     private func selectDate(regularGame: String, oneGameDate: Date) -> String {
         if regularGame == "yes" {
-            return buildRegularGame()
+            return lookForDate()
         } else {
             let timeString = GetDateStringFromDate.shared.getTimeString(date: oneGameDate)
                 let dateString = GetDateStringFromDate.shared.getDateStringFull(date: oneGameDate).firstUppercased
             return "\(dateString) в \(timeString)"
         }
-    }
-    
-    private func buildRegularGame() -> String {
-        var arrDate = [Date]()
-        
-        if game.listGameRegularGame[0] {
-            arrDate.append(game.listDateRegularGame[0])
-        }
-        
-        if game.listGameRegularGame[1] {
-            arrDate.append(game.listDateRegularGame[1])
-        }
-        
-        if game.listGameRegularGame[2] {
-            arrDate.append(game.listDateRegularGame[2])
-        }
-        
-        if game.listGameRegularGame[3] {
-            arrDate.append(game.listDateRegularGame[3])
-        }
-        
-        if game.listGameRegularGame[4] {
-            arrDate.append(game.listDateRegularGame[4])
-        }
-        
-        if game.listGameRegularGame[5] {
-            arrDate.append(game.listDateRegularGame[5])
-        }
-        
-        if game.listGameRegularGame[6] {
-            arrDate.append(game.listDateRegularGame[6])
-        }
-        
-        let nearDate = arrDate.sorted(by: { $0 > $1 })
-        let timeString = GetDateStringFromDate.shared.getTimeString(date: nearDate.first!)
-        let dateString = GetDateStringFromDate.shared.getDateStringFull(date: nearDate.first!).firstUppercased
-        
-        return "\(dateString) в \(timeString)"
     }
 }
 
@@ -217,6 +179,39 @@ private extension CellMainView {
             return "По заявке"
         }
         return ""
+    }
+    
+    private func lookForDate() -> String {
+        
+        if game.listGameRegularGame[0] {
+            return "Ближайшая игра в Понедельник"
+        }
+        
+        if game.listGameRegularGame[1] {
+            return "Ближайшая игра во Вторник"
+        }
+        
+        if game.listGameRegularGame[2] {
+            return "Ближайшая игра в Среду"
+        }
+        
+        if game.listGameRegularGame[3] {
+            return "Ближайшая игра в Четверг"
+        }
+        
+        if game.listGameRegularGame[4] {
+            return "Ближайшая игра в Пятницу"
+        }
+        
+        if game.listGameRegularGame[5] {
+            return "Ближайшая игра в Субботу"
+        }
+        
+        if game.listGameRegularGame[6] {
+            return "Ближайшая игра в Воскресенье"
+        }
+        
+        return "Регулярные игры"
     }
 }
 

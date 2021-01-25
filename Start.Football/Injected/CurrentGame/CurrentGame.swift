@@ -45,12 +45,12 @@ extension AppState.AppData {
         var plugPhotoPlayers = ["p1", "p2", "p3", "p4", "p5"]
         
         // MARK: Day Of Week
-//        var mo = false
-//        var tu = false
-//        var we = false
-//        var th = false
-//        var fr = false
-//        var sa = false
-//        var su = false
+        var mo = false
+        var tu = false
+        var we = false
+        var th = false
+        var fr = false
+        var sa = false
+        var su = false
     }
 }

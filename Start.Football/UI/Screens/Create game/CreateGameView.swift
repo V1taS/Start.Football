@@ -66,16 +66,17 @@ private extension CreateGameView {
             if appBinding.createGame.selectionCreateGame.wrappedValue ==
                 .stepFive {
                 Button(action: {
-                    nextStepProgressBar()
-                    refreshProgressBar()
                     createTeam()
-
-                    self.viewController?.showAlert(with: "Внимание!",
-                                                   and: "Вы успешно создали команду!") {
+                    self.viewController?.present(style: .fullScreen) {
+                        CurrentGameView(game: currentGame())
+                    }
+                    DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
+                        nextStepProgressBar()
+                        refreshProgressBar()
                         appBinding.main.tag.wrappedValue = 0
                         clearCreateGame()
+                        appBinding.main.selectionGame.wrappedValue = .myGames
                     }
-                    
                 }) {
                     ButtonView(background: .primaryColor,
                                textColor: .whiteColor,
@@ -88,9 +89,13 @@ private extension CreateGameView {
                 .padding(.horizontal, 24)
             } else {
                 Button(action: {
-                    nextStepProgressBar()
-                    refreshProgressBar()
-                    
+                    validName()
+                    validAddress()
+                    validCostGame()
+                    if appBinding.createGame.nameGameSuccess.wrappedValue && appBinding.createGame.addressGameSuccess.wrappedValue && appBinding.createGame.costGameSuccess.wrappedValue {
+                        nextStepProgressBar()
+                        refreshProgressBar()
+                    }
                 }) {
                     ButtonView(background: .primaryColor,
                                textColor: .whiteColor,
@@ -149,44 +154,9 @@ private extension CreateGameView {
     }
     
     private func createTeam() {
-        appBinding.main.listAllGames.wrappedValue.append(Game(
-            id: UUID().uuidString,
-            name: appBinding.createGame.nameGame.wrappedValue,
-            imageStringURL: "",
-            gameNumber: "\(appBinding.main.listAllGames.wrappedValue.count + 1)",
-            address: appBinding.createGame.addressGame.wrappedValue,
-            costGame: appBinding.createGame.costGame.wrappedValue,
-            oneGameDate: appBinding.createGame.currentDate.wrappedValue,
-            regularGame: appBinding.createGame.selectionRegularGame.wrappedValue.rawValue,
-            listGameRegularGame: appBinding.createGame.listGame.wrappedValue,
-            listDateRegularGame: appBinding.createGame.listDate.wrappedValue,
-            miniFootball: appBinding.createGame.miniFootball.wrappedValue,
-            usualFootball: appBinding.createGame.usualFootball.wrappedValue,
-            footsal: appBinding.createGame.footsal.wrappedValue,
-            street: appBinding.createGame.street.wrappedValue,
-            manege: appBinding.createGame.manege.wrappedValue,
-            hall: appBinding.createGame.hall.wrappedValue,
-            parquet: appBinding.createGame.parquet.wrappedValue,
-            grass: appBinding.createGame.grass.wrappedValue,
-            caoutchouc: appBinding.createGame.caoutchouc.wrappedValue,
-            synthetics: appBinding.createGame.synthetics.wrappedValue,
-            hair: appBinding.createGame.hair.wrappedValue,
-            crumb: appBinding.createGame.crumb.wrappedValue,
-            firstTeamCount: appBinding.createGame.firstValue.wrappedValue,
-            secondTeamCount: appBinding.createGame.secondValue.wrappedValue,
-            maxCountTeams: appBinding.createGame.maxCountTeams.wrappedValue,
-            maxCountPlayers: appBinding.createGame.maxCountPlayers.wrappedValue,
-            maxReservePlayers: appBinding.createGame.maxReservePlayers.wrappedValue,
-            privacyGame: appBinding.createGame.privacyGame.wrappedValue.rawValue,
-            dressingRooms: appBinding.createGame.dressingRooms.wrappedValue,
-            showers: appBinding.createGame.showers.wrappedValue,
-            typeOfParking: appBinding.createGame.typeOfParking.wrappedValue.rawValue,
-            paymentForParking: appBinding.createGame.paymentForParking.wrappedValue.rawValue,
-            parkingCost: appBinding.createGame.parkingCost.wrappedValue,
-            descriptionGame: appBinding.createGame.descriptionGame.wrappedValue,
-            ownRulesGame: appBinding.createGame.ownRules.wrappedValue,
-            commentFromOrganizerGame: appBinding.createGame.commentFromOrganizer.wrappedValue
-        ))
+        appBinding.main.listMyGames.wrappedValue.append(currentGame())
+        
+        appBinding.main.listAllGames.wrappedValue.append(currentGame())
     }
     
     private func clearCreateGame() {
@@ -255,6 +225,89 @@ private extension CreateGameView {
         appBinding.createGame.typeOfParking.wrappedValue = .freeCity
         appBinding.createGame.paymentForParking.wrappedValue = .non
         appBinding.createGame.parkingCost.wrappedValue = ""
+    }
+    
+    private func currentGame() -> Game {
+        Game(
+            id: UUID().uuidString,
+            name: appBinding.createGame.nameGame.wrappedValue,
+            imageStringURL: "",
+            gameNumber: "\(appBinding.main.listAllGames.wrappedValue.count + 1)",
+            address: appBinding.createGame.addressGame.wrappedValue,
+            costGame: appBinding.createGame.costGame.wrappedValue,
+            oneGameDate: appBinding.createGame.currentDate.wrappedValue,
+            regularGame: appBinding.createGame.selectionRegularGame.wrappedValue.rawValue,
+            listGameRegularGame: appBinding.createGame.listGame.wrappedValue,
+            listDateRegularGame: appBinding.createGame.listDate.wrappedValue,
+            miniFootball: appBinding.createGame.miniFootball.wrappedValue,
+            usualFootball: appBinding.createGame.usualFootball.wrappedValue,
+            footsal: appBinding.createGame.footsal.wrappedValue,
+            street: appBinding.createGame.street.wrappedValue,
+            manege: appBinding.createGame.manege.wrappedValue,
+            hall: appBinding.createGame.hall.wrappedValue,
+            parquet: appBinding.createGame.parquet.wrappedValue,
+            grass: appBinding.createGame.grass.wrappedValue,
+            caoutchouc: appBinding.createGame.caoutchouc.wrappedValue,
+            synthetics: appBinding.createGame.synthetics.wrappedValue,
+            hair: appBinding.createGame.hair.wrappedValue,
+            crumb: appBinding.createGame.crumb.wrappedValue,
+            firstTeamCount: appBinding.createGame.firstValue.wrappedValue,
+            secondTeamCount: appBinding.createGame.secondValue.wrappedValue,
+            maxCountTeams: appBinding.createGame.maxCountTeams.wrappedValue,
+            maxCountPlayers: appBinding.createGame.maxCountPlayers.wrappedValue,
+            maxReservePlayers: appBinding.createGame.maxReservePlayers.wrappedValue,
+            privacyGame: appBinding.createGame.privacyGame.wrappedValue.rawValue,
+            dressingRooms: appBinding.createGame.dressingRooms.wrappedValue,
+            showers: appBinding.createGame.showers.wrappedValue,
+            typeOfParking: appBinding.createGame.typeOfParking.wrappedValue.rawValue,
+            paymentForParking: appBinding.createGame.paymentForParking.wrappedValue.rawValue,
+            parkingCost: appBinding.createGame.parkingCost.wrappedValue,
+            descriptionGame: appBinding.createGame.descriptionGame.wrappedValue,
+            ownRulesGame: appBinding.createGame.ownRules.wrappedValue,
+            commentFromOrganizerGame: appBinding.createGame.commentFromOrganizer.wrappedValue
+        )
+    }
+    
+    private func validName() {
+        if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
+            if appBinding.createGame.nameGame.wrappedValue.isEmpty {
+                appBinding.createGame.nameGameSuccess.wrappedValue = false
+            } else {
+                appBinding.createGame.nameGameSuccess.wrappedValue = true
+            }
+            
+            if appBinding.createGame.nameGame.wrappedValue.count <= 5 {
+                appBinding.createGame.nameGameSuccess.wrappedValue = false
+            } else {
+                appBinding.createGame.nameGameSuccess.wrappedValue = true
+            }
+        }
+    }
+    
+    private func validAddress() {
+        if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
+            if appBinding.createGame.addressGame.wrappedValue.isEmpty {
+                appBinding.createGame.addressGameSuccess.wrappedValue = false
+            } else {
+                appBinding.createGame.addressGameSuccess.wrappedValue = true
+            }
+            
+            if appBinding.createGame.addressGame.wrappedValue.count <= 5 {
+                appBinding.createGame.addressGameSuccess.wrappedValue = false
+            } else {
+                appBinding.createGame.addressGameSuccess.wrappedValue = true
+            }
+        }
+    }
+    
+    private func validCostGame() {
+        if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
+            if appBinding.createGame.costGame.wrappedValue.isEmpty {
+                appBinding.createGame.costGameSuccess.wrappedValue = false
+            } else {
+                appBinding.createGame.costGameSuccess.wrappedValue = true
+            }
+        }
     }
 }
 

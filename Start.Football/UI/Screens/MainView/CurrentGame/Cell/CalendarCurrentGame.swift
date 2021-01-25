@@ -9,6 +9,11 @@ import SwiftUI
 
 struct CalendarCurrentGame: View {
     
+    @State private var appState: AppState.AppData = .init()
+    private var appBinding: Binding<AppState.AppData> {
+        $appState.dispatched(to: injected.appState, \.appData)
+    }
+    
     @Environment(\.injected) private var injected: DIContainer
     
     private var game: Game
@@ -43,13 +48,13 @@ private extension CalendarCurrentGame {
     private var boxCalendarGame: AnyView {
         AnyView(
             BoxDateButton(disabledButton: true,
-                          mo: .constant(game.listGameRegularGame[0]),
-                          tu: .constant(game.listGameRegularGame[1]),
-                          we: .constant(game.listGameRegularGame[2]),
-                          th: .constant(game.listGameRegularGame[3]),
-                          fr: .constant(game.listGameRegularGame[4]),
-                          sa: .constant(game.listGameRegularGame[5]),
-                          su: .constant(game.listGameRegularGame[6]))
+                          mo: appBinding.currentGame.mo,
+                          tu: appBinding.currentGame.tu,
+                          we: appBinding.currentGame.we,
+                          th: appBinding.currentGame.th,
+                          fr: appBinding.currentGame.fr,
+                          sa: appBinding.currentGame.sa,
+                          su: appBinding.currentGame.su)
         )
     }
 }
@@ -87,7 +92,8 @@ private extension CalendarCurrentGame {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
-            
+        } .onAppear {
+            dayOfWeekOneGame()
         }
     }
 }
@@ -98,6 +104,7 @@ private extension CalendarCurrentGame {
             if game.listGameRegularGame[0] {
                 let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[0])
                 HStack(spacing: 10) {
+                    Image("cellDate")
                     Text("Понедельник в \(timeString)")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
@@ -107,6 +114,7 @@ private extension CalendarCurrentGame {
             if game.listGameRegularGame[1] {
                 let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[1])
                 HStack(spacing: 10) {
+                    Image("cellDate")
                     Text("Вторник в \(timeString)")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
@@ -126,6 +134,7 @@ private extension CalendarCurrentGame {
             if game.listGameRegularGame[3] {
                 let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[3])
                 HStack(spacing: 10) {
+                    Image("cellDate")
                     Text("Четверг в \(timeString)")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
@@ -135,6 +144,7 @@ private extension CalendarCurrentGame {
             if game.listGameRegularGame[4] {
                 let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[4])
                 HStack(spacing: 10) {
+                    Image("cellDate")
                     Text("Пятница в \(timeString)")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
@@ -144,6 +154,7 @@ private extension CalendarCurrentGame {
             if game.listGameRegularGame[5] {
                 let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[5])
                 HStack(spacing: 10) {
+                    Image("cellDate")
                     Text("Суббота в \(timeString)")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
@@ -153,13 +164,59 @@ private extension CalendarCurrentGame {
             if game.listGameRegularGame[6] {
                 let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[6])
                 HStack(spacing: 10) {
+                    Image("cellDate")
                     Text("Воскресенье в \(timeString)")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
                 }
             }
-            
-        } .animation(.default)
+        }.onAppear {
+            dayOfWeekRegular()
+        }
+        .animation(.default)
+    }
+}
+
+// MARK: Actions
+private extension CalendarCurrentGame {
+    private func dayOfWeekRegular() {
+        appBinding.currentGame.mo.wrappedValue = game.listGameRegularGame[0]
+        appBinding.currentGame.tu.wrappedValue = game.listGameRegularGame[1]
+        appBinding.currentGame.we.wrappedValue = game.listGameRegularGame[2]
+        appBinding.currentGame.th.wrappedValue = game.listGameRegularGame[3]
+        appBinding.currentGame.fr.wrappedValue = game.listGameRegularGame[4]
+        appBinding.currentGame.sa.wrappedValue = game.listGameRegularGame[5]
+        appBinding.currentGame.su.wrappedValue = game.listGameRegularGame[6]
+    }
+    
+    private func dayOfWeekOneGame() {
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Понедельник" {
+            appBinding.currentGame.mo.wrappedValue = true
+        }
+        
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Вторник" {
+            appBinding.currentGame.tu.wrappedValue = true
+        }
+        
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Среда" {
+            appBinding.currentGame.we.wrappedValue = true
+        }
+        
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Четверг" {
+            appBinding.currentGame.th.wrappedValue = true
+        }
+        
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Пятница" {
+            appBinding.currentGame.fr.wrappedValue = true
+        }
+        
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Суббота" {
+            appBinding.currentGame.sa.wrappedValue = true
+        }
+        
+        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Воскресенье" {
+            appBinding.currentGame.su.wrappedValue = true
+        }
     }
 }
 
