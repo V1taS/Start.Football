@@ -13,7 +13,6 @@ struct CalendarCurrentGame: View {
     private var appBinding: Binding<AppState.AppData> {
         $appState.dispatched(to: injected.appState, \.appData)
     }
-    
     @Environment(\.injected) private var injected: DIContainer
     
     private var game: Game
@@ -82,18 +81,15 @@ private extension CalendarCurrentGame {
 private extension CalendarCurrentGame {
     private var oneGame: some View {
         VStack(alignment: .leading, spacing: 0) {
-            let timeString = GetDateStringFromDate.shared.getTimeString(date: game.oneGameDate)
-            let dateString = GetDateStringFromDate.shared.getDateStringFull(date: game.oneGameDate).firstUppercased
-            
             HStack(spacing: 10) {
                 Image("cellDate")
                 
-                Text("\(dateString) в \(timeString)")
+                Text("\(fullDateString(date: game.oneGameDate)) в \(timeString(date: game.oneGameDate))")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
             }
         } .onAppear {
-            dayOfWeekOneGame()
+            showOneDayInRegularCalendar(state: appBinding, game: game)
         }
     }
 }
@@ -101,77 +97,68 @@ private extension CalendarCurrentGame {
 private extension CalendarCurrentGame {
     private var regularGame: some View {
         VStack(alignment: .leading, spacing: 8) {
-            if game.listGameRegularGame[0] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[0])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Понедельник в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
+            HStack(spacing: 10) {
+                Image("cellDate")
+                
+                if game.listGameRegularGame[0] {
+                    VStack(spacing: 0) {
+                        Text("Понедельник в \(timeString(date: game.listDateRegularGame[0]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
+                }
+                
+                if game.listGameRegularGame[1] {
+                    VStack(spacing: 0) {
+                        Text("Вторник в \(timeString(date: game.listDateRegularGame[1]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
+                }
+                
+                if game.listGameRegularGame[2] {
+                    VStack(spacing: 0) {
+                        Text("Среда в \(timeString(date: game.listDateRegularGame[2]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
+                }
+                
+                if game.listGameRegularGame[3] {
+                    VStack(spacing: 0) {
+                        Text("Четверг в \(timeString(date: game.listDateRegularGame[3]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
+                }
+                
+                if game.listGameRegularGame[4] {
+                    VStack(spacing: 0) {
+                        Text("Пятница в \(timeString(date: game.listDateRegularGame[4]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
+                }
+                
+                if game.listGameRegularGame[5] {
+                    VStack(spacing: 0) {
+                        Text("Суббота в \(timeString(date: game.listDateRegularGame[5]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
+                }
+                
+                if game.listGameRegularGame[6] {
+                    VStack(spacing: 0) {
+                        Text("Воскресенье в \(timeString(date: game.listDateRegularGame[6]))")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular16)
+                    }
                 }
             }
-            
-            if game.listGameRegularGame[1] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[1])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Вторник в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                }
-            }
-            
-            if game.listGameRegularGame[2] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[2])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Среда в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                }
-            }
-            
-            if game.listGameRegularGame[3] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[3])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Четверг в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                }
-            }
-            
-            if game.listGameRegularGame[4] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[4])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Пятница в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                }
-            }
-            
-            if game.listGameRegularGame[5] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[5])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Суббота в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                }
-            }
-            
-            if game.listGameRegularGame[6] {
-                let timeString = GetDateStringFromDate.shared.getTimeString(date: game.listDateRegularGame[6])
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text("Воскресенье в \(timeString)")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                }
-            }
-        }.onAppear {
-            dayOfWeekRegular()
+        }
+        .onAppear {
+            showDaysInRegularCalendar(state: appBinding, game: game)
         }
         .animation(.default)
     }
@@ -179,44 +166,24 @@ private extension CalendarCurrentGame {
 
 // MARK: Actions
 private extension CalendarCurrentGame {
-    private func dayOfWeekRegular() {
-        appBinding.currentGame.mo.wrappedValue = game.listGameRegularGame[0]
-        appBinding.currentGame.tu.wrappedValue = game.listGameRegularGame[1]
-        appBinding.currentGame.we.wrappedValue = game.listGameRegularGame[2]
-        appBinding.currentGame.th.wrappedValue = game.listGameRegularGame[3]
-        appBinding.currentGame.fr.wrappedValue = game.listGameRegularGame[4]
-        appBinding.currentGame.sa.wrappedValue = game.listGameRegularGame[5]
-        appBinding.currentGame.su.wrappedValue = game.listGameRegularGame[6]
+    private func timeString(date: Date) -> String {
+        injected.interactors.currentGameInteractor
+            .timeString(date: date)
     }
     
-    private func dayOfWeekOneGame() {
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Понедельник" {
-            appBinding.currentGame.mo.wrappedValue = true
-        }
-        
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Вторник" {
-            appBinding.currentGame.tu.wrappedValue = true
-        }
-        
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Среда" {
-            appBinding.currentGame.we.wrappedValue = true
-        }
-        
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Четверг" {
-            appBinding.currentGame.th.wrappedValue = true
-        }
-        
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Пятница" {
-            appBinding.currentGame.fr.wrappedValue = true
-        }
-        
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Суббота" {
-            appBinding.currentGame.sa.wrappedValue = true
-        }
-        
-        if GetDateStringFromDate.shared.getDateString(date: game.oneGameDate).firstUppercased == "Воскресенье" {
-            appBinding.currentGame.su.wrappedValue = true
-        }
+    private func fullDateString(date: Date) -> String {
+        injected.interactors.currentGameInteractor
+            .fullDateString(date: date)
+    }
+    
+    private func showDaysInRegularCalendar(state: Binding<AppState.AppData>, game: Game) {
+        injected.interactors.currentGameInteractor
+            .showDaysInRegularCalendar(state: state, game: game)
+    }
+    
+    private func showOneDayInRegularCalendar(state: Binding<AppState.AppData>, game: Game) {
+        injected.interactors.currentGameInteractor
+            .showOneDayInRegularCalendar(state: state, game: game)
     }
 }
 

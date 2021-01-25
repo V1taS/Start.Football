@@ -36,13 +36,13 @@ private extension CellGameCurrentGame {
     private var header: AnyView {
         AnyView(
             HStack {
-                TextButtonRound(name: typeGameString(),
+                TextButtonRound(name: typeGameString(game: game),
                                 isOn: false)
                 
-                TextButtonRound(name: formatGame(),
+                TextButtonRound(name: formatGame(game: game),
                                 isOn: false)
                 
-                TextButtonRound(name: privacyGame(),
+                TextButtonRound(name: privacyGame(game: game),
                                 isOn: false)
             }
         )
@@ -81,38 +81,22 @@ private extension CellGameCurrentGame {
     }
 }
 
+
 // MARK: Actions
 private extension CellGameCurrentGame {
-    private func typeGameString() -> String {
-        if game.miniFootball {
-            return "Мини-футбол"
-        }
-        
-        if game.usualFootball {
-            return "Футбол"
-        }
-        
-        if game.footsal {
-            return "Футзал"
-        }
-        return ""
-    }
-}
-
-private extension CellGameCurrentGame {
-    private func formatGame() -> String {
-        return "\(game.firstTeamCount) на \(game.secondTeamCount)"
+    private func typeGameString(game: Game) -> String {
+        injected.interactors.currentGameInteractor
+            .typeGameString(game: game)
     }
     
-    private func privacyGame() -> String {
-        if game.privacyGame == "open" {
-            return "Для всех"
-        }
-        
-        if game.privacyGame == "close" {
-            return "По заявке"
-        }
-        return ""
+    private func formatGame(game: Game) -> String {
+        injected.interactors.currentGameInteractor
+            .formatGame(game: game)
+    }
+    
+    private func privacyGame(game: Game) -> String {
+        injected.interactors.currentGameInteractor
+            .privacyGame(game: game)
     }
     
     private func presentMap() {

@@ -36,7 +36,9 @@ struct ButtonsCurrentGame: View {
                            image: "")
             }
         }
+        .padding(.bottom, 24)
     }
+    
 }
 
 struct ButtonsCurrentGame_Previews: PreviewProvider {

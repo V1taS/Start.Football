@@ -9,16 +9,16 @@ import SwiftUI
 
 struct CurrentGameView: View {
     
-    let game: Game
+    private let game: Game
+    init(game: Game) {
+        self.game = game
+    }
     
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
-    
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
     var body: some View {
         NavigationView {
@@ -29,7 +29,7 @@ struct CurrentGameView: View {
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
                         HeaderCurrentGame(game: game)
-
+                        
                         VStack(spacing: 0) {
                             Group {
                                 CellGameCurrentGame(game: game)
@@ -48,44 +48,66 @@ struct CurrentGameView: View {
                                 RulesCurrentGame(game: game)
                                 Divider()
                                 CommentCurrentGame(game: game)
-                                    .padding(.bottom, 16)
                                 ADVCurrentGame()
                                     .padding(.bottom, 16)
                                 ButtonsCurrentGame()
-                                    .padding(.bottom, 24)
                             }
                             Spacer()
                         }
                         .padding(.horizontal, 16)
                     }
                 }
-                
                 .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle("Игра №\(game.gameNumber)", displayMode: .large).accentColor(.primaryColor)
-                
-                                .navigationBarItems(trailing:
-                                                        HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {
-                                                            Button(action: {
-                                                                self.viewController?.dismiss(animated: true)
-                                                            }) {
-                                                                Image("currenrGameEdit")
-                                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
-                                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
-                                                            }
-                
-                                                            Button(action: {
-                                                                self.viewController?.dismiss(animated: true)
-                                                            }) {
-                                                                Image("currenrGameVector")
-                                                                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 24),
-                                                                           height: height * Size.shared.getAdaptSizeHeight(px: 24))
-                
-                                                            }
-                                                        }
-                                )
-                
+                .navigationBarItems(trailing:
+                                        HStack(spacing: 16) {
+                                            currenrGameEditButton
+                                            currenrGameSendInviteButton
+                                        })
             }
         }
+    }
+}
+
+
+// MARK: UI
+private extension CurrentGameView {
+    private var currenrGameEditButton: AnyView {
+        AnyView(
+            Button(action: {
+                currenrGameEditShow()
+            }
+            ) {
+                Image("currenrGameEdit")
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+            }
+        )
+    }
+}
+
+private extension CurrentGameView {
+    private var currenrGameSendInviteButton: AnyView {
+        AnyView(
+            Button(action: {
+                currenrGameSendInvite()
+            }) {
+                Image("currenrGameVector")
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+            }
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension CurrentGameView {
+    private func currenrGameEditShow() {
+        self.viewController?.dismiss(animated: true)
+    }
+    
+    private func currenrGameSendInvite() {
+        self.viewController?.dismiss(animated: true)
     }
 }
 

@@ -63,7 +63,7 @@ private extension MainView {
                     ScrollView(.vertical, showsIndicators: false) {
                         VStack(spacing: 16) {
                             moreGames
-                            plugGames
+                            allGames
                         }
                         .padding(16)
                     }
@@ -93,18 +93,18 @@ private extension MainView {
 }
 
 private extension MainView {
-    private var plugGames: AnyView {
+    private var allGames: AnyView {
         AnyView(
             VStack(spacing: 16) {
-                ForEach(appBinding.main.listAllGames.wrappedValue.sorted(by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
+                ForEach(appBinding.main.listAllGames.wrappedValue.sorted(
+                            by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
                     Button(action: {
-                            self.viewController?.present(style: .pageSheet) {
-                                CurrentGameView(game: game)
-                            } }) {
+                        currentGameShow(game: game)
+                    }) {
                         CellMainView(game: game)
                     }
-                    
-                    Button(action: {}) { ADVCurrentGame()}
+                                
+                                Button(action: {}) { ADVCurrentGame()}
                 }
                 .animation(.default)
                 Button(action: {}) { ADV()}
@@ -120,27 +120,48 @@ private extension MainView {
                 if appBinding.main.selectionGame.wrappedValue == .myGames {
                     VStack {
                         ScrollView(.vertical, showsIndicators: false) {
-                            if appBinding.main.listMyGames.wrappedValue.isEmpty {
-                                Plug(appBinding: appBinding,
-                                     text: "Пока у тебя нет игр",
-                                     createGame: true)
-                            } else {
-                                VStack(spacing: 16) {
-                                    ForEach(appBinding.main.listMyGames.wrappedValue.sorted(by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
-                                        Button(action: {
-                                                self.viewController?.present(style: .pageSheet) {
-                                                    CurrentGameView(game: game)
-                                                } }) {
-                                            CellMainView(game: game)
-                                            
-                                        }
-                                    }
-                                    .animation(.default)
-                                }
-                                .padding(.top)
-                            }
+                            myGamesIsEmpty
+                            myGameFull
                         }
                     }
+                }
+            }
+        )
+    }
+}
+
+private extension MainView {
+    private var myGamesIsEmpty: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if appBinding.main.listMyGames.wrappedValue.isEmpty {
+                    Plug(appBinding: appBinding,
+                         text: "Пока у тебя нет игр",
+                         createGame: true)
+                }
+            }
+        )
+    }
+}
+
+private extension MainView {
+    private var myGameFull: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if !appBinding.main.listMyGames.wrappedValue.isEmpty {
+                    VStack(spacing: 16) {
+                        ForEach(appBinding.main.listMyGames.wrappedValue.sorted(
+                                    by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
+                            Button(action: {
+                                currentGameShow(game: game)
+                                
+                            }) {
+                                CellMainView(game: game)
+                            }
+                                    }
+                        .animation(.default)
+                    }
+                    .padding(.top)
                 }
             }
         )
@@ -152,6 +173,12 @@ private extension MainView {
 private extension MainView {
     private func loadMoreGames() {
         appBinding.main.loadMoreGames.wrappedValue = false
+    }
+    
+    private func currentGameShow(game: Game) {
+        self.viewController?.present(style: .pageSheet) {
+            CurrentGameView(game: game)
+        }
     }
 }
 

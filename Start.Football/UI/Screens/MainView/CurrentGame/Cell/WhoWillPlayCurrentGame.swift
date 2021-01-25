@@ -10,36 +10,45 @@ import SwiftUI
 struct WhoWillPlayCurrentGame: View {
     
     @Environment(\.injected) private var injected: DIContainer
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    private var viewController: UIViewController? {
+        self.viewControllerHolder!
+    }
     
     private var game: Game
     init(game: Game) {
         self.game = game
     }
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("КТО БУДЕТ")
-                .foregroundColor(.secondaryColor)
-                .font(Font.event.robotoMedium18)
+            header
             
             HStack {
                 photos
                 Spacer()
-                showAllPlayers
+                allPlayers
             }
         }
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
+        .padding(.top, 24)
     }
 }
 
 // MARK: UI
 private extension WhoWillPlayCurrentGame {
+    private var header: AnyView {
+        AnyView(
+            Text("КТО БУДЕТ")
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoMedium18)
+        )
+    }
+}
+
+private extension WhoWillPlayCurrentGame {
     private var photos: AnyView {
         AnyView(
             HStack(alignment: .center, spacing: -15) {
-                
                 let plugPhotoPlayers = ["p1", "p2", "p3", "p4", "p5"]
                 ForEach(plugPhotoPlayers, id: \.self) { photo in
                     Image(photo)
@@ -52,10 +61,12 @@ private extension WhoWillPlayCurrentGame {
 }
 
 private extension WhoWillPlayCurrentGame {
-    private var showAllPlayers: AnyView {
+    private var allPlayers: AnyView {
         AnyView(
             HStack {
-                Button(action: {}) {
+                Button(action: {
+                    showAllPlayers()
+                }) {
                     Text("Посмотреть всех")
                         .foregroundColor(.primaryColor)
                         .font(Font.event.robotoRegular16)
@@ -63,6 +74,15 @@ private extension WhoWillPlayCurrentGame {
                 }
             }
         )
+    }
+}
+
+// MARK: Actions
+private extension WhoWillPlayCurrentGame {
+    private func showAllPlayers() {
+        self.viewController?.present(style: .fullScreen) {
+            
+        }
     }
 }
 

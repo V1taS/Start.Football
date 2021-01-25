@@ -8,7 +8,8 @@
 import Combine
 import SwiftUI
 
-protocol CurrentGameInteractor {
+protocol CurrentGameInteractor: CellCurrentGameInteractor, WhoWillPlayCurrentGameInteractor
+                                , CalendarCurrentGameInteractor {
 
 }
 

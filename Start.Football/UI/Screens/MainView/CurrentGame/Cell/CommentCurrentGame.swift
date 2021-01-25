@@ -28,6 +28,7 @@ struct CommentCurrentGame: View {
             Spacer()
         }
         .padding(.top, 24)
+        .padding(.bottom, 16)
     }
 }
 
