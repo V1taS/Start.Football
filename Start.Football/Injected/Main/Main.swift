@@ -13,6 +13,9 @@ extension AppState.AppData {
         var filter = Filter()
         
         // Main View
+        var listAllGames: [Game] = []
+        var listMyGames: [Game] = []
+        var currentPlayer = Player.plugPlayer
         var selectionGame: AppActions.MainActions.SelectionGame = .allGame
         var loadMoreGames = true
         var tag = 0

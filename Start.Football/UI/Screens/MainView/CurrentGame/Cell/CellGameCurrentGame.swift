@@ -52,7 +52,7 @@ private extension CellGameCurrentGame {
         AnyView(
             HStack(spacing: 10) {
                 Image("cellLocator")
-                Text("\(appBinding.currentGame.addressGame.wrappedValue)")
+                Text("\(appBinding.currentGame.game.address.wrappedValue)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                 Spacer()
@@ -82,15 +82,15 @@ private extension CellGameCurrentGame {
 // MARK: Actions
 private extension CellGameCurrentGame {
     private func typeGameString() -> String {
-        if appBinding.currentGame.miniFootball.wrappedValue {
+        if appBinding.currentGame.game.miniFootball.wrappedValue {
             return "Мини-футбол"
         }
         
-        if appBinding.currentGame.football.wrappedValue {
+        if appBinding.currentGame.game.usualFootball.wrappedValue {
             return "Футбол"
         }
         
-        if appBinding.currentGame.footsal.wrappedValue {
+        if appBinding.currentGame.game.footsal.wrappedValue {
             return "Футзал"
         }
         return ""
@@ -99,15 +99,15 @@ private extension CellGameCurrentGame {
 
 private extension CellGameCurrentGame {
     private func formatGame() -> String {
-        return "\(appBinding.currentGame.firstValue.wrappedValue) на \(appBinding.currentGame.secondValue.wrappedValue)"
+        return "\(appBinding.currentGame.game.firstTeamCount.wrappedValue) на \(appBinding.currentGame.game.secondTeamCount.wrappedValue)"
     }
     
     private func privacyGame() -> String {
-        if appBinding.currentGame.privacyGame.wrappedValue == .open {
+        if appBinding.currentGame.game.privacyGame.wrappedValue == "open" {
             return "Для всех"
         }
         
-        if appBinding.currentGame.privacyGame.wrappedValue == .close {
+        if appBinding.currentGame.game.privacyGame.wrappedValue == "close" {
             return "По заявке"
         }
         return ""

@@ -62,7 +62,7 @@ struct CurrentGameView: View {
                 }
                 
                 .edgesIgnoringSafeArea(.all)
-                .navigationBarTitle("Игра №\(appBinding.currentGame.idGame.wrappedValue)", displayMode: .large).accentColor(.primaryColor)
+                .navigationBarTitle("Игра №\(appBinding.currentGame.game.gameNumber.wrappedValue)", displayMode: .large).accentColor(.primaryColor)
                 
                                 .navigationBarItems(trailing:
                                                         HStack(spacing: width * Size.shared.getAdaptSizeWidth(px: 16)) {

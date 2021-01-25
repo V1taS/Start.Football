@@ -20,7 +20,7 @@ struct RulesCurrentGame: View {
                 Text("ПРАВИЛА")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("\(appBinding.currentGame.ownRules.wrappedValue)")
+                Text("\(appBinding.currentGame.game.ownRulesGame.wrappedValue)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))

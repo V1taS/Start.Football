@@ -10,10 +10,12 @@ import Foundation
 struct Game: Hashable, Decodable {
     var id: String
     var name: String
+    var imageStringURL: String
+    var gameNumber: String
     var address: String
     var costGame: String
     var oneGameDate: Date
-    var regularGame: Bool
+    var regularGame: String
     var listGameRegularGame: [Bool]
     var listDateRegularGame: [Date]
     var miniFootball: Bool
@@ -42,13 +44,22 @@ struct Game: Hashable, Decodable {
     var descriptionGame: String
     var ownRulesGame: String
     var commentFromOrganizerGame: String
+    var mo: Bool
+    var tu: Bool
+    var we: Bool
+    var th: Bool
+    var fr: Bool
+    var sa: Bool
+    var su: Bool
     
     init(id: String,
          name: String,
+         imageStringURL: String,
+         gameNumber: String,
          address: String,
          costGame: String,
          oneGameDate: Date,
-         regularGame: Bool,
+         regularGame: String,
          listGameRegularGame: [Bool],
          listDateRegularGame: [Date],
          miniFootball: Bool,
@@ -76,9 +87,18 @@ struct Game: Hashable, Decodable {
          parkingCost: String,
          descriptionGame: String,
          ownRulesGame: String,
-         commentFromOrganizerGame: String) {
+         commentFromOrganizerGame: String,
+         mo: Bool,
+         tu: Bool,
+         we: Bool,
+         th: Bool,
+         fr: Bool,
+         sa: Bool,
+         su: Bool) {
         self.id = UUID().uuidString
         self.name = name
+        self.imageStringURL = imageStringURL
+        self.gameNumber = gameNumber
         self.address = address
         self.costGame = costGame
         self.oneGameDate = oneGameDate
@@ -111,6 +131,13 @@ struct Game: Hashable, Decodable {
         self.descriptionGame = descriptionGame
         self.ownRulesGame = ownRulesGame
         self.commentFromOrganizerGame = commentFromOrganizerGame
+        self.mo = mo
+        self.tu = tu
+        self.we = we
+        self.th = th
+        self.fr = fr
+        self.sa = sa
+        self.su = su
     }
     
     func hash(into hasher: inout Hasher) {
@@ -127,4 +154,50 @@ struct Game: Hashable, Decodable {
         let lowercasedFilter = filter.lowercased()
         return name.lowercased().contains(lowercasedFilter)
     }
+}
+
+extension Game {
+    static var plugGame = Game(id: "1251-117361-137138-1212",
+                               name: "Тренировка в ФОК",
+                               imageStringURL: "",
+                               gameNumber: "4867",
+                               address: "ул. Хачтуряна, 12, стр. 2",
+                               costGame: "500",
+                               oneGameDate: Date(),
+                               regularGame: "no",
+                               listGameRegularGame: [false, false, false, false, false, false, false],
+                               listDateRegularGame: [Date(), Date(), Date(), Date(), Date(), Date(), Date()],
+                               miniFootball: true,
+                               usualFootball: false,
+                               footsal: false,
+                               street: true,
+                               manege: false,
+                               hall: false,
+                               parquet: false,
+                               grass: true,
+                               caoutchouc: false,
+                               synthetics: false,
+                               hair: false,
+                               crumb: true,
+                               firstTeamCount: "6",
+                               secondTeamCount: "6",
+                               maxCountTeams: 3,
+                               maxCountPlayers: 15,
+                               maxReservePlayers: 3,
+                               privacyGame: "open",
+                               dressingRooms: true,
+                               showers: true,
+                               typeOfParking: "Бесплатная",
+                               paymentForParking: "",
+                               parkingCost: "0",
+                               descriptionGame: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
+                               ownRulesGame: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
+                               commentFromOrganizerGame: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!",
+                               mo: false,
+                               tu: false,
+                               we: true,
+                               th: false,
+                               fr: false,
+                               sa: false,
+                               su: false)
 }

@@ -20,7 +20,7 @@ struct CommentCurrentGame: View {
                 Text("КОММЕНТАРИЙ")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("\(appBinding.currentGame.commentFromOrganizer.wrappedValue)")
+                Text("\(appBinding.currentGame.game.commentFromOrganizerGame.wrappedValue)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))

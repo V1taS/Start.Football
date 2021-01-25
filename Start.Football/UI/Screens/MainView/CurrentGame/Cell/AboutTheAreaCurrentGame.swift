@@ -19,7 +19,7 @@ struct AboutTheAreaCurrentGame: View {
                 Text("О ПЛОЩАДКЕ")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoMedium18)
-                Text("\(appBinding.currentGame.descriptionPlaying.wrappedValue)")
+                Text("\(appBinding.currentGame.game.descriptionGame.wrappedValue)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
