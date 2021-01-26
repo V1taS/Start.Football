@@ -32,6 +32,7 @@ struct CalendarCurrentGame: View {
     }
 }
 
+
 // MARK: UI
 private extension CalendarCurrentGame {
     private var header: AnyView {
@@ -97,63 +98,67 @@ private extension CalendarCurrentGame {
 private extension CalendarCurrentGame {
     private var regularGame: some View {
         VStack(alignment: .leading, spacing: 8) {
-            HStack(spacing: 10) {
-                Image("cellDate")
-                
-                if game.listGameRegularGame[0] {
-                    VStack(spacing: 0) {
-                        Text("Понедельник в \(timeString(date: game.listDateRegularGame[0]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            
+            if game.listGameRegularGame[0] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Понедельник в \(timeString(date: game.listDateRegularGame[0]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
-                
-                if game.listGameRegularGame[1] {
-                    VStack(spacing: 0) {
-                        Text("Вторник в \(timeString(date: game.listDateRegularGame[1]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            }
+            
+            if game.listGameRegularGame[1] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Вторник в \(timeString(date: game.listDateRegularGame[1]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
-                
-                if game.listGameRegularGame[2] {
-                    VStack(spacing: 0) {
-                        Text("Среда в \(timeString(date: game.listDateRegularGame[2]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            }
+            
+            if game.listGameRegularGame[2] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Среда в \(timeString(date: game.listDateRegularGame[2]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
-                
-                if game.listGameRegularGame[3] {
-                    VStack(spacing: 0) {
-                        Text("Четверг в \(timeString(date: game.listDateRegularGame[3]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            }
+            
+            if game.listGameRegularGame[3] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Четверг в \(timeString(date: game.listDateRegularGame[3]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
-                
-                if game.listGameRegularGame[4] {
-                    VStack(spacing: 0) {
-                        Text("Пятница в \(timeString(date: game.listDateRegularGame[4]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            }
+            
+            if game.listGameRegularGame[4] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Пятница в \(timeString(date: game.listDateRegularGame[4]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
-                
-                if game.listGameRegularGame[5] {
-                    VStack(spacing: 0) {
-                        Text("Суббота в \(timeString(date: game.listDateRegularGame[5]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            }
+            
+            if game.listGameRegularGame[5] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Суббота в \(timeString(date: game.listDateRegularGame[5]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
-                
-                if game.listGameRegularGame[6] {
-                    VStack(spacing: 0) {
-                        Text("Воскресенье в \(timeString(date: game.listDateRegularGame[6]))")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                    }
+            }
+            
+            if game.listGameRegularGame[6] {
+                HStack(spacing: 10) {
+                    Image("cellDate")
+                    Text("Воскресенье в \(timeString(date: game.listDateRegularGame[6]))")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoRegular16)
                 }
             }
         }
@@ -163,6 +168,7 @@ private extension CalendarCurrentGame {
         .animation(.default)
     }
 }
+
 
 // MARK: Actions
 private extension CalendarCurrentGame {

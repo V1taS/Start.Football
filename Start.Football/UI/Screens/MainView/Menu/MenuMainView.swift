@@ -8,7 +8,12 @@
 import SwiftUI
 
 struct MenuMainView: View {
-    @Binding var selectionGame: AppActions.MainActions.SelectionGame
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
@@ -16,39 +21,17 @@ struct MenuMainView: View {
         VStack {
             Divider()
                 .offset(y: 39)
+            
             HStack {
                 VStack(spacing: 9) {
-                    Button(action: {selectionGame = .allGame}) {
-                        Text("Все игры")
-                            .font(selectionGame == .allGame ?
-                                    Font.event.robotoMedium16 :
-                                    Font.event.robotoRegular16)
-                            .foregroundColor(selectionGame == .allGame ?
-                                                .primaryColor :
-                                                .secondaryColor)
-                            .fontWeight(selectionGame == .allGame ?
-                                            .bold :
-                                            .regular)
-                    }
-                    Color(selectionGame == .allGame ? .primaryColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 2),
-                               alignment: .center)
+                    allGamesButton
+                    dividerIsOn
                 }
                 Spacer()
+                
                 VStack(spacing: 9) {
-                    Button(action: {selectionGame = .myGames}) {
-                        Text("Мои игры")
-                            .font(selectionGame == .myGames ?
-                                    Font.event.robotoMedium16 :
-                                    Font.event.robotoRegular16)
-                            .foregroundColor(selectionGame == .myGames ? .primaryColor : .secondaryColor)
-                            .fontWeight(selectionGame == .myGames ? .bold : .regular)
-                    }
-                    Color(selectionGame == .myGames ? .primaryColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 2),
-                               alignment: .center)
+                    myGamesButton
+                    dividerIsOff
                 }
             }
             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 64))
@@ -56,8 +39,71 @@ struct MenuMainView: View {
     }
 }
 
+// MARK: UI
+private extension MenuMainView {
+    private var allGamesButton: AnyView {
+        AnyView(
+            Button(action: {
+                appBinding.main.selectionGame.wrappedValue = .allGame
+                
+            }) {
+                Text("Все игры")
+                    .font(appBinding.main.selectionGame.wrappedValue == .allGame ?
+                            Font.event.robotoMedium16 :
+                            Font.event.robotoRegular16)
+                    .foregroundColor(appBinding.main.selectionGame.wrappedValue == .allGame ?
+                                        .primaryColor :
+                                        .secondaryColor)
+                    .fontWeight(appBinding.main.selectionGame.wrappedValue == .allGame ?
+                                    .bold :
+                                    .regular)
+            }
+        )
+    }
+}
+
+private extension MenuMainView {
+    private var dividerIsOn: AnyView {
+        AnyView(
+            Color(appBinding.main.selectionGame.wrappedValue == .allGame ? .primaryColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
+                       height: height * Size.shared.getAdaptSizeHeight(px: 2),
+                       alignment: .center)
+        )
+    }
+}
+
+private extension MenuMainView {
+    private var myGamesButton: AnyView {
+        AnyView(
+            Button(action: {
+                appBinding.main.selectionGame.wrappedValue = .myGames
+                
+            }) {
+                Text("Мои игры")
+                    .font(appBinding.main.selectionGame.wrappedValue == .myGames ?
+                            Font.event.robotoMedium16 :
+                            Font.event.robotoRegular16)
+                    .foregroundColor(appBinding.main.selectionGame.wrappedValue == .myGames ? .primaryColor : .secondaryColor)
+                    .fontWeight(appBinding.main.selectionGame.wrappedValue == .myGames ? .bold : .regular)
+            }
+        )
+    }
+}
+
+private extension MenuMainView {
+    private var dividerIsOff: AnyView {
+        AnyView(
+            Color(appBinding.main.selectionGame.wrappedValue == .myGames ? .primaryColor : #colorLiteral(red: 1, green: 1, blue: 1, alpha: 0))
+                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 80),
+                       height: height * Size.shared.getAdaptSizeHeight(px: 2),
+                       alignment: .center)
+        )
+    }
+}
+
 struct MenuMainView_Previews: PreviewProvider {
     static var previews: some View {
-        MenuMainView(selectionGame: .constant(.allGame))
+        MenuMainView(appBinding: .constant(.init()))
     }
 }

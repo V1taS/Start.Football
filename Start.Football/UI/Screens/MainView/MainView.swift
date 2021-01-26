@@ -48,7 +48,7 @@ private extension MainView {
 private extension MainView {
     private var menu: AnyView {
         AnyView(
-            MenuMainView(selectionGame: appBinding.main.selectionGame)
+            MenuMainView(appBinding: appBinding)
                 .padding(.top, 8)
                 .padding(.bottom, 3)
         )
@@ -104,10 +104,10 @@ private extension MainView {
                         CellMainView(game: game)
                     }
                                 
-                                Button(action: {}) { ADVCurrentGame()}
+                                Button(action: {}) { ADVone()}
                 }
                 .animation(.default)
-                Button(action: {}) { ADV()}
+                Button(action: {}) { ADVtwo()}
             }
         )
     }

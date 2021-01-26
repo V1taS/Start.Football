@@ -78,7 +78,7 @@ extension AppState.AppData {
         var typeOfParking: AppActions.CreatGameActions.TypeOfParking = .freeCity
         var paymentForParking: AppActions.CreatGameActions.PaymentForParking = .non
         
-        var parkingCost: String = ""
+        var parkingCost: String = "0"
         var parkingCostSuccess = true
         
         // MARK: - Step 4

@@ -7,7 +7,7 @@
 
 import SwiftUI
 
-struct ADV: View {
+struct ADVtwo: View {
     var body: some View {
         Image("adv")
             .resizable()
@@ -18,6 +18,6 @@ struct ADV: View {
 
 struct ADV_Previews: PreviewProvider {
     static var previews: some View {
-        ADV()
+        ADVtwo()
     }
 }

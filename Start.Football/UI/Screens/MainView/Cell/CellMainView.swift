@@ -16,15 +16,9 @@ struct CellMainView: View {
     
     var body: some View {
         ZStack {
-            Color(.whiteColor)
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                .overlay(RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.whiteColor))
+            background
             
-            VStack(alignment: .leading,
-                   spacing: 0) {
-                
-                
+            VStack(alignment: .leading, spacing: 0) {
                 VStack(alignment: .leading, spacing: 16) {
                     header
                     date
@@ -44,11 +38,23 @@ struct CellMainView: View {
 
 // MARK: UI
 private extension CellMainView {
+    private var background: AnyView {
+        AnyView(
+            Color(.whiteColor)
+                .clipShape(RoundedRectangle(cornerRadius: 5))
+                .overlay(RoundedRectangle(cornerRadius: 5)
+                            .stroke(Color.whiteColor))
+        )
+    }
+}
+
+private extension CellMainView {
     private var header: AnyView {
         AnyView(
             Text(game.name)
                     .font(Font.event.robotoBold20)
                     .foregroundColor(.secondaryColor)
+                .lineLimit(1)
         )
     }
 }
@@ -61,6 +67,7 @@ private extension CellMainView {
                     Text(selectDate(regularGame: game.regularGame, oneGameDate: game.oneGameDate))
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoRegular16)
+                        .lineLimit(1)
                 }
         )
     }
@@ -74,6 +81,7 @@ private extension CellMainView {
                 Text("\(game.address)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
+                    .lineLimit(2)
                 Spacer()
                 distance
             }

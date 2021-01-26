@@ -7,18 +7,16 @@
 
 import SwiftUI
 
-struct ADVCurrentGame: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
+struct ADVone: View {
+
     var body: some View {
         ZStack {
             Button(action: {}) {
                 Image("adv2")
                     .resizable()
                     .cornerRadius(5)
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 343),
-                           height: height * Size.shared.getAdaptSizeHeight(px: 120))
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 343),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 120))
             }
         }
     }
@@ -26,6 +24,6 @@ struct ADVCurrentGame: View {
 
 struct ADVCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        ADVCurrentGame()
+        ADVone()
     }
 }

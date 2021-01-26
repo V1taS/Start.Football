@@ -19,33 +19,58 @@ struct HeaderCurrentGame: View {
     
     var body: some View {
         ZStack {
-            Image("currentGamebg")
-                .resizable()
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 375),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 230))
+            background
             
             HStack {
-                Text("\(game.name)")
-                    .foregroundColor(.whiteColor)
-                    .font(Font.event.robotoBold20)
-                    .lineLimit(3)
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 200),
-                           alignment: .leading)
+                nameGame
                 Spacer()
-                ZStack {
-                    Color(.primaryColor)
-                        .clipShape(RoundedRectangle(cornerRadius: 5))
-                        .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
-                               height: height * Size.shared.getAdaptSizeHeight(px: 52))
-                    Text("\(game.costGame) ₽")
-                        .foregroundColor(.whiteColor)
-                        .font(Font.event.robotoRegular24)
-                }
+                costGame
             }
             .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
             .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0),
                     y: height * Size.shared.getAdaptSizeHeight(px: 75))
         }
+    }
+}
+
+// MARK: UI
+private extension HeaderCurrentGame {
+    private var background: AnyView {
+        AnyView(
+            Image("currentGamebg")
+                .resizable()
+                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 375),
+                       height: height * Size.shared.getAdaptSizeHeight(px: 230))
+        )
+    }
+}
+
+private extension HeaderCurrentGame {
+    private var nameGame: AnyView {
+        AnyView(
+            Text("\(game.name)")
+                .foregroundColor(.whiteColor)
+                .font(Font.event.robotoBold20)
+                .lineLimit(3)
+                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 200),
+                       alignment: .leading)
+        )
+    }
+}
+
+private extension HeaderCurrentGame {
+    private var costGame: AnyView {
+        AnyView(
+            ZStack {
+                Color(.primaryColor)
+                    .clipShape(RoundedRectangle(cornerRadius: 5))
+                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
+                           height: height * Size.shared.getAdaptSizeHeight(px: 52))
+                Text("\(game.costGame) ₽")
+                    .foregroundColor(.whiteColor)
+                    .font(Font.event.robotoRegular24)
+            }
+        )
     }
 }
 

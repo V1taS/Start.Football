@@ -17,18 +17,36 @@ struct CommentCurrentGame: View {
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: 16) {
-                Text("КОММЕНТАРИЙ")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium18)
-                Text("\(game.commentFromOrganizerGame)")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
-                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
+                header
+                commentFromOrganizerGame
             }
             Spacer()
         }
         .padding(.top, 24)
         .padding(.bottom, 16)
+    }
+}
+
+
+// MARK: UI
+private extension CommentCurrentGame {
+    private var header: AnyView {
+        AnyView(
+            Text("КОММЕНТАРИЙ")
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoMedium18)
+        )
+    }
+}
+
+private extension CommentCurrentGame {
+    private var commentFromOrganizerGame: AnyView {
+        AnyView(
+            Text("\(game.commentFromOrganizerGame)")
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoRegular16)
+                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 330))
+        )
     }
 }
 

@@ -34,6 +34,7 @@ struct WhoWillPlayCurrentGame: View {
     }
 }
 
+
 // MARK: UI
 private extension WhoWillPlayCurrentGame {
     private var header: AnyView {
@@ -77,10 +78,11 @@ private extension WhoWillPlayCurrentGame {
     }
 }
 
+
 // MARK: Actions
 private extension WhoWillPlayCurrentGame {
     private func showAllPlayers() {
-        self.viewController?.present(style: .fullScreen) {
+        self.viewController?.present(style: .pageSheet) {
             
         }
     }

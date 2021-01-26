@@ -8,39 +8,76 @@
 import SwiftUI
 
 struct OrganizerCurrentGame: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
+    
+    private var game: Game
+    init(game: Game) {
+        self.game = game
+    }
+    @Environment(\.injected) private var injected: DIContainer
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    private var viewController: UIViewController? {
+        self.viewControllerHolder!
+    }
+    
     var body: some View {
         HStack {
-            VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-                Text("ОРГАНИЗАТОР")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium18)
-                
-                Button(action: {}) {
-                    HStack {
-                        Image("testOrganizator")
-                            .resizable()
-                            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32),
-                                   height: height * Size.shared.getAdaptSizeHeight(px: 32))
-                        Text("Юрий Долговязов")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoBold20)
-                        Spacer()
-                        Text(">")
-                            .foregroundColor(.primaryColor)
-                            .font(Font.event.robotoBold20)
-                    }
-                }
+            VStack(alignment: .leading, spacing: 16) {
+                header
+                organizatorButton
             }
             Spacer()
         }
-        .padding(.vertical, height * Size.shared.getAdaptSizeHeight(px: 24))
+        .padding(.vertical, 24)
+    }
+}
+
+
+// MARK: UI
+private extension OrganizerCurrentGame {
+    private var header: AnyView {
+        AnyView(
+            Text("ОРГАНИЗАТОР")
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoMedium18)
+        )
+    }
+}
+
+private extension OrganizerCurrentGame {
+    private var organizatorButton: AnyView {
+        AnyView(
+            Button(action: {
+                showOrganizator()
+            }) {
+                HStack {
+                    Image("testOrganizator")
+                        .resizable()
+                        .frame(width: 32, height: 32)
+                    Text("Юрий Долговязов")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoBold20)
+                    Spacer()
+                    Text(">")
+                        .foregroundColor(.primaryColor)
+                        .font(Font.event.robotoBold20)
+                }
+            }
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension OrganizerCurrentGame {
+    private func showOrganizator() {
+        self.viewController?.present(style: .pageSheet) {
+            
+        }
     }
 }
 
 struct OrganizerCurrentGame_Previews: PreviewProvider {
     static var previews: some View {
-        OrganizerCurrentGame()
+        OrganizerCurrentGame(game: .plugGame)
     }
 }

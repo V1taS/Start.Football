@@ -56,12 +56,14 @@
 		1B50791325BF744B00F4FA37 /* CellCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */; };
 		1B50791625BF76B600F4FA37 /* WhoWillPlayCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791525BF76B600F4FA37 /* WhoWillPlayCurrentGameInteractor.swift */; };
 		1B50791925BF789900F4FA37 /* CalendarCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791825BF789900F4FA37 /* CalendarCurrentGameInteractor.swift */; };
+		1B50791C25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791B25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift */; };
+		1B50792225BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50792125BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift */; };
 		1B5CCDB7257ED7AB0000BC79 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */; };
 		1B5E4DD925A74CA500287D98 /* BackButtonCreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */; };
 		1B67934C25B2F78C00DADFC4 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B67934B25B2F78C00DADFC4 /* AppActions.swift */; };
 		1B67935A25B31DB900DADFC4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B67935925B31DB900DADFC4 /* Store.swift */; };
 		1B68131525744A7F00B54977 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131425744A7F00B54977 /* KeyboardListener.swift */; };
-		1B68131925745DEE00B54977 /* ADV.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131825745DEE00B54977 /* ADV.swift */; };
+		1B68131925745DEE00B54977 /* ADVtwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131825745DEE00B54977 /* ADVtwo.swift */; };
 		1B68131C2574602D00B54977 /* Plug.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131B2574602D00B54977 /* Plug.swift */; };
 		1B68132525746E4B00B54977 /* MapGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68132425746E4B00B54977 /* MapGameView.swift */; };
 		1B6A0903257041330001861F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A0902257041330001861F /* Size.swift */; };
@@ -139,7 +141,7 @@
 		1BF3663325A7829D00B196EE /* AboutTheAreaCurrentGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3663225A7829D00B196EE /* AboutTheAreaCurrentGame.swift */; };
 		1BF3663725A782BB00B196EE /* RulesCurrentGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3663625A782BB00B196EE /* RulesCurrentGame.swift */; };
 		1BF3663B25A782DA00B196EE /* CommentCurrentGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3663A25A782DA00B196EE /* CommentCurrentGame.swift */; };
-		1BF3663F25A782F800B196EE /* ADVCurrentGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3663E25A782F800B196EE /* ADVCurrentGame.swift */; };
+		1BF3663F25A782F800B196EE /* ADVone.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3663E25A782F800B196EE /* ADVone.swift */; };
 		1BF3664325A7832700B196EE /* ButtonsCurrentGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF3664225A7832700B196EE /* ButtonsCurrentGame.swift */; };
 		1BF5BA9925B4BC8000A06872 /* DependencyInjector.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5BA9825B4BC8000A06872 /* DependencyInjector.swift */; };
 		1BF5BA9C25B4BCCC00A06872 /* InteractorsContainer.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1BF5BA9B25B4BCCC00A06872 /* InteractorsContainer.swift */; };
@@ -197,12 +199,14 @@
 		1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCurrentGameInteractor.swift; sourceTree = "<group>"; };
 		1B50791525BF76B600F4FA37 /* WhoWillPlayCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = WhoWillPlayCurrentGameInteractor.swift; sourceTree = "<group>"; };
 		1B50791825BF789900F4FA37 /* CalendarCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CalendarCurrentGameInteractor.swift; sourceTree = "<group>"; };
+		1B50791B25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCurrentGameInteractor.swift; sourceTree = "<group>"; };
+		1B50792125BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsCurrentGameInteractor.swift; sourceTree = "<group>"; };
 		1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
 		1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonCreateGameView.swift; sourceTree = "<group>"; };
 		1B67934B25B2F78C00DADFC4 /* AppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		1B67935925B31DB900DADFC4 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1B68131425744A7F00B54977 /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
-		1B68131825745DEE00B54977 /* ADV.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADV.swift; sourceTree = "<group>"; };
+		1B68131825745DEE00B54977 /* ADVtwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVtwo.swift; sourceTree = "<group>"; };
 		1B68131B2574602D00B54977 /* Plug.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Plug.swift; sourceTree = "<group>"; };
 		1B68132425746E4B00B54977 /* MapGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameView.swift; sourceTree = "<group>"; };
 		1B6A0902257041330001861F /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
@@ -281,7 +285,7 @@
 		1BF3663225A7829D00B196EE /* AboutTheAreaCurrentGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutTheAreaCurrentGame.swift; sourceTree = "<group>"; };
 		1BF3663625A782BB00B196EE /* RulesCurrentGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RulesCurrentGame.swift; sourceTree = "<group>"; };
 		1BF3663A25A782DA00B196EE /* CommentCurrentGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CommentCurrentGame.swift; sourceTree = "<group>"; };
-		1BF3663E25A782F800B196EE /* ADVCurrentGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVCurrentGame.swift; sourceTree = "<group>"; };
+		1BF3663E25A782F800B196EE /* ADVone.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVone.swift; sourceTree = "<group>"; };
 		1BF3664225A7832700B196EE /* ButtonsCurrentGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsCurrentGame.swift; sourceTree = "<group>"; };
 		1BF5BA9825B4BC8000A06872 /* DependencyInjector.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DependencyInjector.swift; sourceTree = "<group>"; };
 		1BF5BA9B25B4BCCC00A06872 /* InteractorsContainer.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = InteractorsContainer.swift; sourceTree = "<group>"; };
@@ -345,7 +349,8 @@
 		1B127E1B25BA5A3F00C97BE9 /* ADV */ = {
 			isa = PBXGroup;
 			children = (
-				1B68131825745DEE00B54977 /* ADV.swift */,
+				1BF3663E25A782F800B196EE /* ADVone.swift */,
+				1B68131825745DEE00B54977 /* ADVtwo.swift */,
 			);
 			path = ADV;
 			sourceTree = "<group>";
@@ -782,6 +787,8 @@
 				1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */,
 				1B50791525BF76B600F4FA37 /* WhoWillPlayCurrentGameInteractor.swift */,
 				1B50791825BF789900F4FA37 /* CalendarCurrentGameInteractor.swift */,
+				1B50791B25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift */,
+				1B50792125BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift */,
 			);
 			path = CurrentGame;
 			sourceTree = "<group>";
@@ -877,7 +884,6 @@
 				1BF3663225A7829D00B196EE /* AboutTheAreaCurrentGame.swift */,
 				1BF3663625A782BB00B196EE /* RulesCurrentGame.swift */,
 				1BF3663A25A782DA00B196EE /* CommentCurrentGame.swift */,
-				1BF3663E25A782F800B196EE /* ADVCurrentGame.swift */,
 				1BF3664225A7832700B196EE /* ButtonsCurrentGame.swift */,
 			);
 			path = Cell;
@@ -996,10 +1002,11 @@
 				1BAA203B25BB8AE000888B82 /* PlaceGame.swift in Sources */,
 				1B155F4B256C15F600019C2F /* TextFieldViewOld.swift in Sources */,
 				1BD9109A25759C47005B3CFC /* ProfileView.swift in Sources */,
-				1B68131925745DEE00B54977 /* ADV.swift in Sources */,
+				1B68131925745DEE00B54977 /* ADVtwo.swift in Sources */,
 				1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */,
 				1B966C23257702D70084FFB4 /* ButtonApple.swift in Sources */,
 				1B155F3C256C07BE00019C2F /* SignUpView.swift in Sources */,
+				1B50791C25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift in Sources */,
 				1BF3662725A7820E00B196EE /* CalendarCurrentGame.swift in Sources */,
 				1B155F53256C471D00019C2F /* CheckboxFieldView.swift in Sources */,
 				1BF3664325A7832700B196EE /* ButtonsCurrentGame.swift in Sources */,
@@ -1057,7 +1064,7 @@
 				1B155F0B256C06D000019C2F /* AuthView.swift in Sources */,
 				1B06E0C525B62B5400B1B8D6 /* TextView.swift in Sources */,
 				1B04FC372571A56A00AC40D5 /* UIScreen.swift in Sources */,
-				1BF3663F25A782F800B196EE /* ADVCurrentGame.swift in Sources */,
+				1BF3663F25A782F800B196EE /* ADVone.swift in Sources */,
 				1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */,
 				1BA208B225A77795005B4D0C /* HeaderMainView.swift in Sources */,
 				1BAFF63925BC7CE800C9D2E5 /* CurrentGameActions.swift in Sources */,
@@ -1075,6 +1082,7 @@
 				1B03BE7125B7A64D00F032F7 /* MainActions.swift in Sources */,
 				1BF3662F25A7827700B196EE /* OrganizerCurrentGame.swift in Sources */,
 				1B78CCEC256DC2C200297221 /* TabViewApp.swift in Sources */,
+				1B50792225BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift in Sources */,
 				1BF3661A25A7811000B196EE /* HeaderCurrentGame.swift in Sources */,
 				1BF3662425A781B100B196EE /* WhoWillPlayCurrentGame.swift in Sources */,
 				1B37B01425AF316B0007AEF3 /* AppEnvironment.swift in Sources */,

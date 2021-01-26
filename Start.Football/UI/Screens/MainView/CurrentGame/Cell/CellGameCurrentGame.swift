@@ -31,6 +31,7 @@ struct CellGameCurrentGame: View {
     }
 }
 
+
 // MARK: UI
 private extension CellGameCurrentGame {
     private var header: AnyView {

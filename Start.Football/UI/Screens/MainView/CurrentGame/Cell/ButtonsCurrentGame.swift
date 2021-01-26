@@ -8,17 +8,17 @@
 import SwiftUI
 
 struct ButtonsCurrentGame: View {
+    
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
-    
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
+
     var body: some View {
-        VStack(spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
-            Button(action: {}) {
+        VStack(spacing: 16) {
+            Button(action: {
+                signUpForGame()
+            }) {
                 ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
                            borderColor: .primaryColor,
@@ -27,7 +27,9 @@ struct ButtonsCurrentGame: View {
                            image: "")
             }
             
-            Button(action: {}) {
+            Button(action: {
+                signUpForReserve()
+            }) {
                 ButtonView(background: .whiteColor,
                            textColor: .primaryColor,
                            borderColor: .primaryColor,
@@ -39,6 +41,21 @@ struct ButtonsCurrentGame: View {
         .padding(.bottom, 24)
     }
     
+}
+
+// MARK: Actions
+private extension ButtonsCurrentGame {
+    private func signUpForGame() {
+        self.viewController?.present(style: .pageSheet) {
+            
+        }
+    }
+    
+    private func signUpForReserve() {
+        self.viewController?.present(style: .pageSheet) {
+            
+        }
+    }
 }
 
 struct ButtonsCurrentGame_Previews: PreviewProvider {

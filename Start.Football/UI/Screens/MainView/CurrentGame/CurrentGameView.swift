@@ -37,9 +37,9 @@ struct CurrentGameView: View {
                                 WhoWillPlayCurrentGame(game: game)
                                 CalendarCurrentGame(game: game)
                                 Divider()
-                                AboutCurrentGame()
+                                AboutCurrentGame(game: game)
                                 Divider()
-                                OrganizerCurrentGame()
+                                OrganizerCurrentGame(game: game)
                                 Divider()
                             }
                             Group {
@@ -48,7 +48,7 @@ struct CurrentGameView: View {
                                 RulesCurrentGame(game: game)
                                 Divider()
                                 CommentCurrentGame(game: game)
-                                ADVCurrentGame()
+                                ADVone()
                                     .padding(.bottom, 16)
                                 ButtonsCurrentGame()
                             }
