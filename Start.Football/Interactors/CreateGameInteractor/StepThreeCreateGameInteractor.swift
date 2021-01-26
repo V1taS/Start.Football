@@ -32,6 +32,9 @@ protocol StepThreeCreateGameInteractor {
     func oneTime(state: Binding<AppState.AppData>)
     func inAnHour(state: Binding<AppState.AppData>)
     func non(state: Binding<AppState.AppData>)
+    
+    func dressingRooms(state: Binding<AppState.AppData>)
+    func showers(state: Binding<AppState.AppData>)
 }
 
 // MARK: Type Game
@@ -145,5 +148,13 @@ extension CreateGameInteractorImpl {
     
     func non(state: Binding<AppState.AppData>) {
         state.createGame.paymentForParking.wrappedValue = .non
+    }
+    
+    func dressingRooms(state: Binding<AppState.AppData>) {
+        state.createGame.dressingRooms.wrappedValue.toggle()
+    }
+    
+    func showers(state: Binding<AppState.AppData>) {
+        state.createGame.showers.wrappedValue.toggle()
     }
 }

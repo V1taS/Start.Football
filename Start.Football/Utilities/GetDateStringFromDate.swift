@@ -19,10 +19,9 @@ class GetDateStringFromDate {
         return time
     }
     
-    // MARK: Преобразуем дату: "четверг 21 января 2021"
+    // MARK: Преобразуем дату: "четверг"
     func getDateString(date: Date) -> String {
         let dateFormatter = DateFormatter()
-//        dateFormatter.dateFormat = "EEEE d MMMM yyyy"
         dateFormatter.dateFormat = "EEEE"
         dateFormatter.locale = Locale(identifier: "ru_RU")
         let time = dateFormatter.string(from: date)

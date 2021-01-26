@@ -14,9 +14,6 @@ struct CreateGameStepFive: View {
         self.appBinding = appBinding
     }
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
     var body: some View {
         VStack(spacing: 0) {
             header
@@ -56,7 +53,7 @@ private extension CreateGameStepFive {
     private var inviteFriendsButton: AnyView {
         AnyView(
             Button(action: {
-                
+                inviteFriends()
             }) {
                 ButtonView(background: .tertiary,
                            textColor: .whiteColor,
@@ -65,7 +62,7 @@ private extension CreateGameStepFive {
                            switchImage: true,
                            image: "CGperson")
             }
-            .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 24))
+            .padding(.top, 24)
         )
     }
 }
@@ -108,7 +105,7 @@ private extension CreateGameStepFive {
                                              typePlayers: "Защитник, полузащитник")
                     }
                 }
-                .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 32))
+                .padding(.top, 32)
             }
         )
     }
@@ -117,7 +114,7 @@ private extension CreateGameStepFive {
 
 // MARK: Actions
 private extension CreateGameStepFive {
-    private func createGame() {
+    private func inviteFriends() {
         
     }
 }

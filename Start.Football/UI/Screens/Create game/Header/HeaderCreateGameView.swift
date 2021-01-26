@@ -8,13 +8,34 @@
 import SwiftUI
 
 struct HeaderCreateGameView: View {
-
+    
     var appBinding: Binding<AppState.AppData>
     
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
-            BackButtonCreateGameView(appBinding: appBinding)
+            backButton
             Spacer()
+            main
+            Spacer()
+        }
+        .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24))
+        .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 13))
+    }
+}
+
+
+// MARK: UI
+private extension HeaderCreateGameView {
+    private var backButton: AnyView {
+        AnyView(
+            BackButtonCreateGameView(appBinding: appBinding)
+        )
+    }
+}
+
+private extension HeaderCreateGameView {
+    private var main: AnyView {
+        AnyView(
             VStack(alignment: .center, spacing: 0) {
                 Text("Создание игры")
                     .foregroundColor(.secondaryColor)
@@ -22,10 +43,7 @@ struct HeaderCreateGameView: View {
                 
                 ProgressBarView(value: appBinding.createGame.progressValue)
             }
-            Spacer()
-        }
-        .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24))
-        .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 13))
+        )
     }
 }
 

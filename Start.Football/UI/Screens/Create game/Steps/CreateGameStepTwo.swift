@@ -14,13 +14,11 @@ struct CreateGameStepTwo: View {
     init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
+    @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
         VStack(alignment: .leading, spacing: 16) {
-            Text("Это регулярная игра?")
-                .foregroundColor(.defaultColor)
-                .font(Font.event.robotoRegular18)
-            
+            header
             selectionRegularGame
             regularGame
                 .animation(.default)
@@ -31,41 +29,62 @@ struct CreateGameStepTwo: View {
     }
 }
 
+
 // MARK: UI
+private extension CreateGameStepTwo {
+    private var header: AnyView {
+        AnyView(
+            Text("Это регулярная игра?")
+                .foregroundColor(.defaultColor)
+                .font(Font.event.robotoRegular18)
+        )
+    }
+}
+
 private extension CreateGameStepTwo {
     var selectionRegularGame: some View {
         VStack(spacing: 16) {
-            VStack(spacing: 0) {
-                Button(action: {
-                    noSelectionRegularGame()
-                }) {
-                    HStack(spacing: 8) {
-                        ButtonRoundGreen(status: appBinding.createGame.selectionRegularGame.wrappedValue == .no)
-                            .frame(width: 20)
-                        
-                        Text("Разово. Для проведения одной игры.")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoRegular16)
-                        Spacer()
-                    }
-                }
+            Button(action: {
+                noSelectionRegularGame(state: appBinding)
+            }) {
+                oneDayButton
             }
             
-            VStack(spacing: 0) {
-                Button(action: {
-                    yesSelectionRegularGame()
-                }) {
-                    HStack(spacing: 8) {
-                        ButtonRoundGreen(status: appBinding.createGame.selectionRegularGame.wrappedValue == .yes)
-                            .frame(width: 20)
-                        
-                        Text("Регулярно. Проводится на постоянной основе")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoRegular16)
-                        Spacer()
-                    }
-                }
+            Button(action: {
+                yesSelectionRegularGame(state: appBinding)
+            }) {
+                regularDayButton
             }
+        }
+    }
+}
+
+private extension CreateGameStepTwo {
+    var oneDayButton: some View {
+        HStack(spacing: 8) {
+            ButtonRoundGreen(status: appBinding.createGame
+                                .selectionRegularGame.wrappedValue == .no)
+                .frame(width: 20)
+            
+            Text("Разово. Для проведения одной игры.")
+                .foregroundColor(.defaultColor)
+                .font(Font.event.robotoRegular16)
+            Spacer()
+        }
+    }
+}
+
+private extension CreateGameStepTwo {
+    var regularDayButton: some View {
+        HStack(spacing: 8) {
+            ButtonRoundGreen(status: appBinding.createGame
+                                .selectionRegularGame.wrappedValue == .yes)
+                .frame(width: 20)
+            
+            Text("Регулярно. Проводится на постоянной основе")
+                .foregroundColor(.defaultColor)
+                .font(Font.event.robotoRegular16)
+            Spacer()
         }
     }
 }
@@ -141,14 +160,17 @@ private extension CreateGameStepTwo {
     }
 }
 
+
 // MARK: Actions
 private extension CreateGameStepTwo {
-    private func noSelectionRegularGame() {
-        appBinding.createGame.selectionRegularGame.wrappedValue = .no
+    private func noSelectionRegularGame(state: Binding<AppState.AppData>) {
+        injected.interactors.createGameInteractor
+            .noSelectionRegularGame(state: state)
     }
     
-    private func yesSelectionRegularGame() {
-        appBinding.createGame.selectionRegularGame.wrappedValue = .yes
+    private func yesSelectionRegularGame(state: Binding<AppState.AppData>) {
+        injected.interactors.createGameInteractor
+            .yesSelectionRegularGame(state: state)
     }
 }
 

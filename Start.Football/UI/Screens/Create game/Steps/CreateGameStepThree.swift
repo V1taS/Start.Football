@@ -221,14 +221,14 @@ private extension CreateGameStepThree {
                 
                 HStack {
                     Button(action: {
-                        appBinding.createGame.dressingRooms.wrappedValue.toggle()
+                        dressingRooms(state: appBinding)
                     }) {
                         TextButtonRound(name: "Раздевалки",
                                         isOn: appBinding.createGame.dressingRooms.wrappedValue)
                     }
                     
                     Button(action: {
-                        appBinding.createGame.showers.wrappedValue.toggle()
+                        showers(state: appBinding)
                     }) {
                         TextButtonRound(name: "Душевые",
                                         isOn: appBinding.createGame.showers.wrappedValue)
@@ -245,60 +245,83 @@ private extension CreateGameStepThree {
 private extension CreateGameStepThree {
     // Type Game
     private func selectMiniFootball() {
-        injected.interactors.createGameInteractor.selectMiniFootball(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectMiniFootball(state: appBinding)
     }
     
     private func selectFootball() {
-        injected.interactors.createGameInteractor.selectFootball(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectFootball(state: appBinding)
     }
     
     private func selectFootsal() {
-        injected.interactors.createGameInteractor.selectFootsal(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectFootsal(state: appBinding)
     }
 }
 
 private extension CreateGameStepThree {
     // Place Play
     private func selectStreet() {
-        injected.interactors.createGameInteractor.selectStreet(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectStreet(state: appBinding)
     }
     
     private func selectManege() {
-        injected.interactors.createGameInteractor.selectManege(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectManege(state: appBinding)
     }
     
     private func selectHall() {
-        injected.interactors.createGameInteractor.selectHall(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectHall(state: appBinding)
     }
 }
 
 private extension CreateGameStepThree {
     // Type Field
     private func selectParquet() {
-        injected.interactors.createGameInteractor.selectParquet(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectParquet(state: appBinding)
     }
     
     private func selectGrass() {
-        injected.interactors.createGameInteractor.selectGrass(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectGrass(state: appBinding)
     }
     
     private func selectCaoutchouc() {
-        injected.interactors.createGameInteractor.selectCaoutchouc(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectCaoutchouc(state: appBinding)
     }
 }
 
 private extension CreateGameStepThree {
     // Coating Properties
     private func selectSynthetics() {
-        injected.interactors.createGameInteractor.selectSynthetics(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectSynthetics(state: appBinding)
     }
     
     private func selectHair() {
-        injected.interactors.createGameInteractor.selectHair(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectHair(state: appBinding)
     }
     
     private func selectCrumb() {
-        injected.interactors.createGameInteractor.selectCrumb(state: appBinding)
+        injected.interactors.createGameInteractor
+            .selectCrumb(state: appBinding)
+    }
+}
+
+private extension CreateGameStepThree {
+    private func dressingRooms(state: Binding<AppState.AppData>) {
+        injected.interactors.createGameInteractor
+            .dressingRooms(state: state)
+    }
+    
+    private func showers(state: Binding<AppState.AppData>) {
+        injected.interactors.createGameInteractor.showers(state: state)
     }
 }
 
