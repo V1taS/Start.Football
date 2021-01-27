@@ -31,8 +31,7 @@ struct CellMainView: View {
             }
             .padding(16)
         }
-        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 343),
-               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 252))
+        .frame(width: 343, height: 252)
     }
 }
 

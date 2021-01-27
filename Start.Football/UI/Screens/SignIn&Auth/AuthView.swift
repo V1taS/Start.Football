@@ -30,15 +30,16 @@ struct AuthView: View {
                 
                 ScrollView(.vertical, showsIndicators: false) {
                     VStack(spacing: 0) {
-                        VStack(spacing: 40) {
+                        VStack(spacing: 24) {
                             loginTextField
                             passwordTextField
                         }
                         authError
                         loginButton
-                            .padding(.top, 24)
+                            
                         resetPasswordButtton
                         signUPButtton
+                            
                         or
                         VStack(spacing: 16) {
                             signUPApple
@@ -46,7 +47,8 @@ struct AuthView: View {
                         }
                         Spacer()
                     }
-                    .padding(.top, 37)
+                    .padding(.top, UIScreen.screenHeight *
+                                Size.shared.getAdaptSizeHeight(px: 37))
                 }
             }
         }
@@ -130,6 +132,8 @@ private extension AuthView {
                            switchImage: false,
                            image: "")
             }
+            .padding(.top, UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -149,7 +153,8 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+            .padding(.top, UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -169,8 +174,10 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 60))
-            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+            .padding(.top, UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 50))
+            .padding(.bottom, UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -189,7 +196,8 @@ private extension AuthView {
                     Divider()
                 }
             }
-            .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
+            .padding(.bottom, UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 16))
         )
     }
 }

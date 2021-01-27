@@ -31,12 +31,14 @@ struct SignUpView: View {
                 header
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 24) {
+                    VStack(spacing: UIScreen.screenHeight *
+                            Size.shared.getAdaptSizeHeight(px: 24)) {
                         mailTextField
                         loginTextField
                         passwordTextField
                     }
-                    .padding(.top, 37)
+                    .padding(.top, UIScreen.screenHeight *
+                                Size.shared.getAdaptSizeHeight(px: 24))
                     authError
                     
                     VStack(alignment: .leading, spacing: 10) {
@@ -154,7 +156,8 @@ private extension SignUpView {
         AnyView(
             CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
                               text: "Хочу получать новости на почту")
-                .padding(.bottom, 24)
+                .padding(.bottom, UIScreen.screenHeight *
+                            Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -174,7 +177,8 @@ private extension SignUpView {
                            switchImage: false,
                            image: "")
             }
-            .padding(.bottom, 33)
+            .padding(.bottom, UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
