@@ -11,27 +11,43 @@ struct CheckboxFieldView : View {
     
     @Binding var checked: Bool
     let text: String
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
     var body: some View {
         HStack {
             HStack(alignment: .firstTextBaseline, spacing: 7) {
-                Image(systemName: checked ? "checkmark.square.fill" : "square")
-                    .foregroundColor(checked ? .secondaryColor : .defaultColor)
-                    .frame(width: width * Size.shared.getAdaptSizeWidth(px: 14),
-                           height: height * Size.shared.getAdaptSizeHeight(px: 14))
-                    .onTapGesture {
-                        self.checked.toggle()
-                    }
-                Text(text)
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular16)
+                heckbox
+                textView
             }
-            .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270), alignment: .leading)
+            .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 270),
+                   alignment: .leading)
             Spacer()
         }
         .padding(3)
+    }
+}
+
+// MARK: UI
+private extension CheckboxFieldView {
+    private var heckbox: AnyView {
+        AnyView(
+            Image(systemName: checked ? "checkmark.square.fill" : "square")
+                .foregroundColor(checked ? .secondaryColor : .defaultColor)
+                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 14),
+                       height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 14))
+                .onTapGesture {
+                    self.checked.toggle()
+                }
+        )
+    }
+}
+
+private extension CheckboxFieldView {
+    private var textView: AnyView {
+        AnyView(
+            Text(text)
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoRegular16)
+        )
     }
 }
 

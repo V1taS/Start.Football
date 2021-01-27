@@ -9,20 +9,15 @@ import SwiftUI
 
 struct FormatGameTextField: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
+    private let height = UIScreen.screenHeight
+    private let width = UIScreen.screenWidth
     @Binding var firstValue: String
     @Binding var secondValue: String
     
     var body: some View {
         VStack {
             HStack() {
-                Text("Формат игры")
-                    .foregroundColor(.defaultColor)
-                    .font(Font.event.robotoRegular14)
-                    .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
-                
+                header
                 Spacer()
             }
             
@@ -30,46 +25,86 @@ struct FormatGameTextField: View {
                 HStack {
                     Spacer()
                     Spacer()
-                    HStack(spacing: 0) {
-                        TextFieldUIKit(placeholder: "10",
-                                            text: $firstValue,
-                                            font: UIFont.event.robotoRegular24!,
-                                            foregroundColor: .secondaryColor,
-                                            keyType: .numberPad,
-                                            isSecureText: false)
-                            .frame(height: 30)
-                    }
-                    .frame(width: 60)
-                    
+                    firstTextField
                     Spacer()
-                    
-                    Text("—")
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular24)
+                    shotDivider
                     Spacer()
                     Spacer()
-                    
-                    HStack {
-                        TextFieldUIKit(placeholder: "10",
-                                            text: $secondValue,
-                                            font: UIFont.event.robotoRegular24!,
-                                            foregroundColor: .secondaryColor,
-                                            keyType: .numberPad,
-                                            isSecureText: false)
-                            .frame(height: 30)
-                    }
-                    .frame(width: 60)
-                    
+                    secondTextField
                     Spacer()
                 }
             }
-            
+            divider
+        }
+    }
+}
+
+
+// MARK: UI
+private extension FormatGameTextField {
+    private var header: AnyView {
+        AnyView(
+            Text("Формат игры")
+                .foregroundColor(.defaultColor)
+                .font(Font.event.robotoRegular14)
+                .padding(.bottom, 16)
+        )
+    }
+}
+
+private extension FormatGameTextField {
+    private var firstTextField: AnyView {
+        AnyView(
+            HStack(spacing: 0) {
+                TextFieldUIKit(placeholder: "10",
+                               text: $firstValue,
+                               font: UIFont.event.robotoRegular24!,
+                               foregroundColor: .secondaryColor,
+                               keyType: .numberPad,
+                               isSecureText: false)
+                    .frame(height: 30)
+            }
+            .frame(width: 60)
+        )
+    }
+}
+
+private extension FormatGameTextField {
+    private var shotDivider: AnyView {
+        AnyView(
+            Text("—")
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoRegular24)
+        )
+    }
+}
+
+private extension FormatGameTextField {
+    private var secondTextField: AnyView {
+        AnyView(
+            HStack {
+                TextFieldUIKit(placeholder: "10",
+                               text: $secondValue,
+                               font: UIFont.event.robotoRegular24!,
+                               foregroundColor: .secondaryColor,
+                               keyType: .numberPad,
+                               isSecureText: false)
+                    .frame(height: 30)
+            }
+            .frame(width: 60)
+        )
+    }
+}
+
+private extension FormatGameTextField {
+    private var divider: AnyView {
+        AnyView(
             VStack(alignment: .center, spacing: 0) {
                 Color( #colorLiteral(red: 0.9137254902, green: 0.9137254902, blue: 0.9254901961, alpha: 1))
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                            height: height * Size.shared.getAdaptSizeHeight(px: 2))
             }
-        }
+        )
     }
 }
 

@@ -19,23 +19,38 @@ struct BoxSelectDateGames: View {
             if dayOfGame {
                 
                 HStack {
-                    Text(title)
-                        .foregroundColor(Color.secondaryColor)
-                        .font(Font.event.robotoMedium18)
-                    
+                    header
                     Spacer()
                 }
-                
-                DatePickerLineView(date: $date,
-                                   text: "Укажите время:",
-                                   header: "Время",
-                                   iconShow: true,
-                                   icon: "timeGreateGame",
-                                   textHasBeenChanged: $textHasBeenChanged,
-                                   hourAndMinute: .hourAndMinute)
+                dataPicer
             }
         }
         .padding(.top, 8)
+    }
+}
+
+
+// MARK: UI
+private extension BoxSelectDateGames {
+    private var header: AnyView {
+        AnyView(
+            Text(title)
+                .foregroundColor(Color.secondaryColor)
+                .font(Font.event.robotoMedium18)
+        )
+    }
+}
+
+private extension BoxSelectDateGames {
+    private var dataPicer: AnyView {
+        AnyView(
+            DatePickerLineView(date: $date,
+                               textHasBeenChanged: $textHasBeenChanged, text: "Укажите время:",
+                               header: "Время",
+                               iconShow: true,
+                               icon: "timeGreateGame",
+                               hourAndMinute: .hourAndMinute)
+        )
     }
 }
 

@@ -13,7 +13,7 @@ struct CellMainView: View {
     init(game: Game) {
         self.game = game
     }
-    
+    @Environment(\.injected) private var injected: DIContainer
     var body: some View {
         ZStack {
             background
@@ -26,8 +26,8 @@ struct CellMainView: View {
                     coastAndPeople
                 }
                 typeGame
-                .padding(.top, 16)
-
+                    .padding(.top, 16)
+                
             }
             .padding(16)
         }
@@ -52,8 +52,8 @@ private extension CellMainView {
     private var header: AnyView {
         AnyView(
             Text(game.name)
-                    .font(Font.event.robotoBold20)
-                    .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoBold20)
+                .foregroundColor(.secondaryColor)
                 .lineLimit(1)
         )
     }
@@ -62,13 +62,13 @@ private extension CellMainView {
 private extension CellMainView {
     private var date: AnyView {
         AnyView(
-                HStack(spacing: 10) {
-                    Image("cellDate")
-                    Text(selectDate(regularGame: game.regularGame, oneGameDate: game.oneGameDate))
-                        .foregroundColor(.secondaryColor)
-                        .font(Font.event.robotoRegular16)
-                        .lineLimit(1)
-                }
+            HStack(spacing: 10) {
+                Image("cellDate")
+                Text(selectDate(regularGame: game.regularGame, oneGameDate: game.oneGameDate))
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoRegular16)
+                    .lineLimit(1)
+            }
         )
     }
 }
@@ -127,13 +127,13 @@ private extension CellMainView {
     private var typeGame: AnyView {
         AnyView(
             HStack {
-                TextButtonRound(name: typeGameString(),
+                TextButtonRound(name: typeGameString(game: game),
                                 isOn: false)
                 
-                TextButtonRound(name: formatGame(),
+                TextButtonRound(name: formatGame(game: game),
                                 isOn: false)
                 
-                TextButtonRound(name: privacyGame(),
+                TextButtonRound(name: privacyGame(game: game),
                                 isOn: false)
             }
         )
@@ -145,81 +145,35 @@ private extension CellMainView {
 private extension CellMainView {
     private func selectDate(regularGame: String, oneGameDate: Date) -> String {
         if regularGame == "yes" {
-            return lookForDate()
+            return searchDateForRegular(game: game)
         } else {
-            let timeString = GetDateStringFromDate.shared.getTimeString(date: oneGameDate)
-                let dateString = GetDateStringFromDate.shared.getDateStringFull(date: oneGameDate).firstUppercased
-            return "\(dateString) в \(timeString)"
+            return searchDateForOneDay(game: game, oneGameDate: oneGameDate)
         }
-    }
-}
-
-private extension CellMainView {
-    private func typeGameString() -> String {
-        if game.miniFootball {
-            return "Мини"
-        }
-        
-        if game.usualFootball {
-            return "Футбол"
-        }
-        
-        if game.footsal {
-            return "Футзал"
-        }
-        return ""
-    }
-}
-
-private extension CellMainView {
-    private func formatGame() -> String {
-        return "\(game.firstTeamCount) на \(game.secondTeamCount)"
-    }
-}
-
-private extension CellMainView {
-    private func privacyGame() -> String {
-        if game.privacyGame == "open" {
-            return "Для всех"
-        }
-        
-        if game.privacyGame == "close" {
-            return "По заявке"
-        }
-        return ""
     }
     
-    private func lookForDate() -> String {
-        
-        if game.listGameRegularGame[0] {
-            return "Ближайшая игра в Понедельник"
-        }
-        
-        if game.listGameRegularGame[1] {
-            return "Ближайшая игра во Вторник"
-        }
-        
-        if game.listGameRegularGame[2] {
-            return "Ближайшая игра в Среду"
-        }
-        
-        if game.listGameRegularGame[3] {
-            return "Ближайшая игра в Четверг"
-        }
-        
-        if game.listGameRegularGame[4] {
-            return "Ближайшая игра в Пятницу"
-        }
-        
-        if game.listGameRegularGame[5] {
-            return "Ближайшая игра в Субботу"
-        }
-        
-        if game.listGameRegularGame[6] {
-            return "Ближайшая игра в Воскресенье"
-        }
-        
-        return "Регулярные игры"
+    private func searchDateForRegular(game: Game) -> String {
+        injected.interactors.mainAppInteractor
+            .searchDateForRegular(game: game)
+    }
+    
+    private func searchDateForOneDay(game: Game, oneGameDate: Date) -> String {
+        injected.interactors.mainAppInteractor
+            .searchDateForOneDay(game: game, oneGameDate: oneGameDate)
+            
+    }
+    
+    private func typeGameString(game: Game) -> String {
+        injected.interactors.mainAppInteractor
+            .typeGameString(game: game)
+    }
+    
+    private func formatGame(game: Game) -> String {
+        injected.interactors.mainAppInteractor
+            .formatGame(game: game)
+    }
+    
+    private func privacyGame(game: Game) -> String {
+        injected.interactors.mainAppInteractor.privacyGame(game: game)
     }
 }
 

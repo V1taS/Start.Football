@@ -9,9 +9,6 @@ import SwiftUI
 
 struct PasswordTextFieldView: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
     @Binding var text: String
     var success: Bool
     @State var showPassword = false
@@ -19,43 +16,114 @@ struct PasswordTextFieldView: View {
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            header
+            
+            HStack {
+                iconTextField
+                textField
+                eyeView
+            }
+            .padding(.bottom, 11)
+            divider
+        }
+    }
+}
+
+
+// MARK: UI
+private extension PasswordTextFieldView {
+    private var header: AnyView {
+        AnyView(
             Text("Пароль")
                 .foregroundColor(Color(success ? .defaultColor : .error))
                 .font(Font.event.robotoMedium14)
-                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
-            
-            HStack {
-                Image("passwordTF")
-                    .renderingMode(.template)
-                    .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
-                
+                .padding(.bottom, 18)
+        )
+    }
+}
+
+private extension PasswordTextFieldView {
+    private var iconTextField: AnyView {
+        AnyView(
+            Image("passwordTF")
+                .renderingMode(.template)
+                .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
+        )
+    }
+}
+
+private extension PasswordTextFieldView {
+    private var textField: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
                 if showPassword {
-                    TextFieldUIKit(placeholder: placeholder,
-                                        text: $text,
-                                        font: UIFont.event.robotoMedium16!,
-                                        foregroundColor: .secondaryColor,
-                                        keyType: .default,
-                                        isSecureText: false)
-                        .frame(height: 30)
+                    textFieldUsual
                 } else {
-                    TextFieldUIKit(placeholder: placeholder,
-                                        text: $text,
-                                        font: UIFont.event.robotoMedium16!,
-                                        foregroundColor: .secondaryColor,
-                                        keyType: .default,
-                                        isSecureText: true)
-                        .frame(height: 30)
+                    textFieldSecure
                 }
-                
-                Image(showPassword ? "eye.slash" : "eye")
-                    .onTapGesture { showPassword.toggle() }
-                
-            } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
-            
+            }
+        )
+    }
+}
+
+private extension PasswordTextFieldView {
+    private var textFieldUsual: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                TextFieldUIKit(placeholder: placeholder,
+                               text: $text,
+                               font: UIFont.event.robotoMedium16!,
+                               foregroundColor: .secondaryColor,
+                               keyType: .default,
+                               isSecureText: false)
+                    .frame(height: 30)
+            }
+        )
+    }
+}
+
+private extension PasswordTextFieldView {
+    private var textFieldSecure: AnyView {
+        AnyView(
+            TextFieldUIKit(placeholder: placeholder,
+                           text: $text,
+                           font: UIFont.event.robotoMedium16!,
+                           foregroundColor: .secondaryColor,
+                           keyType: .default,
+                           isSecureText: true)
+                .frame(height: 30)
+        )
+    }
+}
+
+private extension PasswordTextFieldView {
+    private var eyeView: AnyView {
+        AnyView(
+            Image(showPassword ? "eye.slash" : "eye")
+                .onTapGesture {
+                    showPasswordToggle()
+                }
+        )
+    }
+}
+
+private extension PasswordTextFieldView {
+    private var divider: AnyView {
+        AnyView(
             Color(success ? .dividerColor : .error)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 2))
-        }
+                .frame(width: UIScreen.screenWidth *
+                        Size.shared.getAdaptSizeWidth(px: 327),
+                       height:  UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 2))
+        )
+    }
+}
+
+
+// MARK: Actions
+private extension PasswordTextFieldView {
+    private func showPasswordToggle() {
+        showPassword.toggle()
     }
 }
 

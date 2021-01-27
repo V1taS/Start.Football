@@ -36,7 +36,7 @@ struct TabViewApp: View {
                     }
                     .tag(1)
                 
-                Plug(appBinding: .constant(.init()), text: "Меню (В разработке...)", createGame: false)
+                isEmtyMyGame(appBinding: .constant(.init()), text: "Меню (В разработке...)", createGame: false)
                     .tabItem {
                         menuView
                         Text("Меню")

@@ -19,19 +19,7 @@ struct FilterGameSheet: View {
     
     var body: some View {
         ZStack{
-            if isExpanded {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button(action: { self.collapse()}) {
-                            Image(systemName: "xmark.circle.fill")
-                                .imageScale(.large)
-                                .foregroundColor(Color(.secondaryLabel))
-                        }
-                    }
-                    Spacer()
-                }
-            }
+            closeButton
             
             if appBinding.main.filter.showFiltrsView.wrappedValue {
                 VStack(spacing: 0) {
@@ -70,35 +58,29 @@ struct FilterGameSheet: View {
                height: 777)
         .animation(.spring())
     }
-    
-    func onDragEnded(drag: DragGesture.Value) {
-        self.viewState = .zero
-        let direction = drag.predictedEndLocation.y - drag.location.y
-        
-        if direction > 0 {
-            self.collapse()
-        } else {
-            self.expand()
-        }
-    }
-    
-    func offset()  -> CGFloat {
-        var offset: CGFloat = 0
-        if self.isExpanded {
-            offset = 0 + self.viewState.height
-        } else {
-            offset = 500 + self.viewState.height
-        }
-        
-        return offset < 0 ? 0 : offset > 500 ? 500 : offset
-    }
-    
-    func collapse() {
-        appBinding.main.filter.showFiltrsView.wrappedValue = false
-    }
-    
-    func expand() {
-        appBinding.main.filter.showFiltrsView.wrappedValue = false
+}
+
+
+// MARK: UI
+private extension FilterGameSheet {
+    private var closeButton: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if isExpanded {
+                    VStack {
+                        HStack {
+                            Spacer()
+                            Button(action: { self.collapse()}) {
+                                Image(systemName: "xmark.circle.fill")
+                                    .imageScale(.large)
+                                    .foregroundColor(Color(.secondaryLabel))
+                            }
+                        }
+                        Spacer()
+                    }
+                }
+            }
+        )
     }
 }
 
@@ -175,8 +157,7 @@ private extension FilterGameSheet {
     private var divider: AnyView {
         AnyView(
             Color(.shotDividerColor)
-                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 48),
-                       height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 5))
+                .frame(width: 48, height: 5)
                 .overlay(RoundedRectangle(cornerRadius: 20)
                             .stroke(Color(.shotDividerColor)))
                 .offset(y: -15)
@@ -203,6 +184,8 @@ private extension FilterGameSheet {
     }
 }
 
+
+// MARK: Actions
 private extension FilterGameSheet {
     // MARK: Type Game
     private func selectMiniFootball() {
@@ -216,9 +199,7 @@ private extension FilterGameSheet {
     private func selectFootsal() {
         injected.interactors.mainAppInteractor.selectFootsal(state: appBinding)
     }
-}
-
-private extension FilterGameSheet {
+    
     // MARK: Place Play
     private func selectStreet() {
         injected.interactors.mainAppInteractor.selectStreet(state: appBinding)
@@ -230,6 +211,36 @@ private extension FilterGameSheet {
     
     private func selectHall() {
         injected.interactors.mainAppInteractor.selectHall(state: appBinding)
+    }
+    
+    private func onDragEnded(drag: DragGesture.Value) {
+        self.viewState = .zero
+        let direction = drag.predictedEndLocation.y - drag.location.y
+        
+        if direction > 0 {
+            self.collapse()
+        } else {
+            self.expand()
+        }
+    }
+    
+    private func offset()  -> CGFloat {
+        var offset: CGFloat = 0
+        if self.isExpanded {
+            offset = 0 + self.viewState.height
+        } else {
+            offset = 500 + self.viewState.height
+        }
+        
+        return offset < 0 ? 0 : offset > 500 ? 500 : offset
+    }
+    
+    private func collapse() {
+        appBinding.main.filter.showFiltrsView.wrappedValue = false
+    }
+    
+    private func expand() {
+        appBinding.main.filter.showFiltrsView.wrappedValue = false
     }
 }
 

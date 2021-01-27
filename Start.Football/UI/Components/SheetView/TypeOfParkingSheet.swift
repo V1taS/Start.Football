@@ -19,37 +19,12 @@ struct TypeOfParkingSheet: View {
     
     var body: some View {
         ZStack{
-            if isExpanded {
-                VStack {
-                    HStack {
-                        Spacer()
-                        Button(action: { self.collapse()}) {
-                            Image(systemName: "xmark.circle.fill")
-                                .imageScale(.large)
-                                .foregroundColor(Color(.secondaryLabel))
-                        }
-                    }
-                    Spacer()
-                }
-            }
+            closeButton
             
             if appBinding.createGame.showParking.wrappedValue {
                 VStack(spacing: 0) {
-                    Color(.shotDividerColor)
-                        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 48),
-                               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 5))
-                        .overlay(RoundedRectangle(cornerRadius: 20)
-                                    .stroke(Color(.shotDividerColor)))
-                        .offset(y: -15)
-                    
-                    HStack {
-                        Text("Тип парковки")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoMedium32)
-                        Spacer()
-                    }
-                    
-                    .padding(.top, 8)
+                    divider
+                    headerView
                     
                     VStack(spacing: 16) {
                         Group {
@@ -95,39 +70,63 @@ struct TypeOfParkingSheet: View {
         )
         .frame(width: UIScreen.screenWidth, height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 500))
     }
-    
-    func onDragEnded(drag: DragGesture.Value) {
-        self.viewState = .zero
-        let direction = drag.predictedEndLocation.y - drag.location.y
-        
-        if direction > 0 {
-            self.collapse()
-        } else {
-            self.expand()
-        }
-    }
-    
-    func offset()  -> CGFloat {
-        var offset: CGFloat = 0
-        if self.isExpanded {
-            offset = 0 + self.viewState.height
-        } else {
-            offset = 500 + self.viewState.height
-        }
-        
-        return offset < 0 ? 0 : offset > 500 ? 500 : offset
-    }
-    
-    func collapse() {
-        appBinding.createGame.showParking.wrappedValue = false
-    }
-    
-    func expand() {
-        appBinding.createGame.showParking.wrappedValue = false
+}
+
+
+// MARK: UI
+private extension TypeOfParkingSheet {
+    private var closeButton: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if isExpanded {
+                    VStack {
+                        if isExpanded {
+                            VStack {
+                                HStack {
+                                    Spacer()
+                                    Button(action: { self.collapse()}) {
+                                        Image(systemName: "xmark.circle.fill")
+                                            .imageScale(.large)
+                                            .foregroundColor(Color(.secondaryLabel))
+                                    }
+                                }
+                                Spacer()
+                            }
+                        }
+                    }
+                }
+            }
+        )
     }
 }
 
-// MARK: - Paid City
+private extension TypeOfParkingSheet {
+    private var divider: AnyView {
+        AnyView(
+            Color(.shotDividerColor)
+                .frame(width: 48, height: 5)
+                .overlay(RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(.shotDividerColor)))
+                .offset(y: -15)
+        )
+    }
+}
+
+private extension TypeOfParkingSheet {
+    private var headerView: AnyView {
+        AnyView(
+            HStack {
+                Text("Тип парковки")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoMedium32)
+                Spacer()
+            }
+            .padding(.top, 8)
+        )
+    }
+}
+
+
 private extension TypeOfParkingSheet {
     var paidCity: some View {
         Button(action: {
@@ -147,7 +146,6 @@ private extension TypeOfParkingSheet {
     }
 }
 
-// MARK: - Paid on the territory
 private extension TypeOfParkingSheet {
     var paidOnTheTerritory: some View {
         Button(action: {
@@ -167,7 +165,6 @@ private extension TypeOfParkingSheet {
     }
 }
 
-// MARK: - Free on the territory
 private extension TypeOfParkingSheet {
     var freeOnTheTerritory: some View {
         Button(action: {
@@ -187,7 +184,6 @@ private extension TypeOfParkingSheet {
     }
 }
 
-// MARK: - Free City
 private extension TypeOfParkingSheet {
     var freeCity: some View {
         Button(action: {
@@ -207,7 +203,6 @@ private extension TypeOfParkingSheet {
     }
 }
 
-// MARK: - Parking cost
 private extension TypeOfParkingSheet {
     var parkingCost: some View {
         TextfieldOneLineView(text: appBinding.createGame.parkingCost,
@@ -220,7 +215,6 @@ private extension TypeOfParkingSheet {
     }
 }
 
-// MARK: - Payment for parking
 private extension TypeOfParkingSheet {
     var oneTime: some View {
         Button(action: {
@@ -274,6 +268,8 @@ private extension TypeOfParkingSheet {
     }
 }
 
+
+// MARK: Actions
 private extension TypeOfParkingSheet {
     // MARK: Type of parking
     private func selectPaidCity() {
@@ -305,6 +301,36 @@ private extension TypeOfParkingSheet {
     
     private func selectNon() {
         injected.interactors.createGameInteractor.non(state: appBinding)
+    }
+    
+    private func onDragEnded(drag: DragGesture.Value) {
+        self.viewState = .zero
+        let direction = drag.predictedEndLocation.y - drag.location.y
+        
+        if direction > 0 {
+            self.collapse()
+        } else {
+            self.expand()
+        }
+    }
+    
+    private func offset()  -> CGFloat {
+        var offset: CGFloat = 0
+        if self.isExpanded {
+            offset = 0 + self.viewState.height
+        } else {
+            offset = 500 + self.viewState.height
+        }
+        
+        return offset < 0 ? 0 : offset > 500 ? 500 : offset
+    }
+    
+    private func collapse() {
+        appBinding.createGame.showParking.wrappedValue = false
+    }
+    
+    private func expand() {
+        appBinding.createGame.showParking.wrappedValue = false
     }
 }
 

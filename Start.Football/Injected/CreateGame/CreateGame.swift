@@ -28,7 +28,7 @@ extension AppState.AppData {
         var currentDateHasBeenChanged = false
         
         // MARK: - Step 2
-        var selectionRegularGame: AppActions.CreatGameActions.RegularGame = .no
+        var selectionRegularGame: AppActions.CreatGameActions.RegularGame = .yes
         
         // MARK: Day Of Week
         var listGame = [false, false, false, false, false, false, false]

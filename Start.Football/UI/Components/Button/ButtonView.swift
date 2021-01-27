@@ -18,26 +18,54 @@ struct ButtonView: View {
     
     var body: some View {
         ZStack {
+            backgroundColor
+            
+            HStack {
+                imageView
+                textView
+            }
+        }
+        .padding(3)
+    }
+}
+
+
+// MARK: UI
+private extension ButtonView {
+    private var backgroundColor: AnyView {
+        AnyView(
             Color(background)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(borderColor)))
                 
-                .frame(height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 51))
-            
-            HStack {
+                .frame(height: UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 51))
+        )
+    }
+}
+
+private extension ButtonView {
+    private var imageView: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
                 if switchImage {
                     Image(image)
                         .renderingMode(.template)
                         .foregroundColor(Color(textColor))
                 }
-                
-                Text(text)
-                    .foregroundColor(Color(textColor))
-                    .font(Font.event.robotoMedium18)
             }
-        }
-        .padding(3)
+        )
+    }
+}
+
+private extension ButtonView {
+    private var textView: AnyView {
+        AnyView(
+            Text(text)
+                .foregroundColor(Color(textColor))
+                .font(Font.event.robotoMedium18)
+        )
     }
 }
 

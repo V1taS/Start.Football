@@ -11,10 +11,11 @@ struct SignUpView: View {
     
     @State var isHiddenTextConfidentiality = true
     
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    @State private var appState: AppState.AppData = .init()
+    private var appBinding: Binding<AppState.AppData> {
+        $appState.dispatched(to: injected.appState, \.appData)
     }
+
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -30,7 +31,7 @@ struct SignUpView: View {
                 header
                 
                 ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 40) {
+                    VStack(spacing: 24) {
                         mailTextField
                         loginTextField
                         passwordTextField
@@ -42,7 +43,7 @@ struct SignUpView: View {
                         confidentiality
                         getNews
                     }
-                    .padding(.top, 16)
+                    .padding(.top)
                     
                     Spacer()
                     signUPButtton
@@ -131,7 +132,6 @@ private extension SignUpView {
                                   text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
                 showTextConfidentialityError
             }
-            .padding(.top, 24)
         )
     }
 }
@@ -154,6 +154,7 @@ private extension SignUpView {
         AnyView(
             CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
                               text: "Хочу получать новости на почту")
+                .padding(.bottom, 24)
         )
     }
 }
@@ -162,9 +163,9 @@ private extension SignUpView {
     private var signUPButtton: AnyView {
         AnyView(
             Button(action: {
-                register()
-                switchConfidentiality()
-                presentSignUpView()
+                
+                configureValidators(state: appBinding)
+                presentSignUpView(state: appBinding)
             }) {
                 ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
@@ -201,23 +202,32 @@ private extension SignUpView {
 
 // MARK: Actions
 private extension SignUpView {
-    private func register() {
-        injected.interactors.authInteractor.register(state: appBinding)
+    private func configureValidators(state: Binding<AppState.AppData>) {
+        validatorSignUpMail(state: state)
+        validatorSignUpLogin(state: state)
+        validatorSignUpPassword(state: state)
+        switchConfidentiality(state: state)
     }
     
-    private func switchConfidentiality() {
-        if appBinding.signUpAuth.confidentiality.wrappedValue {
-            isHiddenTextConfidentiality = true
-        } else {
-            isHiddenTextConfidentiality = false
-        }
+    private func validatorSignUpMail(state: Binding<AppState.AppData>) {
+        injected.interactors.authInteractor.validatorSignUpMail(state: state)
     }
     
-    private func presentSignUpView() {
-        if appBinding.signUpAuth.mailSuccess.wrappedValue &&
-            appBinding.signUpAuth.loginSuccess.wrappedValue &&
-            appBinding.signUpAuth.passwordSuccess.wrappedValue &&
-            appBinding.signUpAuth.confidentiality.wrappedValue {
+    private func validatorSignUpLogin(state: Binding<AppState.AppData>) {
+        injected.interactors.authInteractor.validatorSignUpLogin(state: state)
+    }
+    
+    private func validatorSignUpPassword(state: Binding<AppState.AppData>) {
+        injected.interactors.authInteractor.validatorSignUpPassword(state: state)
+    }
+    
+    private func switchConfidentiality(state: Binding<AppState.AppData>) {
+        isHiddenTextConfidentiality = injected.interactors.authInteractor
+            .switchConfidentiality(state: state)
+    }
+    
+    private func presentSignUpView(state: Binding<AppState.AppData>) {
+        if injected.interactors.authInteractor.presentSignUpView(state: state) {
             self.viewController?.present(style: .fullScreen) {
                 TabViewApp()
             }
@@ -231,6 +241,6 @@ private extension SignUpView {
 
 struct SignUp_Previews: PreviewProvider {
     static var previews: some View {
-        SignUpView(appBinding: .constant(.init()))
+        SignUpView()
     }
 }

@@ -64,24 +64,22 @@ private extension CreateGameStepOne {
 private extension CreateGameStepOne {
     var time: some View {
         DatePickerLineView(date: appBinding.createGame.currentDate,
-                               text: "Укажите время:",
-                               header: "Время",
-                               iconShow: true,
-                               icon: "timeGreateGame",
-                               textHasBeenChanged: appBinding.createGame.currentTimeHasBeenChanged,
-                               hourAndMinute: .hourAndMinute)
+                           textHasBeenChanged: appBinding.createGame.currentTimeHasBeenChanged, text: "Укажите время:",
+                           header: "Время",
+                           iconShow: true,
+                           icon: "timeGreateGame",
+                           hourAndMinute: .hourAndMinute)
     }
 }
 
 private extension CreateGameStepOne {
     var day: some View {
         DatePickerLineView(date: appBinding.createGame.currentDate,
-                               text: "Укажите дату:",
-                               header: "Дата игры",
-                               iconShow: true,
-                               icon: "dateCreateGame",
-                               textHasBeenChanged: appBinding.createGame.currentDateHasBeenChanged,
-                               hourAndMinute: .date)
+                           textHasBeenChanged: appBinding.createGame.currentDateHasBeenChanged, text: "Укажите дату:",
+                           header: "Дата игры",
+                           iconShow: true,
+                           icon: "dateCreateGame",
+                           hourAndMinute: .date)
     }
 }
 

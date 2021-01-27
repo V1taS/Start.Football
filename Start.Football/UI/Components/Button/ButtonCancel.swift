@@ -8,22 +8,38 @@
 import SwiftUI
 
 struct ButtonCancel: View {
-    
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
+
     var body: some View {
         ZStack {
+            background
+            text
+        }
+        .padding(3)
+    }
+}
+
+
+// MARK: UI
+private extension ButtonCancel {
+    private var background: AnyView {
+        AnyView(
             Color(.whiteColor)
                 .clipShape(RoundedRectangle(cornerRadius: 5))
                 .overlay(RoundedRectangle(cornerRadius: 5)
                             .stroke(Color(.error)))
-                .frame(height: height * Size.shared.getAdaptSizeHeight(px: 51))
+                .frame(height: UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 51))
+        )
+    }
+}
+
+private extension ButtonCancel {
+    private var text: AnyView {
+        AnyView(
             Text("Отмена")
                 .foregroundColor(Color(.error))
                 .font(Font.event.robotoMedium16)
-        }
-        .padding(3)
+        )
     }
 }
 

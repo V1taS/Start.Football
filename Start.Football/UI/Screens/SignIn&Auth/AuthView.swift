@@ -36,6 +36,7 @@ struct AuthView: View {
                         }
                         authError
                         loginButton
+                            .padding(.top, 24)
                         resetPasswordButtton
                         signUPButtton
                         or
@@ -168,7 +169,7 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 80))
+            .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 60))
             .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
@@ -240,13 +241,13 @@ private extension AuthView {
     
     private func presentRessetPassView() {
         self.viewController?.present(style: .pageSheet) {
-            PasswordResetView(appBinding: appBinding)
+            PasswordResetView()
         }
     }
     
     private func presentSignUpView() {
         self.viewController?.present(style: .fullScreen) {
-            SignUpView(appBinding: appBinding)
+            SignUpView()
         }
     }
     

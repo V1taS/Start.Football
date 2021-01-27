@@ -135,7 +135,7 @@ private extension MainView {
         AnyView(
             VStack(spacing: 0) {
                 if appBinding.main.listMyGames.wrappedValue.isEmpty {
-                    Plug(appBinding: appBinding,
+                    isEmtyMyGame(appBinding: appBinding,
                          text: "Пока у тебя нет игр",
                          createGame: true)
                 }

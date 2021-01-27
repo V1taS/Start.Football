@@ -14,41 +14,71 @@ struct LoginTextFieldView: View {
     
     @Binding var text: String
     var success: Bool
-    
     let title: String
     let icon: String
     let placeholder: String
     
     var body: some View {
         VStack(alignment: .leading, spacing: 0) {
+            header
+            
+            HStack {
+                iconView
+                textField
+            }
+            .padding(.bottom, 11)
+            
+            divider
+        }
+    }
+}
+
+
+// MARK: UI
+private extension LoginTextFieldView {
+    private var header: AnyView {
+        AnyView(
             Text(title)
                 .foregroundColor(success ? .defaultColor : .error)
                 .font(Font.event.robotoMedium14)
-                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 18))
-            
-            HStack {
-                Image(icon)
-                    .renderingMode(.template)
-                    .foregroundColor(text.isEmpty ? .defaultColor : .secondaryColor)
-                
-                TextFieldUIKit(placeholder: placeholder,
-                                    text: $text,
-                                    font: UIFont.event.robotoMedium16!,
-                                    foregroundColor: .secondaryColor,
-                                    keyType: .default,
-                                    isSecureText: false)
-                    .frame(height: 30)
-                
-                Image("itsOk")
-                    .renderingMode(.template)
-                    .foregroundColor(.error)
-                    .opacity(success ? 0 : 1)
-            } .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 11))
-            
+                .padding(.bottom, 18)
+        )
+    }
+}
+
+private extension LoginTextFieldView {
+    private var iconView: AnyView {
+        AnyView(
+            Image(icon)
+                .renderingMode(.template)
+                .foregroundColor(text.isEmpty ?
+                                    .defaultColor :
+                                    .secondaryColor)
+        )
+    }
+}
+
+private extension LoginTextFieldView {
+    private var textField: AnyView {
+        AnyView(
+            TextFieldUIKit(placeholder: placeholder,
+                           text: $text,
+                           font: UIFont.event.robotoMedium16!,
+                           foregroundColor: .secondaryColor,
+                           keyType: .default,
+                           isSecureText: false)
+                .frame(height: 30)
+        )
+    }
+}
+
+private extension LoginTextFieldView {
+    private var divider: AnyView {
+        AnyView(
             Color(success ? .dividerColor : .error)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 270),
+                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
                        height: height * Size.shared.getAdaptSizeHeight(px: 2))
-        }
+        )
     }
 }
 

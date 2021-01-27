@@ -10,9 +10,9 @@ import SwiftUI
 struct PasswordResetView: View {
     
     @State var showPage = false
-    private var appBinding: Binding<AppState.AppData>
-    init(appBinding: Binding<AppState.AppData>) {
-        self.appBinding = appBinding
+    @State private var appState: AppState.AppData = .init()
+    private var appBinding: Binding<AppState.AppData> {
+        $appState.dispatched(to: injected.appState, \.appData)
     }
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
@@ -95,7 +95,7 @@ private extension PasswordResetView {
         AnyView(
             Button(action: {
                 verificationMail()
-                resetPass()
+                resetPassword()
             }) {
                 ButtonView(background: .primaryColor,
                            textColor: .whiteColor,
@@ -128,7 +128,7 @@ private extension PasswordResetView {
         showPage = appBinding.resetAuth.mailSuccess.wrappedValue
     }
     
-    private func resetPass() {
+    private func resetPassword() {
         if showPage {
             self.viewController?.present(style: .fullScreen) {
                 TabViewApp()
@@ -143,6 +143,6 @@ private extension PasswordResetView {
 
 struct PasswordResetView_Previews: PreviewProvider {
     static var previews: some View {
-        PasswordResetView(appBinding: .constant(.init()))
+        PasswordResetView()
     }
 }

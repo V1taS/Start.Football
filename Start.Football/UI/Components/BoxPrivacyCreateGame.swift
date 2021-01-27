@@ -8,7 +8,7 @@
 import SwiftUI
 
 struct BoxPrivacyCreateGame: View {
-
+    
     @Binding var privacyGame: AppActions.CreatGameActions.PrivacyGame
     
     var body: some View {

@@ -15,17 +15,43 @@ struct CellWithPlayerButton: View {
     
     var body: some View {
         HStack {
-            Image(image)
+            imageView
             
             VStack(alignment: .leading) {
-                Text(name)
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoRegular18)
-                Text(typePlayers)
-                    .foregroundColor(.defaultColor)
-                    .font(Font.event.robotoRegular14)
+                nameView
+                typePlayersView
             }
         }
+    }
+}
+
+
+// MARK: UI
+private extension CellWithPlayerButton {
+    private var imageView: AnyView {
+        AnyView(
+            Image(image)
+        )
+    }
+}
+
+private extension CellWithPlayerButton {
+    private var nameView: AnyView {
+        AnyView(
+            Text(name)
+                .foregroundColor(.secondaryColor)
+                .font(Font.event.robotoRegular18)
+        )
+    }
+}
+
+private extension CellWithPlayerButton {
+    private var typePlayersView: AnyView {
+        AnyView(
+            Text(typePlayers)
+                .foregroundColor(.defaultColor)
+                .font(Font.event.robotoRegular14)
+        )
     }
 }
 
