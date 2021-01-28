@@ -27,30 +27,34 @@ struct AuthView: View {
             
             VStack(spacing: 0) {
                 header
+                    .padding(.top, 11)
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: 0) {
-                        VStack(spacing: 24) {
-                            loginTextField
-                            passwordTextField
-                        }
-                        authError
-                        loginButton
-                            
-                        resetPasswordButtton
-                        signUPButtton
-                            
-                        or
-                        VStack(spacing: 16) {
-                            signUPApple
-                            signUPGoogle
-                        }
-                        Spacer()
+                VStack(spacing: 0) {
+                    loginTextField
+                    passwordTextField
+                        .padding(.top, 32)
+                    authError
+                    loginButton
+                        .padding(.top, 32)
+                    
+                    resetPasswordButtton
+                        .padding(.top, 31)
+                    
+                    Spacer()
+                    signUPButtton
+                        .padding(.bottom, 30)
+                    or
+                    VStack(spacing: 16) {
+                        signUPApple
+                        signUPGoogle
                     }
-                    .padding(.top, UIScreen.screenHeight *
-                                Size.shared.getAdaptSizeHeight(px: 37))
+                    .padding(.top, 16)
+                    .padding(.bottom, 10)
+                    
                 }
+                .padding(.top, 32)
             }
+            
         }
         .padding(.horizontal, 24)
         .dismissingKeyboard()
@@ -62,7 +66,7 @@ private extension AuthView {
     private var header: AnyView {
         AnyView(
             HStack {
-                VStack(alignment: .leading, spacing: 3) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("Авторизация")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium32)
@@ -72,7 +76,6 @@ private extension AuthView {
                         .font(Font.event.robotoRegular16)
                     
                 }
-                .padding(.top, 11)
                 Spacer()
             }
         )
@@ -112,7 +115,6 @@ private extension AuthView {
                     Spacer()
                 }
             }
-            .padding(.top, 8)
         )
     }
 }
@@ -132,8 +134,7 @@ private extension AuthView {
                            switchImage: false,
                            image: "")
             }
-            .padding(.top, UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 24))
+            
         )
     }
 }
@@ -153,8 +154,6 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.top, UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -174,10 +173,6 @@ private extension AuthView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.top, UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 50))
-            .padding(.bottom, UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -196,8 +191,6 @@ private extension AuthView {
                     Divider()
                 }
             }
-            .padding(.bottom, UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 16))
         )
     }
 }
@@ -230,7 +223,8 @@ private extension AuthView {
 // MARK: Actions
 private extension AuthView {
     private func verificationLogin() {
-        injected.interactors.authInteractor.verificationLogin(state: appBinding)
+        appBinding.signInAuth.loginSuccess.wrappedValue = injected.interactors.authInteractor
+            .verificationLogin(state: appBinding.signInAuth.login)
     }
     
     private func verificationPassword() {

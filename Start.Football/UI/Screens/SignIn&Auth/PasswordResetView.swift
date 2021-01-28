@@ -27,7 +27,10 @@ struct PasswordResetView: View {
             
             VStack(spacing: 0) {
                 header
+                    .padding(.top, 60)
+                
                 loginTextField
+                    .padding(.top, 32)
                 authError
                 Spacer()
                 
@@ -35,7 +38,7 @@ struct PasswordResetView: View {
                     loginButton
                     cancelButton
                 }
-                .padding(.bottom, 17)
+                .padding(.bottom, 10)
             }
         }
         .padding(.horizontal, 24)
@@ -48,7 +51,7 @@ private extension PasswordResetView {
     private var header: AnyView {
         AnyView(
             HStack {
-                VStack(alignment: .leading, spacing: 3) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("Сброс пароля")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium32)
@@ -57,7 +60,6 @@ private extension PasswordResetView {
                         .foregroundColor(.desc)
                         .font(Font.event.robotoRegular16)
                 }
-                .padding(.top, 60)
                 Spacer()
             }
         )
@@ -72,7 +74,6 @@ private extension PasswordResetView {
                                title: "Email",
                                icon: "mail",
                                placeholder: "admin@Start.Football.ru")
-                .padding(.top, 37)
         )
     }
 }

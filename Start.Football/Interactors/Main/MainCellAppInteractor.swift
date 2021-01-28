@@ -61,7 +61,7 @@ extension MainAppInteractorImpl {
     
     func typeGameString(game: Game) -> String {
         if game.miniFootball {
-            return "Мини"
+            return "Мини-футбол"
         }
         
         if game.usualFootball {

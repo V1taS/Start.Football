@@ -10,12 +10,11 @@ import SwiftUI
 struct SignUpView: View {
     
     @State var isHiddenTextConfidentiality = true
-    
     @State private var appState: AppState.AppData = .init()
     private var appBinding: Binding<AppState.AppData> {
         $appState.dispatched(to: injected.appState, \.appData)
     }
-
+    
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
@@ -29,28 +28,26 @@ struct SignUpView: View {
             
             VStack(spacing: 0) {
                 header
+                    .padding(.top, 11)
                 
-                ScrollView(.vertical, showsIndicators: false) {
-                    VStack(spacing: UIScreen.screenHeight *
-                            Size.shared.getAdaptSizeHeight(px: 24)) {
-                        mailTextField
-                        loginTextField
-                        passwordTextField
-                    }
-                    .padding(.top, UIScreen.screenHeight *
-                                Size.shared.getAdaptSizeHeight(px: 24))
-                    authError
-                    
-                    VStack(alignment: .leading, spacing: 10) {
-                        confidentiality
-                        getNews
-                    }
-                    .padding(.top)
-                    
-                    Spacer()
-                    signUPButtton
-                    loginButton
+                VStack(spacing: 32) {
+                    mailTextField
+                    loginTextField
+                    passwordTextField
                 }
+                .padding(.top, 32)
+                authError
+                showTextConfidentialityError
+                
+                confidentiality
+                    .padding(.top, 26)
+                
+                Spacer()
+                
+                signUPButtton
+                    .padding(.bottom, 32)
+                loginButton
+                    .padding(.bottom, 10)
             }
         }
         .padding(.horizontal, 24)
@@ -63,7 +60,7 @@ private extension SignUpView {
     private var header: AnyView {
         AnyView(
             HStack {
-                VStack(alignment: .leading, spacing: 3) {
+                VStack(alignment: .leading, spacing: 10) {
                     Text("Регистрация")
                         .foregroundColor(.secondaryColor)
                         .font(Font.event.robotoMedium32)
@@ -72,7 +69,6 @@ private extension SignUpView {
                         .foregroundColor(.desc)
                         .font(Font.event.robotoRegular16)
                 }
-                .padding(.top, 11)
                 Spacer()
             }
         )
@@ -129,10 +125,10 @@ private extension SignUpView {
 private extension SignUpView {
     private var confidentiality: AnyView {
         AnyView(
-            VStack(spacing: 0) {
-                CheckboxFieldView(checked: appBinding.signUpAuth.confidentiality,
-                                  text: "Создавая аккаунт вы принимаете правила сервиса и политику конфиденциальности")
-                showTextConfidentialityError
+            VStack(spacing: 16) {
+                CheckboxForConfidentialityView(checked: appBinding.signUpAuth.confidentiality)
+                CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
+                                  text: "Хочу получать новости на почту")
             }
         )
     }
@@ -151,16 +147,7 @@ private extension SignUpView {
     }
 }
 
-private extension SignUpView {
-    private var getNews: AnyView {
-        AnyView(
-            CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
-                              text: "Хочу получать новости на почту")
-                .padding(.bottom, UIScreen.screenHeight *
-                            Size.shared.getAdaptSizeHeight(px: 24))
-        )
-    }
-}
+
 
 private extension SignUpView {
     private var signUPButtton: AnyView {
@@ -177,8 +164,6 @@ private extension SignUpView {
                            switchImage: false,
                            image: "")
             }
-            .padding(.bottom, UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 24))
         )
     }
 }
@@ -198,7 +183,6 @@ private extension SignUpView {
                         .font(Font.event.robotoMedium18)
                 }
             }
-            .padding(.bottom, 17)
         )
     }
 }

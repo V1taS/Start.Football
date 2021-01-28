@@ -38,13 +38,16 @@ private extension CellGameCurrentGame {
         AnyView(
             HStack {
                 TextButtonRound(name: typeGameString(game: game),
-                                isOn: false)
+                                isOn: false,
+                                backgroundColor: .primaryColor)
                 
                 TextButtonRound(name: formatGame(game: game),
-                                isOn: false)
+                                isOn: false,
+                                backgroundColor: .primaryColor)
                 
                 TextButtonRound(name: privacyGame(game: game),
-                                isOn: false)
+                                isOn: false,
+                                backgroundColor: .primaryColor)
             }
         )
     }

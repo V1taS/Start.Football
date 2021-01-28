@@ -14,7 +14,7 @@ struct ButtonCancel: View {
             background
             text
         }
-        .padding(3)
+        .padding(.horizontal, 3)
     }
 }
 

@@ -19,7 +19,6 @@ struct HeaderCreateGameView: View {
             Spacer()
         }
         .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24))
-        .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 13))
     }
 }
 

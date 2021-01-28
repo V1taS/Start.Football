@@ -28,7 +28,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: mo ? UIColor.primaryColor : .whiteColor,
                         textColor: mo ? UIColor.whiteColor : .secondaryColor,
-                        day: "Пн"
+                        day: "Пн",
+                        strokeBoarder: mo ? Color.primaryColor : Color.secondaryColor,
+                        font: mo ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
                 
@@ -38,7 +40,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: tu ? UIColor.primaryColor : .whiteColor,
                         textColor: tu ? UIColor.whiteColor : .secondaryColor,
-                        day: "Вт"
+                        day: "Вт",
+                        strokeBoarder: tu ? Color.primaryColor : Color.secondaryColor,
+                        font: tu ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
                 
@@ -48,7 +52,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: we ? UIColor.primaryColor : .whiteColor,
                         textColor: we ? UIColor.whiteColor : .secondaryColor,
-                        day: "Ср"
+                        day: "Ср",
+                        strokeBoarder: we ? .primaryColor : .secondaryColor,
+                        font: we ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
 
@@ -59,7 +65,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: th ? UIColor.primaryColor : .whiteColor,
                         textColor: th ? UIColor.whiteColor : .secondaryColor,
-                        day: "Чт"
+                        day: "Чт",
+                        strokeBoarder: th ? .primaryColor : .secondaryColor,
+                        font: th ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
                 
@@ -69,7 +77,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: fr ? UIColor.primaryColor : .whiteColor,
                         textColor: fr ? UIColor.whiteColor : .secondaryColor,
-                        day: "Пт"
+                        day: "Пт",
+                        strokeBoarder: fr ? .primaryColor : .secondaryColor,
+                        font: fr ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
                 
@@ -79,7 +89,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: sa ? UIColor.primaryColor : .whiteColor,
                         textColor: sa ? UIColor.whiteColor : .secondaryColor,
-                        day: "Сб"
+                        day: "Сб",
+                        strokeBoarder: sa ? .primaryColor : .secondaryColor,
+                        font: sa ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
                 
@@ -89,7 +101,9 @@ struct BoxDateButton: View {
                     DayOfWeeakCurrentGame(
                         background: su ? UIColor.primaryColor : .whiteColor,
                         textColor: su ? UIColor.whiteColor : .secondaryColor,
-                        day: "Вс"
+                        day: "Вс",
+                        strokeBoarder: su ? .primaryColor : .secondaryColor,
+                        font: su ? Font.event.robotoMedium16 : Font.event.robotoRegular16
                     )
                 } .disabled(disabledButton)
             }
@@ -98,27 +112,26 @@ struct BoxDateButton: View {
 }
 
 struct DayOfWeeakCurrentGame: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
     
     let background: UIColor
     let textColor: UIColor
     let day: String
+    let strokeBoarder: Color
+    let font: Font
     
     
     var body: some View {
         ZStack {
             Color(background)
-                .clipShape(RoundedRectangle(cornerRadius: 3))
-                .overlay(RoundedRectangle(cornerRadius: 3)
-                            .stroke(Color.secondaryColor))
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 32),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 32))
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8)
+                            .stroke(strokeBoarder))
+                .frame(width: 36,
+                       height: 36)
             Text(day)
                 .foregroundColor(Color(textColor))
-                .font(Font.event.robotoRegular16)
+                .font(font)
         }
-        .padding(3)
     }
 }
 
@@ -126,10 +139,10 @@ struct BoxDateButton_Previews: PreviewProvider {
     static var previews: some View {
         BoxDateButton(disabledButton: false,
                       mo: .constant(false),
-                      tu: .constant(false),
+                      tu: .constant(true),
                       we: .constant(false),
                       th: .constant(false),
-                      fr: .constant(false),
+                      fr: .constant(true),
                       sa: .constant(false),
                       su: .constant(false))
     }

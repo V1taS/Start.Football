@@ -14,15 +14,15 @@ struct CheckboxFieldView : View {
     
     var body: some View {
         HStack {
-            HStack(alignment: .firstTextBaseline, spacing: 7) {
+            HStack(alignment: .firstTextBaseline, spacing: 10) {
                 heckbox
                 textView
             }
-            .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 270),
+            .frame(width: 299,
                    alignment: .leading)
             Spacer()
         }
-        .padding(3)
+        .padding(.horizontal, 3)
     }
 }
 
@@ -30,10 +30,10 @@ struct CheckboxFieldView : View {
 private extension CheckboxFieldView {
     private var heckbox: AnyView {
         AnyView(
-            Image(systemName: checked ? "checkmark.square.fill" : "square")
-                .foregroundColor(checked ? .secondaryColor : .defaultColor)
-                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 14),
-                       height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 14))
+            Image(systemName: checked ? "checkmark.square" : "square")
+                .foregroundColor(checked ? .primaryColor : .defaultColor)
+                .frame(width: 18,
+                       height: 18)
                 .onTapGesture {
                     self.checked.toggle()
                 }

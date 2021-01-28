@@ -157,6 +157,7 @@ private extension MainView {
                                 
                             }) {
                                 CellMainView(game: game)
+                                    .padding(.horizontal, 16)
                             }
                                     }
                         .animation(.default)

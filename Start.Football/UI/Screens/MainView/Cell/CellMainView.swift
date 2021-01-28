@@ -25,13 +25,14 @@ struct CellMainView: View {
                     streetGame
                     coastAndPeople
                 }
+                
                 typeGame
                     .padding(.top, 16)
                 
             }
-            .padding(16)
+            .padding(.horizontal, 16)
         }
-        .frame(width: 343, height: 252)
+        .frame(height: 214)
     }
 }
 
@@ -93,9 +94,8 @@ private extension CellMainView {
         AnyView(
             HStack(spacing: 10)  {
                 Text("5,2 км")
-                    .foregroundColor(.primaryColor)
+                    .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
-                Image("right")
             }
         )
     }
@@ -125,15 +125,17 @@ private extension CellMainView {
 private extension CellMainView {
     private var typeGame: AnyView {
         AnyView(
-            HStack {
+            HStack(spacing: 0)  {
+                
                 TextButtonRound(name: typeGameString(game: game),
-                                isOn: false)
-                
+                                isOn: false,
+                                backgroundColor: .primaryColor)
                 TextButtonRound(name: formatGame(game: game),
-                                isOn: false)
-                
+                                isOn: false,
+                                backgroundColor: .primaryColor)
                 TextButtonRound(name: privacyGame(game: game),
-                                isOn: false)
+                                isOn: false,
+                                backgroundColor: .primaryColor)
             }
         )
     }

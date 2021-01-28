@@ -15,7 +15,7 @@ struct ButtonGoogle: View {
             image
             text
         }
-        .padding(3)
+        .padding(.horizontal, 3)
     }
 }
 
@@ -28,7 +28,7 @@ private extension ButtonGoogle {
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(RoundedRectangle(cornerRadius: 8)
                             .stroke(Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))))
-                .frame(height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 51))
+                .frame(height: 51)
         )
     }
 }

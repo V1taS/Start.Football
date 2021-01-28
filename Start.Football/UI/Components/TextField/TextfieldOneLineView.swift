@@ -25,10 +25,11 @@ struct TextfieldOneLineView: View {
             VStack(alignment: .leading, spacing: 0) {
                 header
                 
-                HStack {
+                HStack(spacing: 10) {
+                    iconView
                     textField
                     Spacer()
-                    iconView
+                    
                 }
                 .padding(.bottom, 8)
             }

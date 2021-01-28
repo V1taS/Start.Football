@@ -9,9 +9,6 @@ import SwiftUI
 
 struct LoginTextFieldView: View {
     
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
-    
     @Binding var text: String
     var success: Bool
     let title: String
@@ -22,13 +19,12 @@ struct LoginTextFieldView: View {
         VStack(alignment: .leading, spacing: 0) {
             header
             
-            HStack {
+            HStack(spacing: 10) {
                 iconView
                 textField
             }
-            .padding(.bottom, 11)
-            
             divider
+                .padding(.top, 7)
         }
     }
 }
@@ -41,7 +37,7 @@ private extension LoginTextFieldView {
             Text(title)
                 .foregroundColor(success ? .defaultColor : .error)
                 .font(Font.event.robotoMedium14)
-                .padding(.bottom, 18)
+                .padding(.bottom, 16)
         )
     }
 }
@@ -67,7 +63,7 @@ private extension LoginTextFieldView {
                            foregroundColor: .secondaryColor,
                            keyType: .default,
                            isSecureText: false)
-                .frame(height: 30)
+                .frame(height: 24)
         )
     }
 }
@@ -76,8 +72,9 @@ private extension LoginTextFieldView {
     private var divider: AnyView {
         AnyView(
             Color(success ? .dividerColor : .error)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 327),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 2))
+                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 327),
+                       height: UIScreen.screenHeight *
+                        Size.shared.getAdaptSizeHeight(px: 2))
         )
     }
 }

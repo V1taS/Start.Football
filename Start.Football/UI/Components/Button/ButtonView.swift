@@ -25,7 +25,7 @@ struct ButtonView: View {
                 textView
             }
         }
-        .padding(3)
+        .padding(.horizontal, 3)
     }
 }
 
@@ -35,12 +35,11 @@ private extension ButtonView {
     private var backgroundColor: AnyView {
         AnyView(
             Color(background)
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                .overlay(RoundedRectangle(cornerRadius: 5)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8)
                             .stroke(Color(borderColor)))
                 
-                .frame(height: UIScreen.screenHeight *
-                        Size.shared.getAdaptSizeHeight(px: 51))
+                .frame(height: 52)
         )
     }
 }

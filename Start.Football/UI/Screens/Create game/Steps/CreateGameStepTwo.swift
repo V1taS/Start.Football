@@ -24,8 +24,8 @@ struct CreateGameStepTwo: View {
                 .animation(.default)
             Spacer()
         }
-        .padding(.horizontal, 24)
         .padding(.top, 16)
+        .padding(.horizontal, 24)
     }
 }
 
@@ -64,7 +64,7 @@ private extension CreateGameStepTwo {
         HStack(spacing: 8) {
             ButtonRoundGreen(status: appBinding.createGame
                                 .selectionRegularGame.wrappedValue == .no)
-                .frame(width: 20)
+                .frame(width: 24)
             
             Text("Разово. Для проведения одной игры.")
                 .foregroundColor(.defaultColor)
@@ -79,7 +79,7 @@ private extension CreateGameStepTwo {
         HStack(spacing: 8) {
             ButtonRoundGreen(status: appBinding.createGame
                                 .selectionRegularGame.wrappedValue == .yes)
-                .frame(width: 20)
+                .frame(width: 24)
             
             Text("Регулярно. Проводится на постоянной основе")
                 .foregroundColor(.defaultColor)

@@ -24,11 +24,12 @@ struct DatePickerLineView: View {
         VStack(alignment: .leading, spacing: 0) {
             headerView
             
-            HStack {
+            HStack(spacing: 10) {
+                iconView
                 textView
                 buttonAndPickerView
                 Spacer()
-                iconView
+                
             }
             .padding(.bottom, 11)
             divider
@@ -52,6 +53,7 @@ private extension DatePickerLineView {
     private var textView: AnyView {
         AnyView(
             Text(text)
+                .lineLimit(1)
                 .foregroundColor(textHasBeenChanged ?
                                     Color.secondaryColor :
                                     Color.inactive)

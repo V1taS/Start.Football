@@ -14,7 +14,7 @@ struct ButtonApple: View {
             background
             text
         }
-        .padding(3)
+        .padding(.horizontal, 3)
     }
 }
 
@@ -25,7 +25,7 @@ private extension ButtonApple {
         AnyView(
             Color(#colorLiteral(red: 0, green: 0, blue: 0, alpha: 1))
                 .clipShape(RoundedRectangle(cornerRadius: 8))
-                .frame(height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 51))
+                .frame(height: 51)
         )
     }
 }

@@ -96,21 +96,27 @@ private extension FilterGameSheet {
                         selectMiniFootball()
                     }) {
                         TextButtonRound(name: "Мини",
-                                        isOn: appBinding.main.filter.miniFootball.wrappedValue)
+                                        isOn: appBinding.main.filter
+                                            .miniFootball.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectFootball()
                     }) {
                         TextButtonRound(name: "Стандарт",
-                                        isOn: appBinding.main.filter.football.wrappedValue)
+                                        isOn: appBinding.main.filter
+                                            .football.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectFootsal()
                     }) {
                         TextButtonRound(name: "Футзал",
-                                        isOn: appBinding.main.filter.footsal.wrappedValue)
+                                        isOn: appBinding.main
+                                            .filter.footsal.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                 }
             }
@@ -131,21 +137,27 @@ private extension FilterGameSheet {
                         selectStreet()
                     }) {
                         TextButtonRound(name: "Улица",
-                                        isOn: appBinding.main.filter.street.wrappedValue)
+                                        isOn: appBinding.main.filter
+                                            .street.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectManege()
                     }) {
                         TextButtonRound(name: "Манеж",
-                                        isOn: appBinding.main.filter.manege.wrappedValue)
+                                        isOn: appBinding.main.filter
+                                            .manege.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectHall()
                     }) {
                         TextButtonRound(name: "Зал",
-                                        isOn: appBinding.main.filter.hall.wrappedValue)
+                                        isOn: appBinding.main.filter
+                                            .hall.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                 }
             }

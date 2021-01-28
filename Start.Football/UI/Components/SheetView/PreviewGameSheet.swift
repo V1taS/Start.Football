@@ -100,13 +100,16 @@ private extension PreviewGameSheet {
         AnyView(
                 HStack {
                     TextButtonRound(name: "Зал",
-                                    isOn: game.hall)
+                                    isOn: game.hall,
+                                    backgroundColor: .primaryColor)
                     
                     TextButtonRound(name: "Манеж",
-                                    isOn: game.manege)
+                                    isOn: game.manege,
+                                    backgroundColor: .primaryColor)
                     
                     TextButtonRound(name: "Улица",
-                                    isOn: game.street)
+                                    isOn: game.street,
+                                    backgroundColor: .primaryColor)
                     Spacer()
                 }
                 .padding(.top, 32)

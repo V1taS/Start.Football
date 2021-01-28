@@ -22,6 +22,7 @@ struct CreateGameStepOne: View {
                     nameGame
                     addressGame
                     time
+                    HowMuchDoWePlay
                     day
                     costGame
                 }
@@ -66,6 +67,20 @@ private extension CreateGameStepOne {
         DatePickerLineView(date: appBinding.createGame.currentDate,
                            textHasBeenChanged: appBinding.createGame.currentTimeHasBeenChanged, text: "Укажите время:",
                            header: "Время",
+                           iconShow: true,
+                           icon: "timeGreateGame",
+                           hourAndMinute: .hourAndMinute)
+    }
+}
+
+private extension CreateGameStepOne {
+    var HowMuchDoWePlay: some View {
+        DatePickerLineView(date: appBinding.createGame
+                            .currentDate,
+                           textHasBeenChanged: appBinding.createGame
+                            .currentTimeHasBeenChanged,
+                           text: "Укажите время:",
+                           header: "Сколько играем?",
                            iconShow: true,
                            icon: "timeGreateGame",
                            hourAndMinute: .hourAndMinute)

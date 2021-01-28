@@ -9,21 +9,16 @@ import Combine
 import SwiftUI
 
 protocol AuthInteractor: SignUPAuthInteractor, ResetAuthInteractor  {
-    func verificationLogin(state: Binding<AppState.AppData>)
+    func verificationLogin(state: Binding<String>) -> Bool
     func verificationPassword(state: Binding<AppState.AppData>)
 }
 
 struct AuthInteractorImpl: AuthInteractor {
-    func verificationLogin(state: Binding<AppState.AppData>) {
-        guard !state.signInAuth.login.wrappedValue.isEmpty else {
-            state.signInAuth.loginSuccess.wrappedValue = false
-            return
-        }
-        guard state.signInAuth.login.wrappedValue.count >= 4 else {
-            state.signInAuth.loginSuccess.wrappedValue = false
-            return
-        }
-        state.signInAuth.loginSuccess.wrappedValue = true
+    func verificationLogin(state: Binding<String>) -> Bool {
+        guard !state.wrappedValue.isEmpty else { return false }
+        
+        guard state.wrappedValue.count >= 3 else { return false }
+        return true
     }
     
     func verificationPassword(state: Binding<AppState.AppData>) {

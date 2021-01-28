@@ -26,8 +26,39 @@
       buildConfiguration = "Debug"
       selectedDebuggerIdentifier = "Xcode.DebuggerFoundation.Debugger.LLDB"
       selectedLauncherIdentifier = "Xcode.DebuggerFoundation.Launcher.LLDB"
-      shouldUseLaunchSchemeArgsEnv = "YES">
+      shouldUseLaunchSchemeArgsEnv = "YES"
+      codeCoverageEnabled = "YES"
+      onlyGenerateCoverageForSpecifiedTargets = "YES">
+      <CodeCoverageTargets>
+         <BuildableReference
+            BuildableIdentifier = "primary"
+            BlueprintIdentifier = "1B155F02256C06D000019C2F"
+            BuildableName = "Start.Football.app"
+            BlueprintName = "Start.Football"
+            ReferencedContainer = "container:Start.Football.xcodeproj">
+         </BuildableReference>
+      </CodeCoverageTargets>
       <Testables>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1B28965325C1ACF000D7D5D5"
+               BuildableName = "Start.FootballTests.xctest"
+               BlueprintName = "Start.FootballTests"
+               ReferencedContainer = "container:Start.Football.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
+         <TestableReference
+            skipped = "NO">
+            <BuildableReference
+               BuildableIdentifier = "primary"
+               BlueprintIdentifier = "1BC4A6F725C217BB001AD75B"
+               BuildableName = "Start.FootballUITests.xctest"
+               BlueprintName = "Start.FootballUITests"
+               ReferencedContainer = "container:Start.Football.xcodeproj">
+            </BuildableReference>
+         </TestableReference>
       </Testables>
    </TestAction>
    <LaunchAction

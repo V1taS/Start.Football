@@ -59,21 +59,27 @@ private extension CreateGameStepThree {
                         selectMiniFootball()
                     }) {
                         TextButtonRound(name: "Мини-футбол",
-                                        isOn: appBinding.createGame.miniFootball.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .miniFootball.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectFootball()
                     }) {
                         TextButtonRound(name: "Футбол",
-                                        isOn: appBinding.createGame.usualFootball.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .usualFootball.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectFootsal()
                     }) {
                         TextButtonRound(name: "Футзал",
-                                        isOn: appBinding.createGame.footsal.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .footsal.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                 }
             }
@@ -94,21 +100,27 @@ private extension CreateGameStepThree {
                         selectStreet()
                     }) {
                         TextButtonRound(name: "Улица",
-                                        isOn: appBinding.createGame.street.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .street.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectManege()
                     }) {
                         TextButtonRound(name: "Манеж",
-                                        isOn: appBinding.createGame.manege.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .manege.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectHall()
                     }) {
                         TextButtonRound(name: "Зал",
-                                        isOn: appBinding.createGame.hall.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .hall.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                 }
             }
@@ -130,21 +142,27 @@ private extension CreateGameStepThree {
                         selectParquet()
                     }) {
                         TextButtonRound(name: "Паркет",
-                                        isOn: appBinding.createGame.parquet.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .parquet.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectGrass()
                     }) {
                         TextButtonRound(name: "Газон",
-                                        isOn: appBinding.createGame.grass.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .grass.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectCaoutchouc()
                     }) {
                         TextButtonRound(name: "Резина",
-                                        isOn: appBinding.createGame.caoutchouc.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .caoutchouc.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                 }
             }
@@ -162,21 +180,27 @@ private extension CreateGameStepThree {
                         selectSynthetics()
                     }) {
                         TextButtonRound(name: "Синтетика",
-                                        isOn: appBinding.createGame.synthetics.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .synthetics.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectHair()
                     }) {
                         TextButtonRound(name: "Ворс",
-                                        isOn: appBinding.createGame.hair.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .hair.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         selectCrumb()
                     }) {
                         TextButtonRound(name: "Крошка",
-                                        isOn: appBinding.createGame.crumb.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .crumb.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                 }
             }
@@ -224,14 +248,18 @@ private extension CreateGameStepThree {
                         dressingRooms(state: appBinding)
                     }) {
                         TextButtonRound(name: "Раздевалки",
-                                        isOn: appBinding.createGame.dressingRooms.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .dressingRooms.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                     Button(action: {
                         showers(state: appBinding)
                     }) {
                         TextButtonRound(name: "Душевые",
-                                        isOn: appBinding.createGame.showers.wrappedValue)
+                                        isOn: appBinding.createGame
+                                            .showers.wrappedValue,
+                                        backgroundColor: .primaryColor)
                     }
                     
                 }
