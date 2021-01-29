@@ -54,9 +54,9 @@ struct AuthView: View {
                 }
                 .padding(.top, 32)
             }
+            .padding(.horizontal, 24)
             
-        }
-        .padding(.horizontal, 24)
+        } 
         .dismissingKeyboard()
     }
 }

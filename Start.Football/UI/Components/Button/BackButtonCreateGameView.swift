@@ -9,19 +9,37 @@ import SwiftUI
 
 struct BackButtonCreateGameView: View {
     
-    @Binding var appBinding: AppState.AppData
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
     @Environment(\.injected) private var injected: DIContainer
+    
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    private var viewController: UIViewController? {
+        self.viewControllerHolder!
+    }
     
     var body: some View {
         Button(action: {
+            if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
+                appBinding.main.showCreateGameView.wrappedValue = false
+            }
             backStepProgressBar()
             refreshProgressBar()
+            
         }) {
-            Image("backCreateGame")
-                .opacity(appBinding.createGame
-                            .selectionCreateGame == .stepOne ? 0 : 1)
-                .offset(y: UIScreen.screenHeight *
-                            Size.shared.getAdaptSizeHeight(px: 6))
+            if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
+                    Image(systemName: "xmark.circle.fill")
+                        .imageScale(.large)
+                        .foregroundColor(Color(.secondaryLabel))
+                
+            } else {
+                Image("backCreateGame")
+                    .offset(y: UIScreen.screenHeight *
+                                Size.shared.getAdaptSizeHeight(px: 6))
+            }
+            
         }
     }
 }
@@ -29,14 +47,14 @@ struct BackButtonCreateGameView: View {
 private extension BackButtonCreateGameView {
     func backStepProgressBar() {
         injected.interactors.createGameInteractor
-            .backStepProgressBar(state: $appBinding)
+            .backStepProgressBar(state: appBinding)
     }
 }
 
 private extension BackButtonCreateGameView {
     func refreshProgressBar() {
         injected.interactors.createGameInteractor
-            .refreshProgressBar(state: $appBinding)
+            .refreshProgressBar(state: appBinding)
     }
 }
 

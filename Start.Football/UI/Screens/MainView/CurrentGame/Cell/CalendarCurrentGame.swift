@@ -165,7 +165,6 @@ private extension CalendarCurrentGame {
         .onAppear {
             showDaysInRegularCalendar(state: appBinding, game: game)
         }
-        .animation(.default)
     }
 }
 

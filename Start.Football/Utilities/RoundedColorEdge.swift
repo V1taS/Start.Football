@@ -13,7 +13,7 @@ struct RoundedColorEdge: ViewModifier {
 
     func body(content: Content) -> some View {
         content
-            .padding(.horizontal, 16)
+            .padding(.horizontal, 12)
             .padding(.vertical, 8)
             .background(backgroundColor)
             .cornerRadius(16)

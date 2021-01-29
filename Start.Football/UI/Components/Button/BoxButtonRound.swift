@@ -19,7 +19,6 @@ struct TextButtonRound: View {
             .font(Font.event.robotoRegular16)
             .roundedEdge(backgroundColor: isOn ? backgroundColor : .whiteColor,
                          boarderColor: isOn ? backgroundColor : .secondaryColor)
-            .padding(.horizontal, 3)
             .lineLimit(1)
     }
 }

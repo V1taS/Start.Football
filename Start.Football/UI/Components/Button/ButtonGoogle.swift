@@ -15,7 +15,6 @@ struct ButtonGoogle: View {
             image
             text
         }
-        .padding(.horizontal, 3)
     }
 }
 

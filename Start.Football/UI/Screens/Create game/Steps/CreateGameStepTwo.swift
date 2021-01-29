@@ -17,15 +17,16 @@ struct CreateGameStepTwo: View {
     @Environment(\.injected) private var injected: DIContainer
     
     var body: some View {
-        VStack(alignment: .leading, spacing: 16) {
-            header
-            selectionRegularGame
-            regularGame
-                .animation(.default)
-            Spacer()
+        VStack {
+            VStack(alignment: .leading, spacing: 16) {
+                header
+                selectionRegularGame
+                regularGame
+                Spacer()
+            }
+            .padding(.horizontal, 24)
+            .padding(.top, 16)
         }
-        .padding(.top, 16)
-        .padding(.horizontal, 24)
     }
 }
 

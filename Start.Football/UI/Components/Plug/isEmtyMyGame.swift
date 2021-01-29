@@ -67,7 +67,7 @@ private extension isEmtyMyGame {
             VStack(spacing: 0) {
                 if buttonIsEnable {
                     Button(action: {
-                        appBinding.main.tag.wrappedValue = 1
+                        appBinding.main.selectedItem.wrappedValue = 1
                     }) {
                         Text("Создай игру!")
                             .foregroundColor(.primaryColor)

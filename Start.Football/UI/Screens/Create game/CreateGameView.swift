@@ -23,10 +23,15 @@ struct CreateGameView: View {
     var body: some View {
         ZStack {
             VStack(spacing: 0) {
-                header
-                content
-                Spacer()
-                buttonNextStep
+                VStack(spacing: 0) {
+                    header
+                        .padding(.horizontal, 24)
+                    content
+                    Spacer()
+                    buttonNextStep
+                        .padding(.horizontal, 24)
+                }
+                
             }
             backgroundColor
             typeOfParking
@@ -75,8 +80,8 @@ private extension CreateGameView {
                                switchImage: false,
                                image: "")
                 }
-                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
-                .padding(.horizontal, 24)
+                .padding(.bottom, 17)
+                
             } else {
                 Button(action: {
                     configureNextStepButton(state: appBinding)
@@ -88,8 +93,7 @@ private extension CreateGameView {
                                switchImage: false,
                                image: "")
                 }
-                .padding(.bottom, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 17))
-                .padding(.horizontal, 24)
+                .padding(.bottom, 17)
             }
         }
     }
@@ -98,7 +102,6 @@ private extension CreateGameView {
 private extension CreateGameView {
     var typeOfParking: some View {
         TypeOfParkingSheet(appBinding: appBinding)
-            .animation(.easeInOut(duration: 0.5))
             .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 85))
     }
 }
@@ -109,7 +112,6 @@ private extension CreateGameView {
             if appBinding.createGame.showParking.wrappedValue {
                 Color.secondary
                     .edgesIgnoringSafeArea(.all)
-                    .animation(.linear(duration: 10))
             }
         }
         .onTapGesture {
@@ -174,7 +176,7 @@ private extension CreateGameView {
             nextStepCreateGame(state: state)
             refreshProgressBar(state: state)
             appendCurrentGameToMyGameAndAllGame(state: state, game: currentGame(state: state))
-            appBinding.main.tag.wrappedValue = 0
+            appBinding.main.selectedItem.wrappedValue = 0
             clearCreateGame(state: state)
             state.main.selectionGame.wrappedValue = .myGames
         }

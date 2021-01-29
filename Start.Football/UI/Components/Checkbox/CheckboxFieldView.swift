@@ -22,7 +22,6 @@ struct CheckboxFieldView : View {
                    alignment: .leading)
             Spacer()
         }
-        .padding(.horizontal, 3)
     }
 }
 

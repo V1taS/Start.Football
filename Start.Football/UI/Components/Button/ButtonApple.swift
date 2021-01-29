@@ -14,7 +14,6 @@ struct ButtonApple: View {
             background
             text
         }
-        .padding(.horizontal, 3)
     }
 }
 

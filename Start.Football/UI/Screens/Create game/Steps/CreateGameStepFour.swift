@@ -30,9 +30,9 @@ struct CreateGameStepFour: View {
                 addPhotoFieldButton
                 Spacer()
             }
+            .padding(.horizontal, 24)
         }
         .dismissingKeyboard()
-        .padding(.horizontal, 24)
         .padding(.top, 16)
     }
 }

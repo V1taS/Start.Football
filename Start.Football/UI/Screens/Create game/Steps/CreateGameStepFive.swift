@@ -15,15 +15,18 @@ struct CreateGameStepFive: View {
     }
     
     var body: some View {
-        VStack(spacing: 0) {
-            header
-            inviteFriendsButton
-            listFriends
-            Spacer()
+        VStack {
+            VStack(spacing: 0) {
+                header
+                inviteFriendsButton
+                listFriends
+                Spacer()
+            }
+            .padding(.horizontal, 24)
+            .padding(.top, 16)
+            .dismissingKeyboard()
+            
         }
-        .dismissingKeyboard()
-        .padding(.horizontal, 24)
-        .padding(.top, 16)
     }
 }
 

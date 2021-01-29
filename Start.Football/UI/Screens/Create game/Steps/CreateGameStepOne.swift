@@ -16,8 +16,8 @@ struct CreateGameStepOne: View {
     }
     
     var body: some View {
-        ZStack {
-            ScrollView(.vertical, showsIndicators: false) {
+        ScrollView(.vertical, showsIndicators: false) {
+            VStack {
                 VStack(spacing: 32) {
                     nameGame
                     addressGame

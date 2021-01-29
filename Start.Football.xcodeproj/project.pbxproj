@@ -51,6 +51,7 @@
 		1B41A08725BD96090065A7C2 /* GamePoint.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08625BD96090065A7C2 /* GamePoint.swift */; };
 		1B41A08A25BD962F0065A7C2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08925BD962F0065A7C2 /* MapView.swift */; };
 		1B41A08D25BD9A180065A7C2 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */; };
+		1B42CD5D25C4570A007F4ABB /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */; };
 		1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */; };
 		1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65FB25A8B42800801E12 /* ButtonParking.swift */; };
 		1B50791325BF744B00F4FA37 /* CellCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */; };
@@ -59,6 +60,7 @@
 		1B50791C25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791B25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift */; };
 		1B50792225BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50792125BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift */; };
 		1B5CCDB7257ED7AB0000BC79 /* ColorExtensions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */; };
+		1B5D470F25C450C700873B91 /* CustomTabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5D470E25C450C700873B91 /* CustomTabViewApp.swift */; };
 		1B5E4DD925A74CA500287D98 /* BackButtonCreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */; };
 		1B67934C25B2F78C00DADFC4 /* AppActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B67934B25B2F78C00DADFC4 /* AppActions.swift */; };
 		1B67935A25B31DB900DADFC4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B67935925B31DB900DADFC4 /* Store.swift */; };
@@ -91,7 +93,6 @@
 		1B78CCDC256DBA0600297221 /* Roboto-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B78CCD0256DBA0600297221 /* Roboto-Medium.ttf */; };
 		1B78CCDE256DBA0600297221 /* Roboto-Light.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 1B78CCD2256DBA0600297221 /* Roboto-Light.ttf */; };
 		1B78CCE8256DBC7100297221 /* Font.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78CCE7256DBC7100297221 /* Font.swift */; };
-		1B78CCEC256DC2C200297221 /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78CCEB256DC2C200297221 /* TabViewApp.swift */; };
 		1B78CCF0256DC4E300297221 /* MainView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B78CCEF256DC4E300297221 /* MainView.swift */; };
 		1B7B648D25B71F100067A334 /* Validators.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7B648C25B71F100067A334 /* Validators.swift */; };
 		1B7B649025B71F5C0067A334 /* CreatGameActions.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7B648F25B71F5C0067A334 /* CreatGameActions.swift */; };
@@ -215,6 +216,7 @@
 		1B41A08625BD96090065A7C2 /* GamePoint.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GamePoint.swift; sourceTree = "<group>"; };
 		1B41A08925BD962F0065A7C2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
+		1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatGameTextField.swift; sourceTree = "<group>"; };
 		1B4B65FB25A8B42800801E12 /* ButtonParking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParking.swift; sourceTree = "<group>"; };
 		1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCurrentGameInteractor.swift; sourceTree = "<group>"; };
@@ -223,6 +225,7 @@
 		1B50791B25BF817F00F4FA37 /* AboutCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AboutCurrentGameInteractor.swift; sourceTree = "<group>"; };
 		1B50792125BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonsCurrentGameInteractor.swift; sourceTree = "<group>"; };
 		1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColorExtensions.swift; sourceTree = "<group>"; };
+		1B5D470E25C450C700873B91 /* CustomTabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CustomTabViewApp.swift; sourceTree = "<group>"; };
 		1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = BackButtonCreateGameView.swift; sourceTree = "<group>"; };
 		1B67934B25B2F78C00DADFC4 /* AppActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppActions.swift; sourceTree = "<group>"; };
 		1B67935925B31DB900DADFC4 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
@@ -255,7 +258,6 @@
 		1B78CCD0256DBA0600297221 /* Roboto-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Medium.ttf"; sourceTree = "<group>"; };
 		1B78CCD2256DBA0600297221 /* Roboto-Light.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "Roboto-Light.ttf"; sourceTree = "<group>"; };
 		1B78CCE7256DBC7100297221 /* Font.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Font.swift; sourceTree = "<group>"; };
-		1B78CCEB256DC2C200297221 /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		1B78CCEF256DC4E300297221 /* MainView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MainView.swift; sourceTree = "<group>"; };
 		1B7B648C25B71F100067A334 /* Validators.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Validators.swift; sourceTree = "<group>"; };
 		1B7B648F25B71F5C0067A334 /* CreatGameActions.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CreatGameActions.swift; sourceTree = "<group>"; };
@@ -774,7 +776,8 @@
 			isa = PBXGroup;
 			children = (
 				1B155F39256C078500019C2F /* SignIn&Auth */,
-				1B78CCEB256DC2C200297221 /* TabViewApp.swift */,
+				1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */,
+				1B5D470E25C450C700873B91 /* CustomTabViewApp.swift */,
 				1B7970E5256DC9FD006DAFC0 /* MainView */,
 				1B24DEF825802A6300510132 /* Create game */,
 			);
@@ -1142,6 +1145,7 @@
 				1B155F09256C06D000019C2F /* SceneDelegate.swift in Sources */,
 				1BE105EA25B743840060DA3D /* ResetAuthInteractor.swift in Sources */,
 				1B67934C25B2F78C00DADFC4 /* AppActions.swift in Sources */,
+				1B42CD5D25C4570A007F4ABB /* TabViewApp.swift in Sources */,
 				1B368A5C25B64F49007D1365 /* SignInAuth.swift in Sources */,
 				1BAA201425BB3A4B00888B82 /* BoxSelectDateGames.swift in Sources */,
 				1BAFF64725BC808C00C9D2E5 /* MenuInteractor.swift in Sources */,
@@ -1195,6 +1199,7 @@
 				1B368A5925B640E5007D1365 /* CellWithPlayerButton.swift in Sources */,
 				1B23562625A7B8FD00E33DA8 /* TypeOfParkingSheet.swift in Sources */,
 				1B41A08D25BD9A180065A7C2 /* StringProtocol.swift in Sources */,
+				1B5D470F25C450C700873B91 /* CustomTabViewApp.swift in Sources */,
 				1B765D9225A74B8100105940 /* HeaderCreateGameView.swift in Sources */,
 				1BE105E725B743400060DA3D /* SignUPAuthInteractor.swift in Sources */,
 				1B297B4625C23A3D002E96C3 /* CheckboxForConfidentialityView.swift in Sources */,
@@ -1202,7 +1207,6 @@
 				1B50791325BF744B00F4FA37 /* CellCurrentGameInteractor.swift in Sources */,
 				1B03BE7125B7A64D00F032F7 /* MainActions.swift in Sources */,
 				1BF3662F25A7827700B196EE /* OrganizerCurrentGame.swift in Sources */,
-				1B78CCEC256DC2C200297221 /* TabViewApp.swift in Sources */,
 				1B50792225BF908400F4FA37 /* ButtonsCurrentGameInteractor.swift in Sources */,
 				1BF3661A25A7811000B196EE /* HeaderCurrentGame.swift in Sources */,
 				1BF3662425A781B100B196EE /* WhoWillPlayCurrentGame.swift in Sources */,
@@ -1383,7 +1387,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1393,7 +1397,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.39;
+				MARKETING_VERSION = 1.0.40;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1407,7 +1411,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 39;
+				CURRENT_PROJECT_VERSION = 40;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1417,7 +1421,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.39;
+				MARKETING_VERSION = 1.0.40;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

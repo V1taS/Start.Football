@@ -68,7 +68,7 @@ private extension BoxPrivacyCreateGame {
                         
                     }
                 }
-            } .animation(.default)
+            }
         )
     }
 }
@@ -100,7 +100,7 @@ private extension BoxPrivacyCreateGame {
                         }
                     }
                 }
-            } .animation(.default)
+            }
         )
     }
 }

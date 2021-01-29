@@ -49,8 +49,8 @@ struct SignUpView: View {
                 loginButton
                     .padding(.bottom, 10)
             }
+            .padding(.horizontal, 24)
         }
-        .padding(.horizontal, 24)
         .dismissingKeyboard()
     }
 }

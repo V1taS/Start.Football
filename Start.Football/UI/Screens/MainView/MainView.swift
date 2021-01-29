@@ -61,11 +61,11 @@ private extension MainView {
             VStack(spacing: 0) {
                 if appBinding.main.selectionGame.wrappedValue == .allGame {
                     ScrollView(.vertical, showsIndicators: false) {
-                        VStack(spacing: 16) {
-                            moreGames
-                            allGames
+                        VStack(spacing: 0) {
+                            allGamesFull
+                            allGamesIsEmty
                         }
-                        .padding(16)
+                        .padding(.horizontal, 16)
                     }
                 }
             }
@@ -93,21 +93,50 @@ private extension MainView {
 }
 
 private extension MainView {
-    private var allGames: AnyView {
+    private var allGamesFull: AnyView {
         AnyView(
-            VStack(spacing: 16) {
-                ForEach(appBinding.main.listAllGames.wrappedValue.sorted(
-                            by: { $0.dataCreateGame > $1.dataCreateGame }), id: \.self) { game in
-                    Button(action: {
-                        currentGameShow(game: game)
-                    }) {
-                        CellMainView(game: game)
+            VStack {
+                if !appBinding.main.listAllGames.wrappedValue.isEmpty {
+                    moreGames
+                    VStack(spacing: 16) {
+                        ForEach(appBinding.main.listAllGames
+                                    .wrappedValue.sorted(
+                                        by: { $0.dataCreateGame > $1.dataCreateGame }),
+                                id: \.self) { game in
+                            
+                            Button(action: {
+                                currentGameShow(game: game)
+                            }) {
+                                CellMainView(game: game)
+                            }
+                                    
+                                    Button(action: {}) { ADVone()}
+                        }
+                        Button(action: {}) { ADVtwo()}
                     }
-                                
-                                Button(action: {}) { ADVone()}
+                    .padding(.top, 16)
+                    
                 }
-                .animation(.default)
-                Button(action: {}) { ADVtwo()}
+            }
+        )
+    }
+}
+
+private extension MainView {
+    private var allGamesIsEmty: AnyView {
+        AnyView(
+            VStack {
+                if appBinding.main.listAllGames.wrappedValue.isEmpty {
+                    VStack(spacing: 32) {
+                        Spacer()
+                        Image("emptyMyGame")
+                        
+                        Text("Сейчас никто не играет")
+                            .font(Font.event.robotoBold20)
+                            .foregroundColor(.secondaryColor)
+                        Spacer()
+                    }
+                }
             }
         )
     }
@@ -118,11 +147,12 @@ private extension MainView {
         AnyView(
             VStack(spacing: 0) {
                 if appBinding.main.selectionGame.wrappedValue == .myGames {
-                    VStack {
-                        ScrollView(.vertical, showsIndicators: false) {
+                    ScrollView(.vertical, showsIndicators: false) {
+                        VStack {
                             myGamesIsEmpty
                             myGameFull
                         }
+                        .padding(.horizontal, 16)
                     }
                 }
             }
@@ -135,9 +165,15 @@ private extension MainView {
         AnyView(
             VStack(spacing: 0) {
                 if appBinding.main.listMyGames.wrappedValue.isEmpty {
-                    isEmtyMyGame(appBinding: appBinding,
-                         text: "Пока у тебя нет игр",
-                         createGame: true)
+                    VStack(spacing: 32) {
+                        Spacer()
+                        Image("emptyMyGame")
+                        
+                        Text("Сейчас никто не играет")
+                            .font(Font.event.robotoBold20)
+                            .foregroundColor(.secondaryColor)
+                        Spacer()
+                    }
                 }
             }
         )
@@ -157,12 +193,9 @@ private extension MainView {
                                 
                             }) {
                                 CellMainView(game: game)
-                                    .padding(.horizontal, 16)
                             }
                                     }
-                        .animation(.default)
                     }
-                    .padding(.top)
                 }
             }
         )

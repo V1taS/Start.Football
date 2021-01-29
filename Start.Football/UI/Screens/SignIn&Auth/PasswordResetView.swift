@@ -40,8 +40,8 @@ struct PasswordResetView: View {
                 }
                 .padding(.bottom, 10)
             }
+            .padding(.horizontal, 24)
         }
-        .padding(.horizontal, 24)
         .dismissingKeyboard()
     }
 }

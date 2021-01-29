@@ -1,8 +1,8 @@
 //
-//  TabViewApp.swift
+//  TabViewAppTwo.swift
 //  Start.Football
 //
-//  Created by Виталий Сосин on 25.11.2020.
+//  Created by Vitalii Sosin on 29.01.2021.
 //
 
 import SwiftUI
@@ -17,42 +17,28 @@ struct TabViewApp: View {
     
     var body: some View {
         ZStack {
-            TabView(selection: appBinding.main.tag) {
-                MainView(appBinding: appBinding)
-                    .tabItem {
-                        searchView
-                        Text("Поиск")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoMedium10)
+            
+            if !appBinding.main.showCreateGameView.wrappedValue {
+                ZStack {
+                    VStack(spacing: 0) {
+                        content
+                        CustomTabViewApp(appBinding: appBinding)
                     }
-                    .tag(0)
-                
-                CreateGameView(appBinding: appBinding)
-                    .tabItem {
-                        createView
-                        Text("Создать")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoMedium10)
-                    }
-                    .tag(1)
-                
-                isEmtyMyGame(appBinding: .constant(.init()), text: "Меню (В разработке...)", createGame: false)
-                    .tabItem {
-                        menuView
-                        Text("Меню")
-                            .foregroundColor(.defaultColor)
-                            .font(Font.event.robotoMedium10)
-                    }
-                    .tag(2)
+                    backgroundColor
+                    filterGame
+                }
+            } else {
+                VStack {
+                    CreateGameView(appBinding: appBinding)
+                }
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut)
             }
-            .accentColor(Color.secondaryColor)
-            backgroundColor
-            filterGame 
         }
+        .edgesIgnoringSafeArea(.bottom)
         .dismissingKeyboard()
     }
 }
-
 
 // MARK: Sheet View
 private extension TabViewApp {
@@ -71,7 +57,6 @@ private extension TabViewApp {
             if appBinding.main.filter.showFiltrsView.wrappedValue {
                 Color.secondary
                     .edgesIgnoringSafeArea(.all)
-                    .animation(.linear(duration: 10))
             }
         }
         .onTapGesture {
@@ -80,63 +65,18 @@ private extension TabViewApp {
     }
 }
 
-
-// MARK: UI
 private extension TabViewApp {
-    private var searchView: AnyView {
-        AnyView(
-            VStack {
-                if appBinding.main.tag.wrappedValue == 0 {
-                    Image("tab_search")
-                        .renderingMode(.template)
-                        .foregroundColor(.secondaryColor)
-                } else {
-                    Image("tab_search")
-                        .renderingMode(.template)
-                        .foregroundColor(.defaultColor)
-                }
-            }
-        )
+    private var content: AnyView {
+        switch appBinding.main.tabBarMenu.wrappedValue {
+        case .search:
+            return AnyView(MainView(appBinding: appBinding))
+        case .notifications:
+            return AnyView(isEmtyMyGame(appBinding: .constant(.init()), text: "Меню (В разработке...)", createGame: false))
+        }
     }
 }
 
-private extension TabViewApp {
-    private var createView: AnyView {
-        AnyView(
-            VStack {
-                if appBinding.main.tag.wrappedValue == 1 {
-                    Image("tab_create")
-                        .renderingMode(.template)
-                        .foregroundColor(.secondaryColor)
-                } else {
-                    Image("tab_create")
-                        .renderingMode(.template)
-                        .foregroundColor(.defaultColor)
-                }
-            }
-        )
-    }
-}
-
-private extension TabViewApp {
-    private var menuView: AnyView {
-        AnyView(
-            VStack {
-                if appBinding.main.tag.wrappedValue == 2 {
-                    Image("tab_menu")
-                        .renderingMode(.template)
-                        .foregroundColor(.secondaryColor)
-                } else {
-                    Image("tab_menu")
-                        .renderingMode(.template)
-                        .foregroundColor(.defaultColor)
-                }
-            }
-        )
-    }
-}
-
-struct TabView_Previews: PreviewProvider {
+struct TabViewAppTwo_Previews: PreviewProvider {
     static var previews: some View {
         TabViewApp()
     }

@@ -24,15 +24,16 @@ struct CellMainView: View {
                     date
                     streetGame
                     coastAndPeople
+                    Spacer()
+                    
                 }
-                
+                .padding(.top, 16)
                 typeGame
-                    .padding(.top, 16)
-                
+                    .padding(.bottom, 14)
             }
             .padding(.horizontal, 16)
         }
-        .frame(height: 214)
+        .frame(height: 240)
     }
 }
 
@@ -40,10 +41,10 @@ struct CellMainView: View {
 private extension CellMainView {
     private var background: AnyView {
         AnyView(
-            Color(.whiteColor)
-                .clipShape(RoundedRectangle(cornerRadius: 5))
-                .overlay(RoundedRectangle(cornerRadius: 5)
-                            .stroke(Color.whiteColor))
+            Color(.backgroundColor)
+                .clipShape(RoundedRectangle(cornerRadius: 8))
+                .overlay(RoundedRectangle(cornerRadius: 8)
+                            .stroke(Color.whiteColor, lineWidth: 1))
         )
     }
 }
@@ -81,7 +82,8 @@ private extension CellMainView {
                 Text("\(game.address)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
-                    .lineLimit(2)
+                    .lineLimit(1)
+                    .frame(width: 170)
                 Spacer()
                 distance
             }
@@ -96,6 +98,8 @@ private extension CellMainView {
                 Text("5,2 км")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
+                    .lineLimit(1)
+                    .frame(width: 70, alignment: .trailing)
             }
         )
     }
@@ -125,7 +129,7 @@ private extension CellMainView {
 private extension CellMainView {
     private var typeGame: AnyView {
         AnyView(
-            HStack(spacing: 0)  {
+            HStack(spacing: 6)  {
                 
                 TextButtonRound(name: typeGameString(game: game),
                                 isOn: false,

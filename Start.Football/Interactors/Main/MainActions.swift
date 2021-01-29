@@ -13,5 +13,10 @@ extension AppActions {
             case allGame
             case myGames
         }
+        
+        enum TabBarMenu {
+            case search
+            case notifications
+        }
     }
 }

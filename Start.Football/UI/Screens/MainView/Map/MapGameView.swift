@@ -46,7 +46,6 @@ private extension MapGameView {
         ZStack {
             Color.secondary
                 .edgesIgnoringSafeArea(.all)
-                .animation(.linear(duration: 10))
         }
         .edgesIgnoringSafeArea(.all)
         .onTapGesture {

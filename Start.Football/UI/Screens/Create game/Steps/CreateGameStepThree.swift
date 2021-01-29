@@ -38,8 +38,8 @@ struct CreateGameStepThree: View {
                         ButtonParking(appBinding: appBinding)
                     }
                 }
+                .padding(.horizontal, 24)
             }
-            .padding(.horizontal, 24)
             .padding(.top, 16)
         }
         .dismissingKeyboard()

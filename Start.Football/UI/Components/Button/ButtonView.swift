@@ -25,7 +25,6 @@ struct ButtonView: View {
                 textView
             }
         }
-        .padding(.horizontal, 3)
     }
 }
 
@@ -37,7 +36,7 @@ private extension ButtonView {
             Color(background)
                 .clipShape(RoundedRectangle(cornerRadius: 8))
                 .overlay(RoundedRectangle(cornerRadius: 8)
-                            .stroke(Color(borderColor)))
+                            .stroke(Color(borderColor), lineWidth: 1.5))
                 
                 .frame(height: 52)
         )

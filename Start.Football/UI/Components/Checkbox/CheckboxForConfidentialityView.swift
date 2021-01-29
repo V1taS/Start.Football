@@ -21,7 +21,6 @@ struct CheckboxForConfidentialityView : View {
                    alignment: .leading)
             Spacer()
         }
-        .padding(.horizontal, 3)
     }
 }
 

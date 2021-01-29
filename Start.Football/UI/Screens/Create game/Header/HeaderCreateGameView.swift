@@ -9,7 +9,10 @@ import SwiftUI
 
 struct HeaderCreateGameView: View {
     
-    var appBinding: Binding<AppState.AppData>
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
     
     var body: some View {
         HStack(alignment: .firstTextBaseline, spacing: 0) {
