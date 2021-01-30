@@ -52,6 +52,12 @@
 		1B41A08A25BD962F0065A7C2 /* MapView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08925BD962F0065A7C2 /* MapView.swift */; };
 		1B41A08D25BD9A180065A7C2 /* StringProtocol.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */; };
 		1B42CD5D25C4570A007F4ABB /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */; };
+		1B42CD6C25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD6B25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift */; };
+		1B42CD7125C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD7025C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift */; };
+		1B42CD7625C4CA3B007F4ABB /* DatePickerSheetView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD7525C4CA3B007F4ABB /* DatePickerSheetView.swift */; };
+		1B42CD7B25C4CFC4007F4ABB /* TFdateAndTimeCGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD7A25C4CFC4007F4ABB /* TFdateAndTimeCGView.swift */; };
+		1B42CD8025C4D600007F4ABB /* DatePickerHowMuchTimeDoWePlay.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD7F25C4D600007F4ABB /* DatePickerHowMuchTimeDoWePlay.swift */; };
+		1B42CD8825C4DA41007F4ABB /* TFhowMuchTimeDoWePlayCGView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD8725C4DA41007F4ABB /* TFhowMuchTimeDoWePlayCGView.swift */; };
 		1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */; };
 		1B4B65FC25A8B42800801E12 /* ButtonParking.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B4B65FB25A8B42800801E12 /* ButtonParking.swift */; };
 		1B50791325BF744B00F4FA37 /* CellCurrentGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */; };
@@ -66,7 +72,6 @@
 		1B67935A25B31DB900DADFC4 /* Store.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B67935925B31DB900DADFC4 /* Store.swift */; };
 		1B68131525744A7F00B54977 /* KeyboardListener.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131425744A7F00B54977 /* KeyboardListener.swift */; };
 		1B68131925745DEE00B54977 /* ADVtwo.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131825745DEE00B54977 /* ADVtwo.swift */; };
-		1B68131C2574602D00B54977 /* isEmtyMyGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68131B2574602D00B54977 /* isEmtyMyGame.swift */; };
 		1B68132525746E4B00B54977 /* MapGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B68132425746E4B00B54977 /* MapGameView.swift */; };
 		1B6A0903257041330001861F /* Size.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A0902257041330001861F /* Size.swift */; };
 		1B6A4678259A445E00F6DA00 /* ProgressBarView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */; };
@@ -217,6 +222,12 @@
 		1B41A08925BD962F0065A7C2 /* MapView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapView.swift; sourceTree = "<group>"; };
 		1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StringProtocol.swift; sourceTree = "<group>"; };
 		1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
+		1B42CD6B25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissMissButtonCreateGameView.swift; sourceTree = "<group>"; };
+		1B42CD7025C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerLineWithoutButtonView.swift; sourceTree = "<group>"; };
+		1B42CD7525C4CA3B007F4ABB /* DatePickerSheetView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerSheetView.swift; sourceTree = "<group>"; };
+		1B42CD7A25C4CFC4007F4ABB /* TFdateAndTimeCGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFdateAndTimeCGView.swift; sourceTree = "<group>"; };
+		1B42CD7F25C4D600007F4ABB /* DatePickerHowMuchTimeDoWePlay.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerHowMuchTimeDoWePlay.swift; sourceTree = "<group>"; };
+		1B42CD8725C4DA41007F4ABB /* TFhowMuchTimeDoWePlayCGView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TFhowMuchTimeDoWePlayCGView.swift; sourceTree = "<group>"; };
 		1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FormatGameTextField.swift; sourceTree = "<group>"; };
 		1B4B65FB25A8B42800801E12 /* ButtonParking.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonParking.swift; sourceTree = "<group>"; };
 		1B50791225BF744B00F4FA37 /* CellCurrentGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CellCurrentGameInteractor.swift; sourceTree = "<group>"; };
@@ -231,7 +242,6 @@
 		1B67935925B31DB900DADFC4 /* Store.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Store.swift; sourceTree = "<group>"; };
 		1B68131425744A7F00B54977 /* KeyboardListener.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardListener.swift; sourceTree = "<group>"; };
 		1B68131825745DEE00B54977 /* ADVtwo.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ADVtwo.swift; sourceTree = "<group>"; };
-		1B68131B2574602D00B54977 /* isEmtyMyGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = isEmtyMyGame.swift; sourceTree = "<group>"; };
 		1B68132425746E4B00B54977 /* MapGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = MapGameView.swift; sourceTree = "<group>"; };
 		1B6A0902257041330001861F /* Size.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Size.swift; sourceTree = "<group>"; };
 		1B6A4677259A445E00F6DA00 /* ProgressBarView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ProgressBarView.swift; sourceTree = "<group>"; };
@@ -400,7 +410,6 @@
 		1B127E1C25BA5A4C00C97BE9 /* Plug */ = {
 			isa = PBXGroup;
 			children = (
-				1B68131B2574602D00B54977 /* isEmtyMyGame.swift */,
 			);
 			path = Plug;
 			sourceTree = "<group>";
@@ -553,6 +562,8 @@
 				1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */,
 				1BB63B26257D96A900FCE9E0 /* CostView.swift */,
 				1B765D6125A71EC800105940 /* TextfieldOneLineView.swift */,
+				1B42CD7A25C4CFC4007F4ABB /* TFdateAndTimeCGView.swift */,
+				1B42CD8725C4DA41007F4ABB /* TFhowMuchTimeDoWePlayCGView.swift */,
 				1B368A5225B6351F007D1365 /* TextViewTitlePlaceholder.swift */,
 				1B4B65F525A8A56E00801E12 /* FormatGameTextField.swift */,
 			);
@@ -570,6 +581,7 @@
 				1B966C2D257717760084FFB4 /* ButtonCancel.swift */,
 				1B765D7325A724AA00105940 /* ButtonRoundGreen.swift */,
 				1B5E4DD825A74CA500287D98 /* BackButtonCreateGameView.swift */,
+				1B42CD6B25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift */,
 				1B4B65FB25A8B42800801E12 /* ButtonParking.swift */,
 				1B368A5825B640E5007D1365 /* CellWithPlayerButton.swift */,
 			);
@@ -582,6 +594,8 @@
 				1B23561E25A7A2CC00E33DA8 /* PreviewGameSheet.swift */,
 				1B23562225A7B09900E33DA8 /* FilterGameSheet.swift */,
 				1B23562525A7B8FD00E33DA8 /* TypeOfParkingSheet.swift */,
+				1B42CD7525C4CA3B007F4ABB /* DatePickerSheetView.swift */,
+				1B42CD7F25C4D600007F4ABB /* DatePickerHowMuchTimeDoWePlay.swift */,
 			);
 			path = SheetView;
 			sourceTree = "<group>";
@@ -593,6 +607,7 @@
 				1B23561725A798DA00E33DA8 /* TimePickerCreateGame.swift */,
 				1BB63B23257D92BF00FCE9E0 /* TimePickerView.swift */,
 				1B127E1525BA4AE300C97BE9 /* DatePickerLineView.swift */,
+				1B42CD7025C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift */,
 			);
 			path = Picker;
 			sourceTree = "<group>";
@@ -1102,6 +1117,7 @@
 				1B0646B125A778E9003E1714 /* CellMainView.swift in Sources */,
 				1B67935A25B31DB900DADFC4 /* Store.swift in Sources */,
 				1B7B649025B71F5C0067A334 /* CreatGameActions.swift in Sources */,
+				1B42CD7625C4CA3B007F4ABB /* DatePickerSheetView.swift in Sources */,
 				1B765D8B25A748BE00105940 /* CreateGameStepFour.swift in Sources */,
 				1B6A0903257041330001861F /* Size.swift in Sources */,
 				1B5E4DD925A74CA500287D98 /* BackButtonCreateGameView.swift in Sources */,
@@ -1111,9 +1127,11 @@
 				1BF3661F25A7813F00B196EE /* CellGameCurrentGame.swift in Sources */,
 				1BAFF64425BC804400C9D2E5 /* MenuActions.swift in Sources */,
 				1BA09C4125BE292E009B6CE2 /* Player.swift in Sources */,
+				1B42CD7125C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift in Sources */,
 				1BB63B21257D92A900FCE9E0 /* DatePickerView.swift in Sources */,
 				1B155F42256C07F800019C2F /* PageView.swift in Sources */,
 				1BF3660725A77DD600B196EE /* AboutMySelfProfileView.swift in Sources */,
+				1B42CD7B25C4CFC4007F4ABB /* TFdateAndTimeCGView.swift in Sources */,
 				1BAFF63125BC7A5400C9D2E5 /* Filter.swift in Sources */,
 				1BF3663325A7829D00B196EE /* AboutTheAreaCurrentGame.swift in Sources */,
 				1B78CCE8256DBC7100297221 /* Font.swift in Sources */,
@@ -1122,6 +1140,8 @@
 				1B8B61DF25BA1F3C0005E9C8 /* DatePickerUIKit.swift in Sources */,
 				1BF3660D25A77E4700B196EE /* CellStatisticsProfileView.swift in Sources */,
 				1B7B648D25B71F100067A334 /* Validators.swift in Sources */,
+				1B42CD6C25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift in Sources */,
+				1B42CD8825C4DA41007F4ABB /* TFhowMuchTimeDoWePlayCGView.swift in Sources */,
 				1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */,
 				1BAA203B25BB8AE000888B82 /* PlaceGame.swift in Sources */,
 				1BD9109A25759C47005B3CFC /* ProfileView.swift in Sources */,
@@ -1160,6 +1180,7 @@
 				1B78CCF0256DC4E300297221 /* MainView.swift in Sources */,
 				1B368A6325B6541D007D1365 /* SignUpAuth.swift in Sources */,
 				1B762C86257566C700414808 /* CurrentGameView.swift in Sources */,
+				1B42CD8025C4D600007F4ABB /* DatePickerHowMuchTimeDoWePlay.swift in Sources */,
 				1B6BD02D25B5C436008DAD8B /* StepThreeCreateGameInteractor.swift in Sources */,
 				1B6A4678259A445E00F6DA00 /* ProgressBarView.swift in Sources */,
 				1B765D6225A71EC800105940 /* TextfieldOneLineView.swift in Sources */,
@@ -1176,7 +1197,6 @@
 				1B03BE7C25B7B6E200F032F7 /* MainFilterAppInteractor.swift in Sources */,
 				1B2D84B225B503450068693B /* CreateGame.swift in Sources */,
 				1B155F3F256C07CE00019C2F /* PasswordResetView.swift in Sources */,
-				1B68131C2574602D00B54977 /* isEmtyMyGame.swift in Sources */,
 				1B23562325A7B09900E33DA8 /* FilterGameSheet.swift in Sources */,
 				1BF5BA9C25B4BCCC00A06872 /* InteractorsContainer.swift in Sources */,
 				1B50791925BF789900F4FA37 /* CalendarCurrentGameInteractor.swift in Sources */,
@@ -1387,7 +1407,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1397,7 +1417,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.40;
+				MARKETING_VERSION = 1.0.41;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1411,7 +1431,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 40;
+				CURRENT_PROJECT_VERSION = 41;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1421,7 +1441,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.40;
+				MARKETING_VERSION = 1.0.41;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

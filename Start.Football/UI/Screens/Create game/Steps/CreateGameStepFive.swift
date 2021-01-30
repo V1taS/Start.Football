@@ -15,18 +15,19 @@ struct CreateGameStepFive: View {
     }
     
     var body: some View {
-        VStack {
-            VStack(spacing: 0) {
-                header
-                inviteFriendsButton
-                listFriends
-                Spacer()
-            }
-            .padding(.horizontal, 24)
-            .padding(.top, 16)
-            .dismissingKeyboard()
-            
+        VStack(spacing: 0) {
+            header
+            Spacer()
+            Image("doneCG")
+                .resizable()
+                .frame(width: 182, height: 256)
+            Spacer()
+            inviteFriendsButton
+                .padding(.bottom, 16)
         }
+        .padding(.horizontal, 24)
+        .padding(.top, 24)
+        .dismissingKeyboard()
     }
 }
 
@@ -61,54 +62,9 @@ private extension CreateGameStepFive {
                 ButtonView(background: .tertiary,
                            textColor: .whiteColor,
                            borderColor: .tertiary,
-                           text: "Пригласить друзей",
-                           switchImage: true,
-                           image: "CGperson")
-            }
-            .padding(.top, 24)
-        )
-    }
-}
-
-private extension CreateGameStepFive {
-    private var listFriends: AnyView {
-        AnyView(
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack(alignment: .leading, spacing: 16) {
-                    
-                    Divider()
-                    
-                    Button(action: {}) {
-                        CellWithPlayerButton(image: "player2CG",
-                                             name: "Роман Соколов",
-                                             typePlayers: "Вратарь, полузащитник, нападающий")
-                    }
-                    
-                    Divider()
-                    
-                    Button(action: {}) {
-                        CellWithPlayerButton(image: "player3CG",
-                                             name: "Владимир Трифонов",
-                                             typePlayers: "Защитник, полузащитник, нападающий")
-                    }
-                    
-                    Divider()
-                    
-                    Button(action: {}) {
-                        CellWithPlayerButton(image: "player4CG",
-                                             name: "Дмитрий Трифонов",
-                                             typePlayers: "Нападающий, полузащитник")
-                    }
-                    
-                    Divider()
-                    
-                    Button(action: {}) {
-                        CellWithPlayerButton(image: "player5CG",
-                                             name: "Илья Гордеев",
-                                             typePlayers: "Защитник, полузащитник")
-                    }
-                }
-                .padding(.top, 32)
+                           text: "Поделится событием",
+                           switchImage: false,
+                           image: "")
             }
         )
     }

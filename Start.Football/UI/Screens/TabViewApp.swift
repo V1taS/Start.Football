@@ -17,8 +17,8 @@ struct TabViewApp: View {
     
     var body: some View {
         ZStack {
-            
             if !appBinding.main.showCreateGameView.wrappedValue {
+                
                 ZStack {
                     VStack(spacing: 0) {
                         content
@@ -27,12 +27,12 @@ struct TabViewApp: View {
                     backgroundColor
                     filterGame
                 }
-            } else {
+            }
+            
+            if appBinding.main.showCreateGameView.wrappedValue {
                 VStack {
                     CreateGameView(appBinding: appBinding)
                 }
-                .transition(.move(edge: .bottom))
-                .animation(.easeOut)
             }
         }
         .edgesIgnoringSafeArea(.bottom)
@@ -48,7 +48,9 @@ private extension TabViewApp {
                 Spacer()
                 FilterGameSheet(appBinding: appBinding)
             }
-            .padding(.bottom, -150)
+            .transition(.move(edge: .bottom))
+            .animation(.easeOut(duration: 0.7))
+            .padding(.bottom, 0)
         )
     }
     
@@ -62,6 +64,8 @@ private extension TabViewApp {
         .onTapGesture {
             appBinding.main.filter.showFiltrsView.wrappedValue = false
         }
+        .transition(.move(edge: .bottom))
+        .animation(.easeOut(duration: 0.7))
     }
 }
 
@@ -71,7 +75,7 @@ private extension TabViewApp {
         case .search:
             return AnyView(MainView(appBinding: appBinding))
         case .notifications:
-            return AnyView(isEmtyMyGame(appBinding: .constant(.init()), text: "Меню (В разработке...)", createGame: false))
+            return AnyView(MainView(appBinding: appBinding))
         }
     }
 }

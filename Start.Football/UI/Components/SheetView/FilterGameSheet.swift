@@ -18,12 +18,10 @@ struct FilterGameSheet: View {
     }
     
     var body: some View {
-        ZStack{
-            closeButton
+        ZStack {
             
             if appBinding.main.filter.showFiltrsView.wrappedValue {
                 VStack(spacing: 0) {
-                    
                     divider
                     
                     VStack(alignment: .leading, spacing: 10) {
@@ -35,28 +33,25 @@ struct FilterGameSheet: View {
                         gameType
                         placeType
                     }
+                    .padding(24)
                     .padding(.top, 8)
-                    Spacer()
                 }
+                .background(Color.backgroundColor)
+                .cornerRadius(25)
+                .shadow(color: Color(.black)
+                            .opacity(self.viewState.height == 0 ? 0.2 : 0),
+                        radius: 5)
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut(duration: 0.7))
             }
         }
-        .padding(24)
-        .background(Color(.backgroundColor))
-        .cornerRadius(25)
-        .shadow(color: Color(.black)
-                    .opacity(self.viewState.height == 0 ? 0.2 : 0),
-                radius: 5)
         .offset(y: offset())
-        .zIndex(isExpanded ? 1 : 0)
         .gesture(
             DragGesture().onChanged { value in
                 self.viewState = value.translation
             }
             .onEnded(onDragEnded)
         )
-        .frame(width: UIScreen.screenWidth,
-               height: 777)
-        .animation(.spring())
     }
 }
 
@@ -172,7 +167,7 @@ private extension FilterGameSheet {
                 .frame(width: 48, height: 5)
                 .overlay(RoundedRectangle(cornerRadius: 20)
                             .stroke(Color(.shotDividerColor)))
-                .offset(y: -15)
+                .offset(y: 10)
         )
     }
 }
@@ -229,7 +224,7 @@ private extension FilterGameSheet {
         self.viewState = .zero
         let direction = drag.predictedEndLocation.y - drag.location.y
         
-        if direction > 0 {
+        if direction > 200 {
             self.collapse()
         } else {
             self.expand()
@@ -252,7 +247,7 @@ private extension FilterGameSheet {
     }
     
     private func expand() {
-        appBinding.main.filter.showFiltrsView.wrappedValue = false
+        
     }
 }
 

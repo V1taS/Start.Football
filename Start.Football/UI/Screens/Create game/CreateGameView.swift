@@ -30,12 +30,16 @@ struct CreateGameView: View {
                     Spacer()
                     buttonNextStep
                         .padding(.horizontal, 24)
+                        .padding(.bottom, 30)
                 }
                 
             }
             backgroundColor
             typeOfParking
+            dateAndTime
+            howMuchTimeDoWePlay
         }
+        .accentColor(.secondaryColor)
         .dismissingKeyboard()
     }
 }
@@ -80,7 +84,6 @@ private extension CreateGameView {
                                switchImage: false,
                                image: "")
                 }
-                .padding(.bottom, 17)
                 
             } else {
                 Button(action: {
@@ -93,7 +96,6 @@ private extension CreateGameView {
                                switchImage: false,
                                image: "")
                 }
-                .padding(.bottom, 17)
             }
         }
     }
@@ -101,21 +103,56 @@ private extension CreateGameView {
 
 private extension CreateGameView {
     var typeOfParking: some View {
-        TypeOfParkingSheet(appBinding: appBinding)
-            .offset(y: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 85))
+        VStack {
+            Spacer()
+            TypeOfParkingSheet(appBinding: appBinding)
+        }
+        .transition(.move(edge: .bottom))
+        .animation(.easeOut(duration: 0.7))
+        .padding(.bottom, 0)
+    }
+}
+
+private extension CreateGameView {
+    private var dateAndTime: AnyView {
+        AnyView(
+            VStack {
+                Spacer()
+                DatePickerSheetView(appBinding: appBinding)
+            }
+            .transition(.move(edge: .bottom))
+            .animation(.easeOut(duration: 0.7))
+            .padding(.bottom, 0)
+        )
+    }
+}
+
+private extension CreateGameView {
+    private var howMuchTimeDoWePlay: AnyView {
+        AnyView(
+            VStack {
+                Spacer()
+                DatePickerHowMuchTimeDoWePlay(appBinding: appBinding)
+            }
+            .transition(.move(edge: .bottom))
+            .animation(.easeOut(duration: 0.7))
+            .padding(.bottom, 0)
+        )
     }
 }
 
 private extension CreateGameView {
     var backgroundColor: some View {
         ZStack {
-            if appBinding.createGame.showParking.wrappedValue {
+            if appBinding.createGame.showParking.wrappedValue || appBinding.createGame.showDatePicker.wrappedValue || appBinding.createGame.showTimePicker.wrappedValue {
                 Color.secondary
                     .edgesIgnoringSafeArea(.all)
             }
         }
         .onTapGesture {
             dismissSheetParkingButton(state: appBinding)
+            appBinding.createGame.showDatePicker.wrappedValue = false
+            appBinding.createGame.showTimePicker.wrappedValue = false
         }
     }
 }
@@ -155,17 +192,17 @@ private extension CreateGameView {
     }
     
     private func validNameGame(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor.validNameGame(state: state)
+//        injected.interactors.createGameInteractor.validNameGame(state: state)
     }
     
     private func validAddressGame(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor
-            .validAddressGame(state: state)
+//        injected.interactors.createGameInteractor
+//            .validAddressGame(state: state)
     }
     
     private func validCostGame(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor
-            .validCostGame(state: state)
+//        injected.interactors.createGameInteractor
+//            .validCostGame(state: state)
     }
     
     private func configureCreateGameButton(state: Binding<AppState.AppData>) {
@@ -176,7 +213,8 @@ private extension CreateGameView {
             nextStepCreateGame(state: state)
             refreshProgressBar(state: state)
             appendCurrentGameToMyGameAndAllGame(state: state, game: currentGame(state: state))
-            appBinding.main.selectedItem.wrappedValue = 0
+            appBinding.main.tabBarMenu.wrappedValue = .search
+            appBinding.main.showCreateGameView.wrappedValue = false
             clearCreateGame(state: state)
             state.main.selectionGame.wrappedValue = .myGames
         }

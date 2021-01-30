@@ -22,23 +22,13 @@ struct BackButtonCreateGameView: View {
     
     var body: some View {
         Button(action: {
-            if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
-                appBinding.main.showCreateGameView.wrappedValue = false
-            }
             backStepProgressBar()
             refreshProgressBar()
             
         }) {
-            if appBinding.createGame.selectionCreateGame.wrappedValue == .stepOne {
-                    Image(systemName: "xmark.circle.fill")
-                        .imageScale(.large)
-                        .foregroundColor(Color(.secondaryLabel))
-                
-            } else {
-                Image("backCreateGame")
-                    .offset(y: UIScreen.screenHeight *
-                                Size.shared.getAdaptSizeHeight(px: 6))
-            }
+            Image("backCreateGame")
+                .offset(y: UIScreen.screenHeight *
+                            Size.shared.getAdaptSizeHeight(px: 6))
             
         }
     }

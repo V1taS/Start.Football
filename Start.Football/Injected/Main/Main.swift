@@ -19,7 +19,6 @@ extension AppState.AppData {
         var currentPlayer = Player.plugPlayer
         var selectionGame: AppActions.MainActions.SelectionGame = .allGame
         var loadMoreGames = true
-        var selectedItem = 0
         var tabBarMenu: AppActions.MainActions.TabBarMenu = .search
         var showCreateGameView = false
     }

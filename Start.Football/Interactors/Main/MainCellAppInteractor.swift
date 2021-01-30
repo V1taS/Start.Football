@@ -10,7 +10,7 @@ import SwiftUI
 
 protocol MainCellAppInteractor {
     func searchDateForRegular(game: Game) -> String
-    func searchDateForOneDay(game: Game, oneGameDate: Date) -> String
+    func searchDateForOneDay(oneGameDate: Date) -> String
     func typeGameString(game: Game) -> String
     func formatGame(game: Game) -> String
     func privacyGame(game: Game) -> String
@@ -51,7 +51,7 @@ extension MainAppInteractorImpl {
         return "Регулярные игры"
     }
     
-    func searchDateForOneDay(game: Game, oneGameDate: Date) -> String {
+    func searchDateForOneDay(oneGameDate: Date) -> String {
         let timeString = GetDateStringFromDate.shared
             .getTimeString(date: oneGameDate)
         let dateString = GetDateStringFromDate.shared

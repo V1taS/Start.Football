@@ -1,55 +1,58 @@
 //
-//  TypeOfParkingSheet.swift
+//  DatePickerHowMuchTimeDoWePlay.swift
 //  Start.Football
 //
-//  Created by Vitalii Sosin on 08.01.2021.
+//  Created by Vitalii Sosin on 30.01.2021.
 //
 
 import SwiftUI
 
-struct TypeOfParkingSheet: View {
+struct DatePickerHowMuchTimeDoWePlay: View {
     
     var appBinding: Binding<AppState.AppData>
     @Environment(\.injected) private var injected: DIContainer
     
     @State var viewState = CGSize.zero
     var isExpanded: Bool {
-        appBinding.createGame.showParking.wrappedValue
+        appBinding.createGame.showTimePicker.wrappedValue
     }
     
+    @State private var selection = 2
+    let times = ["00:30", "01:00","01:30","02:00","02:30"]
+    
     var body: some View {
-        ZStack{
+        ZStack {
             
-            if appBinding.createGame.showParking.wrappedValue {
-                ZStack {
-                    VStack(spacing: 0) {
-                        divider
-                        headerView
+            if appBinding.createGame.showTimePicker.wrappedValue {
+                VStack(spacing: 0) {
+                    divider
+                    
+                    VStack(alignment: .leading, spacing: 0) {
+                        Text("Укажите продолжительность игры")
+                            .foregroundColor(.secondaryColor)
+                            .font(Font.event.robotoRegular18)
                         
-                        VStack(spacing: 16) {
-                            Group {
-                                paidCity
-                                Divider()
-                                paidOnTheTerritory
-                                Divider()
-                                freeOnTheTerritory
-                                Divider()
-                                freeCity
-                                Divider()
-                                parkingCost
-                            }
-                            HStack {
-                                oneTime
-                                Spacer()
-                                inAnHour
-                                Spacer()
-                                non
-                                Spacer()
-                                Spacer()
-                            }
-                            Color.clear
-                                .frame(height: 50)
+                        Picker(selection: $selection, label:
+                                Text("Picker Name")) {
+                                    ForEach(0 ..< times.count) { index in
+                                        Text(self.times[index]).tag(index)
+                                    }
+                                }
+                        .frame(height: 200)
+                        
+                        Button(action: {
+                            appBinding.createGame.HowMuchTimeDoWePlay.wrappedValue = times[selection]
+                            appBinding.createGame.showTimePicker.wrappedValue = false
+                            appBinding.createGame.currentTimeHasBeenChanged.wrappedValue = true
+                        }) {
+                            ButtonView(background: .primaryColor,
+                                       textColor: .whiteColor,
+                                       borderColor: .primaryColor,
+                                       text: "Применить",
+                                       switchImage: false,
+                                       image: "")
                         }
+                        
                     }
                     .padding(24)
                     .padding(.top, 8)
@@ -71,244 +74,12 @@ struct TypeOfParkingSheet: View {
             .onEnded(onDragEnded)
         )
     }
-}
-
-
-// MARK: UI
-private extension TypeOfParkingSheet {
-    private var closeButton: AnyView {
-        AnyView(
-            VStack(spacing: 0) {
-                if isExpanded {
-                    VStack {
-                        if isExpanded {
-                            VStack {
-                                HStack {
-                                    Spacer()
-                                    Button(action: { self.collapse()}) {
-                                        Image(systemName: "xmark.circle.fill")
-                                            .imageScale(.large)
-                                            .foregroundColor(Color(.secondaryLabel))
-                                    }
-                                }
-                                Spacer()
-                            }
-                        }
-                    }
-                }
-            }
-        )
-    }
-}
-
-private extension TypeOfParkingSheet {
-    private var divider: AnyView {
-        AnyView(
-            Color(.shotDividerColor)
-                .frame(width: 48, height: 5)
-                .overlay(RoundedRectangle(cornerRadius: 20)
-                            .stroke(Color(.shotDividerColor)))
-                .offset(y: -15)
-        )
-    }
-}
-
-private extension TypeOfParkingSheet {
-    private var headerView: AnyView {
-        AnyView(
-            HStack {
-                Text("Тип парковки")
-                    .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium32)
-                Spacer()
-            }
-            .padding(.top, 8)
-        )
-    }
-}
-
-
-private extension TypeOfParkingSheet {
-    var paidCity: some View {
-        Button(action: {
-            selectPaidCity()
-        }) {
-            HStack {
-                Text("Платная городская")
-                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
-                                        .TypeOfParking.paidCity ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular18)
-                Spacer()
-                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .TypeOfParking.paidCity)
-            }
-        }
-    }
-}
-
-private extension TypeOfParkingSheet {
-    var paidOnTheTerritory: some View {
-        Button(action: {
-            selectPaidOnTheTerritory()
-        }) {
-            HStack {
-                Text("Платная на территории")
-                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
-                                        .TypeOfParking.paidOnTheTerritory ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular18)
-                Spacer()
-                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .TypeOfParking.paidOnTheTerritory)
-            }
-        }
-    }
-}
-
-private extension TypeOfParkingSheet {
-    var freeOnTheTerritory: some View {
-        Button(action: {
-            selectFreeOnTheTerritory()
-        }) {
-            HStack {
-                Text("Бесплатная на территории")
-                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
-                                        .TypeOfParking.freeOnTheTerritory ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular18)
-                Spacer()
-                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .TypeOfParking.freeOnTheTerritory)
-            }
-        }
-    }
-}
-
-private extension TypeOfParkingSheet {
-    var freeCity: some View {
-        Button(action: {
-            selectFreeCity()
-        }) {
-            HStack {
-                Text("Бесплатная городская")
-                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
-                                        .TypeOfParking.freeCity ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular18)
-                Spacer()
-                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .TypeOfParking.freeCity)
-            }
-        }
-    }
-}
-
-private extension TypeOfParkingSheet {
-    var parkingCost: some View {
-        TextfieldOneLineView(text: appBinding.createGame.parkingCost,
-                             title: "Стоимость",
-                             icon: "",
-                             iconShow: false,
-                             placeholder: "Укажите стоимость",
-                             keyboardType: .numberPad,
-                             success: appBinding.createGame.parkingCostSuccess.wrappedValue)
-    }
-}
-
-private extension TypeOfParkingSheet {
-    var oneTime: some View {
-        Button(action: {
-            selectOneTime()
-        }) {
-            HStack {
-                ButtonRoundGreen(status: appBinding.createGame.paymentForParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .PaymentForParking.oneTime)
-                    .frame(width: 30)
-                Text("Разово")
-                    .foregroundColor(appBinding.createGame.paymentForParking.wrappedValue == AppActions.CreatGameActions
-                                        .PaymentForParking.oneTime ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular16)
-            }
-        }
-    }
-    
-    var inAnHour: some View {
-        Button(action: {
-            selectInAnHour()
-        }) {
-            HStack {
-                ButtonRoundGreen(status: appBinding.createGame.paymentForParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .PaymentForParking.inAnHour)
-                    .frame(width: 30)
-                Text("За час")
-                    .foregroundColor(appBinding.createGame.paymentForParking.wrappedValue == AppActions.CreatGameActions
-                                        .PaymentForParking.inAnHour ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular16)
-            }
-        }
-    }
-    
-    var non: some View {
-        Button(action: {
-            selectNon()
-        }) {
-            HStack {
-                ButtonRoundGreen(status: appBinding.createGame.paymentForParking
-                                    .wrappedValue == AppActions.CreatGameActions
-                                    .PaymentForParking.non)
-                    .frame(width: 30)
-                Text("Нет")
-                    .foregroundColor(appBinding.createGame.paymentForParking.wrappedValue == AppActions.CreatGameActions
-                                        .PaymentForParking.non ? .primaryColor : .secondaryColor)
-                    .font(Font.event.robotoRegular16)
-            }
-        }
-    }
-}
-
-
-// MARK: Actions
-private extension TypeOfParkingSheet {
-    // MARK: Type of parking
-    private func selectPaidCity() {
-        injected.interactors.createGameInteractor.paidCity(state: appBinding)
-    }
-    
-    private func selectPaidOnTheTerritory() {
-        injected.interactors.createGameInteractor.paidOnTheTerritory(state: appBinding)
-    }
-    
-    private func selectFreeOnTheTerritory() {
-        injected.interactors.createGameInteractor.freeOnTheTerritory(state: appBinding)
-    }
-    
-    private func selectFreeCity() {
-        injected.interactors.createGameInteractor.freeCity(state: appBinding)
-    }
-}
-
-private extension TypeOfParkingSheet {
-    // MARK: - Payment for parking
-    private func selectOneTime() {
-        injected.interactors.createGameInteractor.oneTime(state: appBinding)
-    }
-    
-    private func selectInAnHour() {
-        injected.interactors.createGameInteractor.inAnHour(state: appBinding)
-    }
-    
-    private func selectNon() {
-        injected.interactors.createGameInteractor.non(state: appBinding)
-    }
     
     private func onDragEnded(drag: DragGesture.Value) {
         self.viewState = .zero
         let direction = drag.predictedEndLocation.y - drag.location.y
         
-        if direction > 0 {
+        if direction > 200 {
             self.collapse()
         } else {
             self.expand()
@@ -327,15 +98,185 @@ private extension TypeOfParkingSheet {
     }
     
     private func collapse() {
-        appBinding.createGame.showParking.wrappedValue = false
+        appBinding.main.filter.showFiltrsView.wrappedValue = false
     }
     
     private func expand() {
+        
     }
 }
 
-struct TypeOfParkingSheet_Previews: PreviewProvider {
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    private var divider: AnyView {
+        AnyView(
+            Color(.shotDividerColor)
+                .frame(width: 48, height: 5)
+                .overlay(RoundedRectangle(cornerRadius: 20)
+                            .stroke(Color(.shotDividerColor)))
+                .offset(y: 10)
+        )
+    }
+}
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    private var headerView: AnyView {
+        AnyView(
+            HStack {
+                Text("Тип парковки")
+                    .foregroundColor(.secondaryColor)
+                    .font(Font.event.robotoMedium32)
+                Spacer()
+            }
+            .padding(.top, 8)
+        )
+    }
+}
+
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    var paidCity: some View {
+        Button(action: {
+
+        }) {
+            HStack {
+                Text("Платная городская")
+                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
+                                        .TypeOfParking.paidCity ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular18)
+                Spacer()
+                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .TypeOfParking.paidCity)
+            }
+        }
+    }
+}
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    var paidOnTheTerritory: some View {
+        Button(action: {
+
+        }) {
+            HStack {
+                Text("Платная на территории")
+                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
+                                        .TypeOfParking.paidOnTheTerritory ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular18)
+                Spacer()
+                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .TypeOfParking.paidOnTheTerritory)
+            }
+        }
+    }
+}
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    var freeOnTheTerritory: some View {
+        Button(action: {
+ 
+        }) {
+            HStack {
+                Text("Бесплатная на территории")
+                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
+                                        .TypeOfParking.freeOnTheTerritory ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular18)
+                Spacer()
+                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .TypeOfParking.freeOnTheTerritory)
+            }
+        }
+    }
+}
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    var freeCity: some View {
+        Button(action: {
+         
+        }) {
+            HStack {
+                Text("Бесплатная городская")
+                    .foregroundColor(appBinding.createGame.typeOfParking.wrappedValue == AppActions.CreatGameActions
+                                        .TypeOfParking.freeCity ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular18)
+                Spacer()
+                ButtonRoundGreen(status: appBinding.createGame.typeOfParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .TypeOfParking.freeCity)
+            }
+        }
+    }
+}
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    var parkingCost: some View {
+        TextfieldOneLineView(text: appBinding.createGame.parkingCost,
+                             title: "Стоимость",
+                             icon: "",
+                             iconShow: false,
+                             placeholder: "Укажите стоимость",
+                             keyboardType: .numberPad,
+                             success: appBinding.createGame.parkingCostSuccess.wrappedValue)
+    }
+}
+
+private extension DatePickerHowMuchTimeDoWePlay {
+    var oneTime: some View {
+        Button(action: {
+          
+        }) {
+            HStack {
+                ButtonRoundGreen(status: appBinding.createGame.paymentForParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .PaymentForParking.oneTime)
+                    .frame(width: 30)
+                Text("Разово")
+                    .foregroundColor(appBinding.createGame.paymentForParking.wrappedValue == AppActions.CreatGameActions
+                                        .PaymentForParking.oneTime ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular16)
+            }
+        }
+    }
+    
+    var inAnHour: some View {
+        Button(action: {
+
+        }) {
+            HStack {
+                ButtonRoundGreen(status: appBinding.createGame.paymentForParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .PaymentForParking.inAnHour)
+                    .frame(width: 30)
+                Text("За час")
+                    .foregroundColor(appBinding.createGame.paymentForParking.wrappedValue == AppActions.CreatGameActions
+                                        .PaymentForParking.inAnHour ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular16)
+            }
+        }
+    }
+    
+    var non: some View {
+        Button(action: {
+       
+        }) {
+            HStack {
+                ButtonRoundGreen(status: appBinding.createGame.paymentForParking
+                                    .wrappedValue == AppActions.CreatGameActions
+                                    .PaymentForParking.non)
+                    .frame(width: 30)
+                Text("Нет")
+                    .foregroundColor(appBinding.createGame.paymentForParking.wrappedValue == AppActions.CreatGameActions
+                                        .PaymentForParking.non ? .primaryColor : .secondaryColor)
+                    .font(Font.event.robotoRegular16)
+            }
+        }
+    }
+}
+
+struct DatePickerHowMuchTimeDoWePlay_Previews: PreviewProvider {
     static var previews: some View {
-        TypeOfParkingSheet(appBinding: .constant(.init()))
+        DatePickerHowMuchTimeDoWePlay(appBinding: .constant(.init()))
     }
 }

@@ -15,13 +15,19 @@ struct HeaderCreateGameView: View {
     }
     
     var body: some View {
-        HStack(alignment: .firstTextBaseline, spacing: 0) {
-            backButton
-            Spacer()
-            main
-            Spacer()
+        ZStack {
+            HStack {
+                backButton
+                Spacer()
+                dissMissButton
+            }
+            HStack(alignment: .firstTextBaseline, spacing: 0) {
+                Spacer()
+                main
+                Spacer()
+            }
+            .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24))
         }
-        .padding(.horizontal, UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24))
     }
 }
 
@@ -31,6 +37,14 @@ private extension HeaderCreateGameView {
     private var backButton: AnyView {
         AnyView(
             BackButtonCreateGameView(appBinding: appBinding)
+        )
+    }
+}
+
+private extension HeaderCreateGameView {
+    private var dissMissButton: AnyView {
+        AnyView(
+            DissMissButtonCreateGameView(showSheet: appBinding.main.showCreateGameView)
         )
     }
 }

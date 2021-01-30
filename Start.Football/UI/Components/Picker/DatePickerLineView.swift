@@ -7,8 +7,6 @@
 
 import SwiftUI
 
-import SwiftUI
-
 struct DatePickerLineView: View {
     
     @Binding var date: Date

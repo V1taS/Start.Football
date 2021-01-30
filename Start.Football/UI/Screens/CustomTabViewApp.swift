@@ -42,7 +42,6 @@ struct CustomTabViewApp: View {
                 
                 Button(action: {
                         appBinding.main.showCreateGameView.wrappedValue.toggle()
-                    
                 }) {
                     VStack {
                         createView

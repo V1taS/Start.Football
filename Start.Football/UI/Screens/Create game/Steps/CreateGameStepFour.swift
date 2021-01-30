@@ -21,19 +21,22 @@ struct CreateGameStepFour: View {
                 ownRules
                 commentFromOrganizer
                 
+                addPhotoFieldButton
+                    .padding(.top, 16)
+                
                 HStack {
                     ImageViewMiniCG(image: "CGfield_1")
                     Spacer()
                     ImageViewMiniCG(image: "CGfield_2")
                 }
                 
-                addPhotoFieldButton
+                
                 Spacer()
             }
             .padding(.horizontal, 24)
         }
         .dismissingKeyboard()
-        .padding(.top, 16)
+        .padding(.top, 24)
     }
 }
 

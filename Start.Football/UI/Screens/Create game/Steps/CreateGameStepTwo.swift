@@ -25,7 +25,7 @@ struct CreateGameStepTwo: View {
                 Spacer()
             }
             .padding(.horizontal, 24)
-            .padding(.top, 16)
+            .padding(.top, 24)
         }
     }
 }

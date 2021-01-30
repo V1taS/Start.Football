@@ -22,13 +22,18 @@ extension AppState.AppData {
         var costGame = ""
         var costGameSuccess = true
         
+        var HowMuchTimeDoWePlay = ""
+        var HowMuchTimeDoWePlaySuccess = true
         
         var currentDate = Date()
         var currentTimeHasBeenChanged = false
         var currentDateHasBeenChanged = false
         
+        var showDatePicker = false
+        var showTimePicker = false
+        
         // MARK: - Step 2
-        var selectionRegularGame: AppActions.CreatGameActions.RegularGame = .yes
+        var selectionRegularGame: AppActions.CreatGameActions.RegularGame = .no
         
         // MARK: Day Of Week
         var listGame = [false, false, false, false, false, false, false]

@@ -152,7 +152,7 @@ private extension CellMainView {
         if regularGame == "yes" {
             return searchDateForRegular(game: game)
         } else {
-            return searchDateForOneDay(game: game, oneGameDate: oneGameDate)
+            return searchDateForOneDay(oneGameDate: oneGameDate)
         }
     }
     
@@ -161,9 +161,9 @@ private extension CellMainView {
             .searchDateForRegular(game: game)
     }
     
-    private func searchDateForOneDay(game: Game, oneGameDate: Date) -> String {
+    private func searchDateForOneDay(oneGameDate: Date) -> String {
         injected.interactors.mainAppInteractor
-            .searchDateForOneDay(game: game, oneGameDate: oneGameDate)
+            .searchDateForOneDay(oneGameDate: oneGameDate)
             
     }
     

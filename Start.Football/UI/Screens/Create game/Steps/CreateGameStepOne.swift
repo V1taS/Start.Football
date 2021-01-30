@@ -16,22 +16,24 @@ struct CreateGameStepOne: View {
     }
     
     var body: some View {
-        ScrollView(.vertical, showsIndicators: false) {
-            VStack {
-                VStack(spacing: 32) {
-                    nameGame
-                    addressGame
-                    time
-                    HowMuchDoWePlay
-                    day
-                    costGame
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack {
+                    VStack(spacing: 24) {
+                        nameGame
+                        addressGame
+                        TFdateAndTimeCGView(appBinding: appBinding)
+                        TFhowMuchTimeDoWePlayCGView(appBinding: appBinding)
+    //                    time
+//                        HowMuchDoWePlay
+//                        day
+                        costGame
+                    }
+                    freeGameText
+                    Spacer()
                 }
-                freeGameText
-                Spacer()
+                .padding(.horizontal, 24)
+                .padding(.top, 24)
             }
-            .padding(.horizontal, 24)
-            .padding(.top, 10)
-        }
         .dismissingKeyboard()
     }
 }
