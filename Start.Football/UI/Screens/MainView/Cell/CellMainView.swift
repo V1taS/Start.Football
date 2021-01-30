@@ -24,16 +24,15 @@ struct CellMainView: View {
                     date
                     streetGame
                     coastAndPeople
-                    Spacer()
-                    
                 }
                 .padding(.top, 16)
+                Spacer()
                 typeGame
                     .padding(.bottom, 14)
             }
             .padding(.horizontal, 16)
         }
-        .frame(height: 240)
+        .frame(height: 220)
     }
 }
 

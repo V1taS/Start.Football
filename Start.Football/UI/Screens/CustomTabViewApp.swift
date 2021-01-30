@@ -20,7 +20,7 @@ struct CustomTabViewApp: View {
     
     var body: some View {
         ZStack {
-            Color(.clear)
+            Color(.paleWhite)
                 .clipShape(RoundedRectangle(cornerRadius: 16))
                 .overlay(RoundedRectangle(cornerRadius: 16)
                             .stroke(Color.secondaryColor, lineWidth: 0.2))
@@ -65,7 +65,7 @@ struct CustomTabViewApp: View {
                 }
                 
             }
-            .padding(.bottom, 34)
+            .padding(.bottom, 16)
         }
         
     }

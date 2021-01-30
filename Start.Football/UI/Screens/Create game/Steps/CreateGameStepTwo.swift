@@ -67,7 +67,7 @@ private extension CreateGameStepTwo {
                                 .selectionRegularGame.wrappedValue == .no)
                 .frame(width: 24)
             
-            Text("Разово. Для проведения одной игры.")
+            Text("Разово. Для проведения одной игры")
                 .foregroundColor(.defaultColor)
                 .font(Font.event.robotoRegular16)
             Spacer()

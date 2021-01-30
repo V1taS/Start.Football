@@ -22,8 +22,10 @@ struct TabViewApp: View {
                 ZStack {
                     VStack(spacing: 0) {
                         content
-                        CustomTabViewApp(appBinding: appBinding)
+                            CustomTabViewApp(appBinding: appBinding)
+                                .background(Color.paleWhite)
                     }
+                    
                     backgroundColor
                     filterGame
                 }

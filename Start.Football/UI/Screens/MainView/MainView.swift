@@ -152,7 +152,7 @@ private extension MainView {
                             myGamesIsEmpty
                             myGameFull
                         }
-                        .padding(.horizontal, 16)
+                        .padding(16)
                     }
                 }
             }
