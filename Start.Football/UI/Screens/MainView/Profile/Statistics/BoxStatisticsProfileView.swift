@@ -12,6 +12,11 @@ struct BoxStatisticsProfileView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
+    private let player: Player
+    init(player: Player) {
+        self.player = player
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading, spacing: height * Size.shared.getAdaptSizeHeight(px: 16)) {
@@ -23,12 +28,12 @@ struct BoxStatisticsProfileView: View {
                     CellStatisticsProfileView(background: .primaryColor,
                                               textColor: .whiteColor,
                                               text: "Участвовал",
-                                              count: "53")
+                                              count: "\(player.takePart)")
                     Spacer()
                     CellStatisticsProfileView(background: .secondaryColor,
                                               textColor: .whiteColor,
                                               text: "Организовал",
-                                              count: "1245")
+                                              count: "\(player.organized)")
                     
                 }
             }
@@ -39,6 +44,6 @@ struct BoxStatisticsProfileView: View {
 
 struct BoxStatisticsProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        BoxStatisticsProfileView()
+        BoxStatisticsProfileView(player: .plugPlayer)
     }
 }

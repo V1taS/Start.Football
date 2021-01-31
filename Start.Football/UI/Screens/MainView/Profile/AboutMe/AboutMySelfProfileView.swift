@@ -11,6 +11,11 @@ struct AboutMySelfProfileView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
+    private let player: Player
+    init(player: Player) {
+        self.player = player
+    }
+    
     var body: some View {
         HStack {
             VStack(alignment: .leading,
@@ -18,7 +23,7 @@ struct AboutMySelfProfileView: View {
                 Text("О СЕБЕ")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoBold13)
-                Text("Валлийский футболист, игрок испанского клуба «Реал Мадрид» и национальной сборной Уэльса.")
+                Text("\(player.aboutMe)")
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 330))
@@ -31,6 +36,6 @@ struct AboutMySelfProfileView: View {
 
 struct AboutMyselfProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        AboutMySelfProfileView()
+        AboutMySelfProfileView(player: .plugPlayer)
     }
 }

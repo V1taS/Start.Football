@@ -102,8 +102,9 @@ private extension HeaderMainView {
 // MARK: Actions
 private extension HeaderMainView {
     private func presentPlayer() {
-        self.viewController?.present(style: .pageSheet) {
-            ProfileView() }
+        self.viewController?.present(style: .fullScreen) {
+            ProfileView(player: appBinding.main.currentPlayer.wrappedValue)
+        }
     }
     
     private func presentMap() {

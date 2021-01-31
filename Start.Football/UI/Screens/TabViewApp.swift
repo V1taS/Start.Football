@@ -85,7 +85,7 @@ private extension TabViewApp {
         case .search:
             return AnyView(MainView(appBinding: appBinding))
         case .notifications:
-            return AnyView(NotificationsView())
+            return AnyView(NotificationsView(appBinding: appBinding))
         }
     }
 }

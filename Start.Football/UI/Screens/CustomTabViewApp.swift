@@ -58,7 +58,7 @@ struct CustomTabViewApp: View {
                 }) {
                     VStack {
                         menuView
-                        Text("Меню")
+                        Text("")
                             .foregroundColor(.defaultColor)
                             .font(Font.event.robotoMedium10)
                     }

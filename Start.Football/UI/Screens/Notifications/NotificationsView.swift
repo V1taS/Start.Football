@@ -8,6 +8,12 @@
 import SwiftUI
 
 struct NotificationsView: View {
+    
+    private var appBinding: Binding<AppState.AppData>
+    init(appBinding: Binding<AppState.AppData>) {
+        self.appBinding = appBinding
+    }
+    
     var body: some View {
         VStack {
             Text("Уведомления")
@@ -16,112 +22,36 @@ struct NotificationsView: View {
                 .padding(.top, 16)
             Divider()
             
-            VStack {
-                HStack(spacing: 10) {
-                    Circle()
-                        .frame(width: 32, height: 32)
-                        .foregroundColor(.primaryColor)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Василий Коновалов пригласил вас принять участие в Тренировка в ФОК Отрадное")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
+            
+            ScrollView(.vertical, showsIndicators: false) {
+                VStack(spacing: 0) {
+                    ForEach(appBinding.main.listNotificationGames
+                                .wrappedValue.sorted(
+                                    by: { $0.dataCreateNotifications > $1.dataCreateNotifications }),
+                            id: \.self) { notification in
                         
-                        Text("Сегодня, в 19:24")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular12)
+                        VStack {
+                            HStack(spacing: 10) {
+                                Circle()
+                                    .frame(width: 32, height: 32)
+                                    .foregroundColor(.primaryColor)
+                                
+                                VStack(alignment: .leading, spacing: 8) {
+                                    Text("\(notification.description)")
+                                        .foregroundColor(.secondaryColor)
+                                        .font(Font.event.robotoRegular16)
+                                    
+                                    Text("\(notification.dataCreateNotifications)")
+                                        .foregroundColor(.secondaryColor)
+                                        .font(Font.event.robotoRegular12)
+                                }
+                                Spacer()
+                            }
+                            .padding(16)
+                            Divider()
+                        }
                     }
-                    Spacer()
                 }
-                .padding(16)
-                Divider()
-                
-                
-                
-                HStack(spacing: 10) {
-                    Circle()
-                        .frame(width: 32, height: 32)
-                        .foregroundColor(.primaryColor)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Тренировка ФОК Отрадное начнется через 30 минут")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                        
-                        Text("Сегодня, в 20:30")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular12)
-                    }
-                    Spacer()
-                }
-                .padding(16)
-                Divider()
-                
-                
-                
-                
-                HStack(spacing: 10) {
-                    Circle()
-                        .frame(width: 32, height: 32)
-                        .foregroundColor(.primaryColor)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Вы перемещены в Основной состав игры Автомобилист")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                        
-                        Text("Сегодня, в 19:24")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular12)
-                    }
-                    Spacer()
-                }
-                .padding(16)
-                Divider()
-                
-                
-                
-                
-                HStack(spacing: 10) {
-                    Circle()
-                        .frame(width: 32, height: 32)
-                        .foregroundColor(.primaryColor)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("Василий Коновалов отправил вам запрос на добавление в команду")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                        
-                        Text("Сегодня, в 19:24")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular12)
-                    }
-                    Spacer()
-                }
-                .padding(16)
-                Divider()
-                
-                
-                
-                
-                HStack(spacing: 10) {
-                    Circle()
-                        .frame(width: 32, height: 32)
-                        .foregroundColor(.primaryColor)
-                    
-                    VStack(alignment: .leading, spacing: 8) {
-                        Text("У игры Автомобилист изменилась дата")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular16)
-                        
-                        Text("Сегодня, в 19:24")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoRegular12)
-                    }
-                    Spacer()
-                }
-                .padding(16)
-                Divider()
             }
             Spacer()
         }
@@ -130,6 +60,6 @@ struct NotificationsView: View {
 
 struct NotificationsView_Previews: PreviewProvider {
     static var previews: some View {
-        NotificationsView()
+        NotificationsView(appBinding: .constant(.init()))
     }
 }

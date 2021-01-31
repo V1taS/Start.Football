@@ -11,6 +11,11 @@ struct HeaderProfileView: View {
     let height = UIScreen.screenHeight
     let width = UIScreen.screenWidth
     
+    private let player: Player
+    init(player: Player) {
+        self.player = player
+    }
+    
     var body: some View {
         ZStack {
             Image("player_profile")
@@ -19,14 +24,14 @@ struct HeaderProfileView: View {
                 .frame(width: width * Size.shared.getAdaptSizeWidth(px: 375),
                        height: height * Size.shared.getAdaptSizeHeight(px: 416))
             VStack(alignment: .leading, spacing: 0) {
-                Text("Роман Соколов")
+                Text("\(player.name)")
                     .foregroundColor(.whiteColor)
                     .font(Font.event.robotoRegular24)
                     .lineLimit(1)
                     .frame(width: width * Size.shared.getAdaptSizeWidth(px: 250),
                            alignment: .leading)
                 
-                Text("Петропавловск-Камчатский")
+                Text("\(player.city)")
                     .foregroundColor(.whiteColor)
                     .font(Font.event.robotoRegular16)
                     .lineLimit(1)
@@ -35,7 +40,7 @@ struct HeaderProfileView: View {
                     .padding(.top, width * Size.shared.getAdaptSizeWidth(px: 4))
                 
                 HStack {
-                    Text("180см")
+                    Text("\(player.growth)см")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
@@ -43,7 +48,7 @@ struct HeaderProfileView: View {
                         .overlay(RoundedRectangle(cornerRadius: 3)
                                     .stroke(Color.whiteColor))
                     
-                    Text("89кг")
+                    Text("\(player.weight)кг")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
@@ -51,7 +56,7 @@ struct HeaderProfileView: View {
                         .overlay(RoundedRectangle(cornerRadius: 3)
                                     .stroke(Color.whiteColor))
                     
-                    Text("29 лет")
+                    Text("\(player.age) лет")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoRegular16)
                         .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 10))
@@ -100,7 +105,7 @@ struct HeaderProfileView: View {
                             .resizable()
                             .frame(width: width * Size.shared.getAdaptSizeWidth(px: 87),
                                    height: height * Size.shared.getAdaptSizeHeight(px: 66))
-                        Text("88")
+                        Text("\(player.tShirtNumber)")
                             .foregroundColor(.whiteColor)
                             .font(Font.event.robotoRegular24)
                     }
@@ -108,7 +113,7 @@ struct HeaderProfileView: View {
                 .padding(.top, width * Size.shared.getAdaptSizeWidth(px: 16))
                 
             }
-            .padding(.horizontal, width * Size.shared.getAdaptSizeWidth(px: 16))
+            .padding(.horizontal, 16)
             .offset(x: width * Size.shared.getAdaptSizeWidth(px: 0),
                     y: height * Size.shared.getAdaptSizeHeight(px: 150))
         }
@@ -117,6 +122,6 @@ struct HeaderProfileView: View {
 
 struct HeaderProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        HeaderProfileView()
+        HeaderProfileView(player: .plugPlayer)
     }
 }

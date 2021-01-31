@@ -212,12 +212,12 @@ private extension CreateGameView {
         self.viewController?.present(style: .fullScreen) {
             CurrentGameView(game: currentGame(state: state))
         }
+        appBinding.main.showCreateGameView.wrappedValue = false
         DispatchQueue.main.asyncAfter(deadline: .now() + 2.0) {
             nextStepCreateGame(state: state)
             refreshProgressBar(state: state)
             appendCurrentGameToMyGameAndAllGame(state: state, game: currentGame(state: state))
             appBinding.main.tabBarMenu.wrappedValue = .search
-            appBinding.main.showCreateGameView.wrappedValue = false
             clearCreateGame(state: state)
             state.main.selectionGame.wrappedValue = .myGames
         }

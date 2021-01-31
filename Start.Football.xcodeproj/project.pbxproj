@@ -26,6 +26,8 @@
 		1B155F42256C07F800019C2F /* PageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F41256C07F800019C2F /* PageView.swift */; };
 		1B155F47256C09A200019C2F /* ButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F46256C09A200019C2F /* ButtonView.swift */; };
 		1B155F53256C471D00019C2F /* CheckboxFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B155F52256C471D00019C2F /* CheckboxFieldView.swift */; };
+		1B1ED27025C71E27000AED9A /* NotificationGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1ED26F25C71E27000AED9A /* NotificationGame.swift */; };
+		1B1ED27525C71F55000AED9A /* PlugNotifications.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B1ED27425C71F55000AED9A /* PlugNotifications.swift */; };
 		1B23561825A798DA00E33DA8 /* TimePickerCreateGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23561725A798DA00E33DA8 /* TimePickerCreateGame.swift */; };
 		1B23561F25A7A2CC00E33DA8 /* PreviewGameSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23561E25A7A2CC00E33DA8 /* PreviewGameSheet.swift */; };
 		1B23562325A7B09900E33DA8 /* FilterGameSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B23562225A7B09900E33DA8 /* FilterGameSheet.swift */; };
@@ -198,6 +200,8 @@
 		1B155F41256C07F800019C2F /* PageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PageView.swift; sourceTree = "<group>"; };
 		1B155F46256C09A200019C2F /* ButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ButtonView.swift; sourceTree = "<group>"; };
 		1B155F52256C471D00019C2F /* CheckboxFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = CheckboxFieldView.swift; sourceTree = "<group>"; };
+		1B1ED26F25C71E27000AED9A /* NotificationGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationGame.swift; sourceTree = "<group>"; };
+		1B1ED27425C71F55000AED9A /* PlugNotifications.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugNotifications.swift; sourceTree = "<group>"; };
 		1B23561725A798DA00E33DA8 /* TimePickerCreateGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TimePickerCreateGame.swift; sourceTree = "<group>"; };
 		1B23561E25A7A2CC00E33DA8 /* PreviewGameSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PreviewGameSheet.swift; sourceTree = "<group>"; };
 		1B23562225A7B09900E33DA8 /* FilterGameSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = FilterGameSheet.swift; sourceTree = "<group>"; };
@@ -728,6 +732,7 @@
 				1BAA203A25BB8AE000888B82 /* PlaceGame.swift */,
 				1BA09C3D25BE291B009B6CE2 /* Game.swift */,
 				1BA09C4025BE292E009B6CE2 /* Player.swift */,
+				1B1ED26F25C71E27000AED9A /* NotificationGame.swift */,
 			);
 			path = Models;
 			sourceTree = "<group>";
@@ -744,6 +749,7 @@
 			children = (
 				1B93578B25C62A1C00CFF38E /* PlugPlayers.swift */,
 				1B93579025C62A2C00CFF38E /* PlugGames.swift */,
+				1B1ED27425C71F55000AED9A /* PlugNotifications.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -1156,6 +1162,7 @@
 				1BAFF63125BC7A5400C9D2E5 /* Filter.swift in Sources */,
 				1BF3663325A7829D00B196EE /* AboutTheAreaCurrentGame.swift in Sources */,
 				1B78CCE8256DBC7100297221 /* Font.swift in Sources */,
+				1B1ED27025C71E27000AED9A /* NotificationGame.swift in Sources */,
 				1B37B01125AF23920007AEF3 /* AppState.swift in Sources */,
 				1B966C2E257717760084FFB4 /* ButtonCancel.swift in Sources */,
 				1B8B61DF25BA1F3C0005E9C8 /* DatePickerUIKit.swift in Sources */,
@@ -1188,6 +1195,7 @@
 				1BE105EA25B743840060DA3D /* ResetAuthInteractor.swift in Sources */,
 				1B67934C25B2F78C00DADFC4 /* AppActions.swift in Sources */,
 				1B42CD5D25C4570A007F4ABB /* TabViewApp.swift in Sources */,
+				1B1ED27525C71F55000AED9A /* PlugNotifications.swift in Sources */,
 				1B368A5C25B64F49007D1365 /* SignInAuth.swift in Sources */,
 				1BAA201425BB3A4B00888B82 /* BoxSelectDateGames.swift in Sources */,
 				1BAFF64725BC808C00C9D2E5 /* MenuInteractor.swift in Sources */,
@@ -1431,7 +1439,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1441,7 +1449,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.42;
+				MARKETING_VERSION = 1.0.43;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1455,7 +1463,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 42;
+				CURRENT_PROJECT_VERSION = 43;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1465,7 +1473,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.42;
+				MARKETING_VERSION = 1.0.43;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
