@@ -26,7 +26,7 @@ struct TypeOfParkingSheet: View {
                         divider
                         headerView
                         
-                        VStack(spacing: 16) {
+                        VStack(spacing: 24) {
                             Group {
                                 paidCity
                                 Divider()
@@ -50,6 +50,7 @@ struct TypeOfParkingSheet: View {
                             Color.clear
                                 .frame(height: 50)
                         }
+                        .padding(.top, 25)
                     }
                     .padding(24)
                     .padding(.top, 8)

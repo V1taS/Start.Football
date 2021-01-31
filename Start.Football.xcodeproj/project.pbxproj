@@ -106,6 +106,10 @@
 		1B7F7C8125840E0500308106 /* RoundedColorEdge.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */; };
 		1B8B61DF25BA1F3C0005E9C8 /* DatePickerUIKit.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B8B61DE25BA1F3C0005E9C8 /* DatePickerUIKit.swift */; };
 		1B8C82BF25AF21B200197D3E /* Preview Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */; };
+		1B93578725C61E9C00CFF38E /* KeyboardAware.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93578625C61E9C00CFF38E /* KeyboardAware.swift */; };
+		1B93578C25C62A1C00CFF38E /* PlugPlayers.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93578B25C62A1C00CFF38E /* PlugPlayers.swift */; };
+		1B93579125C62A2C00CFF38E /* PlugGames.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93579025C62A2C00CFF38E /* PlugGames.swift */; };
+		1B93579725C62DF300CFF38E /* NotificationsView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B93579625C62DF300CFF38E /* NotificationsView.swift */; };
 		1B937A4C25BE669A0033BC20 /* ShowAlert.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B937A4B25BE669A0033BC20 /* ShowAlert.swift */; };
 		1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */; };
 		1B966C1F2576F2130084FFB4 /* PasswordTextFieldView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */; };
@@ -276,6 +280,10 @@
 		1B7F7C8025840E0500308106 /* RoundedColorEdge.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = RoundedColorEdge.swift; sourceTree = "<group>"; };
 		1B8B61DE25BA1F3C0005E9C8 /* DatePickerUIKit.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerUIKit.swift; sourceTree = "<group>"; };
 		1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */ = {isa = PBXFileReference; lastKnownFileType = folder.assetcatalog; path = "Preview Assets.xcassets"; sourceTree = "<group>"; };
+		1B93578625C61E9C00CFF38E /* KeyboardAware.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = KeyboardAware.swift; sourceTree = "<group>"; };
+		1B93578B25C62A1C00CFF38E /* PlugPlayers.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugPlayers.swift; sourceTree = "<group>"; };
+		1B93579025C62A2C00CFF38E /* PlugGames.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PlugGames.swift; sourceTree = "<group>"; };
+		1B93579625C62DF300CFF38E /* NotificationsView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = NotificationsView.swift; sourceTree = "<group>"; };
 		1B937A4B25BE669A0033BC20 /* ShowAlert.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShowAlert.swift; sourceTree = "<group>"; };
 		1B966C1B2576F2040084FFB4 /* LoginTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = LoginTextFieldView.swift; sourceTree = "<group>"; };
 		1B966C1E2576F2130084FFB4 /* PasswordTextFieldView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = PasswordTextFieldView.swift; sourceTree = "<group>"; };
@@ -639,6 +647,7 @@
 				1B78CCE7256DBC7100297221 /* Font.swift */,
 				1B04FC362571A56A00AC40D5 /* UIScreen.swift */,
 				1B68131425744A7F00B54977 /* KeyboardListener.swift */,
+				1B93578625C61E9C00CFF38E /* KeyboardAware.swift */,
 				1B5CCDB6257ED7AB0000BC79 /* ColorExtensions.swift */,
 				1B41A08C25BD9A180065A7C2 /* StringProtocol.swift */,
 				1B937A4B25BE669A0033BC20 /* ShowAlert.swift */,
@@ -733,6 +742,8 @@
 		1B8C82B425AF1ED900197D3E /* Repositories */ = {
 			isa = PBXGroup;
 			children = (
+				1B93578B25C62A1C00CFF38E /* PlugPlayers.swift */,
+				1B93579025C62A2C00CFF38E /* PlugGames.swift */,
 			);
 			path = Repositories;
 			sourceTree = "<group>";
@@ -795,6 +806,7 @@
 				1B5D470E25C450C700873B91 /* CustomTabViewApp.swift */,
 				1B7970E5256DC9FD006DAFC0 /* MainView */,
 				1B24DEF825802A6300510132 /* Create game */,
+				1B93579525C62DDC00CFF38E /* Notifications */,
 			);
 			path = Screens;
 			sourceTree = "<group>";
@@ -820,6 +832,14 @@
 				1B8C82BE25AF21B200197D3E /* Preview Assets.xcassets */,
 			);
 			path = "Preview Content";
+			sourceTree = "<group>";
+		};
+		1B93579525C62DDC00CFF38E /* Notifications */ = {
+			isa = PBXGroup;
+			children = (
+				1B93579625C62DF300CFF38E /* NotificationsView.swift */,
+			);
+			path = Notifications;
 			sourceTree = "<group>";
 		};
 		1BA208B425A777BF005B4D0C /* Header */ = {
@@ -1119,6 +1139,7 @@
 				1B7B649025B71F5C0067A334 /* CreatGameActions.swift in Sources */,
 				1B42CD7625C4CA3B007F4ABB /* DatePickerSheetView.swift in Sources */,
 				1B765D8B25A748BE00105940 /* CreateGameStepFour.swift in Sources */,
+				1B93579125C62A2C00CFF38E /* PlugGames.swift in Sources */,
 				1B6A0903257041330001861F /* Size.swift in Sources */,
 				1B5E4DD925A74CA500287D98 /* BackButtonCreateGameView.swift in Sources */,
 				1B6BD02A25B5C10C008DAD8B /* StepTwoCreateGameInteractor.swift in Sources */,
@@ -1141,6 +1162,7 @@
 				1BF3660D25A77E4700B196EE /* CellStatisticsProfileView.swift in Sources */,
 				1B7B648D25B71F100067A334 /* Validators.swift in Sources */,
 				1B42CD6C25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift in Sources */,
+				1B93578725C61E9C00CFF38E /* KeyboardAware.swift in Sources */,
 				1B42CD8825C4DA41007F4ABB /* TFhowMuchTimeDoWePlayCGView.swift in Sources */,
 				1B966C1C2576F2040084FFB4 /* LoginTextFieldView.swift in Sources */,
 				1BAA203B25BB8AE000888B82 /* PlaceGame.swift in Sources */,
@@ -1196,6 +1218,7 @@
 				1B24DEFA25802A9700510132 /* CreateGameView.swift in Sources */,
 				1B03BE7C25B7B6E200F032F7 /* MainFilterAppInteractor.swift in Sources */,
 				1B2D84B225B503450068693B /* CreateGame.swift in Sources */,
+				1B93578C25C62A1C00CFF38E /* PlugPlayers.swift in Sources */,
 				1B155F3F256C07CE00019C2F /* PasswordResetView.swift in Sources */,
 				1B23562325A7B09900E33DA8 /* FilterGameSheet.swift in Sources */,
 				1BF5BA9C25B4BCCC00A06872 /* InteractorsContainer.swift in Sources */,
@@ -1209,6 +1232,7 @@
 				1B06E0C525B62B5400B1B8D6 /* TextView.swift in Sources */,
 				1B04FC372571A56A00AC40D5 /* UIScreen.swift in Sources */,
 				1BF3663F25A782F800B196EE /* ADVone.swift in Sources */,
+				1B93579725C62DF300CFF38E /* NotificationsView.swift in Sources */,
 				1B4B65F625A8A56E00801E12 /* FormatGameTextField.swift in Sources */,
 				1BA208B225A77795005B4D0C /* HeaderMainView.swift in Sources */,
 				1BAFF63925BC7CE800C9D2E5 /* CurrentGameActions.swift in Sources */,

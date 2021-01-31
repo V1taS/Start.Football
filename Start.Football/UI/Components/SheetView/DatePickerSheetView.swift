@@ -25,7 +25,7 @@ struct DatePickerSheetView: View {
                     divider
                     
                     VStack(alignment: .leading, spacing: 10) {
-                        DatePickerView(currentDate: appBinding.main.filter.selectedData)
+                        DatePickerView(currentDate: appBinding.createGame.currentDate)
                             .transition(.move(edge: .bottom))
                             .animation(.easeOut(duration: 0.7))
                         TimePickerCreateGame(currentDate: appBinding.createGame.currentDate)

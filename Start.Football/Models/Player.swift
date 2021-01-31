@@ -82,24 +82,3 @@ struct Player: Hashable, Decodable {
         return name.lowercased().contains(lowercasedFilter)
     }
 }
-
-extension Player {
-    static var plugPlayer = Player(id: "23648-42423423",
-                                   name: "Юрий Долговязов",
-                                   login: "Yirii",
-                                   mail: "Yirii@mail.ru",
-                                   password: "svsvsvsvsvs",
-                                   tShirtNumber: "17",
-                                   position: "ФРВ",
-                                   avatarStringURL: "testOrganizator",
-                                   weight: "65",
-                                   growth: "175",
-                                   age: "25",
-                                   city: "Moscow",
-                                   aboutMe: "",
-                                   takePart: "60",
-                                   organized: "20",
-                                   phoneNumber: "+7-999-999-99-99",
-                                   rating: "",
-                                   payment: "")
-}

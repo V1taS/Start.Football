@@ -35,6 +35,7 @@ struct CreateGameStepFour: View {
             }
             .padding(.horizontal, 24)
         }
+        .keyboardAware()
         .dismissingKeyboard()
         .padding(.top, 24)
     }

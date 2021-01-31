@@ -22,8 +22,8 @@ extension AppState.AppData {
         var costGame = ""
         var costGameSuccess = true
         
-        var HowMuchTimeDoWePlay = ""
-        var HowMuchTimeDoWePlaySuccess = true
+        var howMuchTimeDoWePlay = ""
+        var howMuchTimeDoWePlaySuccess = true
         
         var currentDate = Date()
         var currentTimeHasBeenChanged = false

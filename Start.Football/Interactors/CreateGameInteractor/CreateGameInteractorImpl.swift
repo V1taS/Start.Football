@@ -187,7 +187,8 @@ struct CreateGameInteractorImpl: CreateGameInteractor {
             parkingCost: state.createGame.parkingCost.wrappedValue,
             descriptionGame: state.createGame.descriptionGame.wrappedValue,
             ownRulesGame: state.createGame.ownRules.wrappedValue,
-            commentFromOrganizerGame: state.createGame.commentFromOrganizer.wrappedValue
+            commentFromOrganizerGame: state.createGame.commentFromOrganizer.wrappedValue,
+            howMuchTimeDoWePlay: state.createGame.howMuchTimeDoWePlay.wrappedValue
         )
     }
     

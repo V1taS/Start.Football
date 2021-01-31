@@ -58,7 +58,7 @@ private extension TFhowMuchTimeDoWePlayCGView {
             }) {
                 VStack {
                     if appBinding.createGame.currentTimeHasBeenChanged.wrappedValue {
-                        Text("Продолжительность игры \(appBinding.createGame.HowMuchTimeDoWePlay.wrappedValue)")
+                        Text("Продолжительность игры \(appBinding.createGame.howMuchTimeDoWePlay.wrappedValue)")
                             .foregroundColor(.secondaryColor)
                             .font(Font.event.robotoRegular18)
                             .padding(.bottom, 16)

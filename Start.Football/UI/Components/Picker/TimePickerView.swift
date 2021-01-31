@@ -38,7 +38,7 @@ private extension TimePickerView {
             Text("Время")
                 .foregroundColor(.defaultColor)
                 .font(Font.event.robotoMedium14)
-                .padding(.bottom, 18)
+                .padding(.bottom, 16)
         )
     }
 }

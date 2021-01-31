@@ -43,6 +43,7 @@ struct CreateGameStepThree: View {
             }
             .padding(.top, 24)
         }
+        .keyboardAware()
         .dismissingKeyboard()
     }
 }

@@ -14,9 +14,10 @@ extension AppState.AppData {
         
         // Main View
         
-        var listAllGames: [Game] = [Game.plugGame, Game.plugGame, Game.plugGame]
+        var listAllGames: [Game] = Game.plugGames
         var listMyGames: [Game] = []
         var currentPlayer = Player.plugPlayer
+        var listPlayers: [Player] = Player.plugPlayers
         var selectionGame: AppActions.MainActions.SelectionGame = .allGame
         var loadMoreGames = true
         var tabBarMenu: AppActions.MainActions.TabBarMenu = .search

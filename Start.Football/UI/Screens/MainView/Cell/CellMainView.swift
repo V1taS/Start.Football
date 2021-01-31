@@ -82,7 +82,7 @@ private extension CellMainView {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .lineLimit(1)
-                    .frame(width: 170)
+                    .frame(width: 180, alignment: .leading)
                 Spacer()
                 distance
             }
@@ -98,7 +98,7 @@ private extension CellMainView {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoRegular16)
                     .lineLimit(1)
-                    .frame(width: 70, alignment: .trailing)
+                    .frame(width: 60, alignment: .trailing)
             }
         )
     }

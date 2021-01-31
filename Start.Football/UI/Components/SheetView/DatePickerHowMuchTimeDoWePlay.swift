@@ -41,7 +41,7 @@ struct DatePickerHowMuchTimeDoWePlay: View {
                         .frame(height: 200)
                         
                         Button(action: {
-                            appBinding.createGame.HowMuchTimeDoWePlay.wrappedValue = times[selection]
+                            appBinding.createGame.howMuchTimeDoWePlay.wrappedValue = times[selection]
                             appBinding.createGame.showTimePicker.wrappedValue = false
                             appBinding.createGame.currentTimeHasBeenChanged.wrappedValue = true
                         }) {

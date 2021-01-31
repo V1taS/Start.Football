@@ -25,6 +25,7 @@ struct CreateGameView: View {
             VStack(spacing: 0) {
                 VStack(spacing: 0) {
                     header
+                        .padding(.top, 47)
                         .padding(.horizontal, 24)
                     content
                     Spacer()
@@ -39,6 +40,7 @@ struct CreateGameView: View {
             dateAndTime
             howMuchTimeDoWePlay
         }
+        .background(Color.backgroundColor)
         .accentColor(.secondaryColor)
         .dismissingKeyboard()
     }
@@ -106,6 +108,7 @@ private extension CreateGameView {
         VStack {
             Spacer()
             TypeOfParkingSheet(appBinding: appBinding)
+                .keyboardAware()
         }
         .transition(.move(edge: .bottom))
         .animation(.easeOut(duration: 0.7))

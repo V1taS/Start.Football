@@ -16,25 +16,24 @@ struct CreateGameStepOne: View {
     }
     
     var body: some View {
-            ScrollView(.vertical, showsIndicators: false) {
-                VStack {
-                    VStack(spacing: 24) {
-                        nameGame
-                        addressGame
-                        TFdateAndTimeCGView(appBinding: appBinding)
-                        TFhowMuchTimeDoWePlayCGView(appBinding: appBinding)
-    //                    time
-//                        HowMuchDoWePlay
-//                        day
-                        costGame
-                    }
-                    freeGameText
-                    Spacer()
+        ScrollView {
+            VStack {
+                VStack(spacing: 24) {
+                    nameGame
+                    addressGame
+                    TFdateAndTimeCGView(appBinding: appBinding)
+                    TFhowMuchTimeDoWePlayCGView(appBinding: appBinding)
+                    costGame
                 }
-                .padding(.horizontal, 24)
-                .padding(.top, 24)
+                freeGameText
+                Spacer()
             }
+            
+            .padding(.horizontal, 24)
+            .padding(.top, 24)
+        }
         .dismissingKeyboard()
+        .keyboardAware()
     }
 }
 
@@ -61,42 +60,6 @@ private extension CreateGameStepOne {
                              placeholder: "Укажите адрес",
                              keyboardType: .default,
                              success: appBinding.createGame.addressGameSuccess.wrappedValue)
-    }
-}
-
-private extension CreateGameStepOne {
-    var time: some View {
-        DatePickerLineView(date: appBinding.createGame.currentDate,
-                           textHasBeenChanged: appBinding.createGame.currentTimeHasBeenChanged, text: "Укажите время:",
-                           header: "Время",
-                           iconShow: true,
-                           icon: "timeGreateGame",
-                           hourAndMinute: .hourAndMinute)
-    }
-}
-
-private extension CreateGameStepOne {
-    var HowMuchDoWePlay: some View {
-        DatePickerLineView(date: appBinding.createGame
-                            .currentDate,
-                           textHasBeenChanged: appBinding.createGame
-                            .currentTimeHasBeenChanged,
-                           text: "Укажите время:",
-                           header: "Сколько играем?",
-                           iconShow: true,
-                           icon: "timeGreateGame",
-                           hourAndMinute: .hourAndMinute)
-    }
-}
-
-private extension CreateGameStepOne {
-    var day: some View {
-        DatePickerLineView(date: appBinding.createGame.currentDate,
-                           textHasBeenChanged: appBinding.createGame.currentDateHasBeenChanged, text: "Укажите дату:",
-                           header: "Дата игры",
-                           iconShow: true,
-                           icon: "dateCreateGame",
-                           hourAndMinute: .date)
     }
 }
 

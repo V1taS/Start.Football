@@ -45,6 +45,7 @@ struct Game: Hashable, Decodable {
     var ownRulesGame: String
     var commentFromOrganizerGame: String
     var dataCreateGame = Date()
+    var howMuchTimeDoWePlay: String
     
     init(id: String,
          name: String,
@@ -81,7 +82,8 @@ struct Game: Hashable, Decodable {
          parkingCost: String,
          descriptionGame: String,
          ownRulesGame: String,
-         commentFromOrganizerGame: String) {
+         commentFromOrganizerGame: String,
+         howMuchTimeDoWePlay: String) {
         self.id = UUID().uuidString
         self.name = name
         self.imageStringURL = imageStringURL
@@ -118,6 +120,7 @@ struct Game: Hashable, Decodable {
         self.descriptionGame = descriptionGame
         self.ownRulesGame = ownRulesGame
         self.commentFromOrganizerGame = commentFromOrganizerGame
+        self.howMuchTimeDoWePlay = howMuchTimeDoWePlay
     }
     
     func hash(into hasher: inout Hasher) {
@@ -134,43 +137,4 @@ struct Game: Hashable, Decodable {
         let lowercasedFilter = filter.lowercased()
         return name.lowercased().contains(lowercasedFilter)
     }
-}
-
-extension Game {
-    static var plugGame = Game(id: "1251-117361-137138-1212",
-                               name: "Тренировка в ФОК",
-                               imageStringURL: "",
-                               gameNumber: "4867",
-                               address: "ул. Хачтуряна, 12, стр. 2",
-                               costGame: "500",
-                               oneGameDate: Date(),
-                               regularGame: "no",
-                               listGameRegularGame: [false, false, false, false, false, false, false],
-                               listDateRegularGame: [Date(), Date(), Date(), Date(), Date(), Date(), Date()],
-                               miniFootball: true,
-                               usualFootball: false,
-                               footsal: false,
-                               street: true,
-                               manege: false,
-                               hall: false,
-                               parquet: false,
-                               grass: true,
-                               caoutchouc: false,
-                               synthetics: false,
-                               hair: false,
-                               crumb: true,
-                               firstTeamCount: "7",
-                               secondTeamCount: "7",
-                               maxCountTeams: 3,
-                               maxCountPlayers: 15,
-                               maxReservePlayers: 3,
-                               privacyGame: "open",
-                               dressingRooms: true,
-                               showers: true,
-                               typeOfParking: "Бесплатная",
-                               paymentForParking: "",
-                               parkingCost: "0",
-                               descriptionGame: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
-                               ownRulesGame: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
-                               commentFromOrganizerGame: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!")
 }

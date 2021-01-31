@@ -24,17 +24,36 @@ struct FilterGameSheet: View {
                 VStack(spacing: 0) {
                     divider
                     
-                    VStack(alignment: .leading, spacing: 10) {
+                    VStack(alignment: .leading, spacing: 0) {
+                        HStack {
+                            Text("Фильтры")
+                                .foregroundColor(.secondaryColor)
+                                .font(Font.event.robotoMedium32)
+                            Spacer()
+                        }
+                    }
+                    .padding(.top, 24)
+                    .padding(.horizontal, 24)
+                    
+                    VStack(alignment: .leading, spacing: 16) {
                         DatePickerView(currentDate: appBinding.main.filter.selectedData)
                         TimePickerView(appBinding: appBinding)
                         CostView(appBinding: appBinding)
-                        
+                    }
+                    .padding(.horizontal, 24)
+                    .padding(.top, 16)
+                    
+                    VStack(alignment: .leading, spacing: 16) {
                         availability
                         gameType
                         placeType
                     }
-                    .padding(24)
-                    .padding(.top, 8)
+                    .padding(.top, 24)
+                    .padding(.horizontal, 24)
+                    
+                    Color.clear
+                        .frame(height: 34)
+                        .padding(.horizontal, 24)
                 }
                 .background(Color.backgroundColor)
                 .cornerRadius(25)
@@ -85,12 +104,12 @@ private extension FilterGameSheet {
             Group {
                 Text("Тип игры")
                     .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium18)
+                    .font(Font.event.robotoMedium20)
                 HStack {
                     Button(action: {
                         selectMiniFootball()
                     }) {
-                        TextButtonRound(name: "Мини",
+                        TextButtonRound(name: "Мини-Футбол",
                                         isOn: appBinding.main.filter
                                             .miniFootball.wrappedValue,
                                         backgroundColor: .primaryColor)
@@ -125,7 +144,7 @@ private extension FilterGameSheet {
             Group {
                 Text("Где играть")
                     .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium18)
+                    .font(Font.event.robotoMedium20)
                 
                 HStack {
                     Button(action: {
@@ -178,14 +197,16 @@ private extension FilterGameSheet {
             Group {
                 Text("Доступность")
                     .foregroundColor(.secondaryColor)
-                    .font(Font.event.robotoMedium18)
+                    .font(Font.event.robotoMedium20)
                 
-                CheckboxFieldView(checked: appBinding.main.filter.onlyFreeGame,
-                                  text: "Только бесплатные игры")
-                CheckboxFieldView(checked: appBinding.main.filter.doNotShowGamesWithReserve,
-                                  text: "Не показывать игры с резервом")
-                CheckboxFieldView(checked: appBinding.main.filter.availableToAll,
-                                  text: "Для всех желающих")
+                VStack(alignment: .leading, spacing: 16) {
+                    CheckboxFieldView(checked: appBinding.main.filter.onlyFreeGame,
+                                      text: "Только бесплатные игры")
+                    CheckboxFieldView(checked: appBinding.main.filter.doNotShowGamesWithReserve,
+                                      text: "Без приглашений")
+                    CheckboxFieldView(checked: appBinding.main.filter.availableToAll,
+                                      text: "Без ожидания в очереди")
+                }
             }
         )
     }

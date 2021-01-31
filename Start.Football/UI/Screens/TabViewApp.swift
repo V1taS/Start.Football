@@ -14,28 +14,36 @@ struct TabViewApp: View {
         $appState.dispatched(to: injected.appState, \.appData)
     }
     @Environment(\.injected) private var injected: DIContainer
+    @Environment(\.viewController) private var viewControllerHolder: UIViewController?
+    private var viewController: UIViewController? {
+        self.viewControllerHolder!
+    }
     
     var body: some View {
         ZStack {
-            if !appBinding.main.showCreateGameView.wrappedValue {
                 
                 ZStack {
                     VStack(spacing: 0) {
                         content
-                            CustomTabViewApp(appBinding: appBinding)
-                                .background(Color.paleWhite)
+                        CustomTabViewApp(appBinding: appBinding)
+                            .background(Color.paleWhite)
                     }
                     
                     backgroundColor
                     filterGame
                 }
-            }
             
-            if appBinding.main.showCreateGameView.wrappedValue {
+            if appState.main.showCreateGameView {
                 VStack {
                     CreateGameView(appBinding: appBinding)
                 }
+                .edgesIgnoringSafeArea(.top)
+                .background(Color.backgroundColor)
+                .offset(x: 0, y: appBinding.main.showCreateGameView.wrappedValue ? 0 : UIScreen.screenHeight)
+                .transition(.move(edge: .bottom))
+                .animation(.easeOut)
             }
+                
         }
         .edgesIgnoringSafeArea(.bottom)
         .dismissingKeyboard()
@@ -77,7 +85,7 @@ private extension TabViewApp {
         case .search:
             return AnyView(MainView(appBinding: appBinding))
         case .notifications:
-            return AnyView(MainView(appBinding: appBinding))
+            return AnyView(NotificationsView())
         }
     }
 }
