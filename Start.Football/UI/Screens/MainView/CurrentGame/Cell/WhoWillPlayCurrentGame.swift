@@ -83,7 +83,7 @@ private extension WhoWillPlayCurrentGame {
 private extension WhoWillPlayCurrentGame {
     private func showAllPlayers() {
         self.viewController?.present(style: .pageSheet) {
-            
+            PlayersInTeam(players: Player.plugPlayers) 
         }
     }
 }

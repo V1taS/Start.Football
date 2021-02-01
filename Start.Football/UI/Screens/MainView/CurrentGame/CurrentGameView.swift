@@ -57,10 +57,32 @@ struct CurrentGameView: View {
                         .padding(.horizontal, 16)
                     }
                 }
-                .edgesIgnoringSafeArea(.all)
-                .navigationBarItems(trailing:
+                
+                .navigationBarTitle(Text("Игра №\(game.gameNumber)"), displayMode: .inline)
+                .navigationBarItems(leading: HStack {
+                    HStack {
+                        Spacer()
+                        Button(action: {
+                            self.viewController?.dismiss(animated: true, completion: nil)
+                        }) {
+                            ZStack {
+                                Image(systemName: "xmark.circle.fill")
+                                    .imageScale(.large)
+                                    .foregroundColor(Color(.primaryColor))
+                            }
+                            
+                        }
+                    }
+                }, trailing:
                                         HStack(spacing: 16) {
-                                            currenrGameEditButton
+                                            NavigationLink(
+                                                destination: EditGameView(game: Game.plugGame),
+                                                label: {
+                                                    Image("currenrGameEdit")
+                                                        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
+                                                               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+                                                })
+                                                .accentColor(.primaryColor)
                                             currenrGameSendInviteButton
                                         })
             }
@@ -103,7 +125,13 @@ private extension CurrentGameView {
 // MARK: Actions
 private extension CurrentGameView {
     private func currenrGameEditShow() {
-        self.viewController?.dismiss(animated: true)
+        NavigationLink(
+            destination: EditGameView(game: Game.plugGame),
+            label: {
+                Image("currenrGameEdit")
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
+            })
     }
     
     private func currenrGameSendInvite() {

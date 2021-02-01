@@ -210,7 +210,7 @@ private extension MainView {
     }
     
     private func currentGameShow(game: Game) {
-        self.viewController?.present(style: .pageSheet) {
+        self.viewController?.present(style: .fullScreen) {
             CurrentGameView(game: game)
         }
     }

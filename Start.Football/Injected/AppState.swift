@@ -21,6 +21,7 @@ extension AppState {
         
         var main = Main()
         var createGame = CreateGame()
+        var editGame = EditGame()
         var currentGame = CurrentGame()
         var menu = MenuApp()
     }

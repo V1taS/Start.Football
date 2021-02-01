@@ -115,7 +115,7 @@ private extension PasswordResetView {
             Button(action: {
                 dismissButton()
             }) {
-                ButtonCancel()
+                ButtonCancel(text: "Отмена")
             }
         )
     }

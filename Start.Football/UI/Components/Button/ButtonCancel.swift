@@ -8,11 +8,16 @@
 import SwiftUI
 
 struct ButtonCancel: View {
+    
+    private var text: String
+    init(text: String) {
+        self.text = text
+    }
 
     var body: some View {
         ZStack {
             background
-            text
+            textView
         }
     }
 }
@@ -33,9 +38,9 @@ private extension ButtonCancel {
 }
 
 private extension ButtonCancel {
-    private var text: AnyView {
+    private var textView: AnyView {
         AnyView(
-            Text("Отмена")
+            Text(text)
                 .foregroundColor(Color(.error))
                 .font(Font.event.robotoMedium16)
         )
@@ -44,6 +49,6 @@ private extension ButtonCancel {
 
 struct ButtonCancel_Previews: PreviewProvider {
     static var previews: some View {
-        ButtonCancel()
+        ButtonCancel(text: "Отмена")
     }
 }
