@@ -108,8 +108,7 @@ private extension HeaderMainView {
     }
     
     private func presentMap() {
-        self.viewController?.present(style: .pageSheet) {
-            MapGameView(appBinding: appBinding) }
+        appBinding.main.showMap.wrappedValue.toggle()
     }
     
     private func presentFiltrsSheet() {

@@ -879,9 +879,9 @@
 		1B8C82B925AF1F4400197D3E /* Screens */ = {
 			isa = PBXGroup;
 			children = (
-				1B155F39256C078500019C2F /* SignIn&Auth */,
 				1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */,
 				1B5D470E25C450C700873B91 /* CustomTabViewApp.swift */,
+				1B155F39256C078500019C2F /* SignIn&Auth */,
 				1B7970E5256DC9FD006DAFC0 /* MainView */,
 				1B24DEF825802A6300510132 /* Create game */,
 				1B93579525C62DDC00CFF38E /* Notifications */,
@@ -993,9 +993,9 @@
 			isa = PBXGroup;
 			children = (
 				1B762C85257566C700414808 /* CurrentGameView.swift */,
+				1B424E5925C83E1100523292 /* PlayersInTeam.swift */,
 				1BF3662125A7814500B196EE /* Cell */,
 				1BF3661C25A7812C00B196EE /* Header */,
-				1B424E5925C83E1100523292 /* PlayersInTeam.swift */,
 			);
 			path = CurrentGame;
 			sourceTree = "<group>";
@@ -1523,7 +1523,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1533,7 +1533,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.43;
+				MARKETING_VERSION = 1.0.44;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;
@@ -1547,7 +1547,7 @@
 				ASSETCATALOG_COMPILER_APPICON_NAME = AppIcon;
 				ASSETCATALOG_COMPILER_GLOBAL_ACCENT_COLOR_NAME = AccentColor;
 				CODE_SIGN_STYLE = Automatic;
-				CURRENT_PROJECT_VERSION = 43;
+				CURRENT_PROJECT_VERSION = 44;
 				DEVELOPMENT_ASSET_PATHS = "\"Start.Football/UI/Preview Content\"";
 				DEVELOPMENT_TEAM = 34VDSPZYU9;
 				ENABLE_PREVIEWS = YES;
@@ -1557,7 +1557,7 @@
 					"$(inherited)",
 					"@executable_path/Frameworks",
 				);
-				MARKETING_VERSION = 1.0.43;
+				MARKETING_VERSION = 1.0.44;
 				PRODUCT_BUNDLE_IDENTIFIER = "com.SosinVitalii.Start-Football";
 				PRODUCT_NAME = "$(TARGET_NAME)";
 				SWIFT_VERSION = 5.0;

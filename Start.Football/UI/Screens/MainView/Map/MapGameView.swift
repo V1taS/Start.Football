@@ -20,22 +20,9 @@ struct MapGameView: View {
     }
     
     var body: some View {
-        NavigationView {
-            ZStack {
-                backgroundColor
-                MapView(checkpoints: appBinding.main.map.gamePoint)
-                    
-                    .edgesIgnoringSafeArea(.all)
-                    .navigationBarTitle(Text("Start.Football"), displayMode: .large)
-                    .navigationBarItems(trailing: Button(action: {
-                        dismissButton()
-                    }) {
-                        Image(systemName: "xmark.circle.fill")
-                            .imageScale(.large)
-                            .foregroundColor(Color(.secondaryLabel))
-                    }
-                    )
-            }
+        ZStack {
+            backgroundColor
+            MapView(checkpoints: appBinding.main.map.gamePoint)
         }
     }
 }

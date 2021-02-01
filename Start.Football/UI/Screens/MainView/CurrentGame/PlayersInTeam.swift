@@ -21,7 +21,8 @@ struct PlayersInTeam: View {
                     Text("Основной состав")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoMedium20)
-                        .frame(width: 375, height: 48)
+                        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 375),
+                               height: 48)
                         .background(Color.primaryColor)
                 }
                 
@@ -53,8 +54,10 @@ struct PlayersInTeam: View {
                     Text("Резервный состав")
                         .foregroundColor(.whiteColor)
                         .font(Font.event.robotoMedium20)
-                        .frame(width: 375, height: 48)
+                        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 375),
+                               height: 48)
                         .background(Color.secondaryColor)
+                        .padding(.horizontal, 0)
                 }
                 
                 ForEach(players.sorted(by: { $0.name > $1.name }), id: \.self) { player in
@@ -80,10 +83,6 @@ struct PlayersInTeam: View {
                         Divider()
                     }
                 }
-                
-                
-                
-                
             }
             .navigationBarTitle(Text("Игроки"), displayMode: .inline)
         }

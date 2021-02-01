@@ -100,7 +100,8 @@ private extension EditProfileView {
                         .padding(20)
                         .background(Color.primaryColor)
                         .cornerRadius(20)
-                        .frame(width: 375, height: 416)
+                        .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 375),
+                               height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 416))
                         .background(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .onTapGesture {
                             appBinding.editProfile.showImagePicker.wrappedValue = true
@@ -115,7 +116,8 @@ private extension EditProfileView {
                             .foregroundColor(.clear)
                             .background(LinearGradient(gradient: Gradient(colors: [.clear, .secondaryColor]), startPoint: .top, endPoint: .bottom))
                     }
-                    .frame(width: 375, height: 416)
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 375),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 416))
                         .onTapGesture {
                             appBinding.editProfile.showAction.wrappedValue = true
                         }

@@ -27,8 +27,12 @@ struct MainView: View {
             VStack(spacing: 0) {
                 header
                 menu
-                allGame
-                myGame
+                if appBinding.main.showMap.wrappedValue {
+                    mapGame
+                } else {
+                    allGame
+                    myGame
+                }
             }
         }
         .dismissingKeyboard()
@@ -51,6 +55,20 @@ private extension MainView {
             MenuMainView(appBinding: appBinding)
                 .padding(.top, 8)
                 .padding(.bottom, 3)
+        )
+    }
+}
+
+private extension MainView {
+    private var mapGame: AnyView {
+        AnyView(
+            VStack(spacing: 0) {
+                if appBinding.main.showMap.wrappedValue {
+                        VStack(spacing: 0) {
+                            MapGameView(appBinding: appBinding)
+                        }
+                }
+            }
         )
     }
 }

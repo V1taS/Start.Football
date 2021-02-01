@@ -24,7 +24,10 @@ extension AppState.AppData {
         
         var selectionGame: AppActions.MainActions.SelectionGame = .allGame
         var loadMoreGames = true
+        
         var tabBarMenu: AppActions.MainActions.TabBarMenu = .search
         var showCreateGameView = false
+        
+        var showMap = true
     }
 }
