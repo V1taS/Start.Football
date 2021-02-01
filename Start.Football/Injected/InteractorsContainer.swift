@@ -9,6 +9,7 @@ extension DIContainer {
     struct Interactors {
         let createGameInteractor: CreateGameInteractor
         let editGameInteractor: EditGameInteractor
+        let editProfileInteractor: EditProfileInteractor
         let authInteractor: AuthInteractor
         let mainAppInteractor: MainAppInteractor
         let currentGameInteractor: CurrentGameInteractor
@@ -19,13 +20,15 @@ extension DIContainer {
              mainAppInteractor: MainAppInteractor,
              currentGameInteractor: CurrentGameInteractor,
              menuInteractor: MenuInteractor,
-             editGameInteractor: EditGameInteractor) {
+             editGameInteractor: EditGameInteractor,
+             editProfileInteractor: EditProfileInteractor) {
             self.createGameInteractor = createGameInteractor
             self.authInteractor = authInteractor
             self.mainAppInteractor = mainAppInteractor
             self.currentGameInteractor = currentGameInteractor
             self.menuInteractor = menuInteractor
             self.editGameInteractor = editGameInteractor
+            self.editProfileInteractor = editProfileInteractor
         }
 
         static var stub: Self {
@@ -34,7 +37,8 @@ extension DIContainer {
                   mainAppInteractor: MainAppInteractorImpl(),
                   currentGameInteractor: CurrentGameInteractorImpl(),
                   menuInteractor: MenuInteractorImpl(),
-                  editGameInteractor: EditGameInteractorImpl())
+                  editGameInteractor: EditGameInteractorImpl(),
+                  editProfileInteractor: EditProfileInteractorImpl())
         }
     }
 }

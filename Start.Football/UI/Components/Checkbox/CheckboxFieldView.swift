@@ -18,7 +18,7 @@ struct CheckboxFieldView : View {
                 heckbox
                 textView
             }
-            .frame(width: 299,
+            .frame(width: .infinity,
                    alignment: .leading)
             Spacer()
         }

@@ -20,9 +20,10 @@ extension AppState {
         var resetAuth = ResetAuth()
         
         var main = Main()
+        var currentGame = CurrentGame()
         var createGame = CreateGame()
         var editGame = EditGame()
-        var currentGame = CurrentGame()
+        var editProfile = EditProfile()
         var menu = MenuApp()
     }
 }

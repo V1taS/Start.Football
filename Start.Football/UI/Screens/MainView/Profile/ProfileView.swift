@@ -42,7 +42,11 @@ struct ProfileView: View {
             }
             dismiss
                 .padding()
-                .offset(y: -350)
+                .offset(x: -310 ,y: -350)
+            
+            edirplayer
+                .padding()
+                .offset(x: 150 ,y: -350)
         }
         .edgesIgnoringSafeArea(.all)
         .background(Color(.paleWhite))
@@ -63,6 +67,24 @@ private extension ProfileView {
                             .imageScale(.large)
                             .foregroundColor(Color(.secondaryLabel))
                     }
+                    
+                }
+            }
+        )
+    }
+}
+
+private extension ProfileView {
+    private var edirplayer: AnyView {
+        AnyView(
+            VStack {
+                Button(action: {
+                    self.viewController?.present(style: .fullScreen) {
+                        EditProfileView(player: Player.plugPlayer)
+                    }
+                }) {
+                    Image("currenrGameEdit")
+                        .frame(width: 24, height: 24)
                     
                 }
             }

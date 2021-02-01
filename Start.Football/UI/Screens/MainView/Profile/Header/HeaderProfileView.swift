@@ -18,11 +18,17 @@ struct HeaderProfileView: View {
     
     var body: some View {
         ZStack {
-            Image("player_profile")
-                .resizable()
-                .edgesIgnoringSafeArea(.top)
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 375),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 416))
+            ZStack {
+                Image("player_profile")
+                    .resizable()
+                    .edgesIgnoringSafeArea(.top)
+
+                Rectangle()
+                    .foregroundColor(.clear)
+                    .background(LinearGradient(gradient: Gradient(colors: [.clear, .secondaryColor]), startPoint: .top, endPoint: .bottom))
+            }
+            .frame(width: 375, height: 416)
+            
             VStack(alignment: .leading, spacing: 0) {
                 Text("\(player.name)")
                     .foregroundColor(.whiteColor)

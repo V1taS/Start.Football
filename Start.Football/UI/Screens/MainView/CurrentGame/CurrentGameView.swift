@@ -83,7 +83,6 @@ struct CurrentGameView: View {
                                                         .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
                                                                height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
                                                 })
-                                                .accentColor(.primaryColor)
                                             currenrGameSendInviteButton
                                         })
             }
