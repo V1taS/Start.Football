@@ -13,28 +13,45 @@ struct CreateGameStepFour: View {
     init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
     }
-    
+
     var body: some View {
         ScrollView(.vertical, showsIndicators: false) {
             VStack(spacing: 16) {
+                
                 descriptionPlaying
                 ownRules
                 commentFromOrganizer
-                
-                addPhotoFieldButton
-                    .padding(.top, 16)
-                
+        
                 HStack {
-                    ImageViewMiniCG(image: "CGfield_1")
+                    imageOne
+                        .sheet(isPresented: appBinding.createGame.showImagePickerOne, onDismiss: {
+                            appBinding.createGame.showImagePickerOne.wrappedValue = false
+                        }, content: {
+                            ImagePicker(isShown: appBinding.createGame.showImagePickerOne,
+                                        uiImage: appBinding.createGame.uiImageOne)
+                        })
+                        .actionSheet(isPresented: appBinding.createGame.showActionOne) {
+                            sheetOne
+                        }
                     Spacer()
-                    ImageViewMiniCG(image: "CGfield_2")
+                    imageTwo
+                        .sheet(isPresented: appBinding.createGame.showImagePickerTwo, onDismiss: {
+                            appBinding.createGame.showImagePickerTwo.wrappedValue = false
+                        }, content: {
+                            ImagePicker(isShown: appBinding.createGame.showImagePickerTwo,
+                                        uiImage: appBinding.createGame.uiImageTwo)
+                        })
+                        .actionSheet(isPresented: appBinding.createGame.showActionTwo) {
+                            sheetTwo
+                        }
                 }
-                
-                
+                .padding(.top, 16)
                 Spacer()
             }
             .padding(.horizontal, 24)
         }
+
+        
         .keyboardAware()
         .dismissingKeyboard()
         .padding(.top, 24)
@@ -43,6 +60,104 @@ struct CreateGameStepFour: View {
 
 
 // MARK: UI
+private extension CreateGameStepFour {
+    private var imageOne: AnyView {
+        AnyView(
+            VStack {
+                if (appBinding.createGame.uiImageOne.wrappedValue == nil) {
+                    Image(systemName: "camera.on.rectangle")
+                        .font(.title)
+                        .frame(width: 155, height: 155)
+                        .accentColor(Color.purple)
+                        .background(Color.gray)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showImagePickerOne.wrappedValue = true
+                        }
+                } else {
+                    Image(uiImage: appBinding.createGame.uiImageOne.wrappedValue!)
+                        .resizable()
+                        .frame(width: 155, height: 155)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showActionOne.wrappedValue = true
+                        }
+                }
+            }
+        )
+    }
+}
+
+private extension CreateGameStepFour {
+    var sheetOne: ActionSheet {
+        ActionSheet(
+            title: Text("Фото футбольного поля"),
+            message: Text("добавить"),
+            buttons: [
+                .default(Text("Изменить"), action: {
+                    appBinding.createGame.showActionOne.wrappedValue = false
+                    appBinding.createGame.showImagePickerOne.wrappedValue = true
+                }),
+                .cancel(Text("Отмена"), action: {
+                    appBinding.createGame.showActionOne.wrappedValue = false
+                }),
+                .destructive(Text("Удалить"), action: {
+                    appBinding.createGame.showActionOne.wrappedValue = false
+                    appBinding.createGame.uiImageOne.wrappedValue = nil
+                })
+            ])
+    }
+}
+
+private extension CreateGameStepFour {
+    var sheetTwo: ActionSheet {
+        ActionSheet(
+            title: Text("Фото футбольного поля"),
+            message: Text("добавить"),
+            buttons: [
+                .default(Text("Изменить"), action: {
+                    appBinding.createGame.showActionTwo.wrappedValue = false
+                    appBinding.createGame.showImagePickerTwo.wrappedValue = true
+                }),
+                .cancel(Text("Отмена"), action: {
+                    appBinding.createGame.showActionTwo.wrappedValue = false
+                }),
+                .destructive(Text("Удалить"), action: {
+                    appBinding.createGame.showActionTwo.wrappedValue = false
+                    appBinding.createGame.uiImageTwo.wrappedValue = nil
+                })
+            ])
+    }
+}
+
+private extension CreateGameStepFour {
+    private var imageTwo: AnyView {
+        AnyView(
+            VStack {
+                if (appBinding.createGame.uiImageTwo.wrappedValue == nil) {
+                    Image(systemName: "camera.on.rectangle")
+                        .font(.title)
+                        .frame(width: 155, height: 155)
+                        .accentColor(Color.purple)
+                        .background(Color.gray)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showImagePickerTwo.wrappedValue = true
+                        }
+                } else {
+                    Image(uiImage: appBinding.createGame.uiImageTwo.wrappedValue!)
+                        .resizable()
+                        .frame(width: 155, height: 155)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showActionTwo.wrappedValue = true
+                        }
+                }
+            }
+        )
+    }
+}
+
 private extension CreateGameStepFour {
     private var descriptionPlaying: AnyView {
         AnyView(

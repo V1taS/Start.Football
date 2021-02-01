@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CreateGameStepFive: View {
     
+    @State private var showShareSheet = false
     private var appBinding: Binding<AppState.AppData>
     init(appBinding: Binding<AppState.AppData>) {
         self.appBinding = appBinding
@@ -24,6 +25,9 @@ struct CreateGameStepFive: View {
             Spacer()
             inviteFriendsButton
                 .padding(.bottom, 16)
+        }
+        .sheet(isPresented: $showShareSheet) {
+            ShareSheet(activityItems: ["Start.Football"])
         }
         .padding(.horizontal, 24)
         .padding(.top, 24)
@@ -74,7 +78,7 @@ private extension CreateGameStepFive {
 // MARK: Actions
 private extension CreateGameStepFive {
     private func inviteFriends() {
-        
+        self.showShareSheet = true
     }
 }
 

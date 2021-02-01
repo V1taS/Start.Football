@@ -5,7 +5,7 @@
 //  Created by Vitalii Sosin on 18.01.2021.
 //
 
-import Foundation
+import SwiftUI
 
 extension AppState.AppData {
     struct CreateGame: Equatable {
@@ -90,5 +90,16 @@ extension AppState.AppData {
         var descriptionGame = "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну."
         var ownRules = "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков."
         var commentFromOrganizer = "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!"
+        
+        var images = [Data]()
+        
+        var uiImageOne: UIImage? = nil
+        var uiImageTwo: UIImage? = nil
+        
+        var showActionOne: Bool = false
+        var showImagePickerOne: Bool = false
+        
+        var showActionTwo: Bool = false
+        var showImagePickerTwo: Bool = false
     }
 }

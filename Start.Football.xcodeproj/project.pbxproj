@@ -57,6 +57,8 @@
 		1B424E6025C8447300523292 /* EditGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424E5F25C8447300523292 /* EditGameView.swift */; };
 		1B424E6925C847F900523292 /* EditGame.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424E6825C847F900523292 /* EditGame.swift */; };
 		1B424E7525C8490300523292 /* EditGameInteractor.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424E7425C8490300523292 /* EditGameInteractor.swift */; };
+		1B424E8325C8636200523292 /* ImagePicker.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424E8225C8636200523292 /* ImagePicker.swift */; };
+		1B424E8A25C879ED00523292 /* ShareSheet.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B424E8925C879ED00523292 /* ShareSheet.swift */; };
 		1B42CD5D25C4570A007F4ABB /* TabViewApp.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */; };
 		1B42CD6C25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD6B25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift */; };
 		1B42CD7125C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 1B42CD7025C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift */; };
@@ -237,6 +239,8 @@
 		1B424E5F25C8447300523292 /* EditGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameView.swift; sourceTree = "<group>"; };
 		1B424E6825C847F900523292 /* EditGame.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGame.swift; sourceTree = "<group>"; };
 		1B424E7425C8490300523292 /* EditGameInteractor.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = EditGameInteractor.swift; sourceTree = "<group>"; };
+		1B424E8225C8636200523292 /* ImagePicker.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ImagePicker.swift; sourceTree = "<group>"; };
+		1B424E8925C879ED00523292 /* ShareSheet.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ShareSheet.swift; sourceTree = "<group>"; };
 		1B42CD5C25C4570A007F4ABB /* TabViewApp.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = TabViewApp.swift; sourceTree = "<group>"; };
 		1B42CD6B25C49FA4007F4ABB /* DissMissButtonCreateGameView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DissMissButtonCreateGameView.swift; sourceTree = "<group>"; };
 		1B42CD7025C4A7DB007F4ABB /* DatePickerLineWithoutButtonView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = DatePickerLineWithoutButtonView.swift; sourceTree = "<group>"; };
@@ -946,6 +950,8 @@
 				1B8B61DE25BA1F3C0005E9C8 /* DatePickerUIKit.swift */,
 				1B3828AB25B867760007790A /* TextFieldUIKit.swift */,
 				1B37B02A25AF52C00007AEF3 /* ActivityIndicatorView.swift */,
+				1B424E8225C8636200523292 /* ImagePicker.swift */,
+				1B424E8925C879ED00523292 /* ShareSheet.swift */,
 			);
 			path = UIKit;
 			sourceTree = "<group>";
@@ -1184,6 +1190,7 @@
 				1B765D8B25A748BE00105940 /* CreateGameStepFour.swift in Sources */,
 				1B93579125C62A2C00CFF38E /* PlugGames.swift in Sources */,
 				1B6A0903257041330001861F /* Size.swift in Sources */,
+				1B424E8325C8636200523292 /* ImagePicker.swift in Sources */,
 				1B5E4DD925A74CA500287D98 /* BackButtonCreateGameView.swift in Sources */,
 				1B6BD02A25B5C10C008DAD8B /* StepTwoCreateGameInteractor.swift in Sources */,
 				1B765D8825A748AA00105940 /* CreateGameStepThree.swift in Sources */,
@@ -1201,6 +1208,7 @@
 				1B78CCE8256DBC7100297221 /* Font.swift in Sources */,
 				1B1ED27025C71E27000AED9A /* NotificationGame.swift in Sources */,
 				1B37B01125AF23920007AEF3 /* AppState.swift in Sources */,
+				1B424E8A25C879ED00523292 /* ShareSheet.swift in Sources */,
 				1B966C2E257717760084FFB4 /* ButtonCancel.swift in Sources */,
 				1B8B61DF25BA1F3C0005E9C8 /* DatePickerUIKit.swift in Sources */,
 				1BF3660D25A77E4700B196EE /* CellStatisticsProfileView.swift in Sources */,

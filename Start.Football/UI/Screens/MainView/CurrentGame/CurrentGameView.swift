@@ -9,6 +9,7 @@ import SwiftUI
 
 struct CurrentGameView: View {
     
+    @State private var showShareSheet = false
     private let game: Game
     init(game: Game) {
         self.game = game
@@ -86,27 +87,15 @@ struct CurrentGameView: View {
                                             currenrGameSendInviteButton
                                         })
             }
+            .sheet(isPresented: $showShareSheet) {
+                ShareSheet(activityItems: ["Start.Football"])
+            }
         }
     }
 }
 
 
 // MARK: UI
-private extension CurrentGameView {
-    private var currenrGameEditButton: AnyView {
-        AnyView(
-            Button(action: {
-                currenrGameEditShow()
-            }
-            ) {
-                Image("currenrGameEdit")
-                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
-                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
-            }
-        )
-    }
-}
-
 private extension CurrentGameView {
     private var currenrGameSendInviteButton: AnyView {
         AnyView(
@@ -124,18 +113,8 @@ private extension CurrentGameView {
 
 // MARK: Actions
 private extension CurrentGameView {
-    private func currenrGameEditShow() {
-        NavigationLink(
-            destination: EditGameView(game: Game.plugGame),
-            label: {
-                Image("currenrGameEdit")
-                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 24),
-                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 24))
-            })
-    }
-    
     private func currenrGameSendInvite() {
-        self.viewController?.dismiss(animated: true)
+        self.showShareSheet = true
     }
 }
 

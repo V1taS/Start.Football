@@ -5,7 +5,7 @@
 //  Created by Vitalii Sosin on 01.02.2021.
 //
 
-import Foundation
+import SwiftUI
 
 extension AppState.AppData {
     struct EditGame: Equatable {
@@ -88,5 +88,16 @@ extension AppState.AppData {
         var descriptionGame = ""
         var ownRules = ""
         var commentFromOrganizer = ""
+        
+        var images = [Data]()
+        
+        var uiImageOne: UIImage? = nil
+        var uiImageTwo: UIImage? = nil
+        
+        var showActionOne: Bool = false
+        var showImagePickerOne: Bool = false
+        
+        var showActionTwo: Bool = false
+        var showImagePickerTwo: Bool = false
     }
 }

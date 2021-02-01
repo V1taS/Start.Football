@@ -78,13 +78,7 @@ struct EditGameView: View {
                     
                     addPhotoFieldButton
                         .padding(.top, 16)
-                    
-                    HStack {
-                        ImageViewMiniCG(image: "CGfield_1")
-                        Spacer()
-                        ImageViewMiniCG(image: "CGfield_2")
-                    }
-                    Spacer()
+
                 }
                 .padding(.top, 32)
                 
@@ -643,20 +637,130 @@ private extension EditGameView {
 private extension EditGameView {
     private var addPhotoFieldButton: AnyView {
         AnyView(
-            Button(action: {
-                addPhotoField()
-            }) {
-                ButtonView(background: .tertiary,
-                           textColor: .whiteColor,
-                           borderColor: .tertiary,
-                           text: "Добавить фото площадки",
-                           switchImage: true,
-                           image: "CGphoto")
+            HStack {
+                imageOne
+                    .sheet(isPresented: appBinding.createGame.showImagePickerOne, onDismiss: {
+                        appBinding.createGame.showImagePickerOne.wrappedValue = false
+                    }, content: {
+                        ImagePicker(isShown: appBinding.createGame.showImagePickerOne,
+                                    uiImage: appBinding.createGame.uiImageOne)
+                    })
+                    .actionSheet(isPresented: appBinding.createGame.showActionOne) {
+                        sheetOne
+                    }
+                Spacer()
+                imageTwo
+                    .sheet(isPresented: appBinding.createGame.showImagePickerTwo, onDismiss: {
+                        appBinding.createGame.showImagePickerTwo.wrappedValue = false
+                    }, content: {
+                        ImagePicker(isShown: appBinding.createGame.showImagePickerTwo,
+                                    uiImage: appBinding.createGame.uiImageTwo)
+                    })
+                    .actionSheet(isPresented: appBinding.createGame.showActionTwo) {
+                        sheetTwo
+                    }
             }
         )
     }
 }
 
+private extension EditGameView {
+    private var imageOne: AnyView {
+        AnyView(
+            VStack {
+                if (appBinding.createGame.uiImageOne.wrappedValue == nil) {
+                    Image(systemName: "camera.on.rectangle")
+                        .font(.title)
+                        .frame(width: 155, height: 155)
+                        .accentColor(Color.purple)
+                        .background(Color.gray)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showImagePickerOne.wrappedValue = true
+                        }
+                } else {
+                    Image(uiImage: appBinding.createGame.uiImageOne.wrappedValue!)
+                        .resizable()
+                        .frame(width: 155, height: 155)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showActionOne.wrappedValue = true
+                        }
+                }
+            }
+        )
+    }
+}
+
+private extension EditGameView {
+    var sheetOne: ActionSheet {
+        ActionSheet(
+            title: Text("Фото футбольного поля"),
+            message: Text("добавить"),
+            buttons: [
+                .default(Text("Изменить"), action: {
+                    appBinding.createGame.showActionOne.wrappedValue = false
+                    appBinding.createGame.showImagePickerOne.wrappedValue = true
+                }),
+                .cancel(Text("Отмена"), action: {
+                    appBinding.createGame.showActionOne.wrappedValue = false
+                }),
+                .destructive(Text("Удалить"), action: {
+                    appBinding.createGame.showActionOne.wrappedValue = false
+                    appBinding.createGame.uiImageOne.wrappedValue = nil
+                })
+            ])
+    }
+}
+
+private extension EditGameView {
+    var sheetTwo: ActionSheet {
+        ActionSheet(
+            title: Text("Фото футбольного поля"),
+            message: Text("добавить"),
+            buttons: [
+                .default(Text("Изменить"), action: {
+                    appBinding.createGame.showActionTwo.wrappedValue = false
+                    appBinding.createGame.showImagePickerTwo.wrappedValue = true
+                }),
+                .cancel(Text("Отмена"), action: {
+                    appBinding.createGame.showActionTwo.wrappedValue = false
+                }),
+                .destructive(Text("Удалить"), action: {
+                    appBinding.createGame.showActionTwo.wrappedValue = false
+                    appBinding.createGame.uiImageTwo.wrappedValue = nil
+                })
+            ])
+    }
+}
+
+private extension EditGameView {
+    private var imageTwo: AnyView {
+        AnyView(
+            VStack {
+                if (appBinding.createGame.uiImageTwo.wrappedValue == nil) {
+                    Image(systemName: "camera.on.rectangle")
+                        .font(.title)
+                        .frame(width: 155, height: 155)
+                        .accentColor(Color.purple)
+                        .background(Color.gray)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showImagePickerTwo.wrappedValue = true
+                        }
+                } else {
+                    Image(uiImage: appBinding.createGame.uiImageTwo.wrappedValue!)
+                        .resizable()
+                        .frame(width: 155, height: 155)
+                        .cornerRadius(16)
+                        .onTapGesture {
+                            appBinding.createGame.showActionTwo.wrappedValue = true
+                        }
+                }
+            }
+        )
+    }
+}
 
 // MARK: Actions
 private extension EditGameView {
