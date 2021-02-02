@@ -286,12 +286,12 @@ private extension EditGameView {
 // MARK: Actions
 private extension EditGameView {
     private func noSelectionRegularGame(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .noSelectionRegularGame(state: state)
     }
     
     private func yesSelectionRegularGame(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .yesSelectionRegularGame(state: state)
     }
 }
@@ -523,17 +523,17 @@ private extension EditGameView {
 private extension EditGameView {
     // Type Game
     private func selectMiniFootball() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectMiniFootball(state: appBinding)
     }
     
     private func selectFootball() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectFootball(state: appBinding)
     }
     
     private func selectFootsal() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectFootsal(state: appBinding)
     }
 }
@@ -541,17 +541,17 @@ private extension EditGameView {
 private extension EditGameView {
     // Place Play
     private func selectStreet() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectStreet(state: appBinding)
     }
     
     private func selectManege() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectManege(state: appBinding)
     }
     
     private func selectHall() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectHall(state: appBinding)
     }
 }
@@ -559,17 +559,17 @@ private extension EditGameView {
 private extension EditGameView {
     // Type Field
     private func selectParquet() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectParquet(state: appBinding)
     }
     
     private func selectGrass() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectGrass(state: appBinding)
     }
     
     private func selectCaoutchouc() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectCaoutchouc(state: appBinding)
     }
 }
@@ -577,29 +577,29 @@ private extension EditGameView {
 private extension EditGameView {
     // Coating Properties
     private func selectSynthetics() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectSynthetics(state: appBinding)
     }
     
     private func selectHair() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectHair(state: appBinding)
     }
     
     private func selectCrumb() {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .selectCrumb(state: appBinding)
     }
 }
 
 private extension EditGameView {
     private func dressingRooms(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor
+        injected.interactors.editGameInteractor
             .dressingRooms(state: state)
     }
     
     private func showers(state: Binding<AppState.AppData>) {
-        injected.interactors.createGameInteractor.showers(state: state)
+        injected.interactors.editGameInteractor.showers(state: state)
     }
 }
 
@@ -608,7 +608,7 @@ private extension EditGameView {
     private var descriptionPlaying: AnyView {
         AnyView(
             TextViewTitlePlaceholder(text: appBinding.editGame.descriptionGame,
-                                     placeholder: "Большое поле, разделенное на два с 4 прожекторами. Газон обновлялся два года назад в связи с подготовкой к ЧМ. Есть 4 типа ворот: большие, средние, мини-футбольные и для игры в панну.",
+                                     placeholder: "",
                                      title: "Описание площадки")
         )
     }
@@ -618,7 +618,7 @@ private extension EditGameView {
     private var ownRules: AnyView {
         AnyView(
             TextViewTitlePlaceholder(text: appBinding.editGame.ownRules,
-                                     placeholder: "Играем без подкатов. Любое попадание в руку считается нарушением. Вратарь не берет в руки от своих игроков.",
+                                     placeholder: "",
                                      title: "Свои правила")
         )
     }
@@ -628,7 +628,7 @@ private extension EditGameView {
     private var commentFromOrganizer: AnyView {
         AnyView(
             TextViewTitlePlaceholder(text: appBinding.editGame.commentFromOrganizer,
-                                     placeholder: "Приходим за 10-15 минут. Игра начинается ровно в 21:30. Не задерживайте себя и других игроков!",
+                                     placeholder: "",
                                      title: "Комментарий от организатора")
         )
     }
@@ -639,24 +639,24 @@ private extension EditGameView {
         AnyView(
             HStack {
                 imageOne
-                    .sheet(isPresented: appBinding.createGame.showImagePickerOne, onDismiss: {
-                        appBinding.createGame.showImagePickerOne.wrappedValue = false
+                    .sheet(isPresented: appBinding.editGame.showImagePickerOne, onDismiss: {
+                        appBinding.editGame.showImagePickerOne.wrappedValue = false
                     }, content: {
-                        ImagePicker(isShown: appBinding.createGame.showImagePickerOne,
-                                    uiImage: appBinding.createGame.uiImageOne)
+                        ImagePicker(isShown: appBinding.editGame.showImagePickerOne,
+                                    uiImage: appBinding.editGame.uiImageOne)
                     })
-                    .actionSheet(isPresented: appBinding.createGame.showActionOne) {
+                    .actionSheet(isPresented: appBinding.editGame.showActionOne) {
                         sheetOne
                     }
                 Spacer()
                 imageTwo
-                    .sheet(isPresented: appBinding.createGame.showImagePickerTwo, onDismiss: {
-                        appBinding.createGame.showImagePickerTwo.wrappedValue = false
+                    .sheet(isPresented: appBinding.editGame.showImagePickerTwo, onDismiss: {
+                        appBinding.editGame.showImagePickerTwo.wrappedValue = false
                     }, content: {
-                        ImagePicker(isShown: appBinding.createGame.showImagePickerTwo,
-                                    uiImage: appBinding.createGame.uiImageTwo)
+                        ImagePicker(isShown: appBinding.editGame.showImagePickerTwo,
+                                    uiImage: appBinding.editGame.uiImageTwo)
                     })
-                    .actionSheet(isPresented: appBinding.createGame.showActionTwo) {
+                    .actionSheet(isPresented: appBinding.editGame.showActionTwo) {
                         sheetTwo
                     }
             }
@@ -668,7 +668,7 @@ private extension EditGameView {
     private var imageOne: AnyView {
         AnyView(
             VStack {
-                if (appBinding.createGame.uiImageOne.wrappedValue == nil) {
+                if (appBinding.editGame.uiImageOne.wrappedValue == nil) {
                     Image(systemName: "camera.on.rectangle")
                         .font(.title)
                         .frame(width: 155, height: 155)
@@ -676,15 +676,15 @@ private extension EditGameView {
                         .background(Color.gray)
                         .cornerRadius(16)
                         .onTapGesture {
-                            appBinding.createGame.showImagePickerOne.wrappedValue = true
+                            appBinding.editGame.showImagePickerOne.wrappedValue = true
                         }
                 } else {
-                    Image(uiImage: appBinding.createGame.uiImageOne.wrappedValue!)
+                    Image(uiImage: appBinding.editGame.uiImageOne.wrappedValue!)
                         .resizable()
                         .frame(width: 155, height: 155)
                         .cornerRadius(16)
                         .onTapGesture {
-                            appBinding.createGame.showActionOne.wrappedValue = true
+                            appBinding.editGame.showActionOne.wrappedValue = true
                         }
                 }
             }
@@ -699,15 +699,15 @@ private extension EditGameView {
             message: Text("добавить"),
             buttons: [
                 .default(Text("Изменить"), action: {
-                    appBinding.createGame.showActionOne.wrappedValue = false
-                    appBinding.createGame.showImagePickerOne.wrappedValue = true
+                    appBinding.editGame.showActionOne.wrappedValue = false
+                    appBinding.editGame.showImagePickerOne.wrappedValue = true
                 }),
                 .cancel(Text("Отмена"), action: {
-                    appBinding.createGame.showActionOne.wrappedValue = false
+                    appBinding.editGame.showActionOne.wrappedValue = false
                 }),
                 .destructive(Text("Удалить"), action: {
-                    appBinding.createGame.showActionOne.wrappedValue = false
-                    appBinding.createGame.uiImageOne.wrappedValue = nil
+                    appBinding.editGame.showActionOne.wrappedValue = false
+                    appBinding.editGame.uiImageOne.wrappedValue = nil
                 })
             ])
     }
@@ -720,15 +720,15 @@ private extension EditGameView {
             message: Text("добавить"),
             buttons: [
                 .default(Text("Изменить"), action: {
-                    appBinding.createGame.showActionTwo.wrappedValue = false
-                    appBinding.createGame.showImagePickerTwo.wrappedValue = true
+                    appBinding.editGame.showActionTwo.wrappedValue = false
+                    appBinding.editGame.showImagePickerTwo.wrappedValue = true
                 }),
                 .cancel(Text("Отмена"), action: {
-                    appBinding.createGame.showActionTwo.wrappedValue = false
+                    appBinding.editGame.showActionTwo.wrappedValue = false
                 }),
                 .destructive(Text("Удалить"), action: {
-                    appBinding.createGame.showActionTwo.wrappedValue = false
-                    appBinding.createGame.uiImageTwo.wrappedValue = nil
+                    appBinding.editGame.showActionTwo.wrappedValue = false
+                    appBinding.editGame.uiImageTwo.wrappedValue = nil
                 })
             ])
     }
@@ -738,7 +738,7 @@ private extension EditGameView {
     private var imageTwo: AnyView {
         AnyView(
             VStack {
-                if (appBinding.createGame.uiImageTwo.wrappedValue == nil) {
+                if (appBinding.editGame.uiImageTwo.wrappedValue == nil) {
                     Image(systemName: "camera.on.rectangle")
                         .font(.title)
                         .frame(width: 155, height: 155)
@@ -746,15 +746,15 @@ private extension EditGameView {
                         .background(Color.gray)
                         .cornerRadius(16)
                         .onTapGesture {
-                            appBinding.createGame.showImagePickerTwo.wrappedValue = true
+                            appBinding.editGame.showImagePickerTwo.wrappedValue = true
                         }
                 } else {
-                    Image(uiImage: appBinding.createGame.uiImageTwo.wrappedValue!)
+                    Image(uiImage: appBinding.editGame.uiImageTwo.wrappedValue!)
                         .resizable()
                         .frame(width: 155, height: 155)
                         .cornerRadius(16)
                         .onTapGesture {
-                            appBinding.createGame.showActionTwo.wrappedValue = true
+                            appBinding.editGame.showActionTwo.wrappedValue = true
                         }
                 }
             }

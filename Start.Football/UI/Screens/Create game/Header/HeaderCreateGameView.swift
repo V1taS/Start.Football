@@ -17,7 +17,10 @@ struct HeaderCreateGameView: View {
     var body: some View {
         ZStack {
             HStack {
-                backButton
+                if appBinding.createGame.selectionCreateGame.wrappedValue != .stepOne {
+                    backButton
+                }
+                
                 Spacer()
                 dissMissButton
             }

@@ -27,7 +27,5 @@ extension AppState.AppData {
         
         var tabBarMenu: AppActions.MainActions.TabBarMenu = .search
         var showCreateGameView = false
-        
-        var showMap = true
     }
 }

@@ -747,10 +747,10 @@
 				1BD9108E257598E4005B3CFC /* CurrentGame */,
 				1BD9109825759C08005B3CFC /* Profile */,
 				1B424E8E25C87DD000523292 /* EditProfile */,
+				1B424E5E25C8445400523292 /* EditGame */,
 				1BA208B425A777BF005B4D0C /* Header */,
 				1BA208BA25A77816005B4D0C /* Menu */,
 				1B0646B325A778F0003E1714 /* Cell */,
-				1B424E5E25C8445400523292 /* EditGame */,
 			);
 			path = MainView;
 			sourceTree = "<group>";

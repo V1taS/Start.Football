@@ -72,11 +72,20 @@ private extension HeaderMainView {
             Button(action: {
                 presentMap()
             }) {
-                Image("map_turnedOff")
-                    .resizable()
-                    .renderingMode(.original)
-                    .scaledToFill()
-                    .frame(width: 24, height: 24)
+                if appBinding.main.map.showMap.wrappedValue {
+                    Image("mapEnable")
+                        .resizable()
+                        .renderingMode(.original)
+                        .scaledToFill()
+                        .frame(width: 24, height: 24)
+                } else {
+                    Image("mapDisable")
+                        .resizable()
+                        .renderingMode(.original)
+                        .scaledToFill()
+                        .frame(width: 24, height: 24)
+                }
+                
             }
         )
     }
@@ -88,11 +97,20 @@ private extension HeaderMainView {
             Button(action: {
                 presentFiltrsSheet()
             }) {
-                Image("filter")
-                    .resizable()
-                    .renderingMode(.original)
-                    .scaledToFill()
-                    .frame(width: 24, height: 24)
+                if appBinding.main.filter.showFiltrsView.wrappedValue {
+                    Image("filterEnable")
+                        .resizable()
+                        .renderingMode(.original)
+                        .scaledToFill()
+                        .frame(width: 24, height: 24)
+                } else {
+                    Image("filterDisable")
+                        .resizable()
+                        .renderingMode(.original)
+                        .scaledToFill()
+                        .frame(width: 24, height: 24)
+                }
+                
             }
         )
     }
@@ -108,7 +126,7 @@ private extension HeaderMainView {
     }
     
     private func presentMap() {
-        appBinding.main.showMap.wrappedValue.toggle()
+        appBinding.main.map.showMap.wrappedValue.toggle()
     }
     
     private func presentFiltrsSheet() {

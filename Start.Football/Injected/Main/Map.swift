@@ -9,6 +9,8 @@ import Foundation
 
 extension AppState.AppData.Main {
     struct Map: Equatable {
+        var showMap = false
+        
         var gamePoint: [GamePoint] = [
             GamePoint(title: "Арена Химки",
                       coordinate: .init(latitude: 55.891830,longitude: 37.408373),

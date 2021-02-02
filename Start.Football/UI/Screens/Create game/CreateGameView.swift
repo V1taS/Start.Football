@@ -208,6 +208,11 @@ private extension CreateGameView {
 //            .validCostGame(state: state)
     }
     
+    private func addNotifications(state: Binding<AppState.AppData>) -> Game {
+        injected.interactors.createGameInteractor
+            .currentGame(state: state)
+    }
+    
     private func configureCreateGameButton(state: Binding<AppState.AppData>) {
         self.viewController?.present(style: .fullScreen) {
             CurrentGameView(game: currentGame(state: state))

@@ -27,7 +27,7 @@ struct MainView: View {
             VStack(spacing: 0) {
                 header
                 menu
-                if appBinding.main.showMap.wrappedValue {
+                if appBinding.main.map.showMap.wrappedValue {
                     mapGame
                 } else {
                     allGame
@@ -63,7 +63,7 @@ private extension MainView {
     private var mapGame: AnyView {
         AnyView(
             VStack(spacing: 0) {
-                if appBinding.main.showMap.wrappedValue {
+                if appBinding.main.map.showMap.wrappedValue {
                         VStack(spacing: 0) {
                             MapGameView(appBinding: appBinding)
                         }

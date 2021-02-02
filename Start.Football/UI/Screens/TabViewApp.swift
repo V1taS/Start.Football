@@ -21,17 +21,16 @@ struct TabViewApp: View {
     
     var body: some View {
         ZStack {
-                
-                ZStack {
-                    VStack(spacing: 0) {
-                        content
-                        CustomTabViewApp(appBinding: appBinding)
-                            .background(Color.paleWhite)
-                    }
-                    
-                    backgroundColor
-                    filterGame
+            
+            ZStack {
+                VStack(spacing: 0) {
+                    content
+                    CustomTabViewApp(appBinding: appBinding)
                 }
+                
+                backgroundColor
+                filterGame
+            }
             
             if appState.main.showCreateGameView {
                 VStack {
@@ -43,7 +42,7 @@ struct TabViewApp: View {
                 .transition(.move(edge: .bottom))
                 .animation(.easeOut)
             }
-                
+            
         }
         .edgesIgnoringSafeArea(.bottom)
         .dismissingKeyboard()

@@ -21,10 +21,10 @@ struct CustomTabViewApp: View {
     var body: some View {
         ZStack {
             Color(.paleWhite)
-                .clipShape(RoundedRectangle(cornerRadius: 16))
-                .overlay(RoundedRectangle(cornerRadius: 16)
+                .clipShape(RoundedRectangle(cornerRadius: 0))
+                .overlay(RoundedRectangle(cornerRadius: 0)
                             .stroke(Color.secondaryColor, lineWidth: 0.2))
-                .frame(height: 90)
+                .frame(width: UIScreen.screenWidth, height: 90)
                 .shadow(color: Color(UIColor(red: 0.271, green: 0.357, blue: 0.388, alpha: 0.16)), radius: 16, x: 0, y: 0)
             
             HStack(alignment: .center, spacing: 89) {
@@ -67,7 +67,6 @@ struct CustomTabViewApp: View {
             }
             .padding(.bottom, 16)
         }
-        
     }
 }
 
