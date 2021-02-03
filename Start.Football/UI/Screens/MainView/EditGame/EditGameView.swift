@@ -14,7 +14,6 @@ struct EditGameView: View {
         $appState.dispatched(to: injected.appState, \.appData)
     }
     @Environment(\.injected) private var injected: DIContainer
-    
     private var game: Game
     init(game: Game) {
         self.game = game
