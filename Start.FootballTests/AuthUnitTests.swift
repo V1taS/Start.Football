@@ -10,6 +10,7 @@ import XCTest
 
 class AuthUnitTests: XCTestCase {
     
+    
     var fieldValidator: AuthInteractor!
     
     override func setUpWithError() throws {
