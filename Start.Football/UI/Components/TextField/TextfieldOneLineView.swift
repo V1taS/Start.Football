@@ -18,7 +18,9 @@ struct TextfieldOneLineView: View {
     let iconShow: Bool
     let placeholder: String
     let keyboardType: UIKeyboardType
-    var success: Bool
+    let success: Bool
+    var textAlignment: NSTextAlignment
+    var limitLength: Int
     
     var body: some View {
         VStack(spacing: 0) {
@@ -59,7 +61,9 @@ private extension TextfieldOneLineView {
                            font: UIFont.event.robotoRegular18!,
                            foregroundColor: .secondaryColor,
                            keyType: keyboardType,
-                           isSecureText: false)
+                           isSecureText: false,
+                           textAlignment: .left,
+                           limitLength: 30)
                 .frame(width: 270, height: 30)
         )
     }
@@ -93,10 +97,13 @@ private extension TextfieldOneLineView {
 struct TextfieldOneLineView_Previews: PreviewProvider {
     static var previews: some View {
         TextfieldOneLineView(text: .constant(""),
-                             title: "Название",
-                             icon: "locationCreateGame",
-                             iconShow: true,
-                             placeholder: "Введите название",
-                             keyboardType: .default, success: true)
+                             title: "",
+                             icon: "",
+                             iconShow: false,
+                             placeholder: "",
+                             keyboardType: .numberPad,
+                             success: false,
+                             textAlignment: .center,
+                             limitLength: 2)
     }
 }

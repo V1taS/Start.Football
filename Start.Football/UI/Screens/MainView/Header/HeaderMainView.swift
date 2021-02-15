@@ -121,7 +121,7 @@ private extension HeaderMainView {
 private extension HeaderMainView {
     private func presentPlayer() {
         self.viewController?.present(style: .fullScreen) {
-            ProfileView(player: appBinding.main.currentPlayer.wrappedValue)
+            ProfileView(player: appBinding.main.currentPlayer)
         }
     }
     

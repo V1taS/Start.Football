@@ -75,7 +75,9 @@ private extension PasswordTextFieldView {
                                font: UIFont.event.robotoMedium16!,
                                foregroundColor: .secondaryColor,
                                keyType: .default,
-                               isSecureText: false)
+                               isSecureText: false,
+                               textAlignment: .left,
+                               limitLength: 30)
                     .frame(height: 30)
             }
         )
@@ -90,7 +92,9 @@ private extension PasswordTextFieldView {
                            font: UIFont.event.robotoMedium16!,
                            foregroundColor: .secondaryColor,
                            keyType: .default,
-                           isSecureText: true)
+                           isSecureText: true,
+                           textAlignment: .left,
+                           limitLength: 30)
                 .frame(height: 30)
         )
     }

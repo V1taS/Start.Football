@@ -62,7 +62,9 @@ private extension LoginTextFieldView {
                            font: UIFont.event.robotoMedium16!,
                            foregroundColor: .secondaryColor,
                            keyType: .default,
-                           isSecureText: false)
+                           isSecureText: false,
+                           textAlignment: .left,
+                           limitLength: 20)
                 .frame(height: 24)
         )
     }

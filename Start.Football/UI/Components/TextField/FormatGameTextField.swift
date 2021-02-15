@@ -61,7 +61,9 @@ private extension FormatGameTextField {
                                font: UIFont.event.robotoRegular24!,
                                foregroundColor: .secondaryColor,
                                keyType: .numberPad,
-                               isSecureText: false)
+                               isSecureText: false,
+                               textAlignment: .center,
+                               limitLength: 2)
                     .frame(height: 30)
             }
             .frame(width: 60)
@@ -88,7 +90,9 @@ private extension FormatGameTextField {
                                font: UIFont.event.robotoRegular24!,
                                foregroundColor: .secondaryColor,
                                keyType: .numberPad,
-                               isSecureText: false)
+                               isSecureText: false,
+                               textAlignment: .center,
+                               limitLength: 2)
                     .frame(height: 30)
             }
             .frame(width: 60)

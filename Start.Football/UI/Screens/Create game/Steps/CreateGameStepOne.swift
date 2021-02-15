@@ -47,7 +47,10 @@ private extension CreateGameStepOne {
                              iconShow: false,
                              placeholder: "Введите название",
                              keyboardType: .default,
-                             success: appBinding.createGame.nameGameSuccess.wrappedValue)
+                             success: appBinding.createGame.nameGameSuccess.wrappedValue,
+                             textAlignment: .left,
+                             limitLength: 20)
+        
     }
 }
 
@@ -59,7 +62,9 @@ private extension CreateGameStepOne {
                              iconShow: true,
                              placeholder: "Укажите адрес",
                              keyboardType: .default,
-                             success: appBinding.createGame.addressGameSuccess.wrappedValue)
+                             success: appBinding.createGame.addressGameSuccess.wrappedValue,
+                             textAlignment: .left,
+                             limitLength: 30)
     }
 }
 
@@ -71,7 +76,9 @@ private extension CreateGameStepOne {
                              iconShow: true,
                              placeholder: "Укажите стоимость",
                              keyboardType: .numberPad,
-                             success: appBinding.createGame.costGameSuccess.wrappedValue)
+                             success: appBinding.createGame.costGameSuccess.wrappedValue,
+                             textAlignment: .left,
+                             limitLength: 4)
     }
 }
 

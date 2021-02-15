@@ -112,7 +112,9 @@ private extension EditGameView {
                              iconShow: false,
                              placeholder: "Введите название",
                              keyboardType: .default,
-                             success: appBinding.editGame.nameGameSuccess.wrappedValue)
+                             success: appBinding.editGame.nameGameSuccess.wrappedValue,
+                             textAlignment: .left,
+                             limitLength: 20)
     }
 }
 
@@ -124,7 +126,9 @@ private extension EditGameView {
                              iconShow: true,
                              placeholder: "Укажите адрес",
                              keyboardType: .default,
-                             success: appBinding.editGame.addressGameSuccess.wrappedValue)
+                             success: appBinding.editGame.addressGameSuccess.wrappedValue,
+                             textAlignment: .left,
+                             limitLength: 30)
     }
 }
 
@@ -136,7 +140,9 @@ private extension EditGameView {
                              iconShow: true,
                              placeholder: "Укажите стоимость",
                              keyboardType: .numberPad,
-                             success: appBinding.editGame.costGameSuccess.wrappedValue)
+                             success: appBinding.editGame.costGameSuccess.wrappedValue,
+                             textAlignment: .left,
+                             limitLength: 4)
     }
 }
 

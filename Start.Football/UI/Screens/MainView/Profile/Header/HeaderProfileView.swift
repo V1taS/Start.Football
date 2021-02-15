@@ -31,7 +31,7 @@ struct HeaderProfileView: View {
                    height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 416))
                 
             VStack(alignment: .leading, spacing: 0) {
-                Text("\(player.name)")
+                Text("\(player.name) \(player.surname)")
                     .foregroundColor(.whiteColor)
                     .font(Font.event.robotoRegular24)
                     .lineLimit(1)

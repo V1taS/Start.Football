@@ -185,7 +185,7 @@ private extension MainView {
                 if appBinding.main.listMyGames.wrappedValue.isEmpty {
                     VStack(spacing: 32) {
                         Spacer()
-                        Image("emptyMyGame")
+                        Image("EmptyMyGame")
                         
                         Text("Сейчас никто не играет")
                             .font(Font.event.robotoBold20)

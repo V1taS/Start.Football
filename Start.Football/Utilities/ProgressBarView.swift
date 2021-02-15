@@ -8,25 +8,24 @@
 import SwiftUI
 
 struct ProgressBarView: View {
-    let height = UIScreen.screenHeight
-    let width = UIScreen.screenWidth
+
     @Binding var value: Float
     
     var body: some View {
         ZStack(alignment: .leading) {
             Rectangle()
-                .frame(width: width * Size.shared.getAdaptSizeWidth(px: 160),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 5))
+                .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 160),
+                       height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 5))
                 .opacity(0.3)
                 .foregroundColor(Color(.processCreateGameColor))
             
             Rectangle()
-                .frame(width: min(CGFloat(self.value) * width * Size.shared.getAdaptSizeWidth(px: 160), width * Size.shared.getAdaptSizeWidth(px: 160)),
-                       height: height * Size.shared.getAdaptSizeHeight(px: 5))
+                .frame(width: min(CGFloat(self.value) * UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 160), UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 160)),
+                       height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 5))
                 .foregroundColor(Color(.primaryColor))
                 .animation(.linear)
         }
         .cornerRadius(5)
-        .padding(.top, height * Size.shared.getAdaptSizeHeight(px: 16))
+        .padding(.top, UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 16))
     }
 }

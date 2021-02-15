@@ -11,6 +11,8 @@ struct Player: Hashable, Decodable {
     
     var id: String
     var name: String
+    var surname: String
+    var sex: String
     var login: String
     var mail: String
     var password: String
@@ -30,6 +32,8 @@ struct Player: Hashable, Decodable {
     
     init(id: String,
          name: String,
+         surname: String,
+         sex: String,
          login: String,
          mail: String,
          password: String,
@@ -49,6 +53,8 @@ struct Player: Hashable, Decodable {
         
         self.id = id
         self.name = name
+        self.surname = surname
+        self.sex = sex
         self.login = login
         self.mail = mail
         self.password = password

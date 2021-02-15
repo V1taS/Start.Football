@@ -9,91 +9,94 @@ import SwiftUI
 
 struct EditProfileView: View {
     
-    @State private var appState: AppState.AppData = .init()
-    private var appBinding: Binding<AppState.AppData> {
-        $appState.dispatched(to: injected.appState, \.appData)
-    }
+    @State var image: Data? = nil
+    @State var uiImage: UIImage? = nil
+    @State var showAction: Bool = false
+    @State var showImagePicker: Bool = false
+    @State var checkboxFieldView = false
+    
+    @State private var sex = ["М", "Ж"]
+    @State private var selectedSex = 0
+    
     @Environment(\.injected) private var injected: DIContainer
     @Environment(\.viewController) private var viewControllerHolder: UIViewController?
     private var viewController: UIViewController? {
         self.viewControllerHolder!
     }
     
-    private let player: Player
-    init(player: Player) {
+    private let player: Binding<Player>
+    init(player: Binding<Player>) {
         self.player = player
     }
     
     var body: some View {
-        NavigationView {
-            ScrollView {
-                VStack {
-                    image
-                        .sheet(isPresented: appBinding.editProfile.showImagePicker, onDismiss: {
-                            appBinding.editProfile.showImagePicker.wrappedValue = false
-                        }, content: {
-                            ImagePicker(isShown: appBinding.editProfile.showImagePicker,
-                                        uiImage: appBinding.editProfile.uiImage)
-                        })
-                        .actionSheet(isPresented: appBinding.editProfile.showAction) {
-                            sheet
-                        }
+        ScrollView {
+            VStack {
+                imageView
+                    .sheet(isPresented: $showImagePicker, onDismiss: {
+                        showImagePicker = false
+                    }, content: {
+                        ImagePicker(isShown: $showImagePicker,
+                                    uiImage: $uiImage)
+                    })
+                    .actionSheet(isPresented: $showAction) {
+                        sheet
+                    }
+                
+                VStack(alignment: .leading, spacing: 24) {
+                    Text("Основная информация")
+                        .foregroundColor(.secondaryColor)
+                        .font(Font.event.robotoBold13)
                     
-                    VStack(alignment: .leading, spacing: 24) {
-                        Text("Основная информация")
-                            .foregroundColor(.secondaryColor)
-                            .font(Font.event.robotoBold13)
-                        
-                        Group {
-                            namePlayer
-                            surnamePlayer
-                            cityPlayer
-                            dateOfbirthPlayer
-                            genderPlayer
-                            wightPlayer
-                            growthPlayer
-                            aboutMySelfPlayer
-                            positionPlayer
-                            contactsPlayer
-                        }
-                        
-                        VStack(alignment: .center, spacing: 16) {
-                            saveButton
-                            deletetButton
-                        }
-                        .padding(.top, 8)
-                        
-                        
+                    Group {
+                        namePlayer
+                        surnamePlayer
+                        cityPlayer
+                        dateOfbirthPlayer
+                        genderPlayer
+                        wightPlayer
+                        growthPlayer
+                        aboutMySelfPlayer
+                        positionPlayer
+                        contactsPlayer
                     }
-                    .padding(.horizontal, 16)
-                    .padding(.top, 32)
+                    
+                    VStack(alignment: .center, spacing: 16) {
+                        saveButton
+                        deletetButton
+                    }
+                    .padding(.top, 8)
+                    
+                    
                 }
-                .navigationBarTitle(Text("Редактирование игрока"), displayMode: .inline)
-                .navigationBarItems(leading: HStack {
-                    HStack {
-                        Spacer()
-                        Button(action: {
-                            self.viewController?.dismiss(animated: true, completion: nil)
-                        }) {
-                            ZStack {
-                                Image(systemName: "xmark.circle.fill")
-                                    .imageScale(.large)
-                                    .foregroundColor(Color(.primaryColor))
-                            }
-                            
-                        }
-                    }
-                })
+                .padding(.horizontal, 16)
+                .padding(.top, 32)
             }
+            .navigationBarTitle(Text("Редактирование игрока"), displayMode: .inline)
+            .navigationBarItems(leading: HStack {
+                HStack {
+                    Spacer()
+                    Button(action: {
+                        self.viewController?.dismiss(animated: true, completion: nil)
+                    }) {
+                        ZStack {
+                            Image(systemName: "xmark.circle.fill")
+                                .imageScale(.large)
+                                .foregroundColor(Color(.primaryColor))
+                        }
+                        
+                    }
+                }
+            })
         }
     }
 }
 
 private extension EditProfileView {
-    private var image: AnyView {
+    private var imageView: AnyView {
         AnyView(
             VStack {
-                if (appBinding.editProfile.uiImage.wrappedValue == nil) {
+                if (uiImage == nil) {
                     Image(systemName: "camera.on.rectangle")
                         .foregroundColor(.white)
                         .font(.title)
@@ -104,23 +107,23 @@ private extension EditProfileView {
                                height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 416))
                         .background(Color(#colorLiteral(red: 0.262745098, green: 0.2901960784, blue: 0.3960784314, alpha: 1)))
                         .onTapGesture {
-                            appBinding.editProfile.showImagePicker.wrappedValue = true
+                            showImagePicker = true
                         }
                 } else {
                     
                     ZStack {
-                        Image(uiImage: appBinding.editProfile.uiImage.wrappedValue!)
+                        Image(uiImage: uiImage!)
                             .resizable()
-
+                        
                         Rectangle()
                             .foregroundColor(.clear)
                             .background(LinearGradient(gradient: Gradient(colors: [.clear, .secondaryColor]), startPoint: .top, endPoint: .bottom))
                     }
                     .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 375),
                            height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 416))
-                        .onTapGesture {
-                            appBinding.editProfile.showAction.wrappedValue = true
-                        }
+                    .onTapGesture {
+                        showAction = true
+                    }
                 }
             }
         )
@@ -134,15 +137,15 @@ private extension EditProfileView {
             message: Text("добавить"),
             buttons: [
                 .default(Text("Изменить"), action: {
-                    appBinding.editProfile.showAction.wrappedValue = false
-                    appBinding.editProfile.showImagePicker.wrappedValue = true
+                    showAction = false
+                    showImagePicker = true
                 }),
                 .cancel(Text("Отмена"), action: {
-                    appBinding.editProfile.showAction.wrappedValue = false
+                    showAction = false
                 }),
                 .destructive(Text("Удалить"), action: {
-                    appBinding.editProfile.showAction.wrappedValue = false
-                    appBinding.editProfile.uiImage.wrappedValue = nil
+                    showAction = false
+                    uiImage = nil
                 })
             ])
     }
@@ -150,97 +153,129 @@ private extension EditProfileView {
 
 private extension EditProfileView {
     var namePlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
+        TextfieldOneLineView(text: player.name,
                              title: "Имя",
                              icon: "",
                              iconShow: false,
                              placeholder: "Имя",
                              keyboardType: .default,
-                             success: true)
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 10)
     }
 }
 
 private extension EditProfileView {
     var surnamePlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
+        TextfieldOneLineView(text: player.surname,
                              title: "Фамилия",
                              icon: "",
                              iconShow: false,
                              placeholder: "Фамилия",
                              keyboardType: .default,
-                             success: true)
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 10)
     }
 }
 
 private extension EditProfileView {
     var cityPlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
+        TextfieldOneLineView(text: player.city,
                              title: "Город",
                              icon: "",
                              iconShow: false,
                              placeholder: "Город",
                              keyboardType: .default,
-                             success: true)
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 10)
     }
 }
 
 private extension EditProfileView {
     var dateOfbirthPlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
-                             title: "Дата рождения",
+        TextfieldOneLineView(text: player.age,
+                             title: "Возраст",
                              icon: "",
                              iconShow: false,
-                             placeholder: "Дата рождения",
-                             keyboardType: .default,
-                             success: true)
+                             placeholder: "Возраст",
+                             keyboardType: .numberPad,
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 2)
     }
 }
 
 private extension EditProfileView {
     var genderPlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
-                             title: "Пол",
-                             icon: "",
-                             iconShow: false,
-                             placeholder: "Пол",
-                             keyboardType: .default,
-                             success: true)
+        VStack {
+            HStack {
+                Text("Пол")
+                    .foregroundColor(.defaultColor)
+                    .font(Font.event.robotoRegular14)
+                    .padding(.bottom, 16)
+                
+                Spacer()
+            }
+            
+            Picker(selection: $selectedSex,
+                   label: Text("")) {
+                ForEach(0..<sex.count) {
+                    Text("\(sex[$0])")
+                }
+            }
+            .pickerStyle(SegmentedPickerStyle())
+            
+            VStack(alignment: .leading, spacing: 0) {
+                Color(.dividerColor)
+                    .frame(width: UIScreen.screenWidth * Size.shared.getAdaptSizeWidth(px: 327),
+                           height: UIScreen.screenHeight * Size.shared.getAdaptSizeHeight(px: 2))
+                
+            }
+        }
     }
 }
 
 private extension EditProfileView {
     var wightPlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
+        TextfieldOneLineView(text: player.weight,
                              title: "Вес",
                              icon: "",
                              iconShow: false,
                              placeholder: "Вес",
-                             keyboardType: .default,
-                             success: true)
+                             keyboardType: .numberPad,
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 2)
     }
 }
 
 private extension EditProfileView {
     var growthPlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
+        TextfieldOneLineView(text: player.growth,
                              title: "Рост",
                              icon: "",
                              iconShow: false,
                              placeholder: "Рост",
-                             keyboardType: .default,
-                             success: true)
+                             keyboardType: .numberPad,
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 3)
     }
 }
 
 private extension EditProfileView {
     var aboutMySelfPlayer: some View {
-        TextfieldOneLineView(text: appBinding.editProfile.name,
+        TextfieldOneLineView(text: player.aboutMe,
                              title: "О себе",
                              icon: "",
                              iconShow: false,
                              placeholder: "О себе",
                              keyboardType: .default,
-                             success: true)
+                             success: true,
+                             textAlignment: .left,
+                             limitLength: 30)
     }
 }
 
@@ -254,23 +289,25 @@ private extension EditProfileView {
                 
                 HStack {
                     VStack(alignment: .leading, spacing: 16) {
-                        CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
+                        CheckboxFieldView(checked: $checkboxFieldView,
                                           text: "Нападающий")
-                        CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
+                        CheckboxFieldView(checked: $checkboxFieldView,
                                           text: "Полузащитник")
-                        CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
+                        CheckboxFieldView(checked: $checkboxFieldView,
                                           text: "Защитник")
-                        CheckboxFieldView(checked: appBinding.signUpAuth.receiveNews,
+                        CheckboxFieldView(checked: $checkboxFieldView,
                                           text: "Вратарь")
                     }
                     Spacer()
                     VStack {
                         TextFieldUIKit(placeholder: "17",
-                                       text: appBinding.editProfile.tShirtNumber,
+                                       text: player.tShirtNumber,
                                        font: UIFont.event.robotoLight48!,
                                        foregroundColor: .secondaryColor,
                                        keyType: .numberPad,
-                                       isSecureText: false)
+                                       isSecureText: false,
+                                       textAlignment: .center,
+                                       limitLength: 2)
                             .frame(width: 55)
                             .padding(35)
                             .overlay(RoundedRectangle(cornerRadius: 10)
@@ -290,21 +327,25 @@ private extension EditProfileView {
                     .foregroundColor(.secondaryColor)
                     .font(Font.event.robotoBold13)
                 
-                TextfieldOneLineView(text: appBinding.editProfile.name,
+                TextfieldOneLineView(text: player.phoneNumber,
                                      title: "Телефон",
                                      icon: "",
                                      iconShow: false,
                                      placeholder: "Телефон",
-                                     keyboardType: .default,
-                                     success: true)
+                                     keyboardType: .numberPad,
+                                     success: true,
+                                     textAlignment: .left,
+                                     limitLength: 11)
                 
-                TextfieldOneLineView(text: appBinding.editProfile.name,
+                TextfieldOneLineView(text: player.mail,
                                      title: "E-mail",
                                      icon: "",
                                      iconShow: false,
                                      placeholder: "E-mail",
                                      keyboardType: .default,
-                                     success: true)
+                                     success: true,
+                                     textAlignment: .left,
+                                     limitLength: 20)
             }
             .padding(.top, 24)
         }
@@ -313,12 +354,14 @@ private extension EditProfileView {
 
 private extension EditProfileView {
     var saveButton: some View {
-        ButtonView(background: .primaryColor,
-                   textColor: .whiteColor,
-                   borderColor: .primaryColor,
-                   text: "Сохранить изменения",
-                   switchImage: false,
-                   image: "")
+        Button(action: {}) {
+            ButtonView(background: .primaryColor,
+                       textColor: .whiteColor,
+                       borderColor: .primaryColor,
+                       text: "Сохранить изменения",
+                       switchImage: false,
+                       image: "")
+        }
     }
 }
 
@@ -330,6 +373,6 @@ private extension EditProfileView {
 
 struct EditProfileView_Previews: PreviewProvider {
     static var previews: some View {
-        EditProfileView(player: Player.plugPlayer)
+        EditProfileView(player: .constant(.plugPlayer))
     }
 }

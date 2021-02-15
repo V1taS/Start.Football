@@ -60,7 +60,9 @@ private extension CostView {
                                font: UIFont.event.robotoRegular24!,
                                foregroundColor: .secondaryColor,
                                keyType: .numberPad,
-                               isSecureText: false)
+                               isSecureText: false,
+                               textAlignment: .center,
+                               limitLength: 4)
                     .frame(width: 55, height: 30)
                 
                 Text("₽")
@@ -91,7 +93,9 @@ private extension CostView {
                                font: UIFont.event.robotoRegular24!,
                                foregroundColor: .secondaryColor,
                                keyType: .numberPad,
-                               isSecureText: false)
+                               isSecureText: false,
+                               textAlignment: .center,
+                               limitLength: 4)
                     .frame(width: 55, height: 30)
                 
                 Text("₽")
